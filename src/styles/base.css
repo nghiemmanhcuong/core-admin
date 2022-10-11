@@ -1,0 +1,102 @@
+/*
+ * Created Date: 06-10-2022, 1:21:33 pm
+ * Author: Peter
+ * Email: phantrung696@gmail.com
+ * -----
+ * Last Modified: Fri Oct 07 2022
+ * Modified By: Peter
+ * -----
+ * Copyright (c) 2022 PROS+ Group , Inc
+ * -----
+ * HISTORY:
+ * Date      	By	Comments
+ * ----------	---	----------------------------------------------------------
+ */
+@import-normalize;
+
+@tailwind base;
+
+/**
+ * Custom base styles, applied after the tailwind-base classes
+ */
+
+:root {
+	font-family: 'Noto Sans', sans-serif;
+	/* font-size: 16px; */
+	/* line-height: 24px; */
+	font-size: 62.5%;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	/* color: rgba(255, 255, 255, 0.87);
+	background-color: #242424; */
+
+	color: #213547;
+	background-color: #ffffff;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+/* html {
+	font-size: 62.5%;
+	font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+	background-color: #121212;
+	-webkit-font-smoothing: antialiased;
+	text-size-adjust: 100%;
+} */
+
+body {
+	font-size: 13px;
+	line-height: 1.4;
+	overflow-x: hidden;
+	margin: 0;
+	/* display: flex; */
+	place-items: center;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+html,
+body,
+#root {
+	position: relative;
+	margin: 0;
+	min-height: 100vh;
+}
+
+h1,
+.h1 {
+	font-size: 22px;
+}
+
+h2,
+.h2 {
+	font-size: 20px;
+}
+
+h3,
+.h3 {
+	font-size: 18px;
+}
+
+h4,
+.h4 {
+	font-size: 16px;
+}
+
+h5,
+.h5 {
+	font-size: 13px;
+}
+
+h6,
+.h6 {
+	font-size: 12px;
+}
+
+@tailwind components;
+@tailwind utilities;

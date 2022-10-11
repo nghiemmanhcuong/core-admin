@@ -1,0 +1,88 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"Zignd.html-css-class-completion",
+			"aaron-bond.better-comments",
+			"abusaidm.html-snippets",
+			"akamud.vscode-theme-onedark",
+			"alefragnani.project-manager",
+			"CoenraadS.bracket-pair-colorizer",
+			"dbaeumer.vscode-eslint",
+			"dsznajder.es7-react-js-snippets",
+			"donjayamanne.githistory",
+			"eamodio.gitlens",
+			"esbenp.prettier-vscode",
+			"EditorConfig.EditorConfig",
+			"HookyQR.beautify",
+			"lokalise.i18n-ally",
+			"formulahendry.auto-rename-tag",
+			"formulahendry.auto-close-tag",
+			"naumovs.color-highlight",
+			"wix.vscode-import-cost",
+			"vscodeshift.material-ui-snippets",
+			"vscodeshift.material-ui-codemorphs",
+			"psioniq.psi-header",
+			"xabikos.JavaScriptSnippets",
+			"VisualStudioExptTeam.vscodeintellicode",
+			"steoates.autoimport",
+			"heybourn.headwind"
+		]
+	},
+	"settings": {
+		"psi-header.config": {
+			"forceToTop": true,
+			"blankLinesAfter": 1,
+			"license": "MIT",
+			// "author": "Peter",
+			// "initials": "Peter",
+			// "authorEmail": "phantrung696@gmail.com",
+			"company": "PROS+ Group , Inc",
+			"copyrightHolder": "PROS+ GROUP, Inc",
+			"creationDateZero": "asIs"
+		},
+		"psi-header.changes-tracking": {
+			"isActive": true,
+			"modAuthor": "Modified By: ",
+			"modDate": "Last Modified: ",
+			"modDateFormat": "date",
+			"include": [],
+			"exclude": ["markdown", "json", "jsonc"],
+			"excludeGlob": ["public/**", "build/**"],
+			"autoHeader": "manualSave"
+		},
+		"psi-header.templates": [
+			{
+				"language": "*",
+				"template": [
+					"Created Date: <<filecreated('DD-MM-YYYY, h:mm:ss a')>>",
+					"Author: <<author>>",
+					"Email: <<authorEmail>>",
+					"-----",
+					"Last Modified: ",
+					"Modified By: ",
+					"-----",
+					"Copyright (c) <<year>> <<company>>",
+					"-----",
+					"HISTORY:",
+					"Date      \tBy\tComments",
+					"----------\t---\t----------------------------------------------------------"
+				],
+				"changeLogCaption": "HISTORY:",
+				"changeLogHeaderLineCount": 2,
+				"changeLogEntryTemplate": ["<<dateformat('DD-MM-YYYY')>>\t<<initials>>\t"]
+			},
+			{
+				"language": "typescript",
+				"mapTo": "javascript"
+			}
+		],
+		"i18n-ally.keystyle": "nested",
+		"i18n-ally.sourceLanguage": "en",
+		"i18n-ally.localesPaths": ["public/locales", "src/@system/i18n"]
+	}
+}

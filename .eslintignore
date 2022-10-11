@@ -1,0 +1,35 @@
+/*
+ * Created Date: 06-10-2022, 11:23:45 am
+ * Author: Peter
+ * Email: phantrung696@gmail.com
+ * -----
+ * Last Modified: Thu Oct 06 2022
+ * Modified By: Peter
+ * -----
+ * Copyright (c) 2022 PROS GROUP, Inc
+ * -----
+ * HISTORY:
+ * Date      	By	Comments
+ * ----------	---	----------------------------------------------------------
+ */
+
+# dependencies
+node_modules/
+.yarn/
+
+# production
+./build/
+./public/
+
+# ide
+.vscode/
+
+# external docs
+src/app/main/documentation/material-ui-components/components/*
+src/app/main/documentation/material-ui-components/pages/*
+src/app/main/documentation/material-ui-components/build.js
+src/app/main/documentation/third-party-components/*/examples/*
+src/@fuse/*
+src/app/store/*
+src/app/fuse-layouts/*
+src/app/auth/*

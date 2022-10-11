@@ -1,0 +1,37 @@
+{
+	"dialog": {
+		"title": {
+			"new": "Thêm mới",
+			"edit": "Chỉnh sửa"
+		}
+	},
+	"table": {
+		"customize_column": "Tùy biến cột",
+		"search_column": "Tìm kiếm cột",
+		"column_selected": "Cột được chọn ({{count}})",
+		"no_data": "Không tìm thấy dữ liệu nào!",
+		"hide_column": "Ẩn cột",
+		"move_column": "Di chuyển cột",
+		"save_column": "Lưu thay đổi",
+		"delete_confirm": "Bạn có muốn xoá dữ liệu này không?",
+		"row_per_page": "Số hàng hiển thị trên trang"
+	},
+	"btn": {
+		"new": "Thêm mới",
+		"save": "Lưu",
+		"save_change": "Lưu thay đổi",
+		"edit": "Chỉnh sửa",
+		"delete": "Xoá",
+		"submit": "Xác nhận",
+		"cancel": "Huỷ",
+		"view": "Xem chi tiết",
+		"update": "Cập nhật",
+		"unSubscribe": "Bỏ đăng ký",
+		"subscribed": "Đăng ký"
+	},
+	"message": {
+		"fetch_list_failed": "Không lấy được dữ liệu",
+		"delete_success": "Xoá dữ liệu thành công",
+		"delete_failed": "Xoá dữ liệu thất bại"
+	}
+}
