@@ -17,18 +17,31 @@ import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
-import TableFilter from './Components/TableFilter'
+import TableFilter from './Components/SpotTableFilter'
 import { Box } from '@mui/system'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListSpotProvider from './ListSpotProvider'
 import ListSpotTable from './Components/ListSpotTable'
+import { Button } from '@mui/material'
 
 const ListSpot = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
 
 	return (
 		<ListSpotProvider t={t}>
-			<AdminContentPage pageTitle="List Event" content={<ListSpotTable />} />
+			<AdminContentPage
+				pageTitle="List Event"
+				headerAction={
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={() => console.log('============= navigate page add new')}
+					>
+						{t('common:btn.new')}
+					</Button>
+				}
+				content={<ListSpotTable />}
+			/>
 		</ListSpotProvider>
 	)
 }

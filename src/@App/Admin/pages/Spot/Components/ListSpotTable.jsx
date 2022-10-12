@@ -18,6 +18,7 @@ import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/componen
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
+import SpotTableFilter from './SpotTableFilter'
 // import PropTypes from 'prop-types'
 
 const ListSpotTable = props => {
@@ -59,6 +60,7 @@ const ListSpotTable = props => {
 
 	return (
 		<Box>
+			<SpotTableFilter />
 			<CoreTable isShowPagination columns={columns} {...spotTableHandler} />
 		</Box>
 	)
