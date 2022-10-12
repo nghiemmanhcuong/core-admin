@@ -19,39 +19,18 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
 import TableFilter from './Components/TableFilter'
 import { Box } from '@mui/system'
+import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import ListSpotProvider from './ListSpotProvider'
+import ListSpotTable from './Components/ListSpotTable'
 
 const ListSpot = props => {
-	const { t } = useTranslation()
-	const columns = useMemo(() => {
-		return [
-			columnHelper.accessor('id', {
-				cell: info => info.getValue(),
-				header: 'ID'
-			}),
-			columnHelper.accessor('code', {
-				header: t('label.code')
-			}),
-			columnHelper.accessor('name', {
-				header: t('label.name')
-			}),
+	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
 
-			columnHelper.accessor('alias', {
-				header: t('label.alias')
-			}),
-			columnHelper.accessor('description', {
-				header: t('label.description')
-			})
-		]
-	}, [t])
-	return <AdminContentPage pageTitle="List Event" content={
-			<Box>
-			<TableFilter />
-			<CoreTable columns={columns} />
-			</Box>
-
-			
-	} 
-/>
+	return (
+		<ListSpotProvider t={t}>
+			<AdminContentPage pageTitle="List Event" content={<ListSpotTable />} />
+		</ListSpotProvider>
+	)
 }
 
 export default React.memo(ListSpot)

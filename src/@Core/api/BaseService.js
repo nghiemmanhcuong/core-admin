@@ -1,45 +1,121 @@
-/*
- * Created Date: 02-08-2022, 9:53:42 pm
- * Author: Peter
- * Email: phantrung696@gmail.com
- * -----
- * Last Modified:
- * Modified By:
- * -----
- * Copyright (c) 2022 APUSCORP, Inc
- * -----
- * HISTORY:
- * Date      	By	Comments
- * ----------	---	----------------------------------------------------------
- */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable camelcase */
+// import { flatTreeArray } from '@Core/Helper/Array'
 
+import { get } from 'lodash'
+import has from 'lodash/has'
 import { createInstance } from './axios'
+
+import BaseFactory from './Factory'
+
 import { globalApiMiddleware } from './middleware'
+import MockAdapterService from './MockAdapterService'
 
+export const DEFAULT_RESPONSE = {
+	content: [],
+	data: [],
+	total: 0,
+	page: 1,
+	size: 10
+}
 class BaseService {
-	BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL
+	BASE_URL = '/'
 
-	BASE_ENDPOINT = ''
+	BASE_ENDPOINT = '/api/v1'
 
-	pimaryKey = 'id'
+	DEFAULT_RESPONSE = DEFAULT_RESPONSE
 
-	paramsGet = {
-		orderBy: 'updated_at',
-		sortedBy: 'desc'
-	}
+	DEFAULT_PAGE = 1
 
-	request = null
+	DEFAULT_LIMIT = 10
+
+	DEFAULT_SORT = 'updated_at desc'
+
+	ALL_ITEMS = 10000
 
 	APPLY_MIDDLEWARE = {
 		...globalApiMiddleware
 	}
 
-	constructor(params) {
+	pimaryKey = 'id'
+
+	factory = {}
+
+	fakeData = []
+
+	mockApi = {}
+
+	allowTranslateFields = []
+
+	allowScoreCompany = false
+
+	constructor(props) {
+		if (has(props, 'BASE_URL')) {
+			this.BASE_URL = props.BASE_URL
+		}
+
+		if (has(props, 'BASE_ENDPOINT')) {
+			this.BASE_ENDPOINT = props.BASE_ENDPOINT
+		}
+
+		if (has(props, 'APPLY_MIDDLEWARE')) {
+			this.APPLY_MIDDLEWARE = props.APPLY_MIDDLEWARE
+		}
+
 		this.setRequest()
 	}
 
 	setRequest() {
 		this.request = createInstance(this.BASE_URL, this.middleware)
+		this.paramsGet = {
+			page: this.DEFAULT_PAGE,
+			size: this.DEFAULT_LIMIT,
+			sort: this.DEFAULT_SORT
+			// sort : this.DEFAULT_SORT,
+		}
+	}
+
+	/**
+	 * create mock adapter service with crud
+	 */
+	setMockAdapter(isCrud = true) {
+		this.mockApi = new MockAdapterService(this.request, { delayResponse: 1000, onNoMatch: 'passthrough' })
+		this.mockApi.setApiService(this)
+		if (isCrud) {
+			this.mockApi.mockCRUD()
+		}
+	}
+
+	/**
+	 * Set a custom middleware
+	 * @param {string} name
+	 * @param {(request) => {}} callback
+	 */
+	setApplyMiddleware = (name, callback) => {
+		this.APPLY_MIDDLEWARE[name] = callback
+	}
+
+	createFactory = factory => {
+		if (factory instanceof BaseFactory) {
+			this.factory = factory.createModel
+			this.fakeData = factory.getData()
+		} else {
+			this.factory = factory
+		}
+	}
+
+	makeFakeData = (...lens) => {
+		const makeDataLevel = (depth = 0) => {
+			const len = lens[depth]
+			return Array.from(new Array(len)).map((d, index) => {
+				return {
+					...this.factory(index),
+					subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined
+				}
+			})
+		}
+		this.fakeData = makeDataLevel()
+		return this
 	}
 
 	/**
@@ -63,8 +139,24 @@ class BaseService {
 	 */
 	list = (query = {}, config = {}) => {
 		const params = { ...this.paramsGet, ...query }
-		return this.request.get(this.BASE_ENDPOINT, { params, ...config })
+		return this.request.get(this.BASE_ENDPOINT, { params, ...config }).then(this.withTranslate)
 	}
+
+	// /**
+	//  * Get all resource for paginate with options value and label
+	//  * @param {}
+	//  * @returns
+	//  */
+	// listWithOptions = (query = {}, config = {}) => {
+	// 	const params = {
+	// 		...this.paramsGet,
+	// 		page: 1,
+	// 		size: this.ALL_ITEMS,
+	// 		is_active: true,
+	// 		...query
+	// 	}
+	// 	return this.request.get(this.BASE_ENDPOINT, { params, ...config }).then(this.withOptions)
+	// }
 
 	/**
 	 * Get specific of resource
@@ -116,6 +208,10 @@ class BaseService {
 		const api = `${this.BASE_ENDPOINT}/${id}`
 		return this.request.delete(api, config)
 	}
-}
 
+	changeStatus = async (id, next_status) => {
+		const endpoint = `${this.BASE_ENDPOINT}/${id}/status`
+		return this.request.patch(endpoint, { next_status })
+	}
+}
 export default BaseService

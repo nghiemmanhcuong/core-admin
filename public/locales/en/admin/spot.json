@@ -1,0 +1,8 @@
+{
+	"label": {
+		"name": "Tên spot",
+		"code": "Mã spot",
+		"alias": "Alias",
+		"description": "Mô tả"
+	}
+}
