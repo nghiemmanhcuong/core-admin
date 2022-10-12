@@ -1,4 +1,5 @@
 import ListPage from '../pages/Event/ListPage'
+import ListSpot from '../pages/Spot/ListSpot'
 import { ROUTER_ADMIN } from './constants'
 
 /*
@@ -19,5 +20,9 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.event,
 		element: <ListPage />
+	},
+	{
+		path: ROUTER_ADMIN.spot,
+		element: <ListSpot />
 	}
 ]

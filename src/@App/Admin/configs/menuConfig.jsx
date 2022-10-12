@@ -19,5 +19,9 @@ export const menuAdminConfig = [
 	{
 		title: 'Event',
 		url: ROUTER_ADMIN.event
+	},
+	{
+		title: 'Spots',
+		url: ROUTER_ADMIN.spot
 	}
 ]

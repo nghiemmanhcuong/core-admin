@@ -16,5 +16,6 @@
 const basePath = '/admin'
 
 export const ROUTER_ADMIN = {
-	event: basePath + '/event'
+	event: basePath + '/event',
+	spot: basePath + '/spot'
 }
