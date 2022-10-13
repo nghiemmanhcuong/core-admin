@@ -1,18 +1,19 @@
 {
 	"label": {
 		"no": "NO",
-		"name": "スポット名",
-		"code": "郵便番号",
-		"address": "住所",
-		"phone": "電話番号",
-		"point": "設定ポイント",
+		"name": "コースタイトル",
+		"area" : "エリア",
+		"range": "コース距離",
+		"amount": "獲得投稿",
+		"physical": "体力度",
+		"author":"作成者",
 		"action": "スペシャルアクション"
 	},
 	"title": {
 		"course": "スポット一覧",
 		"filter": "検索条件",
-		"name": "スポット名",
-		"tag": "タグ情報",
+		"name": "コースタイトル",
+		"tag": "タグ",
 		"area": "エリア",
 		"state": "狀態"
 	},

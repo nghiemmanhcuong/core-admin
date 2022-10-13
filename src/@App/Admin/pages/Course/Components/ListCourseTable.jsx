@@ -13,20 +13,23 @@ const ListCourseTable = props => {
 				cell: info => info.getValue(),
 				header: t('label.no')
 			}),
-			columnHelper.accessor('code', {
-				header: t('label.code')
-			}),
 			columnHelper.accessor('name', {
 				header: t('label.name')
 			}),
-			columnHelper.accessor('address', {
-				header: t('label.address')
+			columnHelper.accessor('area', {
+				header: t('label.area')
 			}),
-			columnHelper.accessor('phone', {
-				header: t('label.phone')
+			columnHelper.accessor('range', {
+				header: t('label.range')
 			}),
-			columnHelper.accessor('point', {
-				header: t('label.point')
+			columnHelper.accessor('amount', {
+				header: t('label.amount')
+			}),
+			columnHelper.accessor('physical', {
+				header: t('label.physical')
+			}),
+			columnHelper.accessor('author', {
+				header: t('label.author')
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),

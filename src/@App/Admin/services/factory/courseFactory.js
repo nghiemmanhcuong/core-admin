@@ -8,17 +8,20 @@ export const courseFactory = new BaseFactory()
 		name: i => {
 			return `course ${i}`
 		},
-		code: i => {
-			return 'Code ' + i
+		area: i => {
+			return `Area ${i}`
 		},
-		address: i => {
-			return 'Address ' + i
+		range: i => {
+			return `コース距離-${i}`
 		},
-		phone: i => {
-			return 'Phone-' + i
+		amount: i => {
+			return `${i}0000`
 		},
-		point: i => {
-			return 'Point ' + i
+		physical: i => {
+			return `Physical-${i}`
+		},
+		author: i => {
+			return `Admin ${i}`
 		}
 	})
 	.makeData(20)

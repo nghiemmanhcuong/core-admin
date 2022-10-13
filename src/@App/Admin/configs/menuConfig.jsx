@@ -23,5 +23,9 @@ export const menuAdminConfig = [
 	{
 		title: 'Spots',
 		url: ROUTER_ADMIN.spot
+	},
+	{
+		title: 'Courses',
+		url: ROUTER_ADMIN.course
 	}
 ]
