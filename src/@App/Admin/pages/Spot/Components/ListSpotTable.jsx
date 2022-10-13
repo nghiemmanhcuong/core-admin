@@ -19,7 +19,7 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import SpotTableFilter from './SpotTableFilter'
-// import PropTypes from 'prop-types'
+import { TextField, Button } from '@mui/material'
 
 const ListSpotTable = props => {
 	const { t, spotTableHandler } = useAdminPageContext()
@@ -64,6 +64,12 @@ const ListSpotTable = props => {
 		<Box>
 			<SpotTableFilter />
 			<CoreTable isShowPagination columns={columns} {...spotTableHandler} />
+			<Box className="flex justify-end">
+				<TextField type="file"/>
+				<Button variant="contained" color="primary" className="ml-[2px]" >
+					{t('btn.upload')}
+				</Button>
+			</Box>
 		</Box>
 	)
 }
