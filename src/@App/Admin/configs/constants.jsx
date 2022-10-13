@@ -15,6 +15,11 @@
 
 const basePath = '/admin'
 
+export const TRANSLATE_ADMIN = {
+	spot: basePath + '/spot'
+}
+
 export const ROUTER_ADMIN = {
-	event: basePath + '/event'
+	event: basePath + '/event',
+	spot: basePath + '/spot'
 }

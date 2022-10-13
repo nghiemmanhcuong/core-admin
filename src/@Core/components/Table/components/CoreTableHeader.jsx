@@ -31,7 +31,8 @@ const TableHeaderRow = styled(TableRow)(({ theme }) => {
 			},
 			'&:last-of-type': {
 				paddingRight: 20
-			}
+			},
+			backgroundColor: theme.palette.third.main //'#B3CDB7'
 		}
 	}
 })

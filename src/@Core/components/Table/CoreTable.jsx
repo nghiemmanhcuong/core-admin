@@ -96,7 +96,7 @@ const CoreTable = ({
 					classes={{
 						root: 'flex-shrink-0'
 					}}
-					rowsPerPageOptions={[5, 10, 20, 50]}
+					rowsPerPageOptions={[]}
 					colSpan={5}
 					count={total ?? 0}
 					rowsPerPage={pageSize}
@@ -106,7 +106,6 @@ const CoreTable = ({
 						native: false
 					}}
 					lang="vi"
-					labelRowsPerPage={t('table.row_per_page')}
 					onPageChange={(event, newPage) => {
 						handleFetchData({ page: newPage + 1 })
 					}}

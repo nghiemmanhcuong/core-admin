@@ -1,0 +1,26 @@
+{
+	"label": {
+		"no": "NO",
+		"name": "スポット名",
+		"code": "郵便番号",
+		"address": "住所",
+		"phone": "電話番号",
+		"point": "設定ポイント",
+		"action": "スペシャルアクション"
+	},
+	"title": {
+		"spot": "スポット一覧",
+		"filter": "検索条件",
+		"name": "スポット名",
+		"tag": "タグ情報",
+		"area": "エリア",
+		"state": "狀態"
+	},
+	"value": {
+		"express": "表示",
+		"non_representation": "非表示"
+	},
+	"btn": {
+		"search": "検索"
+	}
+}

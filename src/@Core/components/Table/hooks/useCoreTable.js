@@ -13,13 +13,15 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { DEFAULT_PAGE_SIZE } from '@App/core/constants'
-import { useTranslation } from 'next-i18next'
+// import { DEFAULT_PAGE_SIZE } from '@App/core/constants'
+
+import { DEFAULT_RESPONSE } from '@Core/api/BaseService'
 import { useCallback, useMemo } from 'react'
-import { useConfirm } from '../../Confirm/CoreConfirm'
+import { useTranslation } from 'react-i18next'
+// import { useConfirm } from '../../Confirm/CoreConfirm'
 
 let params = {
-	size: DEFAULT_PAGE_SIZE
+	size: 10
 }
 const useCoreTable = (requestFetchData, options = { isQueryUrl: true, tableId: '', page: 1, size: 10 }) => {
 	const { t } = useTranslation('common')
@@ -33,7 +35,7 @@ const useCoreTable = (requestFetchData, options = { isQueryUrl: true, tableId: '
 		[options]
 	)
 
-	const { data, loading, run } = requestFetchData
+	const { data = DEFAULT_RESPONSE, loading, run } = requestFetchData
 	// const [queryUrl, setQueryUrl] = useUrlState()
 	const handleFetchData = useCallback(query => {
 		params = {
@@ -45,8 +47,8 @@ const useCoreTable = (requestFetchData, options = { isQueryUrl: true, tableId: '
 
 	return {
 		...data,
-		pageIndex: data?.current_page ? data?.current_page - 1 : 0,
-		pageSize: data?.per_page ?? 10,
+		pageIndex: data?.page - 1 ?? 0, //data?.current_page ? data?.current_page - 1 : 0,
+		pageSize: data?.size ?? 10,
 		loading,
 		handleFetchData
 	}
