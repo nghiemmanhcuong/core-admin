@@ -26,11 +26,14 @@ export const spotFactory = new BaseFactory()
 		code: i => {
 			return 'Code ' + i
 		},
-		alias: i => {
-			return 'spot-' + i
+		address: i => {
+			return 'Address ' + i
 		},
-		description: i => {
-			return 'Description ' + i
+		phone: i => {
+			return 'Phone-' + i
+		},
+		point: i => {
+			return 'Point ' + i
 		}
 	})
 	.makeData(20)

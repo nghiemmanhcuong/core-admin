@@ -30,16 +30,16 @@ const ListSpot = props => {
 	return (
 		<ListSpotProvider t={t}>
 			<AdminContentPage
-				pageTitle="List Event"
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => console.log('============= navigate page add new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
+				pageTitle={t('title.spot')}
+				// headerAction={
+				// 	<Button
+				// 		variant="contained"
+				// 		color="primary"
+				// 		onClick={() => console.log('============= navigate page add new')}
+				// 	>
+				// 		{t('common:btn.new')}
+				// 	</Button>
+				// }
 				content={<ListSpotTable />}
 			/>
 		</ListSpotProvider>

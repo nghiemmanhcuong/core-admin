@@ -27,7 +27,7 @@ const ListSpotTable = props => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: 'ID'
+				header: t('label.no')
 			}),
 			columnHelper.accessor('code', {
 				header: t('label.code')
@@ -35,15 +35,17 @@ const ListSpotTable = props => {
 			columnHelper.accessor('name', {
 				header: t('label.name')
 			}),
-
-			columnHelper.accessor('alias', {
-				header: t('label.alias')
+			columnHelper.accessor('address', {
+				header: t('label.address')
 			}),
-			columnHelper.accessor('description', {
-				header: t('label.description')
+			columnHelper.accessor('phone', {
+				header: t('label.phone')
+			}),
+			columnHelper.accessor('point', {
+				header: t('label.point')
 			}),
 			columnHelper.accessor('action', {
-				header: t('common:action'),
+				header: t('label.action'),
 				cell: ({ row }) => {
 					const data = row.original
 					return (
