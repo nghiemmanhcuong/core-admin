@@ -6,7 +6,7 @@ import AdminContentPage from '../../components/Layout/AdminContentPage'
 // import { Box } from '@mui/system'
 import ListCourseProvider from './ListCourseProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button, Paper, Typography, TextField, Box, Card, Checkbox, FormGroup, FormControlLabel } from '@mui/material'
+import { Button, Paper, Typography, TextField, Box, Card, Checkbox, Select, FormControlLabel, MenuItem } from '@mui/material'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -141,7 +141,7 @@ const contentCourse = () => {
 							<FontTitle variant="h3" title="コース説明" />
 						</div>
 						<div className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+							<CoreInput multiline rows={4} control={control} name="firstname" placeholder="Default input" size="small" />
 						</div>
 					</div>
 					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -149,7 +149,26 @@ const contentCourse = () => {
 							<FontTitle variant="h3" title="コース画像" />
 						</div>
 						<div className="col-span-3 sm:col-span-2">
-                            <CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+                            <div className="grid grid-flow-row-dense grid-cols-3">
+								<div className="col-span-2">
+									<div className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
+										<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
+									</div>
+									<Card variant="outlined" className="text-center">
+										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
+									</Card>
+								</div>
+								<div className="col-span-1 relative">
+									<Box className="absolute top-1/3 pl-10">
+										<Button variant="contained" color="error" size="small">
+											削除
+										</Button>
+										<Button variant="contained" color="success" size="small">
+											登録
+										</Button>
+									</Box>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -181,7 +200,15 @@ const contentCourse = () => {
 							<FontTitle variant="h3" title="体力度" />
 						</div>
 						<div className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+							<Select
+								value={10}
+								size="small"
+								sx={{ width: 300 }}
+							>
+								<MenuItem value={10}>10</MenuItem>
+								<MenuItem value={20}>20</MenuItem>
+								<MenuItem value={30}>30</MenuItem>
+							</Select>
 						</div>
 					</div>
 					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -205,7 +232,26 @@ const contentCourse = () => {
 							<FontTitle variant="h3" title="ルート画像" />
 						</div>
 						<div className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+							<div className="grid grid-flow-row-dense grid-cols-3">
+								<div className="col-span-2">
+									<div className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
+										<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
+									</div>
+									<Card variant="outlined" className="text-center">
+										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
+									</Card>
+								</div>
+								<div className="col-span-1 relative">
+									<Box className="absolute top-1/3 pl-10">
+										<Button variant="contained" color="error" size="small">
+											削除
+										</Button>
+										<Button variant="contained" color="success" size="small">
+											登録
+										</Button>
+									</Box>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -232,6 +278,21 @@ const contentCourse = () => {
 							<Card variant="outlined">
 								<CardContent>
 									<div className="grid grid-flow-row-dense grid-cols-4 py-5">
+										<div className="col-span-2 sm:col-span-1">
+											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+										</div>
+										<div className="col-span-2 sm:col-span-1">
+											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+										</div>
+										<div className="col-span-2 sm:col-span-1">
+											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+										</div>
+										<div className="col-span-2 sm:col-span-1">
+											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+										</div>
+										<div className="col-span-2 sm:col-span-1">
+											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+										</div>
 										<div className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
 										</div>
