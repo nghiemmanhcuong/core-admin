@@ -85,9 +85,9 @@ const tableForm = () => {
 								<TextField type="number" id="outlined-search" size="small" defaultValue={row.protein1} />
 							</TableCell>
 							<TableCell>
-								<div className="flex">
+								<Box className="flex">
 									<CoreActionDelete onClick={() => console.log('============= data', data)} />
-								</div>
+								</Box>
 							</TableCell>
 						</TableRow>
 					))}
@@ -110,55 +110,55 @@ const contentCourse = () => {
 	})
 	return (
 		<form>
-			<div className="grid grid-flow-row-dense grid-cols-12 pb-20">
-				<div className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
-                    <div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
+				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
+                    <Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="コースID" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="獲得標高" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="コースタイトル" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="コース説明" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput multiline rows={4} control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="コース画像" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
-                            <div className="grid grid-flow-row-dense grid-cols-3">
-								<div className="col-span-2">
-									<div className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
+                            <Box className="grid grid-flow-row-dense grid-cols-3">
+								<Box className="col-span-2">
+									<Box className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
 										<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
-									</div>
+									</Box>
 									<Card variant="outlined" className="text-center">
 										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
 									</Card>
-								</div>
-								<div className="col-span-1 relative">
+								</Box>
+								<Box className="col-span-1 relative">
 									<Box className="absolute top-1/3 pl-10">
 										<Button variant="contained" color="error" size="small">
 											削除
@@ -167,39 +167,39 @@ const contentCourse = () => {
 											登録
 										</Button>
 									</Box>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+								</Box>
+							</Box>
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="コース距離" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="平均勾配" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="獲得標高" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="体力度" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<Select
 								value={10}
 								size="small"
@@ -209,39 +209,39 @@ const contentCourse = () => {
 								<MenuItem value={20}>20</MenuItem>
 								<MenuItem value={30}>30</MenuItem>
 							</Select>
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="完走目安" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="ルートURL" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="ルート画像" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
-							<div className="grid grid-flow-row-dense grid-cols-3">
-								<div className="col-span-2">
-									<div className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
+							<Box className="grid grid-flow-row-dense grid-cols-3">
+								<Box className="col-span-2">
+									<Box className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
 										<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
-									</div>
+									</Box>
 									<Card variant="outlined" className="text-center">
 										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
 									</Card>
-								</div>
-								<div className="col-span-1 relative">
+								</Box>
+								<Box className="col-span-1 relative">
 									<Box className="absolute top-1/3 pl-10">
 										<Button variant="contained" color="error" size="small">
 											削除
@@ -250,102 +250,102 @@ const contentCourse = () => {
 											登録
 										</Button>
 									</Box>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+								</Box>
+							</Box>
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="ルートファイル（kml形式）" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="高低図URL" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-10">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="コースタグ" />
-						</div>
-						<div className="col-span-3 sm:col-span-2">
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
 							<Card variant="outlined">
 								<CardContent>
-									<div className="grid grid-flow-row-dense grid-cols-4 py-5">
-										<div className="col-span-2 sm:col-span-1">
+									<Box className="grid grid-flow-row-dense grid-cols-4 py-5">
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-										<div className="col-span-2 sm:col-span-1">
+										</Box>
+										<Box className="col-span-2 sm:col-span-1">
 											<FormControlLabel control={<Checkbox />} label="獲得標高" />
-										</div>
-									</div>
+										</Box>
+									</Box>
 								</CardContent>
 							</Card>
-						</div>
-					</div>
-					<div className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<div className="col-span-3 sm:col-span-1 pt-20">
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-20">
 							<FontTitle variant="h3" title="スポットリスト" />
-						</div>
-					</div>
-				</div>
-			</div>
-			<div className="p-20">
+						</Box>
+					</Box>
+				</Box>
+			</Box>
+			<Box className="p-20">
 				{tableForm()}
 				<Box className="text-end pt-40">
 					<Button variant="contained" color="success" size="small">
                         スポット追加
 					</Button>
 				</Box>
-				<div className="grid grid-flow-row-dense grid-cols-3 pt-40">
-					<div className="col-span-3 sm:col-span-1 pt-10">
+				<Box className="grid grid-flow-row-dense grid-cols-3 pt-40">
+					<Box className="col-span-3 sm:col-span-1 pt-10">
 						<FontTitle variant="h3" title="コース作成者" />
-					</div>
-					<div className="col-span-3 sm:col-span-1">
-                        <div style={{position:"relative"}}>
+					</Box>
+					<Box className="col-span-3 sm:col-span-1">
+                        <Box style={{position:"relative"}}>
                         <TextField fullWidth type="text" size="small" />
                         <Button variant="contained" color="third" style={{position:"absolute"}}>
                             選択
                         </Button>
-                        </div>
-					</div>
-					<div className="col-span-3 sm:col-span-1">
+                        </Box>
+					</Box>
+					<Box className="col-span-3 sm:col-span-1">
 						<Box className="text-end">
 							<Button variant="contained" color="error" className="mr-10" size="small">
                                 削除
@@ -354,9 +354,9 @@ const contentCourse = () => {
                                 登録
 							</Button>
 						</Box>
-					</div>
-				</div>
-			</div>
+					</Box>
+				</Box>
+			</Box>
 		</form>
 	)
 }

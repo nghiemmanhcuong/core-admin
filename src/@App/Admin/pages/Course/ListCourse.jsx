@@ -15,15 +15,15 @@ const ListCourse = props => {
 		<ListCourseProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.course')}
-				// headerAction={
-				// 	<Button
-				// 		variant="contained"
-				// 		color="primary"
-				// 		onClick={() => console.log('============= navigate page add new')}
-				// 	>
-				// 		{t('common:btn.new')}
-				// 	</Button>
-				// }
+				headerAction={
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={() => console.log('============= navigate page add new')}
+					>
+						{t('common:btn.new')}
+					</Button>
+				}
 				content={<ListCourseTable />}
 			/>
 		</ListCourseProvider>
