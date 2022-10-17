@@ -21,5 +21,8 @@ export const TRANSLATE_ADMIN = {
 
 export const ROUTER_ADMIN = {
 	event: basePath + '/event',
-	spot: basePath + '/spot'
+	spot: {
+		list: basePath + '/spot',
+		edit: basePath + '/spot/:id'
+	},
 }
