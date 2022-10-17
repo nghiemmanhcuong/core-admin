@@ -7,6 +7,8 @@ import FormInputSearch from '@App/Admin/components/Form/FormInputSearch'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { useForm } from 'react-hook-form'
+import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 
 const SpotTableFilter = props => {
 	const { spotTableHandler } = useAdminPageContext()
@@ -17,6 +19,11 @@ const SpotTableFilter = props => {
 		}
 		spotTableHandler.handleFetchData(params)
 	}
+
+	const { control } = useForm({
+		mode: 'onTouched',
+		defaultValues: {}
+	})
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
@@ -35,6 +42,8 @@ const SpotTableFilter = props => {
 						{t('title.tag')}
 					</Box>
 					<FormAutocomplete
+						control={control}
+						name="spot_id"
 						size="small"
 						className="w-2/3"
 						fullWidth
@@ -57,8 +66,19 @@ const SpotTableFilter = props => {
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.state')}
 					</Box>
-					<FormControlLabel control={<Checkbox/>} label={t('value.express')} className='ml-[5px]' />
-					<FormControlLabel control={<Checkbox/>} label={t('value.non_representation')} className='ml-[5px]'/>
+					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}
+					<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[5px]" />
+					<CoreCheckbox
+						control={control}
+						name="non_representation"
+						label={t('value.non_representation')}
+						className="ml-[5px]"
+					/>
+					{/* <FormControlLabel
+						control={<Checkbox />}
+						label={t('value.non_representation')}
+						className="ml-[5px]"
+					/> */}
 				</Box>
 				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 					{t('btn.search')}
