@@ -97,7 +97,7 @@ const EditSpotTabs = props => {
                             <Typography variant='h3' color="primary">{t('edit.form.label.situation')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
-                            <Box>
+                            <Box className="rounded-md w-2/3 pl-[15px]"sx={{ border: '1px solid #cccc' }}>
                             <RadioGroup
                                 row
                                 aria-labelledby="demo-controlled-radio-buttons-group"
@@ -112,12 +112,14 @@ const EditSpotTabs = props => {
                             <Typography variant='h3' color="primary">{t('edit.form.label.category')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
-                            <FormGroup row>
-                                <FormControlLabel control={<Checkbox />} name="category" value={1} label={t('edit.form.check_box.label.men')} />
-                                <FormControlLabel control={<Checkbox />} name="category" value={2} label={t('edit.form.check_box.label.women')} />
-                                <FormControlLabel control={<Checkbox />} name="category" value={3} label={t('edit.form.check_box.label.50s')} />
-                                <FormControlLabel control=  {<Checkbox />} name="category" value={4} label={t('edit.form.check_box.label.participants')} />
-                            </FormGroup>
+                            <Box className="rounded-md w-2/3 pl-[15px]"sx={{ border: '1px solid #cccc' }}>
+                                <FormGroup row>
+                                    <FormControlLabel control={<Checkbox />} name="category" value={1} label={t('edit.form.check_box.label.men')} />
+                                    <FormControlLabel control={<Checkbox />} name="category" value={2} label={t('edit.form.check_box.label.women')} />
+                                    <FormControlLabel control={<Checkbox />} name="category" value={3} label={t('edit.form.check_box.label.50s')} />
+                                    <FormControlLabel control=  {<Checkbox />} name="category" value={4} label={t('edit.form.check_box.label.participants')} />
+                                </FormGroup>
+                            </Box>
                         </Grid>
                         <Grid item xs={5} md={3} className="text-right self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.venue')}</Typography>
@@ -126,6 +128,7 @@ const EditSpotTabs = props => {
                             <Grid container spacing={3}>
                                 <Grid item md={3} className="text-right self-center">
                                     <FormAutocomplete
+                                        control={control}
                                         size="small"
                                         fullWidth
                                         variant="outlined"
@@ -138,6 +141,7 @@ const EditSpotTabs = props => {
                                 </Grid>
                                 <Grid item md={3} className="text-right self-center">
                                     <FormAutocomplete
+                                        control={control}
                                         size="small"
                                         fullWidth
                                         variant="outlined"
@@ -154,6 +158,7 @@ const EditSpotTabs = props => {
                             <Grid container spacing={3}>
                                 <Grid item md={3} className="text-right self-center">
                                     <FormAutocomplete
+                                        control={control}
                                         size="small"
                                         fullWidth
                                         variant="outlined"
@@ -166,6 +171,7 @@ const EditSpotTabs = props => {
                                 </Grid>
                                 <Grid item md={4} className="text-right self-center">
                                     <FormAutocomplete
+                                        control={control}
                                         size="small"
                                         fullWidth
                                         variant="outlined"
@@ -183,6 +189,7 @@ const EditSpotTabs = props => {
                             <Grid container spacing={3}>
                                 <Grid item md={3} className="text-right self-center">
                                     <FormAutocomplete
+                                        control={control}
                                         size="small"
                                         fullWidth
                                         variant="outlined"
@@ -195,6 +202,7 @@ const EditSpotTabs = props => {
                                 </Grid>
                                 <Grid item md={4} className="text-right self-center">
                                     <FormAutocomplete
+                                        control={control}
                                         size="small"
                                         fullWidth
                                         variant="outlined"
@@ -278,7 +286,12 @@ const EditSpotTabs = props => {
                             <Typography variant='h3' color="primary">{t('edit.form.label.mission')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
-                            <TextField size="small" className="w-1/3" name="mission" fullWidth variant="outlined" />
+                            <CoreInput
+                                control={control}
+                                name='mission'
+                                size="small"
+                                className="w-1/3 inline-flex align-top"
+                            />
                             <Button variant="contained" color="primary" className="ml-auto">
                                 {t('edit.form.btn.selection')}
                             </Button>
@@ -288,7 +301,12 @@ const EditSpotTabs = props => {
                             <Typography variant='h3' color="primary">{t('edit.form.label.reward')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
-                            <TextField size="small" className="w-1/3" name="reward" fullWidth variant="outlined" />
+                            <CoreInput
+                                control={control}
+                                name='reward'
+                                size="small"
+                                className="w-1/3 inline-flex align-top"
+                            />
                             <Button variant="contained" color="primary" className="ml-auto">
                                 {t('edit.form.btn.selection')}
                             </Button>
@@ -324,10 +342,12 @@ const EditSpotTabs = props => {
                             <Typography variant='h3' color="primary">{t('edit.form.label.precautions')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
-                        <TextField
-                            className= 'w-2/3'
+                        <CoreInput
+                            control={control}
+                            name='precautions'
+                            size="small"
                             multiline
-                            name="precautions"
+                            className="w-2/3"
                         />
                         </Grid>
 
@@ -360,6 +380,7 @@ const EditSpotTabs = props => {
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
                             <FormAutocomplete
+                                control={control}
                                 size="small"
                                 fullWidth
                                 className= 'w-2/3'
@@ -377,7 +398,7 @@ const EditSpotTabs = props => {
                                 control={control}
                                 name='creator'
                                 size="small"
-                                className="w-1/3"
+                                className="w-1/3 inline-flex align-top"
                             />
                             <Button variant="contained" color="primary" className="ml-auto">
                                 {t('edit.form.btn.selection')}
