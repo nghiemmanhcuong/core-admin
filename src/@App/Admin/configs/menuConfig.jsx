@@ -21,7 +21,7 @@ export const menuAdminConfig = [
 		url: ROUTER_ADMIN.event
 	},
 	{
-		title: 'Spots',
+		title: 'スポット情報管理',
 		url: ROUTER_ADMIN.spot
 	},
 	{

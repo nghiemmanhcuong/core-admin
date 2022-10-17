@@ -1,12 +1,9 @@
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-// import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
-// import TableFilter from './Components/SpotTableFilter'
-// import { Box } from '@mui/system'
 import ListCourseProvider from './ListCourseProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button, Paper, Typography, TextField, Box, Card, Checkbox, Select, FormControlLabel, MenuItem } from '@mui/material'
+import { Button, Paper, Typography, TextField, Box, Card} from '@mui/material'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -21,6 +18,8 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
+import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
+import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -100,7 +99,8 @@ const contentCourse = () => {
 	const { control } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			firstname: ''
+			firstname: '',
+			checkbox: false
 		},
 		resolver: yupResolver(
 			Yup.object({
@@ -200,15 +200,15 @@ const contentCourse = () => {
 							<FontTitle variant="h3" title="体力度" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
-							<Select
-								value={10}
+							<FormAutocomplete
+								control={control}
+								name="spot_id"
 								size="small"
-								sx={{ width: 300 }}
-							>
-								<MenuItem value={10}>10</MenuItem>
-								<MenuItem value={20}>20</MenuItem>
-								<MenuItem value={30}>30</MenuItem>
-							</Select>
+								className="w-2/3"
+								fullWidth
+								variant="outlined"
+								placeholder="Choose..."
+							/>
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -279,40 +279,40 @@ const contentCourse = () => {
 								<CardContent>
 									<Box className="grid grid-flow-row-dense grid-cols-4 py-5">
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 										<Box className="col-span-2 sm:col-span-1">
-											<FormControlLabel control={<Checkbox />} label="獲得標高" />
+											<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 										</Box>
 									</Box>
 								</CardContent>

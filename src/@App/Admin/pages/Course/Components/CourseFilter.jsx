@@ -3,10 +3,12 @@ import React from 'react'
 import TextField from '@mui/material/TextField'
 import { Button, Icon, InputAdornment, Typography, FormControlLabel, Checkbox } from '@mui/material'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
-import FormInputSearch from '@App/Admin/components/Form/FormInputSearch'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import Yup from '@Core/helper/Yup'
 
 const CourseFilter = props => {
 	const { courseTableHandler } = useAdminPageContext()
@@ -17,6 +19,18 @@ const CourseFilter = props => {
 		}
 		courseTableHandler.handleFetchData(params)
 	}
+	const { control } = useForm({
+		mode: 'onTouched',
+		defaultValues: {
+			firstname: '',
+			checkbox: false
+		},
+		resolver: yupResolver(
+			Yup.object({
+				firstname: Yup.string().required()
+			})
+		)
+	})
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
@@ -35,6 +49,8 @@ const CourseFilter = props => {
 					{t('title.area')}
 					</Box>
 					<FormAutocomplete
+						control={control}
+						name="course"
 						size="small"
 						className="w-2/3"
 						fullWidth

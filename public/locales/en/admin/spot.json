@@ -21,6 +21,7 @@
 		"non_representation": "非表示"
 	},
 	"btn": {
-		"search": "検索"
+		"search": "検索",
+		"upload": "アップロード"
 	}
 }

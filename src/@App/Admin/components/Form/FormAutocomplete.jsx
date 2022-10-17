@@ -13,24 +13,66 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { Autocomplete, TextField } from '@mui/material'
+import { Autocomplete, FormHelperText, TextField } from '@mui/material'
+import { Box } from '@mui/system'
 import React from 'react'
-// import PropTypes from 'prop-types'
+import { useController } from 'react-hook-form'
+import PropTypes from 'prop-types'
 
-const FormAutocomplete = ({ id, options = [], label = '', placeholder, ...resProps }) => {
+const FormAutocomplete = ({
+	id,
+	options = [],
+	label = '',
+	placeholder,
+	name,
+	control,
+	rules,
+	helperText,
+	className,
+	sx = {},
+	...resProps
+}) => {
+	const {
+		field: { onChange, onBlur, value, ref },
+		fieldState: { error }
+	} = useController({
+		name,
+		control,
+		rules
+	})
+
 	return (
-		<Autocomplete
-			id={id}
-			options={options}
-			renderInput={params => <TextField {...params} placeholder={placeholder} />}
-			// placeholder={placeholder}
-			{...resProps}
-		/>
+		<Box className={className} sx={sx}>
+			<Autocomplete
+				id={id}
+				options={options}
+				value={value}
+				onChange={(e, value) => onChange(value)}
+				onBlur={onBlur}
+				renderInput={params => (
+					<>
+						<TextField
+							{...params}
+							inputRef={ref}
+							error={!!error}
+							helperText={error && error.message}
+							placeholder={placeholder}
+						/>
+						{helperText && <FormHelperText>{helperText}</FormHelperText>}
+					</>
+				)}
+				// placeholder={placeholder}
+				{...resProps}
+			/>
+		</Box>
 	)
 }
 
 //FormAutocomplete.defaultProps = {}
 
-//FormAutocomplete.propTypes = {}
+FormAutocomplete.propTypes = {
+	name: PropTypes.string.isRequired,
+	control: PropTypes.object.isRequired
+}
 
 export default React.memo(FormAutocomplete)
