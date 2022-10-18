@@ -1,5 +1,6 @@
 import ListPage from '../pages/Event/ListPage'
 import ListSpot from '../pages/Spot/ListSpot'
+import EditSpot from '../pages/Spot/EditSpot'
 import { ROUTER_ADMIN } from './constants'
 import ListCourse from '../pages/Course/ListCourse'
 import DetailCourse from '../pages/Course/DetailCourse'
@@ -24,8 +25,12 @@ export const routerAdminConfig = [
 		element: <ListPage />
 	},
 	{
-		path: ROUTER_ADMIN.spot,
+		path: ROUTER_ADMIN.spot.list,
 		element: <ListSpot />
+	},
+	{
+		path: ROUTER_ADMIN.spot.edit,
+		element: <EditSpot />
 	},
 	{
 		path: ROUTER_ADMIN.course,
