@@ -23,6 +23,8 @@ import Yup from '@Core/helper/Yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import CoreInput from '@Core/components/Input/CoreInput'
+import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import { TextField, Button, Tabs, Tab, Typography,
      Grid, FormControlLabel, Radio, RadioGroup, Checkbox,
      FormGroup } from '@mui/material'
@@ -33,6 +35,17 @@ const EditSpotTabs = props => {
     const handleTabChange = (event, newTabIndex) => {
         setTabIndex(newTabIndex);
     };
+
+    const sex = [
+        {
+            value: 1,
+            label: t('edit.form.check_box.label.express')
+        },
+        {
+            value: 2,
+            label: t('edit.form.check_box.label.representation')
+        }
+    ];
 
     const {control} = useForm({
         mode: 'onTouched',
@@ -59,7 +72,7 @@ const EditSpotTabs = props => {
                 {tabIndex === 0 && (
                 <Box>
                     <Grid container spacing={2}>
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={3} md={3} className="text-right self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.id')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -98,14 +111,13 @@ const EditSpotTabs = props => {
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
                             <Box className="rounded-md w-2/3 pl-[15px]"sx={{ border: '1px solid #cccc' }}>
-                            <RadioGroup
-                                row
-                                aria-labelledby="demo-controlled-radio-buttons-group"
-                                name="controlled-radio-buttons-group"
-                            >
-                                <FormControlLabel value="female" name="sex" control={<Radio />} label={t('edit.form.check_box.label.express')} />
-                                <FormControlLabel value="male" name="sex" control={<Radio />} label={t('edit.form.check_box.label.representation')} />
-                            </RadioGroup>
+                                <CoreRadioGroup
+                                    className='flex-row'
+                                    control={control}
+                                    name='description'
+                                    options={sex}
+                                    row="true"
+                                />
                             </Box>
                         </Grid>
                         <Grid item xs={5} md={3} className="text-right self-center">
@@ -114,10 +126,34 @@ const EditSpotTabs = props => {
                         <Grid item xs={7} md={7} className="text-left">
                             <Box className="rounded-md w-2/3 pl-[15px]"sx={{ border: '1px solid #cccc' }}>
                                 <FormGroup row>
-                                    <FormControlLabel control={<Checkbox />} name="category" value={1} label={t('edit.form.check_box.label.men')} />
-                                    <FormControlLabel control={<Checkbox />} name="category" value={2} label={t('edit.form.check_box.label.women')} />
-                                    <FormControlLabel control={<Checkbox />} name="category" value={3} label={t('edit.form.check_box.label.50s')} />
-                                    <FormControlLabel control=  {<Checkbox />} name="category" value={4} label={t('edit.form.check_box.label.participants')} />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='category'
+                                        size="small"
+                                        value={1}
+                                        label={t('edit.form.check_box.label.men')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='category'
+                                        size="small"
+                                        value={2}
+                                        label={t('edit.form.check_box.label.women')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='category'
+                                        size="small"
+                                        value={3}
+                                        label={t('edit.form.check_box.label.50s')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='category'
+                                        size="small"
+                                        value={4}
+                                        label={t('edit.form.check_box.label.participants')}
+                                    />
                                 </FormGroup>
                             </Box>
                         </Grid>
@@ -230,14 +266,22 @@ const EditSpotTabs = props => {
                                     <Typography variant='h3' color="primary">{t('edit.form.label.payment')}</Typography>
                                 </Grid>
                                 <Grid item md={5} className="text-right self-center">
-                                    <RadioGroup
-                                        row
-                                        aria-labelledby="demo-controlled-radio-buttons-group"
-                                        name="controlled-radio-buttons-group"
-                                    >
-                                        <FormControlLabel value="female" name="payment" control={<Radio />} label={t('edit.form.check_box.label.card')} />
-                                        <FormControlLabel value="male" name="payment" control={<Radio />} label={t('edit.form.check_box.label.qr')} />
-                                    </RadioGroup>
+                                    <CoreRadioGroup
+                                        className='flex-row'
+                                        control={control}
+                                        name='description'
+                                        options={[
+                                            {
+                                                value:1,
+                                                label: t('edit.form.check_box.label.card')
+                                            },
+                                            {
+                                                value:2,
+                                                label: t('edit.form.check_box.label.qr')
+                                            }
+                                        ]}
+                                        row="true"
+                                    />
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -249,7 +293,12 @@ const EditSpotTabs = props => {
                             <Box className="rounded-md w-2/3 p-20"sx={{ border: '1px solid #cccc' }}>
                                 <Grid container spacing={3}>
                                     <Grid item md={4} className="text-left self-center">
-                                        <FormControlLabel control={<Checkbox />} name="bicycle" label={t('edit.form.check_box.label.bicycle_rental')} />
+                                        <CoreCheckbox
+                                            control={control}
+                                            name='bicycle'
+                                            size="small"
+                                            label={t('edit.form.check_box.label.bicycle_rental')}
+                                        />
                                     </Grid>
                                     <Grid item md={6} className="self-center">
                                         <Box className="flex">
@@ -265,7 +314,12 @@ const EditSpotTabs = props => {
                                 </Grid>
                                 <Grid container spacing={3}>
                                     <Grid item md={4} className="text-left self-center">
-                                        <FormControlLabel control={<Checkbox />} name="xxx" label="XXXXXXX" />
+                                        <CoreCheckbox
+                                            control={control}
+                                            name='xxx'
+                                            size="small"
+                                            label="XXXXXXX"
+                                        />
                                     </Grid>
                                     <Grid item md={6} className="self-center">
                                         <Box className="flex">
@@ -318,22 +372,82 @@ const EditSpotTabs = props => {
                         <Grid item xs={7} md={7} className="text-left ">
                             <Box className="rounded-md w-2/3 pl-[15px]"sx={{ border: '1px solid #cccc' }}>
                                 <FormGroup row>
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.spring_available')} />
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.best_view')} />
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.autumn')} />
-                                    <FormControlLabel control=  {<Checkbox />} name="tag" label={t('edit.form.check_box.label.beginners')} />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.spring_available')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.best_view')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.autumn')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.beginners')}
+                                    />
                                 </FormGroup>
                                 <FormGroup row>
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.spring_available')} />
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.best_view')} />
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.autumn')} />
-                                    <FormControlLabel control=  {<Checkbox />} name="tag" label={t('edit.form.check_box.label.beginners')} />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.spring_available')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.best_view')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.autumn')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.beginners')}
+                                    />
                                 </FormGroup>
                                 <FormGroup row>
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.spring_available')} />
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.best_view')} />
-                                    <FormControlLabel control={<Checkbox />} name="tag" label={t('edit.form.check_box.label.autumn')} />
-                                    <FormControlLabel control=  {<Checkbox />} name="tag" label={t('edit.form.check_box.label.beginners')} />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.spring_available')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.best_view')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.autumn')}
+                                    />
+                                    <CoreCheckbox
+                                        control={control}
+                                        name='tag'
+                                        size="small"
+                                        label={t('edit.form.check_box.label.beginners')}
+                                    />
                                 </FormGroup>
                             </Box>
                         </Grid>
