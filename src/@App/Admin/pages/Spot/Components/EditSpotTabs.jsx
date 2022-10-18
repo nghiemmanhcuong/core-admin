@@ -70,9 +70,8 @@ const EditSpotTabs = props => {
             </Box>
             <Box sx={{ padding: 2 }}>
                 {tabIndex === 0 && (
-                <Box>
-                    <Grid container spacing={2}>
-                        <Grid item xs={3} md={3} className="text-right self-center">
+                    <Grid container spacing={2} className="pl-64">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.id')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -83,7 +82,7 @@ const EditSpotTabs = props => {
                                 className= 'w-2/3'
                             />
                         </Grid>
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.title')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -94,7 +93,7 @@ const EditSpotTabs = props => {
                             className= 'w-2/3'
                         />
                         </Grid>
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.description')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -106,7 +105,7 @@ const EditSpotTabs = props => {
                             className= 'w-2/3'
                         />
                         </Grid>
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.situation')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -120,7 +119,7 @@ const EditSpotTabs = props => {
                                 />
                             </Box>
                         </Grid>
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.category')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -157,12 +156,12 @@ const EditSpotTabs = props => {
                                 </FormGroup>
                             </Box>
                         </Grid>
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.venue')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
                             <Grid container spacing={3}>
-                                <Grid item md={3} className="text-right self-center">
+                                <Grid item md={3} className="self-center">
                                     <FormAutocomplete
                                         control={control}
                                         size="small"
@@ -175,7 +174,7 @@ const EditSpotTabs = props => {
                                 <Grid item md={2} className="text-center self-center">
                                     <Typography variant='h3' color="primary">{t('edit.form.label.type')}</Typography>
                                 </Grid>
-                                <Grid item md={3} className="text-right self-center">
+                                <Grid item md={3} className="self-center">
                                     <FormAutocomplete
                                         control={control}
                                         size="small"
@@ -187,12 +186,12 @@ const EditSpotTabs = props => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.period')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
                             <Grid container spacing={3}>
-                                <Grid item md={3} className="text-right self-center">
+                                <Grid item md={3} className="self-center">
                                     <FormAutocomplete
                                         control={control}
                                         size="small"
@@ -205,7 +204,7 @@ const EditSpotTabs = props => {
                                 <Grid item md={1} className="text-center self-center">
                                     <Typography variant='h3' color="primary">{t('edit.form.label.to')}</Typography>
                                 </Grid>
-                                <Grid item md={4} className="text-right self-center">
+                                <Grid item md={4} className="self-center">
                                     <FormAutocomplete
                                         control={control}
                                         size="small"
@@ -218,12 +217,12 @@ const EditSpotTabs = props => {
                             </Grid>
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.entry_period')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
                             <Grid container spacing={3}>
-                                <Grid item md={3} className="text-right self-center">
+                                <Grid item md={3} className="self-center">
                                     <FormAutocomplete
                                         control={control}
                                         size="small"
@@ -236,7 +235,7 @@ const EditSpotTabs = props => {
                                 <Grid item md={1} className="text-center self-center">
                                     <Typography variant='h3' color="primary">{t('edit.form.label.to')}</Typography>
                                 </Grid>
-                                <Grid item md={4} className="text-right self-center">
+                                <Grid item md={4} className="self-center">
                                     <FormAutocomplete
                                         control={control}
                                         size="small"
@@ -249,12 +248,12 @@ const EditSpotTabs = props => {
                             </Grid>
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.entry_fee')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
                             <Grid container spacing={3}>
-                                <Grid item md={4} className="text-right self-center">
+                                <Grid item md={4} className="self-center">
                                 <CoreInput
                                     control={control}
                                     name='entry_fee'
@@ -265,7 +264,7 @@ const EditSpotTabs = props => {
                                 <Grid item md={2} className="text-center self-center">
                                     <Typography variant='h3' color="primary">{t('edit.form.label.payment')}</Typography>
                                 </Grid>
-                                <Grid item md={5} className="text-right self-center">
+                                <Grid item md={5} className="self-center">
                                     <CoreRadioGroup
                                         className='flex-row'
                                         control={control}
@@ -286,7 +285,7 @@ const EditSpotTabs = props => {
                             </Grid>
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.entry_option')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -336,7 +335,7 @@ const EditSpotTabs = props => {
                             </Box>
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.mission')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -351,7 +350,7 @@ const EditSpotTabs = props => {
                             </Button>
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.reward')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -366,7 +365,7 @@ const EditSpotTabs = props => {
                             </Button>
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.tag')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left ">
@@ -452,7 +451,7 @@ const EditSpotTabs = props => {
                             </Box>
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.precautions')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -465,7 +464,7 @@ const EditSpotTabs = props => {
                         />
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.contact_name')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -477,7 +476,7 @@ const EditSpotTabs = props => {
                         />
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.address')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -489,7 +488,7 @@ const EditSpotTabs = props => {
                         />
                         </Grid>
 
-                        <Grid item xs={5} md={3} className="text-right self-center">
+                        <Grid item xs={5} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.related')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -504,7 +503,7 @@ const EditSpotTabs = props => {
                             />
                         </Grid>
 
-                        <Grid item xs={3} md={3} className="text-right self-center">
+                        <Grid item xs={3} md={3} className="self-center">
                             <Typography variant='h3' color="primary">{t('edit.form.label.creator')}</Typography>
                         </Grid>
                         <Grid item xs={7} md={7} className="text-left">
@@ -528,7 +527,6 @@ const EditSpotTabs = props => {
                             </Button>
                         </Grid>
                     </Grid>
-                </Box>
                 )}
                 {tabIndex === 1 && (
                 <Box>
