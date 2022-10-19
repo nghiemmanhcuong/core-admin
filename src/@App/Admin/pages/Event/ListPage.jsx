@@ -1,52 +1,35 @@
-/*
- * Created Date: 11-10-2022, 12:31:21 am
- * Author: Peter
- * Email: phantrung696@gmail.com
- * -----
- * Last Modified:
- * Modified By:
- * -----
- * Copyright (c) 2022 PROS+ Group , Inc
- * -----
- * HISTORY:
- * Date      	By	Comments
- * ----------	---	----------------------------------------------------------
- */
-
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
+// import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
-// import PropTypes from 'prop-types'
+// import TableFilter from './Components/SpotTableFilter'
+// import { Box } from '@mui/system'
+import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import ListEventProvider from './ListEventProvider'
+import ListEventTable from './Components/ListEventTable'
+import { Button } from '@mui/material'
 
-const ListPage = props => {
-	const { t } = useTranslation()
-	const columns = useMemo(() => {
-		return [
-			columnHelper.accessor('id', {
-				cell: info => info.getValue(),
-				header: 'ID'
-			}),
-			columnHelper.accessor('code', {
-				header: t('label.code')
-			}),
-			columnHelper.accessor('name', {
-				header: t('label.name')
-			}),
-
-			columnHelper.accessor('alias', {
-				header: t('label.alias')
-			}),
-			columnHelper.accessor('description', {
-				header: t('label.description')
-			})
-		]
-	}, [t])
-	return <AdminContentPage pageTitle="List Event" content={<CoreTable columns={columns} />} />
+const ListCourse = props => {
+    const { t } = useTranslation(TRANSLATE_ADMIN.course)
+	return (
+		<ListEventProvider t={t}>
+			<AdminContentPage
+				pageTitle={t('title.course')}
+				headerAction={
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={() => console.log('============= navigate page add new')}
+					>
+						{t('common:btn.new')}
+					</Button>
+				}
+				content={<ListEventTable />}
+			/>
+		</ListEventProvider>
+	)
 }
 
-//ListPage.defaultProps = {}
 
-//ListPage.propTypes = {}
 
-export default React.memo(ListPage)
+export default React.memo(ListCourse)
