@@ -13,7 +13,7 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { AppBar, Box, CssBaseline, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
+import { AppBar, Box, CircularProgress, CssBaseline, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
 import React, { useState } from 'react'
 // import PropTypes from 'prop-types'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -89,7 +89,15 @@ const AdminCmsLayout = props => {
 			<Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
 				<Toolbar />
 				<Box className="admin-content flex flex-col h-full" sx={{ minHeight: `calc(100vh - 200px)` }}>
-					<Outlet />
+					<React.Suspense
+						fallback={
+							<div className="mt-200 text-center">
+								<CircularProgress />
+							</div>
+						}
+					>
+						<Outlet />
+					</React.Suspense>
 				</Box>
 			</Box>
 		</Box>
