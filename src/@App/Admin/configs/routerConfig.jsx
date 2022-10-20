@@ -1,6 +1,3 @@
-import ListPage from '../pages/Event/ListPage'
-import ListSpot from '../pages/Spot/ListSpot'
-import EditSpot from '../pages/Spot/EditSpot'
 import { ROUTER_ADMIN } from './constants'
 import ListCourse from '../pages/Course/ListCourse'
 import DetailCourse from '../pages/Course/DetailCourse'
@@ -23,6 +20,8 @@ import React from 'react'
  */
 
 const LazyEventList = React.lazy(() => import('../pages/Event/ListPage'))
+const LazySpotList = React.lazy(() => import('../pages/Spot/ListSpot'))
+const LazySpotDetail = React.lazy(() => import('../pages/Spot/EditSpot'))
 
 export const routerAdminConfig = [
 	{
@@ -31,11 +30,11 @@ export const routerAdminConfig = [
 	},
 	{
 		path: ROUTER_ADMIN.spot.list,
-		element: <ListSpot />
+		element: <LazySpotList />
 	},
 	{
 		path: ROUTER_ADMIN.spot.edit,
-		element: <EditSpot />
+		element: <LazySpotDetail />
 	},
 	{
 		path: ROUTER_ADMIN.course,
