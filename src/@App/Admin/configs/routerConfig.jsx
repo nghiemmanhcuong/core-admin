@@ -4,6 +4,9 @@ import EditSpot from '../pages/Spot/EditSpot'
 import { ROUTER_ADMIN } from './constants'
 import ListCourse from '../pages/Course/ListCourse'
 import DetailCourse from '../pages/Course/DetailCourse'
+import ListUser from '../pages/Users/ListUser'
+import EditUser from '../pages/Users/EditUser'
+
 
 /*
  * Created Date: 11-10-2022, 12:22:10 am
@@ -39,5 +42,13 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.courseDetail,
 		element: <DetailCourse />
+	},
+	{
+		path: ROUTER_ADMIN.user.list,
+		element: <ListUser />
+	},
+	{
+		path: ROUTER_ADMIN.user.edit,
+		element: <EditUser />
 	}
 ]

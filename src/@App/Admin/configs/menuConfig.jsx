@@ -22,10 +22,14 @@ export const menuAdminConfig = [
 	},
 	{
 		title: 'スポット情報管理',
-		url: ROUTER_ADMIN.spot
+		url: ROUTER_ADMIN.spot.list
 	},
 	{
 		title: 'Courses',
 		url: ROUTER_ADMIN.course
+	},
+	{
+		title: 'Users',
+		url: ROUTER_ADMIN.user.list
 	}
 ]
