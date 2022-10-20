@@ -53,8 +53,8 @@ const ListSpotTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => console.log('============= data', data)} />
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.spot.list + `/${data.id}`)} />
+							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.spot.edit)} />
+							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.spot.edit)} />
 							<CoreActionDelete onClick={() => console.log('============= data', data)} />
 						</div>
 					)
