@@ -9,30 +9,36 @@ import ConfirmDialog from "@Core/components/Dialog/ConfirmDialog"
 
 const ListEventTable = props => {
 	const { t, eventTableHandler } = useAdminPageContext()
-	const [openDialogConfirm, setOpenDialogConfirm] = useState(false)
+	const actionDele = () => {
+		return (
+			<Button variant="outlined">
+        Open alert dialog
+      </Button>
+		)
+	}
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: t('label.no')
+				header: "No"
 			}),
 			columnHelper.accessor('name', {
-				header: t('label.name')
+				header: "イベントタイトル"
 			}),
 			columnHelper.accessor('area', {
-				header: t('label.area')
+				header: "開催地"
 			}),
 			columnHelper.accessor('range', {
-				header: t('label.range')
+				header: "開催年月日"
 			}),
 			columnHelper.accessor('amount', {
-				header: t('label.amount')
+				header: "受付年月日"
 			}),
 			columnHelper.accessor('physical', {
-				header: t('label.physical')
+				header: "タグ情報"
 			}),
 			columnHelper.accessor('author', {
-				header: t('label.author')
+				header: "状態"
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),
@@ -44,7 +50,7 @@ const ListEventTable = props => {
 							<Link to={`/admin/event-detail/${data.id}`} >
 								<CoreActionEdit />
 							</Link>
-							<CoreActionDelete onClick={() => setOpenDialogConfirm(true)} />
+							<ConfirmDialog title="event" content="Delete event" action={<CoreActionDelete/>} />
 						</div>
 					)
 				}
@@ -56,7 +62,6 @@ const ListEventTable = props => {
 		<Box>
 			<EventFilter />
             <CoreTable isShowPagination columns={columns} {...eventTableHandler}/>
-			<ConfirmDialog title="event" content="Delete event" aaaaaaaaa={openDialogConfirm} />
 		</Box>
 	)
 }

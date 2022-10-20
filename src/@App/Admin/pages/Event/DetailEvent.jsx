@@ -27,7 +27,7 @@ const DetailEvent = props => {
 	return (
 		<ListEventProvider t={t}>
 			<AdminContentPage
-				pageTitle="コース詳細"
+				pageTitle="イベント情報詳細"
                 tabHeader={<TabHeader/>}
 			/>
 		</ListEventProvider>

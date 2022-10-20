@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
+import 'styles/event.css'
 import Tab1 from './Tab1'
 import Tab2 from './Tab2'
 import Tab3 from './Tab3'
@@ -19,9 +20,9 @@ const TabHeader = () => {
 			<TabContext value={value}>
 				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 					<TabList onChange={handleChange}>
-						<Tab label="Item One" value="1" />
-						<Tab label="Item Two" value="2" />
-						<Tab label="Item Three" value="3" />
+						<Tab label="イベント概要" value="1" />
+						<Tab label="イベントコース" value="2" />
+						<Tab label="イベントエントリー" value="3" />
 					</TabList>
 				</Box>
 				<TabPanel value="1">
@@ -37,5 +38,4 @@ const TabHeader = () => {
 		</Box>
 	)
 }
-
 export default React.memo(TabHeader)

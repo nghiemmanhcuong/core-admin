@@ -120,7 +120,7 @@ const Tab2 = props => {
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コースID" />
+							<FontTitle variant="h3" title="イベントID" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
@@ -128,7 +128,7 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="獲得標高" />
+							<FontTitle variant="h3" title="イベントタイトル" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
@@ -136,7 +136,7 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース説明" />
+							<FontTitle variant="h3" title="イベントコース" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
                             <Grid container rowSpacing={1} columnSpacing={ 12 }>
@@ -166,7 +166,7 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース画像" />
+							<FontTitle variant="h3" title="コースタイトル" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
@@ -174,7 +174,7 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース距離" />
+							<FontTitle variant="h3" title="キャッチフレーズ" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
@@ -182,7 +182,7 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="平均勾配" />
+							<FontTitle variant="h3" title="コース説明" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput
@@ -197,6 +197,22 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
+							<FontTitle variant="h3" title="コース距離" />
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
+							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
+							<FontTitle variant="h3" title="平均勾配" />
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
+							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="獲得標高" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
@@ -205,14 +221,6 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="体力度" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="完走目安" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
@@ -221,7 +229,7 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="完走目安" />
+							<FontTitle variant="h3" title="ルートURL" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
@@ -229,15 +237,7 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="完走目安" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース画像" />
+							<FontTitle variant="h3" title="ルート画像" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<Box className="grid grid-flow-row-dense grid-cols-3">
@@ -281,40 +281,40 @@ const Tab2 = props => {
 							<Card variant="outlined">
                                 <Box className="grid grid-flow-row-dense grid-cols-4 p-5">
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="獲得標高" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
                                     </Box>
                                 </Box>
 							</Card>
@@ -322,7 +322,7 @@ const Tab2 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="高低図URL" />
+							<FontTitle variant="h3" title="スポットリスト" />
 						</Box>
 					</Box>
 				</Box>

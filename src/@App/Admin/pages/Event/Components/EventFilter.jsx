@@ -37,18 +37,18 @@ const EventFilter = props => {
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
 			<Box className="p-10 bg-grey-300">
-				<Typography variant="h4">{t('title.filter')}</Typography>
+				<Typography variant="h4">検索条件</Typography>
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.name')}
+						イベントタイトル
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.area')}
+						開催地
 					</Box>
 					<FormAutocomplete
 						control={control}
@@ -64,7 +64,7 @@ const EventFilter = props => {
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.name')}
+						開催年月日
 					</Box>
 					<FormAutocomplete
 						control={control}
@@ -87,7 +87,7 @@ const EventFilter = props => {
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.area')}
+						受付年月日
 					</Box>
 					<FormAutocomplete
 						control={control}
@@ -112,26 +112,26 @@ const EventFilter = props => {
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.tag')}
+						タグ情報
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.state')}
+						状態
 					</Box>
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+								<CoreCheckbox control={control} name="checkbox" label="表示" />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+								<CoreCheckbox control={control} name="checkbox" label="非表示" />
 							</Box>
 						</Box>
 					</Card>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-						{t('btn.search')}
+						検索
 					</Button>
 				</Box>
 			</Box>

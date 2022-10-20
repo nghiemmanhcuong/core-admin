@@ -5,6 +5,7 @@ import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import CourseFilter from './CourseFilter'
 import {Link} from 'react-router-dom';
+import ConfirmDialog from "@Core/components/Dialog/ConfirmDialog"
 
 const ListCourseTable = props => {
 	const { t, courseTableHandler } = useAdminPageContext()
@@ -42,7 +43,7 @@ const ListCourseTable = props => {
 							<Link to={`/admin/course-detail/${data.id}`} >
 								<CoreActionEdit onClick={() => console.log('============= data', data)} />
 							</Link>
-							<CoreActionDelete onClick={() => console.log('============= data', data)} />
+							<ConfirmDialog title="course" content="Delete course" action={<CoreActionDelete/>} />
 						</div>
 					)
 				}

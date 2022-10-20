@@ -5,14 +5,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import {Box} from '@mui/material'
 
 const ConfirmDialog = props => {
-    const {title, content} = props
-    const [open, setOpen] = useState(false);
+    const {title, content, action} = props
+    var [open, setOpen] = useState(false);
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };
@@ -20,9 +20,9 @@ const ConfirmDialog = props => {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button>
+      <Box variant="outlined" onClick={handleClickOpen}>
+          {action}
+      </Box>
       <Dialog
         open={open}
         onClose={handleClose}

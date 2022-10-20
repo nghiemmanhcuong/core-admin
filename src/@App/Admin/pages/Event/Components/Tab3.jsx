@@ -46,25 +46,25 @@ const tableForm = () => {
 				<TableHead>
 					<TableRow>
 						<TableCell style={{ width: '10%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>No</Box>
+							<Box sx={{ fontWeight: 'bold' }}>エントリーID</Box>
 						</TableCell>
 						<TableCell style={{ width: '20%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>スポット名</Box>
+							<Box sx={{ fontWeight: 'bold' }}>ユーザーID</Box>
 						</TableCell>
 						<TableCell style={{ width: '20%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>スポット種別</Box>
+							<Box sx={{ fontWeight: 'bold' }}>ユーザー名</Box>
 						</TableCell>
 						<TableCell style={{ width: '20%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>住所</Box>
+							<Box sx={{ fontWeight: 'bold' }}>エントリー日時</Box>
 						</TableCell>
 						<TableCell style={{ width: '10%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>推奨ポイント</Box>
+							<Box sx={{ fontWeight: 'bold' }}>エントリーカテゴリー</Box>
 						</TableCell>
 						<TableCell style={{ width: '10%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>次スポットへの時間</Box>
+							<Box sx={{ fontWeight: 'bold' }}>エントリー料</Box>
 						</TableCell>
 						<TableCell>
-							<Box sx={{ fontWeight: 'bold' }}>アクション</Box>
+							<Box sx={{ fontWeight: 'bold' }}>決済方法</Box>
 						</TableCell>
 					</TableRow>
 				</TableHead>
@@ -120,7 +120,7 @@ const Tab3 = props => {
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コースID" />
+							<FontTitle variant="h3" title="イベントID" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
@@ -128,7 +128,7 @@ const Tab3 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="獲得標高" />
+							<FontTitle variant="h3" title="イベント名" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
@@ -136,7 +136,7 @@ const Tab3 = props => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="高低図URL" />
+							<FontTitle variant="h3" title="エントリー状況" />
 						</Box>
 					</Box>
 				</Box>
@@ -146,7 +146,7 @@ const Tab3 = props => {
 			</Box>
             <Grid className="text-end pt-20">
                 <Button variant="contained" color="success" size="small">
-                    登録
+					登録
                 </Button>
             </Grid>
 		</form>
