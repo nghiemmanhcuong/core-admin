@@ -1,0 +1,17 @@
+{
+    "title": {
+        "list_user": "ユーザーリスト",
+		"filter": "検索条件",
+		"email": "二クㄧ厶",
+		"name": "氏名",
+		"birthday": "生年月",
+		"gender": "性別",
+        "place": "居住地",
+        "no": "NO",
+        "action": "スペシャルアクション"
+    },
+    "btn": {
+		"search": "検索",
+		"upload": "アップロード"
+	}
+}

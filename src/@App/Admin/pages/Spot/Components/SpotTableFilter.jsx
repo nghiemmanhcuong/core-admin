@@ -81,9 +81,9 @@ const SpotTableFilter = props => {
 						className="ml-[5px]"
 					/> */}
 				</Box>
-				<Box className="w-full">
+				{/* <Box className="w-full">
 					<CoreInputFile control={control} name="image" />
-				</Box>
+				</Box> */}
 				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 					{t('btn.search')}
 				</Button>
