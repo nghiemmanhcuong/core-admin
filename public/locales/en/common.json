@@ -28,7 +28,8 @@
 		"view": "Xem chi tiết",
 		"update": "Cập nhật",
 		"unSubscribe": "Bỏ đăng ký",
-		"subscribed": "Đăng ký"
+		"subscribed": "Đăng ký",
+		"back": "Trở về"
 	},
 	"message": {
 		"fetch_list_failed": "Không lấy được dữ liệu",

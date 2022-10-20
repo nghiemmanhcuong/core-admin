@@ -19,27 +19,28 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
 import TableFilter from './Components/SpotTableFilter'
 import { Box } from '@mui/system'
-import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListSpotProvider from './ListSpotProvider'
 import ListSpotTable from './Components/ListSpotTable'
 import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const ListSpot = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
-
+	const navigate = useNavigate()
 	return (
 		<ListSpotProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.spot')}
-				// headerAction={
-				// 	<Button
-				// 		variant="contained"
-				// 		color="primary"
-				// 		onClick={() => console.log('============= navigate page add new')}
-				// 	>
-				// 		{t('common:btn.new')}
-				// 	</Button>
-				// }
+				headerAction={
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={() => navigate(ROUTER_ADMIN.spot.list + '/new')}
+					>
+						{t('common:btn.new')}
+					</Button>
+				}
 				content={<ListSpotTable />}
 			/>
 		</ListSpotProvider>

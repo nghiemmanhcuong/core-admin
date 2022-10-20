@@ -25,12 +25,12 @@ export const ROUTER_ADMIN = {
 	event: basePath + '/event',
 	spot: {
 		list: basePath + '/spot',
-		edit: basePath + '/spot/detail'
+		edit: basePath + '/spot/:id'
 	},
 	course: basePath + '/course',
 	courseDetail: basePath + '/course-detail',
 	user: {
 		list: basePath + '/users',
-		edit: basePath + '/users/detail',
+		edit: basePath + '/users/detail'
 	}
 }

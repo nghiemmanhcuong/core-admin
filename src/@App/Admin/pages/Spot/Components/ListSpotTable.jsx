@@ -20,9 +20,12 @@ import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import SpotTableFilter from './SpotTableFilter'
 import { TextField, Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const ListSpotTable = props => {
 	const { t, spotTableHandler } = useAdminPageContext()
+	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -51,7 +54,7 @@ const ListSpotTable = props => {
 					return (
 						<div className="flex">
 							<CoreActionView onClick={() => console.log('============= data', data)} />
-							<CoreActionEdit onClick={() => console.log('============= data', data)} />
+							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.spot.list + `/${data.id}`)} />
 							<CoreActionDelete onClick={() => console.log('============= data', data)} />
 						</div>
 					)
