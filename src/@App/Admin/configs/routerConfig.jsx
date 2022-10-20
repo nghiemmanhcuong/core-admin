@@ -6,8 +6,7 @@ import ListCourse from '../pages/Course/ListCourse'
 import DetailCourse from '../pages/Course/DetailCourse'
 import ListUser from '../pages/Users/ListUser'
 import EditUser from '../pages/Users/EditUser'
-
-
+import React from 'react'
 /*
  * Created Date: 11-10-2022, 12:22:10 am
  * Author: Peter
@@ -22,10 +21,13 @@ import EditUser from '../pages/Users/EditUser'
  * Date      	By	Comments
  * ----------	---	----------------------------------------------------------
  */
+
+const LazyEventList = React.lazy(() => import('../pages/Event/ListPage'))
+
 export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.event,
-		element: <ListPage />
+		element: <LazyEventList />
 	},
 	{
 		path: ROUTER_ADMIN.spot.list,
