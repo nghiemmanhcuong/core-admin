@@ -18,33 +18,24 @@ import { CoreActionDelete, CoreActionEdit, CoreActionView } from './CoreTableAct
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
-import UserTableFilter from './UserTableFilter'
+import TagTableFilter from './TagTableFilter'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '../../../configs/constants'
 
-const ListUserTable = props => {
+const ListTagTable = props => {
 	const navigate = useNavigate()
-	const { t, spotTableHandler } = useAdminPageContext()
+	const { t, tagTableHandler } = useAdminPageContext()
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
 				header: t('title.no')
 			}),
-			columnHelper.accessor('code', {
-				header: t('title.email')
-			}),
 			columnHelper.accessor('name', {
 				header: t('title.name')
 			}),
-			columnHelper.accessor('address', {
-				header: t('title.birthday')
-			}),
-			columnHelper.accessor('phone', {
-				header: t('title.gender')
-			}),
-			columnHelper.accessor('point', {
-				header: t('title.place')
+			columnHelper.accessor('image', {
+				header: t('title.image')
 			}),
 			columnHelper.accessor('action', {
 				header: t('title.action'),
@@ -52,8 +43,8 @@ const ListUserTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.user.edit)} />
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.user.edit)} />
+							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.tag.detail)} />
+							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.tag.detail)} />
 							<CoreActionDelete onClick={() => console.log('============= data', data)} title="asdasd" content='asdasdasd' />
 						</div>
 					)
@@ -64,8 +55,8 @@ const ListUserTable = props => {
 
 	return (
 		<Box>
-			<UserTableFilter />
-			<CoreTable isShowPagination columns={columns} {...spotTableHandler} />
+			<TagTableFilter />
+			<CoreTable isShowPagination columns={columns} {...tagTableHandler} />
 			{/* <Box className="flex justify-end">
 				<TextField type="file"/>
 				<Button variant="contained" color="primary" className="ml-[2px]" >
@@ -80,4 +71,4 @@ const ListUserTable = props => {
 
 //ListSpotTable.propTypes = {}
 
-export default React.memo(ListUserTable)
+export default React.memo(ListTagTable)
