@@ -5,6 +5,8 @@ import ListUser from '../pages/Users/ListUser'
 import EditUser from '../pages/Users/EditUser'
 import React from 'react'
 import DetailEvent from "../pages/Event/DetailEvent"
+import ListCurrency from "../pages/Currency/ListPage"
+import DetailCurrency from "../pages/Currency/DetailCurrency"
 /*
  * Created Date: 11-10-2022, 12:22:10 am
  * Author: Peter
@@ -56,5 +58,13 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.user.edit,
 		element: <EditUser />
+	},
+	{
+		path: ROUTER_ADMIN.currency.list,
+		element: <ListCurrency />
+	},
+	{
+		path: ROUTER_ADMIN.currency.edit,
+		element: <DetailCurrency />
 	}
 ]

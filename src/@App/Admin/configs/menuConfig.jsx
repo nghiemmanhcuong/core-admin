@@ -31,5 +31,9 @@ export const menuAdminConfig = [
 	{
 		title: 'Users',
 		url: ROUTER_ADMIN.user.list
+	},
+	{
+		title: 'Currency',
+		url: ROUTER_ADMIN.currency.list
 	}
 ]
