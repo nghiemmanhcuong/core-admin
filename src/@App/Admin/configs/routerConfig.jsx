@@ -27,6 +27,7 @@ const LazyUserList = React.lazy(() => import('../pages/Users/ListUser'))
 const LazyUserDetail = React.lazy(() => import('../pages/Users/EditUser'))
 const LazyTagDetail = React.lazy(() => import('../pages/Tag/DetailTag'))
 const LazyTagList = React.lazy(() => import('../pages/Tag/ListTag'))
+const LazySurroundingList = React.lazy(() => import('../pages/Surrounding/ListSurrounding'))
 
 export const routerAdminConfig = [
 	{
@@ -68,6 +69,10 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.tag.list,
 		element: <LazyTagList />
+	},
+	{
+		path: ROUTER_ADMIN.surrounding.list,
+		element: <LazySurroundingList />
 	},
 	{
 		path: ROUTER_ADMIN.currency.list,

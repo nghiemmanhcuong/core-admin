@@ -19,7 +19,8 @@ export const TRANSLATE_ADMIN = {
 	spot: basePath + '/spot',
 	course: basePath + '/course',
 	user: basePath + '/user',
-	tag: basePath + '/tag'
+	tag: basePath + '/tag',
+	surrounding: basePath + '/surrounding'
 }
 
 export const ROUTER_ADMIN = {
@@ -42,5 +43,8 @@ export const ROUTER_ADMIN = {
 	tag: {
 		list: basePath + '/tags',
 		detail: basePath + '/tags/detail'
+	},
+	surrounding: {
+		list: basePath + '/surrounding',
 	}
 }
