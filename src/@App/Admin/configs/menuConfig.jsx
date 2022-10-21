@@ -29,7 +29,11 @@ export const menuAdminConfig = [
 		url: ROUTER_ADMIN.course
 	},
 	{
-		title: 'Users',
+		title: 'ユーザーリスト',
 		url: ROUTER_ADMIN.user.list
+	},
+	{
+		title: 'カード',
+		url: ROUTER_ADMIN.tag.list
 	}
 ]

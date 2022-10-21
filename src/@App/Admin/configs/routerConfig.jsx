@@ -1,8 +1,6 @@
 import { ROUTER_ADMIN } from './constants'
 import ListCourse from '../pages/Course/ListCourse'
 import DetailCourse from '../pages/Course/DetailCourse'
-import ListUser from '../pages/Users/ListUser'
-import EditUser from '../pages/Users/EditUser'
 import React from 'react'
 import DetailEvent from "../pages/Event/DetailEvent"
 /*
@@ -23,6 +21,10 @@ import DetailEvent from "../pages/Event/DetailEvent"
 const LazyEventList = React.lazy(() => import('../pages/Event/ListPage'))
 const LazySpotList = React.lazy(() => import('../pages/Spot/ListSpot'))
 const LazySpotDetail = React.lazy(() => import('../pages/Spot/EditSpot'))
+const LazyUserList = React.lazy(() => import('../pages/Users/ListUser'))
+const LazyUserDetail = React.lazy(() => import('../pages/Users/EditUser'))
+const LazyTagDetail = React.lazy(() => import('../pages/Tag/DetailTag'))
+const LazyTagList = React.lazy(() => import('../pages/Tag/ListTag'))
 
 export const routerAdminConfig = [
 	{
@@ -51,10 +53,18 @@ export const routerAdminConfig = [
 	},
 	{
 		path: ROUTER_ADMIN.user.list,
-		element: <ListUser />
+		element: <LazyUserList />
 	},
 	{
 		path: ROUTER_ADMIN.user.edit,
-		element: <EditUser />
+		element: <LazyUserDetail />
+	},
+	{
+		path: ROUTER_ADMIN.tag.detail,
+		element: <LazyTagDetail />
+	},
+	{
+		path: ROUTER_ADMIN.tag.list,
+		element: <LazyTagList />
 	}
 ]
