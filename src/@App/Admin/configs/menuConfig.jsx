@@ -35,5 +35,9 @@ export const menuAdminConfig = [
 	{
 		title: 'カード',
 		url: ROUTER_ADMIN.tag.list
+	},
+	{
+		title: '周辺情報管理',
+		url: ROUTER_ADMIN.surrounding.list
 	}
 ]
