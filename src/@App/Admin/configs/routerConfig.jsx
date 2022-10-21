@@ -1,10 +1,10 @@
-import ListPage from '../pages/Event/ListPage'
-import DetailEvent from '../pages/Event/DetailEvent'
-import ListSpot from '../pages/Spot/ListSpot'
 import { ROUTER_ADMIN } from './constants'
 import ListCourse from '../pages/Course/ListCourse'
 import DetailCourse from '../pages/Course/DetailCourse'
-
+import ListUser from '../pages/Users/ListUser'
+import EditUser from '../pages/Users/EditUser'
+import React from 'react'
+import DetailEvent from "../pages/Event/DetailEvent"
 /*
  * Created Date: 11-10-2022, 12:22:10 am
  * Author: Peter
@@ -19,18 +19,27 @@ import DetailCourse from '../pages/Course/DetailCourse'
  * Date      	By	Comments
  * ----------	---	----------------------------------------------------------
  */
+
+const LazyEventList = React.lazy(() => import('../pages/Event/ListPage'))
+const LazySpotList = React.lazy(() => import('../pages/Spot/ListSpot'))
+const LazySpotDetail = React.lazy(() => import('../pages/Spot/EditSpot'))
+
 export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.event,
-		element: <ListPage />
+		element: <LazyEventList />
 	},
 	{
 		path: ROUTER_ADMIN.eventDetail,
 		element: <DetailEvent />
 	},
 	{
-		path: ROUTER_ADMIN.spot,
-		element: <ListSpot />
+		path: ROUTER_ADMIN.spot.list,
+		element: <LazySpotList />
+	},
+	{
+		path: ROUTER_ADMIN.spot.edit,
+		element: <LazySpotDetail />
 	},
 	{
 		path: ROUTER_ADMIN.course,
@@ -39,5 +48,13 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.courseDetail,
 		element: <DetailCourse />
+	},
+	{
+		path: ROUTER_ADMIN.user.list,
+		element: <ListUser />
+	},
+	{
+		path: ROUTER_ADMIN.user.edit,
+		element: <EditUser />
 	}
 ]

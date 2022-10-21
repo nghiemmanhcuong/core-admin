@@ -21,11 +21,11 @@ import TableFilter from './Components/SpotTableFilter'
 import { Box } from '@mui/system'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListSpotProvider from './ListSpotProvider'
-import ListSpotTable from './Components/ListSpotTable'
+import EditSpotTabs from './Components/EditSpotTabs'
 import { Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-const ListSpot = props => {
+const EditSpot = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
 	const navigate = useNavigate()
 	return (
@@ -33,18 +33,14 @@ const ListSpot = props => {
 			<AdminContentPage
 				pageTitle={t('title.spot')}
 				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => navigate(ROUTER_ADMIN.spot.list + '/new')}
-					>
-						{t('common:btn.new')}
+					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.spot.list)}>
+						{t('common:btn.back')}
 					</Button>
 				}
-				content={<ListSpotTable />}
+				content={<EditSpotTabs />}
 			/>
 		</ListSpotProvider>
 	)
 }
 
-export default React.memo(ListSpot)
+export default React.memo(EditSpot)

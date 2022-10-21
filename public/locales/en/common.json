@@ -28,11 +28,15 @@
 		"view": "Xem chi tiết",
 		"update": "Cập nhật",
 		"unSubscribe": "Bỏ đăng ký",
-		"subscribed": "Đăng ký"
+		"subscribed": "Đăng ký",
+		"back": "Trở về"
 	},
 	"message": {
 		"fetch_list_failed": "Không lấy được dữ liệu",
 		"delete_success": "Xoá dữ liệu thành công",
 		"delete_failed": "Xoá dữ liệu thất bại"
+	},
+	"form": {
+		"input_file_empty": "Chưa chọn file nào"
 	}
 }

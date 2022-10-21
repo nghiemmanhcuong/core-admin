@@ -17,34 +17,32 @@ import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
-import TableFilter from './Components/SpotTableFilter'
 import { Box } from '@mui/system'
-import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import ListSpotProvider from './ListSpotProvider'
-import ListSpotTable from './Components/ListSpotTable'
+import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import ListUserProvider from './ListUserProvider'
+import ListUserTable from './Components/ListUserTable'
 import { Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
 
-const ListSpot = props => {
-	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
-	const navigate = useNavigate()
+const ListUser = props => {
+	const { t } = useTranslation(TRANSLATE_ADMIN.user)
+
 	return (
-		<ListSpotProvider t={t}>
+		<ListUserProvider t={t}>
 			<AdminContentPage
-				pageTitle={t('title.spot')}
+				pageTitle={t('title.list_user')}
 				headerAction={
 					<Button
 						variant="contained"
 						color="primary"
-						onClick={() => navigate(ROUTER_ADMIN.spot.list + '/new')}
+						onClick={() => console.log('============= navigate page add new')}
 					>
 						{t('common:btn.new')}
 					</Button>
 				}
-				content={<ListSpotTable />}
+				content={<ListUserTable />}
 			/>
-		</ListSpotProvider>
+		</ListUserProvider>
 	)
 }
 
-export default React.memo(ListSpot)
+export default React.memo(ListUser)

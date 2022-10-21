@@ -17,13 +17,21 @@ const basePath = '/admin'
 
 export const TRANSLATE_ADMIN = {
 	spot: basePath + '/spot',
-	course: basePath + '/course'
+	course: basePath + '/course',
+	user: basePath + '/user'
 }
 
 export const ROUTER_ADMIN = {
 	event: basePath + '/event',
 	eventDetail: basePath + '/event-detail/:id',
-	spot: basePath + '/spot',
+	spot: {
+		list: basePath + '/spot',
+		edit: basePath + '/spot/:id'
+	},
 	course: basePath + '/course',
-	courseDetail: basePath + '/course-detail/:id'
+	courseDetail: basePath + '/course-detail/:id',
+	user: {
+		list: basePath + '/users',
+		edit: basePath + '/users/detail'
+	}
 }

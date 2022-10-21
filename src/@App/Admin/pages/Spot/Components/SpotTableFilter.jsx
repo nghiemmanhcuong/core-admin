@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { useForm } from 'react-hook-form'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import CoreInputFile from '@Core/components/Input/CoreInputFile'
 
 const SpotTableFilter = props => {
 	const { spotTableHandler } = useAdminPageContext()
@@ -80,6 +81,9 @@ const SpotTableFilter = props => {
 						className="ml-[5px]"
 					/> */}
 				</Box>
+				{/* <Box className="w-full">
+					<CoreInputFile control={control} name="image" />
+				</Box> */}
 				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 					{t('btn.search')}
 				</Button>

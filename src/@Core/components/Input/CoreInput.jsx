@@ -74,7 +74,7 @@ const CoreInput = props => {
 
 	return (
 		<Box className={className}>
-			{renderLabel()}
+			{label != null ? renderLabel() : ''}
 			<TextField
 				fullWidth
 				type={type === 'number' ? 'text' : type}
