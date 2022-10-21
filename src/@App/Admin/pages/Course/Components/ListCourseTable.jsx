@@ -40,7 +40,7 @@ const ListCourseTable = props => {
 					return (
 						<div className="flex">
 							<CoreActionView onClick={() => console.log('============= data', data)} />
-							<Link to={`/admin/course-detail/${data.id}`} >
+							<Link to={`/admin/course/${data.id}`} >
 								<CoreActionEdit onClick={() => console.log('============= data', data)} />
 							</Link>
 							<ConfirmDialog title="course" content="Delete course" action={<CoreActionDelete/>} />

@@ -3,12 +3,12 @@ import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/componen
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo, useState } from 'react'
-import EventFilter from './EventFilter'
+import CurrencyFilter from './CurrencyFilter'
 import {Link} from 'react-router-dom';
 import ConfirmDialog from "@Core/components/Dialog/ConfirmDialog"
 
-const ListEventTable = props => {
-	const { t, eventTableHandler } = useAdminPageContext()
+const ListCurrencyTable = props => {
+	const { t, currencyTableHandler } = useAdminPageContext()
 	const actionDele = () => {
 		return (
 			<Button variant="outlined">
@@ -23,19 +23,19 @@ const ListEventTable = props => {
 				header: "No"
 			}),
 			columnHelper.accessor('name', {
-				header: "イベントタイトル"
+				header: "アプリ内通貸名"
 			}),
 			columnHelper.accessor('area', {
-				header: "開催地"
+				header: "通貸単位名"
 			}),
 			columnHelper.accessor('range', {
-				header: "開催年月日"
+				header: "ポイント換算レート"
 			}),
-			columnHelper.accessor('amount', {
-				header: "受付年月日"
+			columnHelper.accessor('start_date', {
+				header: "使用可能開始日"
 			}),
-			columnHelper.accessor('physical', {
-				header: "タグ情報"
+			columnHelper.accessor('end_date', {
+				header: "使用可能終了日"
 			}),
 			columnHelper.accessor('author', {
 				header: "状態"
@@ -47,10 +47,10 @@ const ListEventTable = props => {
 					return (
 						<div className="flex">
 							<CoreActionView onClick={() => console.log('============= data', data)} />
-							<Link to={`/admin/event/${data.id}`} >
+							<Link to={`/admin/currency/${data.id}`} >
 								<CoreActionEdit />
 							</Link>
-							<ConfirmDialog title="event" content="Delete event" action={<CoreActionDelete/>} />
+							<ConfirmDialog title="curency" content="Delete curency" action={<CoreActionDelete/>} />
 						</div>
 					)
 				}
@@ -60,12 +60,12 @@ const ListEventTable = props => {
 
 	return (
 		<Box>
-			<EventFilter />
-            <CoreTable isShowPagination columns={columns} {...eventTableHandler}/>
+			<CurrencyFilter />
+            <CoreTable isShowPagination columns={columns} {...currencyTableHandler}/>
 		</Box>
 	)
 }
 
 
 
-export default React.memo(ListEventTable)
+export default React.memo(ListCurrencyTable)

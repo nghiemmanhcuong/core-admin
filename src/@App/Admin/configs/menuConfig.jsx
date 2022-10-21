@@ -39,5 +39,9 @@ export const menuAdminConfig = [
 	{
 		title: '周辺情報管理',
 		url: ROUTER_ADMIN.surrounding.list
+	},
+	{
+		title: 'Currency',
+		url: ROUTER_ADMIN.currency.list
 	}
 ]
