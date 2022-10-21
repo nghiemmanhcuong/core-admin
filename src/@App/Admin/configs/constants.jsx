@@ -24,16 +24,20 @@ export const TRANSLATE_ADMIN = {
 
 export const ROUTER_ADMIN = {
 	event: basePath + '/event',
-	eventDetail: basePath + '/event-detail/:id',
+	eventDetail: basePath + '/event/:id',
 	spot: {
 		list: basePath + '/spot',
 		edit: basePath + '/spot/:id'
 	},
 	course: basePath + '/course',
-	courseDetail: basePath + '/course-detail/:id',
+	courseDetail: basePath + '/course/:id',
 	user: {
 		list: basePath + '/users',
 		edit: basePath + '/users/detail'
+	},
+	currency: {
+		list: basePath + '/currency',
+		edit: basePath + '/currency/:id',
 	},
 	tag: {
 		list: basePath + '/tags',

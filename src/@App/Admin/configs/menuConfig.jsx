@@ -35,5 +35,9 @@ export const menuAdminConfig = [
 	{
 		title: 'カード',
 		url: ROUTER_ADMIN.tag.list
+	},
+	{
+		title: 'Currency',
+		url: ROUTER_ADMIN.currency.list
 	}
 ]
