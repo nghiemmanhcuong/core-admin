@@ -1,9 +1,7 @@
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import AdminContentPage from '../../components/Layout/AdminContentPage'
-import ListCourseProvider from './ListCourseProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button, Paper, Typography, TextField, Box, Card} from '@mui/material'
+import { Button, Paper, Typography, TextField, Box, Card } from '@mui/material'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -20,6 +18,8 @@ import TableRow from '@mui/material/TableRow'
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
+import Grid from '@mui/material/Grid'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -44,28 +44,28 @@ const tableForm = () => {
 		<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 650 }} aria-label="simple table">
 				<TableHead>
-					<TableRow >
+					<TableRow>
 						<TableCell style={{ width: '10%' }}>
-                            <Box sx={{ fontWeight: 'bold'}}>No</Box>
-                        </TableCell>
+							<Box sx={{ fontWeight: 'bold' }}>No</Box>
+						</TableCell>
 						<TableCell style={{ width: '20%' }}>
-                            <Box sx={{ fontWeight: 'bold'}}>スポット名</Box>
-                        </TableCell>
+							<Box sx={{ fontWeight: 'bold' }}>スポット名</Box>
+						</TableCell>
 						<TableCell style={{ width: '20%' }}>
-                            <Box sx={{ fontWeight: 'bold'}}>スポット種別</Box>
-                        </TableCell>
+							<Box sx={{ fontWeight: 'bold' }}>スポット種別</Box>
+						</TableCell>
 						<TableCell style={{ width: '20%' }}>
-                            <Box sx={{ fontWeight: 'bold'}}>住所</Box>
-                        </TableCell>
+							<Box sx={{ fontWeight: 'bold' }}>住所</Box>
+						</TableCell>
 						<TableCell style={{ width: '10%' }}>
-                            <Box sx={{ fontWeight: 'bold'}}>推奨ポイント</Box>
-                        </TableCell>
+							<Box sx={{ fontWeight: 'bold' }}>推奨ポイント</Box>
+						</TableCell>
 						<TableCell style={{ width: '10%' }}>
-                            <Box sx={{ fontWeight: 'bold'}}>次スポットへの時間</Box>
-                        </TableCell>
+							<Box sx={{ fontWeight: 'bold' }}>次スポットへの時間</Box>
+						</TableCell>
 						<TableCell>
-                            <Box sx={{ fontWeight: 'bold'}}>アクション</Box>
-                        </TableCell>
+							<Box sx={{ fontWeight: 'bold' }}>アクション</Box>
+						</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -81,7 +81,12 @@ const tableForm = () => {
 								<TextField type="number" id="outlined-search" size="small" defaultValue={row.carbs1} />
 							</TableCell>
 							<TableCell>
-								<TextField type="number" id="outlined-search" size="small" defaultValue={row.protein1} />
+								<TextField
+									type="number"
+									id="outlined-search"
+									size="small"
+									defaultValue={row.protein1}
+								/>
 							</TableCell>
 							<TableCell>
 								<Box className="flex">
@@ -95,7 +100,7 @@ const tableForm = () => {
 		</TableContainer>
 	)
 }
-const contentCourse = () => {
+const Tab2 = props => {
 	const { control } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
@@ -108,13 +113,14 @@ const contentCourse = () => {
 			})
 		)
 	})
+
 	return (
 		<form>
 			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
-                    <Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コースID" />
+							<FontTitle variant="h3" title="イベントID" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
@@ -122,10 +128,40 @@ const contentCourse = () => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="獲得標高" />
+							<FontTitle variant="h3" title="イベントタイトル" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+						</Box>
+					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
+							<FontTitle variant="h3" title="イベントコース" />
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
+                            <Grid container rowSpacing={1} columnSpacing={ 12 }>
+                                <Grid item xs={6}>
+                                <FormAutocomplete
+								control={control}
+								name="course"
+								size="small"
+								fullWidth
+								variant="outlined"
+								placeholder="Choose..."
+							/>
+                                </Grid>
+                                <Grid item xs={6}>
+							<Button variant="contained" color="primary" className="mr-3" size="small">
+								削除
+							</Button>
+                            <Button variant="contained" color="error" className="mr-3" size="small">
+								削除
+							</Button>
+							<Button variant="contained" color="success" className="mr-3" size="small">
+								登録
+							</Button>
+                                </Grid>
+                            </Grid>
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -136,39 +172,27 @@ const contentCourse = () => {
 							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
 						</Box>
 					</Box>
+					<Box className="grid grid-flow-row-dense grid-cols-3">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
+							<FontTitle variant="h3" title="キャッチフレーズ" />
+						</Box>
+						<Box className="col-span-3 sm:col-span-2">
+							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+						</Box>
+					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="コース説明" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput multiline rows={4} control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース画像" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-                            <Box className="grid grid-flow-row-dense grid-cols-3">
-								<Box className="col-span-2">
-									<Box className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
-										<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
-									</Box>
-									<Card variant="outlined" className="text-center">
-										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
-									</Card>
-								</Box>
-								<Box className="col-span-1 relative">
-									<Box className="absolute top-1/3 pl-10">
-										<Button variant="contained" color="error" size="small">
-											削除
-										</Button>
-										<Button variant="contained" color="success" size="small">
-											登録
-										</Button>
-									</Box>
-								</Box>
-							</Box>
+							<CoreInput
+								multiline
+								rows={4}
+								control={control}
+								name="firstname"
+								placeholder="Default input"
+								size="small"
+							/>
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -197,22 +221,6 @@ const contentCourse = () => {
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="体力度" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<FormAutocomplete
-								control={control}
-								name="spot_id"
-								size="small"
-								className="w-2/3"
-								fullWidth
-								variant="outlined"
-								placeholder="Choose..."
-							/>
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="完走目安" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
@@ -234,22 +242,17 @@ const contentCourse = () => {
 						<Box className="col-span-3 sm:col-span-2">
 							<Box className="grid grid-flow-row-dense grid-cols-3">
 								<Box className="col-span-2">
-									<Box className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
-										<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
+									<Box className="relative" style={{ backgroundColor: 'darkgray', height: '150px' }}>
+										<img
+											className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+											src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png"
+											alt=""
+											style={{ width: '150px' }}
+										/>
 									</Box>
 									<Card variant="outlined" className="text-center">
 										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
 									</Card>
-								</Box>
-								<Box className="col-span-1 relative">
-									<Box className="absolute top-1/3 pl-10">
-										<Button variant="contained" color="error" size="small">
-											削除
-										</Button>
-										<Button variant="contained" color="success" size="small">
-											登録
-										</Button>
-									</Box>
 								</Box>
 							</Box>
 						</Box>
@@ -276,98 +279,64 @@ const contentCourse = () => {
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<Card variant="outlined">
-								<Box className="grid grid-flow-row-dense grid-cols-4 p-5">
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-									<Box className="col-span-2 sm:col-span-1">
-										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
-									</Box>
-								</Box>
+                                <Box className="grid grid-flow-row-dense grid-cols-4 p-5">
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                    <Box className="col-span-2 sm:col-span-1">
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                    </Box>
+                                </Box>
 							</Card>
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-20">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<FontTitle variant="h3" title="スポットリスト" />
 						</Box>
 					</Box>
 				</Box>
 			</Box>
-			<Box className="p-20">
-				{tableForm()}
-				<Box className="text-end pt-40">
-					<Button variant="contained" color="success" size="small">
-                        スポット追加
-					</Button>
-				</Box>
-				<Box className="grid grid-flow-row-dense grid-cols-3 pt-40">
-					<Box className="col-span-3 sm:col-span-1 pt-10">
-						<FontTitle variant="h3" title="コース作成者" />
-					</Box>
-					<Box className="col-span-3 sm:col-span-1">
-                        <Box style={{position:"relative"}}>
-                        <TextField fullWidth type="text" size="small" />
-                        <Button variant="contained" color="third" style={{position:"absolute"}}>
-                            選択
-                        </Button>
-                        </Box>
-					</Box>
-					<Box className="col-span-3 sm:col-span-1">
-						<Box className="text-end">
-							<Button variant="contained" color="error" className="mr-10" size="small">
-                                削除
-							</Button>
-							<Button variant="contained" color="success" size="small">
-                                登録
-							</Button>
-						</Box>
-					</Box>
-				</Box>
+			<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
+				<Box className="col-span-3">{tableForm()}</Box>
 			</Box>
+            <Grid className="text-end pt-20">
+                <Button variant="contained" color="success" size="small">
+                    登録
+                </Button>
+            </Grid>
 		</form>
 	)
 }
-const DetailCourse = props => {
-	const { t } = useTranslation(TRANSLATE_ADMIN.course)
-	return (
-		<ListCourseProvider t={t}>
-			<AdminContentPage
-				pageTitle="コース詳細"
-				content={contentCourse()}
-			/>
-		</ListCourseProvider>
-	)
-}
 
-export default React.memo(DetailCourse)
+export default React.memo(Tab2)

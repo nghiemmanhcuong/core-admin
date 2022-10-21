@@ -19,11 +19,11 @@ import PropTypes from 'prop-types'
 import { Button, Card, CardContent, CardHeader, Divider } from '@mui/material'
 
 const AdminContentPage = props => {
-	const { content, pageTitle, headerAction } = props
+	const { content, pageTitle, headerAction, tabHeader } = props
 	return (
 		<Card className="shadow-4 h-full">
 			{pageTitle && <CardHeader title={pageTitle} action={headerAction} />}
-
+			<Box>{tabHeader}</Box>
 			<Divider />
 			<Box className="my-8">{content}</Box>
 		</Card>
@@ -35,7 +35,8 @@ const AdminContentPage = props => {
 AdminContentPage.propTypes = {
 	content: PropTypes.any,
 	pageTitle: PropTypes.any,
-	headerAction: PropTypes.any
+	headerAction: PropTypes.any,
+	tabHeader: PropTypes.any,
 }
 
 export default React.memo(AdminContentPage)

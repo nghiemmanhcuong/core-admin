@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import React from 'react'
 import TextField from '@mui/material/TextField'
-import { Button, Icon, InputAdornment, Typography, FormControlLabel, Checkbox, Card } from '@mui/material'
+import { Button, Icon, InputAdornment, Typography, FormControlLabel, Card } from '@mui/material'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { useTranslation } from 'react-i18next'
@@ -10,15 +10,16 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Yup from '@Core/helper/Yup'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import CardMedia from '@mui/material/CardMedia'
 
-const CourseFilter = props => {
-	const { courseTableHandler } = useAdminPageContext()
+const EventFilter = props => {
+	const { eventTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
 	const handleFilter = () => {
 		const params = {
 			// TODO : param filter
 		}
-		courseTableHandler.handleFetchData(params)
+		eventTableHandler.handleFetchData(params)
 	}
 	const { control } = useForm({
 		mode: 'onTouched',
@@ -36,18 +37,18 @@ const CourseFilter = props => {
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
 			<Box className="p-10 bg-grey-300">
-				<Typography variant="h4">{t('title.filter')}</Typography>
+				<Typography variant="h4">検索条件</Typography>
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.name')}
+						イベントタイトル
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.area')}
+						開催地
 					</Box>
 					<FormAutocomplete
 						control={control}
@@ -63,26 +64,74 @@ const CourseFilter = props => {
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.tag')}
+						開催年月日
+					</Box>
+					<FormAutocomplete
+						control={control}
+						name="course"
+						size="small"
+						className="w-1/3"
+						fullWidth
+						variant="outlined"
+						placeholder="Choose..."
+					/>
+					<FormAutocomplete
+						control={control}
+						name="course"
+						size="small"
+						className="w-1/3"
+						fullWidth
+						variant="outlined"
+						placeholder="Choose..."
+					/>
+				</Box>
+				<Box className="flex w-1/2 items-start mx-8 ">
+					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+						受付年月日
+					</Box>
+					<FormAutocomplete
+						control={control}
+						name="course"
+						size="small"
+						className="w-1/3"
+						fullWidth
+						variant="outlined"
+						placeholder="Choose..."
+					/>
+					<FormAutocomplete
+						control={control}
+						name="course"
+						size="small"
+						className="w-1/3"
+						fullWidth
+						variant="outlined"
+						placeholder="Choose..."
+					/>
+				</Box>
+			</Box>
+			<Box className="flex p-10  w-full">
+				<Box className="flex w-1/2 items-start">
+					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+						タグ情報
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.state')}
+						状態
 					</Box>
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+								<CoreCheckbox control={control} name="checkbox" label="表示" />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+								<CoreCheckbox control={control} name="checkbox" label="非表示" />
 							</Box>
 						</Box>
 					</Card>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-					{t('btn.search')}
+						検索
 					</Button>
 				</Box>
 			</Box>
@@ -90,6 +139,4 @@ const CourseFilter = props => {
 	)
 }
 
-
-
-export default React.memo(CourseFilter)
+export default React.memo(EventFilter)

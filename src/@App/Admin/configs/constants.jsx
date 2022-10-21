@@ -23,12 +23,13 @@ export const TRANSLATE_ADMIN = {
 
 export const ROUTER_ADMIN = {
 	event: basePath + '/event',
+	eventDetail: basePath + '/event-detail/:id',
 	spot: {
 		list: basePath + '/spot',
 		edit: basePath + '/spot/:id'
 	},
 	course: basePath + '/course',
-	courseDetail: basePath + '/course-detail',
+	courseDetail: basePath + '/course-detail/:id',
 	user: {
 		list: basePath + '/users',
 		edit: basePath + '/users/detail'

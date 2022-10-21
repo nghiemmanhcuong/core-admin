@@ -4,6 +4,7 @@ import DetailCourse from '../pages/Course/DetailCourse'
 import ListUser from '../pages/Users/ListUser'
 import EditUser from '../pages/Users/EditUser'
 import React from 'react'
+import DetailEvent from "../pages/Event/DetailEvent"
 /*
  * Created Date: 11-10-2022, 12:22:10 am
  * Author: Peter
@@ -27,6 +28,10 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.event,
 		element: <LazyEventList />
+	},
+	{
+		path: ROUTER_ADMIN.eventDetail,
+		element: <DetailEvent />
 	},
 	{
 		path: ROUTER_ADMIN.spot.list,
