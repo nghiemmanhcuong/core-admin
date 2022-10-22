@@ -20,22 +20,23 @@ import { routerAdminConfig } from './Admin/configs/routerConfig'
 import DefaultLayout from './Travelo/components/Layout/DefaultLayout'
 import { routerTraveloConfig } from './Travelo/configs/routerConfig'
 import Page404 from './Travelo/pages/Error/Page404'
-import Login from '@App/Admin/pages/Auth/Login'
 
 export const appRouterConfig = createBrowserRouter([
 	{
 		path: '/',
 		element: <DefaultLayout />,
-		errorElement: <Page404 />,
+		// errorElement: <Page404 />,
 		children: [...routerTraveloConfig]
 	},
 	{
 		path: '/admin',
 		element: <AdminCmsLayout />,
-		children: [...routerAdminConfig]
-	},
-	{
-		path: '/admin/login',
-		element: <Login />,
+		children: [
+			...routerAdminConfig,
+			{
+				path: '*',
+				element: <Page404 />
+			}
+		]
 	}
 ])
