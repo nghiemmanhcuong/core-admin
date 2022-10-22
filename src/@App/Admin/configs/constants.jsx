@@ -24,6 +24,9 @@ export const TRANSLATE_ADMIN = {
 }
 
 export const ROUTER_ADMIN = {
+	auth: {
+		login: basePath + '/login'
+	},
 	event: basePath + '/event',
 	eventDetail: basePath + '/event/:id',
 	spot: {
@@ -38,13 +41,13 @@ export const ROUTER_ADMIN = {
 	},
 	currency: {
 		list: basePath + '/currency',
-		edit: basePath + '/currency/:id',
+		edit: basePath + '/currency/:id'
 	},
 	tag: {
 		list: basePath + '/tags',
 		detail: basePath + '/tags/detail'
 	},
 	surrounding: {
-		list: basePath + '/surrounding',
+		list: basePath + '/surrounding'
 	}
 }

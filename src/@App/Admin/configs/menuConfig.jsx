@@ -43,5 +43,15 @@ export const menuAdminConfig = [
 	{
 		title: 'Currency',
 		url: ROUTER_ADMIN.currency.list
+	},
+	{
+		title: 'Level 1',
+		type: 'collapse',
+		children: [
+			{
+				title: 'Level 2',
+				url: '/level-2'
+			}
+		]
 	}
 ]
