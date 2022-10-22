@@ -64,11 +64,6 @@ const CoreTable = ({
 		debugTable: true
 	})
 
-	useUpdateEffect(() => {
-		// console.log('============= table', table.setCo())
-		// rerender()
-	}, [columns])
-
 	return (
 		<CoreTableContext.Provider value={{ table, t }}>
 			<CoreTableToolbar handleFetchData={handleFetchData} />
