@@ -45,6 +45,10 @@ export const menuAdminConfig = [
 		url: ROUTER_ADMIN.currency.list
 	},
 	{
+		title: 'お知らせ管理',
+		url: ROUTER_ADMIN.notification.list
+	},
+	{
 		title: 'Level 1',
 		type: 'collapse',
 		children: [

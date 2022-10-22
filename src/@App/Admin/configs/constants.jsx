@@ -20,7 +20,8 @@ export const TRANSLATE_ADMIN = {
 	course: basePath + '/course',
 	user: basePath + '/user',
 	tag: basePath + '/tag',
-	surrounding: basePath + '/surrounding'
+	surrounding: basePath + '/surrounding',
+	notification: basePath + '/notification'
 }
 
 export const ROUTER_ADMIN = {
@@ -49,5 +50,9 @@ export const ROUTER_ADMIN = {
 	},
 	surrounding: {
 		list: basePath + '/surrounding'
+	},
+	notification: {
+		list: basePath + '/notifications',
+		edit: basePath + '/notifications/:id'
 	}
 }
