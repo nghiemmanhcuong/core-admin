@@ -1,3 +1,4 @@
+import { useConfirm } from '@Core/components/Confirm/CoreConfirm'
 import { IconButton, Tooltip, useTheme } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
@@ -47,8 +48,18 @@ export const CoreActionView = ({ onClick = () => {}, title = null, placement }) 
 	)
 }
 
-export const CoreActionDelete = ({ onClick = () => {}, disabled = false }) => {
+export const CoreActionDelete = ({ onConfirmDelete = () => {}, disabled = false }) => {
 	const { t } = useTranslation('common')
+	const confirm = useConfirm()
+
+	const handleClickDelete = () => {
+		confirm({
+			content: t('table.delete_confirm'),
+			color: 'error',
+			onOk: onConfirmDelete
+		})
+	}
+
 	if (disabled) {
 		return (
 			<IconButton onClick={onClick} color="error" disabled={disabled}>
@@ -58,7 +69,7 @@ export const CoreActionDelete = ({ onClick = () => {}, disabled = false }) => {
 	}
 	return (
 		<Tooltip title={t('btn.delete')}>
-			<IconButton onClick={onClick} color="error">
+			<IconButton onClick={handleClickDelete} color="error">
 				<BiTrash />
 			</IconButton>
 		</Tooltip>

@@ -16,6 +16,7 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { spotSerivce } from '@App/Admin/services/spotService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
 // import PropTypes from 'prop-types'
@@ -23,6 +24,17 @@ import React, { useEffect } from 'react'
 const ListSpotProvider = props => {
 	const requestSpots = useRequest(spotSerivce.list, {
 		manual: true
+	})
+
+	const { runAsync: handleDeleteSpot } = useRequest(spotSerivce.delete, {
+		manual: true,
+		onSuccess: res => {
+			successMsg('Deleted successfully')
+			spotTableHandler.handleFetchData()
+		},
+		onError: res => {
+			errorMsg('Deleted failed')
+		}
 	})
 
 	const spotTableHandler = useCoreTable(requestSpots)
@@ -33,6 +45,7 @@ const ListSpotProvider = props => {
 
 	const data = {
 		spotTableHandler,
+		handleDeleteSpot,
 		...props
 	}
 
