@@ -47,15 +47,15 @@ export const menuAdminConfig = [
 	{
 		title: 'お知らせ管理',
 		url: ROUTER_ADMIN.notification.list
-	},
-	{
-		title: 'Level 1',
-		type: 'collapse',
-		children: [
-			{
-				title: 'Level 2',
-				url: '/level-2'
-			}
-		]
 	}
+	// {
+	// 	title: 'Level 1',
+	// 	type: 'collapse',
+	// 	children: [
+	// 		{
+	// 			title: 'Level 2',
+	// 			url: '/level-2'
+	// 		}
+	// 	]
+	// }
 ]

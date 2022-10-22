@@ -66,7 +66,7 @@ const LeftMenuItemCollapse = props => {
 		if (Array.isArray(item.children) && item.children.length > 0) {
 			return (
 				<Collapse in={open} timeout="auto" unmountOnExit>
-					<List component="nav">
+					<List component="nav" disablePadding>
 						{item.children.map((_item, index) => {
 							return <LeftMenuItem item={_item} key={index} sx={{ pl: 2 }} />
 						})}
@@ -78,10 +78,13 @@ const LeftMenuItemCollapse = props => {
 
 	return (
 		<>
-			<ListItemButton onClick={handleToggleMenuChildren}>
-				<ListItemText primary={<Typography variant="body2">{item?.title}</Typography>} />
-				{open ? <ExpandLess /> : <ExpandMore />}
-			</ListItemButton>
+			<ListItem disablePadding onClick={handleToggleMenuChildren}>
+				<ListItemButton>
+					<ListItemText primary={<Typography variant="body2">{item?.title}</Typography>} />
+					{open ? <ExpandLess /> : <ExpandMore />}
+				</ListItemButton>
+			</ListItem>
+			<Divider />
 			{renderChildrenMenu()}
 		</>
 	)

@@ -22,12 +22,12 @@ import { routerTraveloConfig } from './Travelo/configs/routerConfig'
 import Page404 from './Travelo/pages/Error/Page404'
 
 export const appRouterConfig = createBrowserRouter([
-	{
-		path: '/',
-		element: <DefaultLayout />,
-		// errorElement: <Page404 />,
-		children: [...routerTraveloConfig]
-	},
+	// {
+	// 	path: '/',
+	// 	element: <DefaultLayout />,
+	// 	// errorElement: <Page404 />,
+	// 	children: [...routerTraveloConfig]
+	// },
 	{
 		path: '/admin',
 		element: <AdminCmsLayout />,
@@ -38,5 +38,9 @@ export const appRouterConfig = createBrowserRouter([
 				element: <Page404 />
 			}
 		]
+	},
+	{
+		path: '*',
+		element: <Page404 />
 	}
 ])

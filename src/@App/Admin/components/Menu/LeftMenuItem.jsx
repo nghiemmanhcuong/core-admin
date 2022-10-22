@@ -13,7 +13,7 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import { Divider, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import React from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
 // import PropTypes from 'prop-types'
@@ -29,13 +29,16 @@ const LeftMenuItem = props => {
 	}
 
 	return (
-		<ListItem disablePadding onClick={() => handleClickMenu(item?.url)} sx={sx} selected={Boolean(match)}>
-			<ListItemButton>
-				{item?.icon && <ListItemIcon>{item?.icon}</ListItemIcon>}
+		<>
+			<ListItem disablePadding onClick={() => handleClickMenu(item?.url)} sx={sx} selected={Boolean(match)}>
+				<ListItemButton>
+					{item?.icon && <ListItemIcon>{item?.icon}</ListItemIcon>}
 
-				<ListItemText primary={item.title} />
-			</ListItemButton>
-		</ListItem>
+					<ListItemText primary={item.title} />
+				</ListItemButton>
+			</ListItem>
+			<Divider />
+		</>
 	)
 }
 
