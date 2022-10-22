@@ -14,13 +14,14 @@
  */
 
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
-import { CoreActionDelete, CoreActionEdit, CoreActionView } from './CoreTableAction'
+
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import UserTableFilter from './UserTableFilter'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '../../../configs/constants'
+import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 
 const ListUserTable = props => {
 	const navigate = useNavigate()
@@ -54,7 +55,7 @@ const ListUserTable = props => {
 						<div className="flex">
 							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.user.edit)} />
 							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.user.edit)} />
-							<CoreActionDelete onClick={() => console.log('============= data', data)} title="asdasd" content='asdasdasd' />
+							<CoreActionDelete />
 						</div>
 					)
 				}

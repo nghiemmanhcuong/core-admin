@@ -36,11 +36,21 @@ const CoreTableBody = ({ table, loading }) => {
 		}
 		return rows.map(row => (
 			<TableRow key={row.id}>
-				{row.getVisibleCells().map(cell => (
-					<CoreTableCell key={cell.id}>
-						{flexRender(cell.column.columnDef.cell, cell.getContext())}
-					</CoreTableCell>
-				))}
+				{row.getVisibleCells().map(cell => {
+					console.log('============= cell', cell)
+					return (
+						<CoreTableCell
+							key={cell.id}
+							{...{
+								style: {
+									width: cell.column.getSize()
+								}
+							}}
+						>
+							{flexRender(cell.column.columnDef.cell, cell.getContext())}
+						</CoreTableCell>
+					)
+				})}
 			</TableRow>
 		))
 	}

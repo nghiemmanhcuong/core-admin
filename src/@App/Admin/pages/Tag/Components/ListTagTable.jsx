@@ -14,13 +14,14 @@
  */
 
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
-import { CoreActionDelete, CoreActionEdit, CoreActionView } from './CoreTableAction'
+
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import TagTableFilter from './TagTableFilter'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '../../../configs/constants'
+import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 
 const ListTagTable = props => {
 	const navigate = useNavigate()
@@ -29,7 +30,8 @@ const ListTagTable = props => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: t('title.no')
+				header: t('title.no'),
+				className: 'w-[10%]'
 			}),
 			columnHelper.accessor('name', {
 				header: t('title.name')
@@ -39,13 +41,14 @@ const ListTagTable = props => {
 			}),
 			columnHelper.accessor('action', {
 				header: t('title.action'),
+				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
 					return (
 						<div className="flex">
 							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.tag.detail)} />
 							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.tag.detail)} />
-							<CoreActionDelete onClick={() => console.log('============= data', data)} title="asdasd" content='asdasdasd' />
+							<CoreActionDelete />
 						</div>
 					)
 				}

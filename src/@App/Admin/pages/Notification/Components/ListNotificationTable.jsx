@@ -29,7 +29,8 @@ const ListNotificationTable = props => {
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
-				header: t('column.no')
+				header: t('column.no'),
+				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('title', {
 				header: t('column.title')
@@ -46,6 +47,7 @@ const ListNotificationTable = props => {
 			,
 			columnHelper.accessor('action', {
 				header: t('column.action'),
+				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
 					return (

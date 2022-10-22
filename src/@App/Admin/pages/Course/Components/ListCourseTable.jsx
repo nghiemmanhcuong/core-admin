@@ -4,8 +4,8 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import CourseFilter from './CourseFilter'
-import {Link} from 'react-router-dom';
-import ConfirmDialog from "@Core/components/Dialog/ConfirmDialog"
+import { Link } from 'react-router-dom'
+import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
 
 const ListCourseTable = props => {
 	const { t, courseTableHandler } = useAdminPageContext()
@@ -13,7 +13,8 @@ const ListCourseTable = props => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: t('label.no')
+				header: t('label.no'),
+				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('name', {
 				header: t('label.name')
@@ -35,15 +36,16 @@ const ListCourseTable = props => {
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),
+				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
 					return (
 						<div className="flex">
 							<CoreActionView onClick={() => console.log('============= data', data)} />
-							<Link to={`/admin/course/${data.id}`} >
+							<Link to={`/admin/course/${data.id}`}>
 								<CoreActionEdit onClick={() => console.log('============= data', data)} />
 							</Link>
-							<ConfirmDialog title="course" content="Delete course" action={<CoreActionDelete/>} />
+							<ConfirmDialog title="course" content="Delete course" action={<CoreActionDelete />} />
 						</div>
 					)
 				}
@@ -54,11 +56,9 @@ const ListCourseTable = props => {
 	return (
 		<Box>
 			<CourseFilter />
-            <CoreTable isShowPagination columns={columns} {...courseTableHandler}/>
+			<CoreTable isShowPagination columns={columns} {...courseTableHandler} />
 		</Box>
 	)
 }
-
-
 
 export default React.memo(ListCourseTable)

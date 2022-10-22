@@ -30,7 +30,8 @@ const ListSpotTable = props => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: t('label.no')
+				header: t('label.no'),
+				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('code', {
 				header: t('label.code')
@@ -50,7 +51,7 @@ const ListSpotTable = props => {
 			columnHelper.accessor('action', {
 				header: t('label.action'),
 				// size: 200,
-				maxSize: 200,
+				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
 					return (

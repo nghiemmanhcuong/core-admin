@@ -29,10 +29,13 @@ const CoreTableHead = ({ table }) => {
 						return (
 							<CoreTableCell
 								key={header.id}
+								align={header.column.columnDef.align}
 								{...{
 									colSpan: header.colSpan,
+									className: header.column.columnDef.className,
 									style: {
 										width: header.getSize()
+										// textAlign: header.align
 									}
 								}}
 							>
