@@ -91,7 +91,7 @@ const CoreTable = ({
 			{isShowPagination && (
 				<Box className="my-12 flex flex-row-reverse">
 					<Pagination
-						count={Math.ceil(total / pageSize)}
+						count={Math.ceil(total / pageSize) ?? 1}
 						variant="outlined"
 						shape="rounded"
 						onChange={(e, page) => {
