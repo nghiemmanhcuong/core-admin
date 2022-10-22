@@ -1,0 +1,58 @@
+{
+	"title": {
+		"item": "引換アイテム一覧",
+		"filter": "検索条件",
+		"state": "狀態",
+		"name": "引換アイテム名",
+		"area": "エリア",
+		"unit": "通貨単位名"
+	},
+	"column": {
+		"no": "NO",
+		"name": "引換アイテム名",
+		"unit": "引換通貨数",
+		"from_date": "使用可能開始日",
+		"to_date": "使用可能修了日",
+		"inventory": "在庫数",
+		"area": "引換エリア",
+		"action": "スペシャルアクション"
+	},
+	"value": {
+		"express": "表示",
+		"non_representation": "非表示"
+	},
+	"btn": {
+		"search": "検索"
+	},
+	"edit": {
+		"form": {
+			"label": {
+				"id": "引換アイテムID",
+				"name": "引換アイテム名",
+				"description": "引換アイテム説明",
+				"image": "引換アイテム画像",
+				"time": "使用可能期間",
+				"to": "～",
+				"area": "引換エリア",
+				"location": "引換場所名",
+				"address_location": "引換場所住所",
+				"inventory": "在庫数",
+				"exchangeable_currency": "引換可能通貨",
+				"unit": "通貨必要数",
+				"situation": "状態",
+				"creator": "周辺情報作成者"
+			},
+			"check_box": {
+				"label": {
+					"express": "表示",
+					"representation": "非表示"
+				}
+			},
+			"btn": {
+				"selection": "選択",
+				"delete": "削除",
+				"register": "登録"
+			}
+		}
+	}
+}
