@@ -1,5 +1,5 @@
 /*
- * Created Date: 21-10-2022, 10:26:09 pm
+ * Created Date: 22-10-2022, 10:25:43 pm
  * Author: Hai Tran
  * Email: you@you.you
  * -----
@@ -20,23 +20,23 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import NotificationTableFilter from './NotificationTableFilter'
+import ItemTableFilter from './ItemTableFilter'
 // import PropTypes from 'prop-types'
 
-const ListNotificationTable = props => {
+const ListItemTable = props => {
+	const { t, itemTableHandler, handleDeleteItem } = useAdminPageContext()
 	const navigate = useNavigate()
-	const { t, notificationTableHandler, handleDeleteNotification } = useAdminPageContext()
-	const columns = useMemo(() => {
-		return [
+
+	const columns = useMemo(
+		() => [
 			columnHelper.accessor('id', {
-				header: t('column.no'),
-				className: 'w-[5%]'
+				header: t('column.no')
 			}),
-			columnHelper.accessor('title', {
-				header: t('column.title')
+			columnHelper.accessor('name', {
+				header: t('column.name')
 			}),
-			columnHelper.accessor('type', {
-				header: t('column.type')
+			columnHelper.accessor('unit', {
+				header: t('column.unit')
 			}),
 			columnHelper.accessor('from_date', {
 				header: t('column.from_date')
@@ -44,33 +44,40 @@ const ListNotificationTable = props => {
 			columnHelper.accessor('to_date', {
 				header: t('column.to_date')
 			}),
-			,
+			columnHelper.accessor('inventory', {
+				header: t('column.inventory')
+			}),
+			columnHelper.accessor('area', {
+				header: t('column.area')
+			}),
 			columnHelper.accessor('action', {
 				header: t('column.action'),
-				className: 'w-[15%]',
+				maxSize: 200,
 				cell: ({ row }) => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.notification.edit)} />
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.notification.edit)} />
-							<CoreActionDelete onConfirmDelete={() => handleDeleteNotification(data.id)} />
+							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.item.edit)} />
+							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.item.edit)} />
+							<CoreActionDelete onConfirmDelete={() => handleDeleteItem(data.id)} />
 						</div>
 					)
 				}
 			})
-		]
-	}, [t])
+		],
+		[t]
+	)
+
 	return (
 		<Box>
-			<NotificationTableFilter />
-			<CoreTable isShowPagination columns={columns} {...notificationTableHandler} />
+			<ItemTableFilter />
+			<CoreTable isShowPagination columns={columns} {...itemTableHandler} />
 		</Box>
 	)
 }
 
-// ListNotificationTable.defaultProps = {}
+// ListItemTable.defaultProps = {}
 
-// ListNotificationTable.propTypes = {}
+// ListItemTable.propTypes = {}
 
-export default React.memo(ListNotificationTable)
+export default React.memo(ListItemTable)

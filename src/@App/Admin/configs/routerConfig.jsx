@@ -30,6 +30,8 @@ const LazyTagList = React.lazy(() => import('../pages/Tag/ListTag'))
 const LazySurroundingList = React.lazy(() => import('../pages/Surrounding/ListSurrounding'))
 const NotificationList = React.lazy(() => import('../pages/Notification/ListNotification'))
 const NotificationEdit = React.lazy(() => import('../pages/Notification/DetailNotification'))
+const ItemList = React.lazy(() => import('../pages/Item/ListItem'))
+const ItemEdit = React.lazy(() => import('../pages/Item/EditItem'))
 
 // auth
 const LazyLogin = React.lazy(() => import('../pages/Auth/Login'))
@@ -98,5 +100,13 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.notification.edit,
 		element: <NotificationEdit />
+	},
+	{
+		path: ROUTER_ADMIN.item.list,
+		element: <ItemList />
+	},
+	{
+		path: ROUTER_ADMIN.item.edit,
+		element: <ItemEdit />
 	}
 ]

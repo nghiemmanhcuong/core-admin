@@ -47,6 +47,10 @@ export const menuAdminConfig = [
 	{
 		title: 'お知らせ管理',
 		url: ROUTER_ADMIN.notification.list
+	},
+	{
+		title: '引換アイテム管理',
+		url: ROUTER_ADMIN.item.list
 	}
 	// {
 	// 	title: 'Level 1',
