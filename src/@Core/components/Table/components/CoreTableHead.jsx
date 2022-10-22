@@ -27,7 +27,15 @@ const CoreTableHead = ({ table }) => {
 				<CoreTableHeader key={headerGroup.id}>
 					{headerGroup.headers.map(header => {
 						return (
-							<CoreTableCell key={header.id}>
+							<CoreTableCell
+								key={header.id}
+								{...{
+									colSpan: header.colSpan,
+									style: {
+										width: header.getSize()
+									}
+								}}
+							>
 								{header.isPlaceholder
 									? null
 									: flexRender(header.column.columnDef.header, header.getContext())}
