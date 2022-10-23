@@ -46,5 +46,6 @@ export const ROUTER_ADMIN = {
 	},
 	surrounding: {
 		list: basePath + '/surrounding',
-	}
+	},
+	homePage: 'home-page'
 }

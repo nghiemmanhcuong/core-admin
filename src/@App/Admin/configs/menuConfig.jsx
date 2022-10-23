@@ -17,6 +17,10 @@ import { ROUTER_ADMIN } from './constants'
 
 export const menuAdminConfig = [
 	{
+		title: 'ホーム',
+		url: ROUTER_ADMIN.homePage
+	},
+	{
 		title: 'Event',
 		url: ROUTER_ADMIN.event
 	},

@@ -20,6 +20,7 @@ import DetailCurrency from "../pages/Currency/DetailCurrency"
  * ----------	---	----------------------------------------------------------
  */
 
+const LazyHomePage = React.lazy(() => import('../pages/HomePage'))
 const LazyEventList = React.lazy(() => import('../pages/Event/ListPage'))
 const LazySpotList = React.lazy(() => import('../pages/Spot/ListSpot'))
 const LazySpotDetail = React.lazy(() => import('../pages/Spot/EditSpot'))
@@ -81,5 +82,9 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.currency.edit,
 		element: <DetailCurrency />
+	},
+	{
+		path: ROUTER_ADMIN.homePage,
+		element: <LazyHomePage />
 	}
 ]
