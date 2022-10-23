@@ -68,5 +68,6 @@ export const ROUTER_ADMIN = {
 	maintaince: {
 		list: basePath + '/maintaince',
 		config: basePath + '/maintaince/config'
-	}
+	},
+	homePage: 'home-page'
 }
