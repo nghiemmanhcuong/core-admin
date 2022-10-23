@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Sun Oct 23 2022
- * Modified By: use
+ * Last Modified: Mon Oct 24 2022
+ * Modified By: Peter
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -13,33 +13,62 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { Box, Typography } from "@mui/material";
-import React from "react";
-import ChartOverview from "./ChartOverview";
-import ChartPartners from "./ChartPartners";
-import ChartSale from "./ChartSale";
+import AdminContentPage from '@App/Admin/components/Layout/AdminContentPage'
+import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material'
+import React from 'react'
+import ChartOverview from './ChartOverview'
+import ChartPartners from './ChartPartners'
+import ChartSale from './ChartSale'
 
-
-const HomePage = (props) => {
-    
- return <Box className='flex flex-wrap mt-40'>
-    <Box className='w-[700px] mr-160  p-40 shadow-2xl'>
-        <Typography variant='subtitle2' className="mb-12">SALES</Typography>
-        <Typography variant='h4' className="mb-40">アプリ登録者数</Typography>
-        <ChartSale />
-
-    </Box>  
-    <Box className='w-[700px] p-40  shadow-2xl'>
-        <Typography variant='subtitle2' className="mb-12">OVERVIEW</Typography>
-        <Typography variant='h4' className="mb-40">エントリー数</Typography>
-        <ChartOverview />
-    </Box>
-    <Box className='w-[700px] p-40 mt-80  shadow-2xl'>
-        <Typography variant='subtitle2' className="mb-12">PARTNERS</Typography>
-        <Typography variant='h4' className="mb-40">XXXXXXXXX</Typography>
-        <ChartPartners />
-    </Box>
- </Box>
+const HomePage = props => {
+	return (
+		<AdminContentPage
+			pageTitle="Dashboard"
+			content={
+				<Box className="flex flex-wrap mt-40">
+					<Box className="w-full sm:w-1/2 px-12 mb-40">
+						<Card>
+							<CardContent>
+								<Typography variant="subtitle2" className="mb-12">
+									SALES
+								</Typography>
+								<Typography variant="h4" className="mb-40">
+									アプリ登録者数
+								</Typography>
+								<ChartSale />
+							</CardContent>
+						</Card>
+					</Box>
+					<Box className="w-full sm:w-1/2  px-12 mb-40">
+						<Card>
+							<CardContent>
+								<Typography variant="subtitle2" className="mb-12">
+									OVERVIEW
+								</Typography>
+								<Typography variant="h4" className="mb-40">
+									エントリー数
+								</Typography>
+								<ChartOverview />
+							</CardContent>
+						</Card>
+					</Box>
+					<Box className="w-full sm:w-1/2 px-12 mb-40">
+						<Card>
+							<CardContent>
+								<Typography variant="subtitle2" className="mb-12">
+									PARTNERS
+								</Typography>
+								<Typography variant="h4" className="mb-40">
+									XXXXXXXXX
+								</Typography>
+								<ChartPartners />
+							</CardContent>
+						</Card>
+					</Box>
+				</Box>
+			}
+		/>
+	)
 }
 
 // HomePage.defaultProps = {}
