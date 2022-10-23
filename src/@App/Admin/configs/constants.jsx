@@ -52,7 +52,7 @@ export const ROUTER_ADMIN = {
 		detail: basePath + '/tags/detail'
 	},
 	surrounding: {
-		list: basePath + '/surrounding',
+		list: basePath + '/surrounding'
 	},
 	mission: {
 		list: basePath + '/mission'
@@ -69,5 +69,5 @@ export const ROUTER_ADMIN = {
 		list: basePath + '/maintaince',
 		config: basePath + '/maintaince/config'
 	},
-	homePage: 'home-page'
+	homePage: basePath + '/home-page'
 }
