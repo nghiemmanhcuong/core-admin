@@ -52,7 +52,7 @@ const EditItemForm = props => {
 
 	return (
 		<Box>
-			<Box sx={{ padding: 2 }}>
+			<Box sx={{ padding: 2 }} className="max-w-lg mx-auto">
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary">
@@ -86,14 +86,13 @@ const EditItemForm = props => {
 					/>
 				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.image')}
-						</Typography>
-					</Box>
-					<AdminInputUpload control={control} name="image" size="small" className="w-full sm:w-2/3" />
-				</Box>
+				<AdminInputUpload
+					label={t('edit.form.label.image')}
+					control={control}
+					name="image"
+					size="small"
+					className="w-full sm:w-2/3"
+				/>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
