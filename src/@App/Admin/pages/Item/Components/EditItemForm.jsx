@@ -127,11 +127,7 @@ const EditItemForm = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography
-							variant="h3"
-							color="primary"
-							className="self-center w-full sm:py-0 sm:w-1/3 sm:text-center"
-						>
+						<Typography variant="h3" color="primary">
 							{t('edit.form.label.area')}
 						</Typography>
 					</Box>
@@ -177,11 +173,7 @@ const EditItemForm = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography
-							variant="h3"
-							color="primary"
-							className="self-center w-full sm:py-0 sm:w-1/3 sm:text-center"
-						>
+						<Typography variant="h3" color="primary">
 							{t('edit.form.label.exchangeable_currency')}
 						</Typography>
 					</Box>

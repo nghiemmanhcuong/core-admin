@@ -60,7 +60,7 @@ const MaintainceForm = props => {
 	})
 
 	return (
-		<Box>
+		<Box className="max-w-lg mx-auto">
 			<Box className="flex flex-wrap" sx={{ padding: 2 }}>
 				<Box className="flex w-full flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
