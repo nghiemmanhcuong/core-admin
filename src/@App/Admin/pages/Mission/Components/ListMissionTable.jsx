@@ -36,13 +36,7 @@ const ListMissionTable = props => {
 				header: t('label.name')
 			}),
 			columnHelper.accessor('name', {
-				header: t('label.area')
-			}),
-			columnHelper.accessor('address', {
-				header: t('label.type')
-			}),
-			columnHelper.accessor('phone', {
-				header: t('label.lat_long')
+				header: t('label.condition')
 			})
 		]
 	}, [t])

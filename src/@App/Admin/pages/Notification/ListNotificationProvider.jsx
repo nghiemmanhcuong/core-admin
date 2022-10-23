@@ -1,7 +1,7 @@
 /*
- * Created Date: 12-10-2022, 3:17:29 pm
- * Author: Peter
- * Email: phantrung696@gmail.com
+ * Created Date: 21-10-2022, 10:23:27 pm
+ * Author: Hai Tran
+ * Email: you@you.you
  * -----
  * Last Modified:
  * Modified By:
@@ -14,46 +14,46 @@
  */
 
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
-import { spotSerivce } from '@App/Admin/services/spotService'
+import { notificationService } from '@App/Admin/services/notificationService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
 // import PropTypes from 'prop-types'
 
-const ListSpotProvider = props => {
-	const requestSpots = useRequest(spotSerivce.list, {
+const ListNotificationProvider = props => {
+	const requestNotifications = useRequest(notificationService.list, {
 		manual: true
 	})
 
-	const { runAsync: handleDeleteSpot } = useRequest(spotSerivce.delete, {
+	const notificationTableHandler = useCoreTable(requestNotifications)
+
+	const { runAsync: handleDeleteNotification } = useRequest(notificationService.delete, {
 		manual: true,
 		onSuccess: res => {
 			successMsg('Deleted successfully')
-			spotTableHandler.handleFetchData()
+			notificationTableHandler.handleFetchData()
 		},
-		onError: res => {
-			errorMsg('Deleted failed')
+		onError: err => {
+			errorMsg('Delete failed')
 		}
 	})
 
-	const spotTableHandler = useCoreTable(requestSpots)
-
 	useEffect(() => {
-		spotTableHandler.handleFetchData()
+		notificationTableHandler.handleFetchData()
 	}, [])
 
 	const data = {
-		spotTableHandler,
-		handleDeleteSpot,
+		notificationTableHandler,
+		handleDeleteNotification,
 		...props
 	}
 
 	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>
 }
 
-//ListSpotProvider.defaultProps = {}
+// ListNotificationProvider.defaultProps = {}
 
-//ListSpotProvider.propTypes = {}
+// ListNotificationProvider.propTypes = {}
 
-export default React.memo(ListSpotProvider)
+export default React.memo(ListNotificationProvider)

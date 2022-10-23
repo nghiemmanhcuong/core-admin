@@ -13,7 +13,7 @@
  * ----------	---	----------------------------------------------------------
  */
 // import TableHeader from '@crema/core/AppTable/TableHeader'
-import { CircularProgress, Table, TableContainer, TablePagination } from '@mui/material'
+import { Box, CircularProgress, Pagination, Table, TableContainer, TablePagination } from '@mui/material'
 import { createColumnHelper, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { useUpdateEffect } from 'ahooks'
 
@@ -64,11 +64,6 @@ const CoreTable = ({
 		debugTable: true
 	})
 
-	useUpdateEffect(() => {
-		// console.log('============= table', table.setCo())
-		// rerender()
-	}, [columns])
-
 	return (
 		<CoreTableContext.Provider value={{ table, t }}>
 			<CoreTableToolbar handleFetchData={handleFetchData} />
@@ -85,34 +80,47 @@ const CoreTable = ({
 					<CoreTableBody table={table} />
 				</Table>
 				{loading && (
-					<div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-99 table-loading">
-						<CircularProgress />
-					</div>
+					<>
+						<div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center z-99 table-loading">
+							<CircularProgress />
+						</div>
+						<div className="absolute top-0 bottom-0 left-0 right-0 bg-primary-50 opacity-30" />
+					</>
 				)}
 			</TableContainer>
 			{isShowPagination && (
-				<TablePagination
-					component="div"
-					classes={{
-						root: 'flex-shrink-0'
-					}}
-					rowsPerPageOptions={[]}
-					colSpan={5}
-					count={total ?? 0}
-					rowsPerPage={pageSize}
-					page={pageIndex}
-					SelectProps={{
-						inputProps: { 'aria-label': 'rows per page' },
-						native: false
-					}}
-					lang="vi"
-					onPageChange={(event, newPage) => {
-						handleFetchData({ page: newPage + 1 })
-					}}
-					onRowsPerPageChange={event => {
-						handleFetchData({ size: Number(event.target.value) })
-					}}
-				/>
+				<Box className="my-12 flex flex-row-reverse">
+					<Pagination
+						count={Math.ceil(total / pageSize) ?? 1}
+						variant="outlined"
+						shape="rounded"
+						onChange={(e, page) => {
+							handleFetchData({ page })
+						}}
+					/>
+				</Box>
+				// <TablePagination
+				// 	component="div"
+				// 	classes={{
+				// 		root: 'flex-shrink-0'
+				// 	}}
+				// 	rowsPerPageOptions={[]}
+				// 	colSpan={5}
+				// 	count={total ?? 0}
+				// 	rowsPerPage={pageSize}
+				// 	page={pageIndex}
+				// 	SelectProps={{
+				// 		inputProps: { 'aria-label': 'rows per page' },
+				// 		native: false
+				// 	}}
+				// 	lang="vi"
+				// 	onPageChange={(event, newPage) => {
+				// 		handleFetchData({ page: newPage + 1 })
+				// 	}}
+				// 	onRowsPerPageChange={event => {
+				// 		handleFetchData({ size: Number(event.target.value) })
+				// 	}}
+				// />
 			)}
 		</CoreTableContext.Provider>
 	)

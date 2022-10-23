@@ -30,7 +30,8 @@ const ListSurroundingTable = props => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: t('label.no')
+				header: t('label.no'),
+				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('code', {
 				header: t('label.name')
@@ -55,8 +56,8 @@ const ListSurroundingTable = props => {
 				{/* <Typography variant="h3" color="primary" className='px-40' sx={{ border: '1px solid #cccc' }}>
 					{t('edit.form.label.situation')}
 				</Typography> */}
-				<TextField type="file"/>
-				<Button variant="contained" color="primary" className="ml-[2px]" >
+				<TextField type="file" />
+				<Button variant="contained" color="primary" className="ml-[2px]">
 					{t('btn.upload')}
 				</Button>
 			</Box>

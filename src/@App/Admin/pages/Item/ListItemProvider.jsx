@@ -1,7 +1,7 @@
 /*
- * Created Date: 12-10-2022, 3:17:29 pm
- * Author: Peter
- * Email: phantrung696@gmail.com
+ * Created Date: 22-10-2022, 9:52:04 pm
+ * Author: Hai Tran
+ * Email: you@you.you
  * -----
  * Last Modified:
  * Modified By:
@@ -14,46 +14,46 @@
  */
 
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
-import { spotSerivce } from '@App/Admin/services/spotService'
+import { itemService } from '@App/Admin/services/itemService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
 // import PropTypes from 'prop-types'
 
-const ListSpotProvider = props => {
-	const requestSpots = useRequest(spotSerivce.list, {
+const ListItemProvider = props => {
+	const requestItems = useRequest(itemService.list, {
 		manual: true
 	})
 
-	const { runAsync: handleDeleteSpot } = useRequest(spotSerivce.delete, {
+	const itemTableHandler = useCoreTable(requestItems)
+
+	const { runAsync: handleDeleteItem } = useRequest(itemService.delete, {
 		manual: true,
 		onSuccess: res => {
 			successMsg('Deleted successfully')
-			spotTableHandler.handleFetchData()
+			itemTableHandler.handleFetchData()
 		},
-		onError: res => {
-			errorMsg('Deleted failed')
+		onError: err => {
+			errorMsg('Delete failed')
 		}
 	})
 
-	const spotTableHandler = useCoreTable(requestSpots)
-
 	useEffect(() => {
-		spotTableHandler.handleFetchData()
+		itemTableHandler.handleFetchData()
 	}, [])
 
 	const data = {
-		spotTableHandler,
-		handleDeleteSpot,
+		itemTableHandler,
+		handleDeleteItem,
 		...props
 	}
 
 	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>
 }
 
-//ListSpotProvider.defaultProps = {}
+// ListItemProvider.defaultProps = {}
 
-//ListSpotProvider.propTypes = {}
+// ListItemProvider.propTypes = {}
 
-export default React.memo(ListSpotProvider)
+export default React.memo(ListItemProvider)

@@ -24,13 +24,14 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const ListSpotTable = props => {
-	const { t, spotTableHandler } = useAdminPageContext()
+	const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
 	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: t('label.no')
+				header: t('label.no'),
+				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('code', {
 				header: t('label.code')
@@ -49,13 +50,15 @@ const ListSpotTable = props => {
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),
+				// size: 200,
+				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
 					return (
 						<div className="flex">
 							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.spot.edit)} />
 							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.spot.edit)} />
-							<CoreActionDelete onClick={() => console.log('============= data', data)} />
+							<CoreActionDelete onConfirmDelete={() => handleDeleteSpot(data.id)} />
 						</div>
 					)
 				}

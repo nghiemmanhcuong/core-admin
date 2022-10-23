@@ -47,5 +47,23 @@ export const menuAdminConfig = [
 	{
 		title: 'ミッション管理',
 		url: ROUTER_ADMIN.mission.list
+	},
+	{
+		title: 'お知らせ管理',
+		url: ROUTER_ADMIN.notification.list	
+	},
+	{
+		title: '引換アイテム管理',
+		url: ROUTER_ADMIN.item.list
 	}
+	// {
+	// 	title: 'Level 1',
+	// 	type: 'collapse',
+	// 	children: [
+	// 		{
+	// 			title: 'Level 2',
+	// 			url: '/level-2'
+	// 		}
+	// 	]
+	// }
 ]

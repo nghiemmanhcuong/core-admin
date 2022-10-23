@@ -2,9 +2,9 @@ import { ROUTER_ADMIN } from './constants'
 import ListCourse from '../pages/Course/ListCourse'
 import DetailCourse from '../pages/Course/DetailCourse'
 import React from 'react'
-import DetailEvent from "../pages/Event/DetailEvent"
-import ListCurrency from "../pages/Currency/ListPage"
-import DetailCurrency from "../pages/Currency/DetailCurrency"
+import DetailEvent from '../pages/Event/DetailEvent'
+import ListCurrency from '../pages/Currency/ListPage'
+import DetailCurrency from '../pages/Currency/DetailCurrency'
 /*
  * Created Date: 11-10-2022, 12:22:10 am
  * Author: Peter
@@ -29,6 +29,13 @@ const LazyTagDetail = React.lazy(() => import('../pages/Tag/DetailTag'))
 const LazyTagList = React.lazy(() => import('../pages/Tag/ListTag'))
 const LazySurroundingList = React.lazy(() => import('../pages/Surrounding/ListSurrounding'))
 const LazyMissionList = React.lazy(() => import('../pages/Mission/ListMission'))
+const NotificationList = React.lazy(() => import('../pages/Notification/ListNotification'))
+const NotificationEdit = React.lazy(() => import('../pages/Notification/DetailNotification'))
+const ItemList = React.lazy(() => import('../pages/Item/ListItem'))
+const ItemEdit = React.lazy(() => import('../pages/Item/EditItem'))
+
+// auth
+const LazyLogin = React.lazy(() => import('../pages/Auth/Login'))
 
 export const routerAdminConfig = [
 	{
@@ -86,5 +93,25 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.mission.list,
 		element: <LazyMissionList />
+	},
+	{
+		path: ROUTER_ADMIN.auth.login,
+		element: <LazyLogin />
+	},
+	{
+		path: ROUTER_ADMIN.notification.list,
+		element: <NotificationList />
+	},
+	{
+		path: ROUTER_ADMIN.notification.edit,
+		element: <NotificationEdit />
+	},
+	{
+		path: ROUTER_ADMIN.item.list,
+		element: <ItemList />
+	},
+	{
+		path: ROUTER_ADMIN.item.edit,
+		element: <ItemEdit />
 	}
 ]

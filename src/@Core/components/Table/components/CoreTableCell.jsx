@@ -28,7 +28,7 @@ const StyledTableCell = styled(TableCell)(() => ({
 	}
 }))
 const CoreTableCell = props => {
-	return <StyledTableCell>{props.children}</StyledTableCell>
+	return <StyledTableCell {...props}>{props.children}</StyledTableCell>
 }
 
 //CoreTableCell.defaultProps = {}
