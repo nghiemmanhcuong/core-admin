@@ -51,6 +51,14 @@ export const menuAdminConfig = [
 	{
 		title: '引換アイテム管理',
 		url: ROUTER_ADMIN.item.list
+	},
+	{
+		title: 'メンテナンス管理',
+		url: ROUTER_ADMIN.maintaince.list
+	},
+	{
+		title: 'メンテナンス・コンフィグ',
+		url: ROUTER_ADMIN.maintaince.config
 	}
 	// {
 	// 	title: 'Level 1',

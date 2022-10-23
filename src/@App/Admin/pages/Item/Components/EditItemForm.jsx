@@ -14,6 +14,7 @@
  */
 
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
+import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import CoreInput from '@Core/components/Input/CoreInput'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
@@ -91,7 +92,7 @@ const EditItemForm = props => {
 							{t('edit.form.label.image')}
 						</Typography>
 					</Box>
-					// TODO
+					<AdminInputUpload control={control} name="image" size="small" className="w-full sm:w-2/3" />
 				</Box>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
