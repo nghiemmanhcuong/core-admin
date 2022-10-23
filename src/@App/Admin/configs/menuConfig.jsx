@@ -43,5 +43,9 @@ export const menuAdminConfig = [
 	{
 		title: 'Currency',
 		url: ROUTER_ADMIN.currency.list
+	},
+	{
+		title: 'ミッション管理',
+		url: ROUTER_ADMIN.mission.list
 	}
 ]
