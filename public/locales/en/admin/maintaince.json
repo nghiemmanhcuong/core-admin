@@ -1,0 +1,59 @@
+{
+	"title": {
+		"event": "イベント実績",
+		"maintaince": "メンテナンス管理"
+	},
+	"btn": {
+		"csv_output": "CSV出力"
+	},
+	"edit": {
+		"form": {
+			"label": {
+				"period": "集計期間",
+				"to": "～",
+				"report_display": "レポート表示",
+				"event_selection": "インベント選択",
+				"event_page_data": "インベントページデータ",
+				"entry_settlement_data": "エントリ/決済データ",
+				"play_data": "プレイデータ",
+				"in_app_currency_usage_data": "アプリ内通貨利用データ",
+				"whole_app": "アプリ全体",
+				"maintenance_status": "メンテナンス状態"
+			},
+			"check_box": {
+				"label": {
+					"whole_period": "全期間",
+					"specified_period": "指定期間",
+					"daily": "日次",
+					"weekly": "週次",
+					"monthly": "月次",
+					"total": "通算",
+					"currently_undergoing_maintenance": "現在メンテナンス中である",
+					"not_under_maintenance": "メンテナンス中ではない"
+				},
+				"value": {
+					"number_of_event_page_views": "イベントページ閲覧数 (PV/UU)",
+					"number_of_favorites_added": "お気に入り追加数",
+					"number_of_entry_page_transitions": "エントリーページ遷移数",
+					"user_registration_information": "申込/決済ユーザ登録情報",
+					"number_of_applications_settlements": "申込数/決済数",
+					"application_payer_attributes": "申込/決済者属性",
+					"list_of_application_information": "申込情報一覧リスト",
+					"number_of_starts_checkins_clears": "スタート数/チェックイン数/クリア数",
+					"player_attribute": "プレイ者属性",
+					"usage_data_by_spot": "スポートごとの利用データ（チェックイン回数）",
+					"number_of_product_exchanges_per_store_exchange_user_information": "店舗別商品引換数/引換ユーザ情報",
+					"inventory_and_limit_setting_by_product": "商品別在庫/上限設定",
+					"total_number_of_installs": "全インストール数",
+					"user_attributes_of_all_installers": "全インストール者の利用者属性",
+					"overall_app_revenue": "アプリ全体収益",
+					"dau": "DAU",
+					"wau": "WAU",
+					"mau": "MAU",
+					"revenue_composition_event_breakdown": "収益構成イベント内訳",
+					"breakdown_of_play_events_for_active_users": "アクティブユーザのプレイイベント内訳"
+				}
+			}
+		}
+	}
+}
