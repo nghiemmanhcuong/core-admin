@@ -19,13 +19,13 @@ import { surroundingFactory } from './factory/surroundingFactory'
 class Surrounding extends BaseService {
 	BASE_URL = '/'
 
-	BASE_ENDPOINT = '/api/v1/admin/surrounding'
+	BASE_ENDPOINT = '/api/resource/surroundingInfo'
 
 	constructor(params) {
 		super(params)
 		this.setRequest()
-		this.createFactory(surroundingFactory)
-		this.setMockAdapter()
+		// this.createFactory(surroundingFactory)
+		// this.setMockAdapter()
 	}
 }
 

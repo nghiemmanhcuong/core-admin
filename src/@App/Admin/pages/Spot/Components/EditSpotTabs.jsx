@@ -105,7 +105,13 @@ const EditSpotTabs = props => {
 									{t('edit.form.label.description')}
 								</Typography>
 							</Box>
-							<CoreInput control={control} name="description" size="small" multiline className="w-full sm:w-2/3" />
+							<CoreInput
+								control={control}
+								name="description"
+								size="small"
+								multiline
+								className="w-full sm:w-2/3"
+							/>
 						</Box>
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
@@ -134,7 +140,7 @@ const EditSpotTabs = props => {
 							<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
 								<FormGroup row>
 									<CoreCheckbox
-										className='w-1/2'
+										className="w-1/2"
 										control={control}
 										name="category"
 										size="small"
@@ -142,7 +148,7 @@ const EditSpotTabs = props => {
 										label={t('edit.form.check_box.label.men')}
 									/>
 									<CoreCheckbox
-										className='w-1/2'
+										className="w-1/2"
 										control={control}
 										name="category"
 										size="small"
@@ -151,7 +157,7 @@ const EditSpotTabs = props => {
 									/>
 									<CoreCheckbox
 										control={control}
-										className='w-1/2'
+										className="w-1/2"
 										name="category"
 										size="small"
 										value={3}
@@ -159,7 +165,7 @@ const EditSpotTabs = props => {
 									/>
 									<CoreCheckbox
 										control={control}
-										className='w-1/2'
+										className="w-1/2"
 										name="category"
 										size="small"
 										value={4}
@@ -185,8 +191,10 @@ const EditSpotTabs = props => {
 									name="venue"
 									className="w-full sm:w-1/3"
 								/>
-								<Typography variant="h3" color="primary" 
-								className="self-center w-full py-10 sm:py-0 sm:w-1/3 sm:text-center"
+								<Typography
+									variant="h3"
+									color="primary"
+									className="self-center w-full py-10 sm:py-0 sm:w-1/3 sm:text-center"
 								>
 									{t('edit.form.label.type')}
 								</Typography>
@@ -271,9 +279,18 @@ const EditSpotTabs = props => {
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex flex-wrap">
-								<CoreInput control={control} name="entry_fee"
-								 fullWidth size="small" className='w-full sm:w-1/3'/>
-								<Typography variant="h3" color="primary" className='w-full py-10 sm:py-0 sm:w-1/3 self-center sm:text-center'>
+								<CoreInput
+									control={control}
+									name="entry_fee"
+									fullWidth
+									size="small"
+									className="w-full sm:w-1/3"
+								/>
+								<Typography
+									variant="h3"
+									color="primary"
+									className="w-full py-10 sm:py-0 sm:w-1/3 self-center sm:text-center"
+								>
 									{t('edit.form.label.payment')}
 								</Typography>
 								<Box className="w-full rounded-md pl-10 sm:w-1/3" sx={{ border: '1px solid #cccc' }}>
@@ -304,7 +321,10 @@ const EditSpotTabs = props => {
 									{t('edit.form.label.entry_option')}
 								</Typography>
 							</Box>
-							<Box className="w-full rounded-md pl-10 sm:w-2/3 flex flex-wrap py-10" sx={{ border: '1px solid #cccc' }}>
+							<Box
+								className="w-full rounded-md pl-10 sm:w-2/3 flex flex-wrap py-10"
+								sx={{ border: '1px solid #cccc' }}
+							>
 								<Box className="w-full flex flex-wrap py-10">
 									<CoreCheckbox
 										control={control}
@@ -313,26 +333,21 @@ const EditSpotTabs = props => {
 										label={t('edit.form.check_box.label.bicycle_rental')}
 										className="w-2/4"
 									/>
-									<CoreInput
-										control={control}
-										name="bicycle_circle"
-										size="small"
-										className="w-1/3"
-									/>
-									<Typography variant="h3" className='self-center ml-5'>
+									<CoreInput control={control} name="bicycle_circle" size="small" className="w-1/3" />
+									<Typography variant="h3" className="self-center ml-5">
 										{t('edit.form.label.circle')}
 									</Typography>
 								</Box>
-								
+
 								<Box className="w-full flex flex-wrap py-10">
-									<CoreCheckbox control={control} name="xxx"
-									size="small" className="w-2/4" label="XXXXXXX" />
-									<CoreInput
+									<CoreCheckbox
 										control={control}
-										name="xxx_circle"
+										name="xxx"
 										size="small"
-										className="w-1/3"
+										className="w-2/4"
+										label="XXXXXXX"
 									/>
+									<CoreInput control={control} name="xxx_circle" size="small" className="w-1/3" />
 									<Typography variant="h3" className="self-center ml-5">
 										{t('edit.form.label.circle')}
 									</Typography>
@@ -347,12 +362,7 @@ const EditSpotTabs = props => {
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex flex-nowrap">
-								<CoreInput
-									control={control}
-									name="mission"
-									size="small"
-									className="w-4/5"
-								/>
+								<CoreInput control={control} name="mission" size="small" className="w-4/5" />
 								<Button variant="contained" color="primary" className="ml-auto w-1/5">
 									{t('edit.form.btn.selection')}
 								</Button>
@@ -366,12 +376,7 @@ const EditSpotTabs = props => {
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex flex-nowrap">
-								<CoreInput
-									control={control}
-									name="reward"
-									size="small"
-									className="w-4/5"
-								/>
+								<CoreInput control={control} name="reward" size="small" className="w-4/5" />
 								<Button variant="contained" color="primary" className="ml-auto w-1/5">
 									{t('edit.form.btn.selection')}
 								</Button>
@@ -390,28 +395,28 @@ const EditSpotTabs = props => {
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.spring_available')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.best_view')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.autumn')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.beginners')}
 									/>
 								</FormGroup>
@@ -420,28 +425,28 @@ const EditSpotTabs = props => {
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.spring_available')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.best_view')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.autumn')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.beginners')}
 									/>
 								</FormGroup>
@@ -450,28 +455,28 @@ const EditSpotTabs = props => {
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.spring_available')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.best_view')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.autumn')}
 									/>
 									<CoreCheckbox
 										control={control}
 										name="tag"
 										size="small"
-										className='w-1/2 sm:w-auto'
+										className="w-1/2 sm:w-auto"
 										label={t('edit.form.check_box.label.beginners')}
 									/>
 								</FormGroup>
@@ -484,7 +489,13 @@ const EditSpotTabs = props => {
 									{t('edit.form.label.precautions')}
 								</Typography>
 							</Box>
-							<CoreInput control={control} name="precautions" size="small" multiline className="w-full sm:w-2/3" />
+							<CoreInput
+								control={control}
+								name="precautions"
+								size="small"
+								multiline
+								className="w-full sm:w-2/3"
+							/>
 						</Box>
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
@@ -529,12 +540,7 @@ const EditSpotTabs = props => {
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex flex-nowrap">
-								<CoreInput
-									control={control}
-									name="creator"
-									size="small"
-									className="w-4/5"
-								/>
+								<CoreInput control={control} name="creator" size="small" className="w-4/5" />
 								<Button variant="contained" color="primary" className="ml-auto w-1/5">
 									{t('edit.form.btn.selection')}
 								</Button>

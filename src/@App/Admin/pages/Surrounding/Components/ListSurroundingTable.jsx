@@ -33,17 +33,20 @@ const ListSurroundingTable = props => {
 				header: t('label.no'),
 				className: 'w-[5%]'
 			}),
-			columnHelper.accessor('code', {
+			columnHelper.accessor('name', {
 				header: t('label.name')
 			}),
-			columnHelper.accessor('name', {
+			columnHelper.accessor('address', {
 				header: t('label.area')
 			}),
-			columnHelper.accessor('address', {
+			columnHelper.accessor('type', {
 				header: t('label.type')
 			}),
-			columnHelper.accessor('phone', {
-				header: t('label.lat_long')
+			columnHelper.accessor('position', {
+				header: t('label.lat_long'),
+				cell: ({ row }) => {
+					return `${row?.original?.location_info_latitude} ・ ${row?.original?.location_info_longitude}`
+				}
 			})
 		]
 	}, [t])
@@ -51,7 +54,12 @@ const ListSurroundingTable = props => {
 	return (
 		<Box>
 			<SurroundingTableFilter />
-			<CoreTable isShowPagination columns={columns} {...surroundingTableHandler} />
+			<CoreTable
+				isShowPagination
+				columns={columns}
+				{...surroundingTableHandler}
+				data={surroundingTableHandler?.surrounding_info}
+			/>
 			<Box className="flex justify-end">
 				{/* <Typography variant="h3" color="primary" className='px-40' sx={{ border: '1px solid #cccc' }}>
 					{t('edit.form.label.situation')}
