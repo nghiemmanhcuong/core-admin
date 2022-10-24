@@ -15,29 +15,36 @@ const ListEventTable = props => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: 'No',
+				header: t('column.no'),
 				className: 'w-[5%]'
 			}),
-			columnHelper.accessor('name', {
-				header: 'イベントタイトル'
+			columnHelper.accessor('title', {
+				header: t('column.title')
 			}),
-			columnHelper.accessor('area', {
-				header: '開催地'
+			columnHelper.accessor('venue', {
+				header: t('column.venue')
 			}),
-			columnHelper.accessor('range', {
-				header: '開催年月日'
+			columnHelper.accessor('event_start', {
+				header: t('column.event_start')
 			}),
-			columnHelper.accessor('amount', {
-				header: '受付年月日'
+			columnHelper.accessor('event_end', {
+				header: t('column.event_end')
 			}),
-			columnHelper.accessor('physical', {
-				header: 'タグ情報'
+			columnHelper.accessor('tag', {
+				header: t('column.tag'),
+				cell: ({ row }) => {
+					return row?.original?.tag
+						?.map((item, index) => {
+							return `${item} ${index === row?.original?.tag?.length - 1 ? '' : ', '}`
+						})
+						.join('')
+				}
 			}),
 			columnHelper.accessor('author', {
-				header: '状態'
+				header: t('column.author')
 			}),
 			columnHelper.accessor('action', {
-				header: t('label.action'),
+				header: t('column.action'),
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
@@ -56,7 +63,7 @@ const ListEventTable = props => {
 	return (
 		<Box>
 			<EventFilter />
-			<CoreTable isShowPagination columns={columns} {...eventTableHandler} />
+			<CoreTable isShowPagination columns={columns} {...eventTableHandler} data={eventTableHandler?.events} />
 		</Box>
 	)
 }

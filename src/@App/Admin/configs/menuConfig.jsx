@@ -22,7 +22,7 @@ export const menuAdminConfig = [
 	},
 	{
 		title: 'イベント情報管理',
-		url: ROUTER_ADMIN.event
+		url: ROUTER_ADMIN.event.list
 	},
 	{
 		title: 'コース情報管理',
@@ -54,7 +54,7 @@ export const menuAdminConfig = [
 	},
 	{
 		title: 'お知らせ管理',
-		url: ROUTER_ADMIN.notification.list	
+		url: ROUTER_ADMIN.notification.list
 	},
 	{
 		title: 'アカウント管理',

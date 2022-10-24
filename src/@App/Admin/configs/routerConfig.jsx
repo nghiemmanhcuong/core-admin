@@ -42,11 +42,11 @@ const LazyLogin = React.lazy(() => import('../pages/Auth/Login'))
 
 export const routerAdminConfig = [
 	{
-		path: ROUTER_ADMIN.event,
+		path: ROUTER_ADMIN.event.list,
 		element: <LazyEventList />
 	},
 	{
-		path: ROUTER_ADMIN.eventDetail,
+		path: ROUTER_ADMIN.event.detail,
 		element: <DetailEvent />
 	},
 	{

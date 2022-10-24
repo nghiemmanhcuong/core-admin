@@ -31,8 +31,10 @@ export const ROUTER_ADMIN = {
 	auth: {
 		login: basePath + '/login'
 	},
-	event: basePath + '/event',
-	eventDetail: basePath + '/event/:id',
+	event: {
+		list: basePath + '/event',
+		detail: basePath + '/event/:id'
+	},
 	spot: {
 		list: basePath + '/spot',
 		edit: basePath + '/spot/:id'
@@ -82,5 +84,4 @@ export const ROUTER_ADMIN = {
 		list: basePath + '/performance',
 		edit: basePath + '/performance/:id'
 	}
-	
 }

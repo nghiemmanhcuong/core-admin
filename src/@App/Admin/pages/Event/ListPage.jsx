@@ -4,13 +4,15 @@ import { useTranslation } from 'react-i18next'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
 // import TableFilter from './Components/SpotTableFilter'
 // import { Box } from '@mui/system'
-import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListEventProvider from './ListEventProvider'
 import ListEventTable from './Components/ListEventTable'
 import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const ListCourse = props => {
-    const { t } = useTranslation(TRANSLATE_ADMIN.course)
+	const { t } = useTranslation(TRANSLATE_ADMIN.course)
+	const navigate = useNavigate()
 	return (
 		<ListEventProvider t={t}>
 			<AdminContentPage
@@ -19,7 +21,7 @@ const ListCourse = props => {
 					<Button
 						variant="contained"
 						color="primary"
-						onClick={() => console.log('============= navigate page add new')}
+						onClick={() => navigate(ROUTER_ADMIN.event.list + '/new')}
 					>
 						{t('common:btn.new')}
 					</Button>
@@ -29,7 +31,5 @@ const ListCourse = props => {
 		</ListEventProvider>
 	)
 }
-
-
 
 export default React.memo(ListCourse)
