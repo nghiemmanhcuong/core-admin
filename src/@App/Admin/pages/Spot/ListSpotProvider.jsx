@@ -23,7 +23,10 @@ import React, { useEffect } from 'react'
 
 const ListSpotProvider = props => {
 	const requestSpots = useRequest(spotSerivce.list, {
-		manual: true
+		manual: true,
+		onSuccess: res => {
+			requestSpots.mutate({ ...res, data: res?.spot ?? [] })
+		}
 	})
 
 	const { runAsync: handleDeleteSpot } = useRequest(spotSerivce.delete, {

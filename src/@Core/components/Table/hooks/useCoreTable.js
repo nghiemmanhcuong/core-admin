@@ -16,33 +16,25 @@
 // import { DEFAULT_PAGE_SIZE } from '@App/core/constants'
 
 import { DEFAULT_RESPONSE } from '@Core/api/BaseService'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 // import { useConfirm } from '../../Confirm/CoreConfirm'
 
 let params = {
-	size: 10
+	per_page: 10
 }
-const useCoreTable = (requestFetchData, options = { isQueryUrl: true, tableId: '', page: 1, size: 10 }) => {
+const useCoreTable = requestFetchData => {
 	const { t } = useTranslation('common')
-	const baseConfigs = useMemo(
-		() => ({
-			isQueryUrl: true,
-			deleteConfirmMsg: t('table.delete_confirm'),
-			onConfirmDelete: async () => {},
-			...options
-		}),
-		[options]
-	)
 
-	const { data = DEFAULT_RESPONSE, loading, run } = requestFetchData
+	const { data = DEFAULT_RESPONSE, loading, runAsync } = requestFetchData
+
 	// const [queryUrl, setQueryUrl] = useUrlState()
 	const handleFetchData = useCallback(query => {
 		params = {
 			...params,
 			...query
 		}
-		return run(params)
+		return runAsync(params)
 	}, [])
 
 	return {

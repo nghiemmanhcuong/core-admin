@@ -19,13 +19,13 @@ import { spotFactory } from './factory/spotFactory'
 class Spot extends BaseService {
 	BASE_URL = '/'
 
-	BASE_ENDPOINT = '/api/v1/admin/spot'
+	BASE_ENDPOINT = '/api/resource/spot'
 
 	constructor(params) {
 		super(params)
 		this.setRequest()
-		this.createFactory(spotFactory)
-		this.setMockAdapter()
+		// this.createFactory(spotFactory)
+		// this.setMockAdapter()
 	}
 }
 

@@ -18,7 +18,7 @@ const SpotTableFilter = props => {
 		const params = {
 			// TODO : param filter
 		}
-		spotTableHandler.handleFetchData(params)
+		// spotTableHandler.handleFetchData(params)
 	}
 
 	const { control } = useForm({
@@ -81,9 +81,6 @@ const SpotTableFilter = props => {
 						className="ml-[5px]"
 					/> */}
 				</Box>
-				{/* <Box className="w-full">
-					<CoreInputFile control={control} name="image" />
-				</Box> */}
 				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 					{t('btn.search')}
 				</Button>

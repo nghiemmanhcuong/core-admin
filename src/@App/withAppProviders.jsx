@@ -22,7 +22,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import { StyledEngineProvider } from '@mui/material/styles'
 
-import viLocale from 'date-fns/locale'
+// import viLocale from 'date-fns/locale'
 
 import { useState } from 'react'
 import AppContext from './AppContext'
@@ -37,11 +37,9 @@ const withAppProviders = Component => props => {
 					setError
 				}}
 			>
-				<LocalizationProvider dateAdapter={AdapterDateFns} locale={viLocale}>
-					<StyledEngineProvider injectFirst>
-						<Component {...props} />
-					</StyledEngineProvider>
-				</LocalizationProvider>
+				<StyledEngineProvider injectFirst>
+					<Component {...props} />
+				</StyledEngineProvider>
 			</AppContext.Provider>
 		)
 	}

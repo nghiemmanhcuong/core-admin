@@ -33,16 +33,13 @@ const ListSpotTable = props => {
 				header: t('label.no'),
 				className: 'w-[5%]'
 			}),
-			columnHelper.accessor('code', {
-				header: t('label.code')
-			}),
 			columnHelper.accessor('name', {
 				header: t('label.name')
 			}),
 			columnHelper.accessor('address', {
 				header: t('label.address')
 			}),
-			columnHelper.accessor('phone', {
+			columnHelper.accessor('tel', {
 				header: t('label.phone')
 			}),
 			columnHelper.accessor('point', {
@@ -69,7 +66,7 @@ const ListSpotTable = props => {
 	return (
 		<Box>
 			<SpotTableFilter />
-			<CoreTable isShowPagination columns={columns} {...spotTableHandler} />
+			<CoreTable isShowPagination columns={columns} {...spotTableHandler} data={spotTableHandler?.spots} />
 			{/* <Box className="flex justify-end">
 				<TextField type="file"/>
 				<Button variant="contained" color="primary" className="ml-[2px]" >

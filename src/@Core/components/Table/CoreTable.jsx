@@ -66,7 +66,7 @@ const CoreTable = ({
 
 	return (
 		<CoreTableContext.Provider value={{ table, t }}>
-			<CoreTableToolbar handleFetchData={handleFetchData} />
+			{/* <CoreTableToolbar handleFetchData={handleFetchData} /> */}
 			<TableContainer
 				className="relative"
 				sx={{

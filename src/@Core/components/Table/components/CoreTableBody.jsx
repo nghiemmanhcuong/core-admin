@@ -37,7 +37,6 @@ const CoreTableBody = ({ table, loading }) => {
 		return rows.map(row => (
 			<TableRow key={row.id}>
 				{row.getVisibleCells().map(cell => {
-					console.log('============= cell', cell)
 					return (
 						<CoreTableCell
 							key={cell.id}

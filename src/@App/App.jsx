@@ -21,6 +21,7 @@ import { appRouterConfig } from './appConfig'
 import { CoreConfirmProvider } from '@Core/components/Confirm/CoreConfirm'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import withAppProviders from './withAppProviders'
 const App = props => {
 	return (
 		<CoreAppTheme>
@@ -36,4 +37,4 @@ const App = props => {
 
 //App.propTypes = {}
 
-export default React.memo(App)
+export default App
