@@ -24,7 +24,8 @@ export const TRANSLATE_ADMIN = {
 	mission: basePath + '/mission',
 	notification: basePath + '/notification',
 	item: basePath + '/item',
-	maintaince: basePath + '/maintaince'
+	maintaince: basePath + '/maintaince',
+	event: basePath + '/event'
 }
 
 export const ROUTER_ADMIN = {
