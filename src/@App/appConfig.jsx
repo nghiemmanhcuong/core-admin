@@ -13,9 +13,10 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 import AdminCmsLayout from './Admin/components/Layout/AdminCmsLayout'
+import { ROUTER_ADMIN } from './Admin/configs/constants'
 import { routerAdminConfig } from './Admin/configs/routerConfig'
 import DefaultLayout from './Travelo/components/Layout/DefaultLayout'
 import { routerTraveloConfig } from './Travelo/configs/routerConfig'
@@ -28,6 +29,10 @@ export const appRouterConfig = createBrowserRouter([
 	// 	// errorElement: <Page404 />,
 	// 	children: [...routerTraveloConfig]
 	// },
+	{
+		path: '/',
+		element: <Navigate to={ROUTER_ADMIN.homePage} />
+	},
 	{
 		path: '/admin',
 		element: <AdminCmsLayout />,
