@@ -15,24 +15,24 @@ const ListEventTable = props => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: t('column.no'),
+				header: t('label.no'),
 				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('title', {
-				header: t('column.title'),
-				className: 'w-[20%] whitespace-normal'
+				className: 'w-[20%] whitespace-normal',
+				header: t('label.title')
 			}),
 			columnHelper.accessor('venue', {
-				header: t('column.venue')
+				header: t('label.venue')
 			}),
 			columnHelper.accessor('event_start', {
-				header: t('column.event_start')
+				header: t('label.event_start')
 			}),
 			columnHelper.accessor('event_end', {
-				header: t('column.event_end')
+				header: t('label.event_end')
 			}),
 			columnHelper.accessor('tag', {
-				header: t('column.tag'),
+				header: t('label.tag'),
 				className: 'w-[10%]',
 				cell: ({ row }) => {
 					return row?.original?.tag?.map((item, index) => {
@@ -41,10 +41,10 @@ const ListEventTable = props => {
 				}
 			}),
 			columnHelper.accessor('author', {
-				header: t('column.author')
+				header: t('label.author')
 			}),
 			columnHelper.accessor('action', {
-				header: t('column.action'),
+				header: t('label.action'),
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original

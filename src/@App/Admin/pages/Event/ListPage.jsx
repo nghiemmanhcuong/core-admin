@@ -11,12 +11,12 @@ import { Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 const ListCourse = props => {
-	const { t } = useTranslation(TRANSLATE_ADMIN.course)
+	const { t } = useTranslation(TRANSLATE_ADMIN.event)
 	const navigate = useNavigate()
 	return (
 		<ListEventProvider t={t}>
 			<AdminContentPage
-				pageTitle={t('title.course')}
+				pageTitle={t('title.event')}
 				headerAction={
 					<Button
 						variant="contained"
