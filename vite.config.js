@@ -10,5 +10,18 @@ export default defineConfig({
 			targets: ['defaults', 'not IE 11']
 		}),
 		jsconfigPaths()
-	]
+	],
+	server: {
+		cors: true,
+		proxy: {
+			'/api': {
+				target: 'https://drake.aspr.work',
+				changeOrigin: true,
+				// rewrite: path => path.replace(/^\/api/, ''),
+				configure: (proxy, options) => {
+					// proxy will be an instance of 'http-proxy'
+				}
+			}
+		}
+	}
 })
