@@ -69,5 +69,18 @@ export const ROUTER_ADMIN = {
 		list: basePath + '/maintaince',
 		config: basePath + '/maintaince/config'
 	},
-	homePage: basePath + '/home-page'
+	homePage: basePath + '/home-page',
+	card: {
+		list: basePath + '/card',
+		edit: basePath + '/card/:id'
+	},
+	account: {
+		list: basePath + '/account',
+		edit: basePath + '/account/:id'
+	},
+	performance: {
+		list: basePath + '/performance',
+		edit: basePath + '/performance/:id'
+	}
+	
 }
