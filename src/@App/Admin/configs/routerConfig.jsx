@@ -36,6 +36,8 @@ const ItemList = React.lazy(() => import('../pages/Item/ListItem'))
 const ItemEdit = React.lazy(() => import('../pages/Item/EditItem'))
 const Maintaince = React.lazy(() => import('../pages/Maintaince/Maintaince'))
 const MaintainceConfig = React.lazy(() => import('../pages/Maintaince/MaintainceConfig/MaintainceConfig'))
+const LazyAccountList = React.lazy(() => import('../pages/Account/ListAccount'))
+const LazyAccountDetail = React.lazy(() => import('../pages/Account/EditAccount'))
 
 // auth
 const LazyLogin = React.lazy(() => import('../pages/Auth/Login'))
@@ -128,5 +130,13 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.homePage,
 		element: <LazyHomePage />
+	},
+	{
+		path: ROUTER_ADMIN.account.list,
+		element: <LazyAccountList />
+	},
+	{
+		path: ROUTER_ADMIN.account.edit,
+		element: <LazyAccountDetail />
 	}
 ]

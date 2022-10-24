@@ -1,0 +1,51 @@
+{
+    "title": {
+        "account": "アカウント一覧",
+        "filter": "検索条件",
+        "account_name": "アカウント名",
+        "authority": "権限",
+        "roll": "ロール",
+		"state": "狀態",
+        "detail_account": "アカウント詳細"
+    },
+    "value": {
+		"express": "表示",
+		"non_representation": "非表示"
+	},
+	"btn": {
+		"search": "検索"
+	},
+    "label": {
+        "no": "NO",
+        "name": "アカウント名",
+        "mail": "メールアドレス",
+        "role": "權限",
+        "roll": "ロール",
+		"action": "スペシャルアクション"
+    },
+    "edit": {
+        "form": {
+            "label": {
+                "id": "アカウントID",
+                "name": "アカウント名",
+                "mail": "メールアドレス",
+                "password": "パスワード",
+                "role": "權限",
+                "roll": "ロール",
+                "active": "表示·非表示",
+                "account_creator": "アカウント作成者"
+            },
+            "option": {
+                "label": {
+                    "admin": "admin",
+                    "other": "other"
+                }
+            },
+            "btn": {
+                "delete": "削除",
+				"register": "登録"
+            }
+        }
+        
+    }
+}
