@@ -13,7 +13,17 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { Divider, Icon, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
+import {
+	Button,
+	Divider,
+	Icon,
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
+	Toolbar
+} from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
@@ -34,6 +44,11 @@ const LeftMenu = props => {
 					}
 					return <LeftMenuItem key={index} item={item} />
 				})}
+				<ListItem disablePadding>
+					<ListItemButton>
+						<ListItemText primary={'ログアウト'} />
+					</ListItemButton>
+				</ListItem>
 			</List>
 		</Box>
 	)
