@@ -19,10 +19,10 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import SpotTableFilter from './SpotTableFilter'
-import { TextField, Button } from '@mui/material'
+import { TextField, Button, Tooltip } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
-
+import { truncate } from 'lodash'
 const ListSpotTable = props => {
 	const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
 	const navigate = useNavigate()
@@ -42,8 +42,15 @@ const ListSpotTable = props => {
 			columnHelper.accessor('tel', {
 				header: t('label.phone')
 			}),
-			columnHelper.accessor('point', {
-				header: t('label.point')
+			columnHelper.accessor('url', {
+				header: 'URL', //t('label.point'),
+				cell: info => {
+					return (
+						<Tooltip title={info.getValue()}>
+							<div>{truncate(info.getValue())}</div>
+						</Tooltip>
+					)
+				}
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),

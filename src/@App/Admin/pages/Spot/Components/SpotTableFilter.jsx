@@ -75,11 +75,6 @@ const SpotTableFilter = props => {
 						label={t('value.non_representation')}
 						className="ml-[5px]"
 					/>
-					{/* <FormControlLabel
-						control={<Checkbox />}
-						label={t('value.non_representation')}
-						className="ml-[5px]"
-					/> */}
 				</Box>
 				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 					{t('btn.search')}
