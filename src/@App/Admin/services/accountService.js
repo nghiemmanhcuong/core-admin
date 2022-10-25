@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Mon Oct 24 2022
- * Modified By: TheAnh58
+ * Last Modified: Tue Oct 25 2022
+ * Modified By: Peter
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -13,10 +13,11 @@
  * ----------	---	----------------------------------------------------------
  */
 
+import { env } from '@App/env'
 import BaseService from '@Core/api/BaseService'
 
 class Account extends BaseService {
-	BASE_URL = '/'
+	BASE_URL = env.CMS_BASE_URL
 
 	BASE_ENDPOINT = '/api/resource/account'
 

@@ -13,11 +13,13 @@
  * ----------	---	----------------------------------------------------------
  */
 
+import { env } from '@App/env'
 import BaseService from '@Core/api/BaseService'
 import { spotFactory } from './factory/spotFactory'
 
 class Spot extends BaseService {
-	BASE_URL = '/'
+	// BASE_URL = '/'
+	BASE_URL = env.CMS_BASE_URL
 
 	BASE_ENDPOINT = '/api/resource/spot'
 
