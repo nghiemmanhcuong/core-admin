@@ -20,12 +20,14 @@ import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import SurroundingTableFilter from './SurroundingTableFilter'
 import { TextField, Button, Typography } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const ListSurroundingTable = props => {
 	const { t, surroundingTableHandler } = useAdminPageContext()
 	const navigate = useNavigate()
+	const location = useLocation()
+
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -46,6 +48,23 @@ const ListSurroundingTable = props => {
 				header: t('label.lat_long'),
 				cell: ({ row }) => {
 					return `${row?.original?.location_info_latitude} ・ ${row?.original?.location_info_longitude}`
+				}
+			}),
+			columnHelper.accessor('action', {
+				header: t('label.action'),
+				// size: 200,
+				className: 'w-[15%]',
+				cell: ({ row }) => {
+					const data = row.original
+					return (
+						<div className="flex">
+							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.spot.edit)} /> */}
+							<CoreActionEdit
+							// onClick={() => navigate(ROUTER_ADMIN.surrounding.list + `/${data.id}`, data)}
+							/>
+							<CoreActionDelete onConfirmDelete={() => handleDeleteSpot(data.id)} />
+						</div>
+					)
 				}
 			})
 		]
