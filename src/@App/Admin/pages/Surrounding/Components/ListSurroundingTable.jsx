@@ -24,7 +24,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const ListSurroundingTable = props => {
-	const { t, surroundingTableHandler } = useAdminPageContext()
+	const { t, surroundingTableHandler, handleDeleteSurrounding } = useAdminPageContext()
 	const navigate = useNavigate()
 	const location = useLocation()
 
@@ -60,9 +60,9 @@ const ListSurroundingTable = props => {
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.spot.edit)} /> */}
 							<CoreActionEdit
-							// onClick={() => navigate(ROUTER_ADMIN.surrounding.list + `/${data.id}`, data)}
+								onClick={() => navigate(ROUTER_ADMIN.surrounding.list + `/${data.id}`, { state: data })}
 							/>
-							<CoreActionDelete onConfirmDelete={() => handleDeleteSpot(data.id)} />
+							<CoreActionDelete onConfirmDelete={() => handleDeleteSurrounding(data.id)} />
 						</div>
 					)
 				}

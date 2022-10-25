@@ -16,7 +16,7 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { surroundingService } from '@App/Admin/services/surroundingService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
-import { errorMsg } from '@Core/helper/Message'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
 // import PropTypes from 'prop-types'
@@ -32,11 +32,11 @@ const ListSurroundingProvider = props => {
 	const { runAsync: handleDeleteSurrounding } = useRequest(surroundingService.delete, {
 		manual: true,
 		onSuccess: res => {
-			surroundingTableHandler.handleFetchData()
 			successMsg('Deleted successfully!!!')
+			surroundingTableHandler.handleFetchData()
 		},
 		onError: res => {
-			errorMsg('Deleted failed!!!')
+			errorMsg(res, 'Deleted failed!!!')
 		}
 	})
 
