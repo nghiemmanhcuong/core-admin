@@ -32,15 +32,15 @@ const ListSurrounding = props => {
 		<ListSurroundingProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.surrounding')}
-				// headerAction={
-				// 	<Button
-				// 		variant="contained"
-				// 		color="primary"
-				// 		onClick={() => navigate(ROUTER_ADMIN.spot.list + '/new')}
-				// 	>
-				// 		{t('btn.new')}
-				// 	</Button>
-				// }
+				headerAction={
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={() => navigate(ROUTER_ADMIN.surrounding.list + '/new')}
+					>
+						{t('common:btn.new')}
+					</Button>
+				}
 				content={<ListSpotTable />}
 			/>
 		</ListSurroundingProvider>

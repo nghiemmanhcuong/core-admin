@@ -26,7 +26,7 @@ export const TRANSLATE_ADMIN = {
 	item: basePath + '/item',
 	maintaince: basePath + '/maintaince',
 	event: basePath + '/event',
-	account: basePath + '/account',
+	account: basePath + '/account'
 }
 
 export const ROUTER_ADMIN = {
@@ -56,7 +56,8 @@ export const ROUTER_ADMIN = {
 		detail: basePath + '/tags/detail'
 	},
 	surrounding: {
-		list: basePath + '/surrounding'
+		list: basePath + '/surrounding',
+		edit: basePath + '/surrounding/:id'
 	},
 	mission: {
 		list: basePath + '/mission'

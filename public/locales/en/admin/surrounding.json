@@ -9,16 +9,14 @@
 		"action": "スペシャルアクション"
 	},
 	"title": {
-        "surrounding": "周辺情報一覧",
-        "no": "NO",
-		"list_tag": "カード一覧",
+		"surrounding": "周辺情報一覧",
+		"edit_surrounding": "周辺情報詳細",
 		"filter": "検索条件",
 		"name": "周辺情報名称",
-		"tag": "タグ情報",
-		"situation": "状態",
 		"type": "周辺情報種別",
-        "action": "スペシャルアクション",
-        "area": "エリア"
+		"action": "スペシャルアクション",
+		"area": "エリア",
+		"situation": "状態"
 	},
 	"value": {
 		"express": "表示",
@@ -29,52 +27,32 @@
 		"upload": "アップロード"
 	},
 	"edit": {
-		"tabs": {
-			"label": {
-				"information": "スポット概要"
-			}
-		},
 		"form": {
 			"label": {
-				"id": "スポットID",
-				"title": "スポットタイトル",
-				"description": "スポット説明",
-				"situation": "状態",
-				"category": "スポットカテゴリ",
-				"venue": "スポット開催場所",
-				"type": "スポットタイプ",
-				"period": "スポット開催期間",
-				"to": "～",
-				"entry_period": "スポットエントリ期間",
-				"entry_fee": "エントリー料金",
-				"payment": "支払方法",
-				"entry_option": "エントリーオプション",
-				"circle": "円",
-				"mission": "スポットミッション",
-				"reward": "スポット報酬",
-				"tag": "スポットタグ",
-				"precautions": "エントリー時の注意事項",
-				"contact_name": "トラブル時連絡先名称",
-				"address": "連絡先",
-				"related": "関連スポット",
-				"creator": "スポット作成者"
+				"id": "周辺情報ID",
+				"name": "周辺情報名称",
+				"type": "周辺情報種別",
+				"description": "周辺情報説明",
+				"address": "周辺情報エリア",
+				"location_info_latitude": "緯度",
+				"location_info_longitude": "経度",
+				"url": "周辺情報URL",
+				"tel": "周辺情報TEL",
+				"image": "周辺情報IMAGE"
 			},
 			"check_box": {
 				"label": {
-					"express": "表示",
-					"representation": "非表示",
-					"men": "男性限定",
-					"women": "女性限定",
-					"50s": "男性50代以上",
-					"participants": "参加者全員",
-					"card": "クレカ",
-					"qr": "QR",
-					"bicycle_rental": "自転車レンタル",
-					"spring_available": "温泉あり",
-					"best_view": "景色最高",
-					"autumn": "秋におすすめ",
-					"beginners": "初心者におすすめ"
-					
+					"display": "表示",
+					"hidden": "非表示",
+					"toilet": "トイレ",
+					"restaurant": "レストラン",
+					"spa": "スパ",
+					"kitchen": "キッチン",
+					"living_room": "リビングルーム",
+					"hotel": "ホテル",
+					"dining_room": "ダイニングルーム",
+					"bed_room": "ベッドルーム",
+					"bath_room": "シャワールーム"
 				}
 			},
 			"btn": {
