@@ -14,7 +14,7 @@
 		"hide_column": "Ẩn cột",
 		"move_column": "Di chuyển cột",
 		"save_column": "Lưu thay đổi",
-		"delete_confirm": "Bạn có muốn xoá dữ liệu này không?",
+		"delete_confirm": "このデータを削除しますか?",
 		"row_per_page": "Số hàng hiển thị trên trang"
 	},
 	"btn": {
@@ -29,7 +29,7 @@
 		"update": "Update",
 		"unSubscribe": "Bỏ đăng ký",
 		"subscribed": "Đăng ký",
-		"back": "Trở về"
+		"back": "Back"
 	},
 	"message": {
 		"fetch_list_failed": "Không lấy được dữ liệu",

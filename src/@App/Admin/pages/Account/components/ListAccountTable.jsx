@@ -4,7 +4,7 @@
  * Email: you@you.you
  * -----
  * Last Modified: Tue Oct 25 2022
- * Modified By: TheAnh58
+ * Modified By: Peter
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -23,10 +23,10 @@ import { useNavigate } from 'react-router-dom'
 import AccountTableFilter from './AccountTableFilter'
 // import PropTypes from 'prop-types'
 
-const ListAccountTable = (props) => {
-    const { t, accountTableHandler, handleDeleteAccount } = useAdminPageContext()
+const ListAccountTable = props => {
+	const { t, accountTableHandler, handleDeleteAccount } = useAdminPageContext()
 	const navigate = useNavigate()
-    const columns = useMemo(() => {
+	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
@@ -53,8 +53,10 @@ const ListAccountTable = (props) => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => console.log('============= data', data)} />
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.account.list + `/${data.id}`, {state: {data}})} />
+							{/* <CoreActionView onClick={() => console.log('============= data', data)} /> */}
+							<CoreActionEdit
+								onClick={() => navigate(ROUTER_ADMIN.account.list + `/${data.id}`, { state: { data } })}
+							/>
 							<CoreActionDelete onConfirmDelete={() => handleDeleteAccount(data.id)} />
 						</div>
 					)
@@ -62,13 +64,17 @@ const ListAccountTable = (props) => {
 			})
 		]
 	})
- return (
-    <Box>
-        <AccountTableFilter />
-		<CoreTable isShowPagination columns={columns} {...accountTableHandler} data={accountTableHandler?.accounts} />
-
-    </Box>
- )
+	return (
+		<Box>
+			<AccountTableFilter />
+			<CoreTable
+				isShowPagination
+				columns={columns}
+				{...accountTableHandler}
+				data={accountTableHandler?.accounts}
+			/>
+		</Box>
+	)
 }
 
 // ListAccountTable.defaultProps = {}
