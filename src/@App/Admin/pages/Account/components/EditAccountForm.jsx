@@ -4,7 +4,7 @@
  * Email: you@you.you
  * -----
  * Last Modified: Tue Oct 25 2022
- * Modified By: TheAnh58
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -80,7 +80,7 @@ const EditAccountForm = (props) => {
                     {t('edit.form.label.id')}
                 </Typography>
             </Box>
-            <CoreInput control={control} name="id" size="small" className="w-full sm:w-2/3" disabled />
+            <CoreInput control={control} name="id" size="small" className="w-full sm:w-2/3" disabled placeholder='Default input' />
         </Box>
         <Box className="flex flex-wrap sm:flex-nowrap mb-20">
             <Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
@@ -88,7 +88,7 @@ const EditAccountForm = (props) => {
                         {t('edit.form.label.name')}
                     </Typography>
             </Box>
-            <CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" />
+            <CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" placeholder='Default input' />
         </Box>
         <Box className="flex flex-wrap sm:flex-nowrap mb-20">
             <Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
@@ -96,7 +96,7 @@ const EditAccountForm = (props) => {
                         {t('edit.form.label.mail')}
                     </Typography>
             </Box>
-            <CoreInput control={control} name="mail" size="small" className="w-full sm:w-2/3" />
+            <CoreInput control={control} name="mail" size="small" className="w-full sm:w-2/3" placeholder='Default input' />
         </Box>
         <Box className="flex flex-wrap sm:flex-nowrap mb-20">
             <Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
@@ -104,7 +104,7 @@ const EditAccountForm = (props) => {
                         {t('edit.form.label.password')}
                     </Typography>
             </Box>
-            <CoreInput control={control} name="password" type='password' size="small" className="w-full sm:w-2/3" />
+            <CoreInput control={control} name="password" type='password' size="small" className="w-full sm:w-2/3" placeholder='Default input' />
         </Box>
         <Box className="flex flex-wrap sm:flex-nowrap mb-20">
             <Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">

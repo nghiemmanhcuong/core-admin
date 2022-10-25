@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Mon Oct 24 2022
- * Modified By: TheAnh58
+ * Last Modified: Tue Oct 25 2022
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -91,13 +91,15 @@ const AccountTableFilter = props => {
 						{t('title.state')}
 					</Box>
 					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}
-					<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[5px]" />
-					<CoreCheckbox
-						control={control}
-						name="non_representation"
-						label={t('value.non_representation')}
-						className="ml-[5px]"
-					/>
+					<Box className='border-1 border-grey-300 rounded-4 flex'>
+						<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[5px]" />
+						<CoreCheckbox
+							control={control}
+							name="non_representation"
+							label={t('value.non_representation')}
+							className="ml-[5px]"
+						/>
+					</Box>
 				</Box>
 				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 					{t('btn.search')}

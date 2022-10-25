@@ -30,12 +30,12 @@ const DetailNotification = props => {
 	return (
 		<ListNotificationProvider t={t}>
 			<AdminContentPage
-				pageTitle={t('title.notifications')}
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.notification.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
+				pageTitle={t('title.detail_notification')}
+				// headerAction={
+				// 	<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.notification.list)}>
+				// 		{t('common:btn.back')}
+				// 	</Button>
+				// }
 				content={<EditNotification />}
 			/>
 		</ListNotificationProvider>

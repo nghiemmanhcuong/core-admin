@@ -51,7 +51,7 @@ const EditNotification = props => {
 
 	return (
 		<Box>
-			<Box sx={{ padding: 2 }}>
+			<Box sx={{ padding: 6 }}>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary">
@@ -73,7 +73,7 @@ const EditNotification = props => {
 						<Typography
 							variant="h3"
 							color="primary"
-							className="self-center w-full py-10 sm:py-0 sm:w-1/3 sm:text-center"
+							className="self-center w-full py-10 sm:py-0"
 						>
 							{t('edit.form.label.type')}
 						</Typography>
@@ -139,17 +139,13 @@ const EditNotification = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary">
-							{t('edit.form.label.situation')}
+							{t('edit.form.check_box.label.status')}
 						</Typography>
 					</Box>
-					<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
-						<CoreRadioGroup
-							className="flex-row"
-							control={control}
-							name="description"
-							options={sex}
-							row="true"
-						/>
+					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
+						<CoreCheckbox control={control} name="checkbox" label={t('edit.form.check_box.label.express')} />
+						<CoreCheckbox control={control} name="checkbox1" label={t('edit.form.check_box.label.representation')} />
+						
 					</Box>
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
@@ -160,20 +156,26 @@ const EditNotification = props => {
 					</Box>
 					<Box className="w-full sm:w-2/3 flex flex-nowrap">
 						<CoreInput control={control} name="creator" size="small" className="w-4/5" />
-						<Button variant="contained" color="primary" className="ml-auto w-1/5">
+						{/* <Button variant="contained" color="primary" className="ml-auto w-1/5">
 							{t('edit.form.btn.selection')}
+						</Button> */}
+						<Button variant="contained" color="error" className="ml-auto">
+						{t('edit.form.btn.delete')}
+						</Button>
+						<Button variant="contained" color="primary" sx={{backgroundColor: '#007BFF'}} className="ml-[10px]">
+							{t('edit.form.btn.register')}
 						</Button>
 					</Box>
 				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Button variant="contained" color="error" className="ml-auto">
 						{t('edit.form.btn.delete')}
 					</Button>
-					<Button variant="contained" color="primary" className="ml-[10px]">
+					<Button variant="contained" color="primary" sx={{backgroundColor: '#007BFF'}} className="ml-[10px]">
 						{t('edit.form.btn.register')}
 					</Button>
-				</Box>
+				</Box> */}
 			</Box>
 		</Box>
 	)

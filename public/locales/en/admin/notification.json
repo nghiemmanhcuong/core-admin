@@ -1,5 +1,6 @@
 {
 	"title": {
+		"detail_notification": "お知らせ詳細",
 		"notifications": "お知らせ一覧",
 		"filter": "検索条件",
 		"title": "タイトル",
@@ -12,7 +13,7 @@
 		"title": "タイトル",
 		"type": "お知らせ種別",
 		"from_date": "掲載開始日時",
-		"to_date": "掲載開始日時",
+		"to_date": "掲載終了時",
 		"action": "スペシャルアクション"
 	},
 	"value": {
@@ -37,7 +38,8 @@
 			"check_box": {
 				"label": {
 					"express": "表示",
-					"representation": "非表示"
+					"representation": "非表示",
+					"status": "表示·非表示"
 				}
 			},
 			"btn": {

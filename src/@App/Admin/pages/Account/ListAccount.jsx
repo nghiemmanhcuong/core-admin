@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Mon Oct 24 2022
- * Modified By: TheAnh58
+ * Last Modified: Tue Oct 25 2022
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -20,7 +20,7 @@ import AdminContentPage from '../../components/Layout/AdminContentPage'
 // import TableFilter from './Components/SpotTableFilter'
 // import { Box } from '@mui/system'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import ListAccountProvider from './ListAccountProvider'
 import ListAccountTable from './components/ListAccountTable'
@@ -32,16 +32,21 @@ const ListAccount = props => {
 		<ListAccountProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.account')}
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => navigate(ROUTER_ADMIN.account.list + '/new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
-				content={<ListAccountTable />}
+				content={
+					<>
+						<ListAccountTable />
+						<Box className='text-right mt-80 pr-20'>
+							<Button
+								variant="contained"
+								color="primary"
+								onClick={() => navigate(ROUTER_ADMIN.account.list + '/new')}
+								className='text-16 py-4'
+							>
+								{t('common:btn.add')}
+							</Button>
+						</Box>
+					</>
+			}
 			/>
 		</ListAccountProvider>
 	)

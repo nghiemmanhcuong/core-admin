@@ -12,11 +12,18 @@
         "no": "NO",
 		"list_tag": "カード一覧",
 		"filter": "検索条件",
-		"name": "スポット名",
 		"tag": "タグ情報",
 		"image": "画像",
 		"state": "狀態",
-        "action": "スペシャルアクション"
+        "action": "スペシャルアクション",
+		"id": "タグID",
+		"name": "タグ名称",
+		"type": "タグ種別",
+		"description": "タグ説明",
+		"number_tag": "タグ番号",
+		"popular_tag": "よく使われるタグ",
+		"status": "表示・非表示",
+		"tag_creator": "タグ作成者"
 	},
 	"value": {
 		"express": "表示",

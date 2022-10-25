@@ -15,7 +15,7 @@
 
 import AdminContentPage from '@App/Admin/components/Layout/AdminContentPage'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -31,16 +31,21 @@ const ListNotification = props => {
 		<ListNotificationProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.notifications')}
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => navigate(ROUTER_ADMIN.notification.list + '/new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
-				content={<ListNotificationTable />}
+				content={
+					<Box>
+						<ListNotificationTable />
+						<Box className='mt-40 text-right pr-20'>
+							<Button
+								variant="contained"
+								color="primary"
+								onClick={() => navigate(ROUTER_ADMIN.notification.list + '/new')}
+								className='text-16'
+							>
+								{t('common:btn.add')}
+							</Button>
+						</Box>
+					</Box>
+			}
 			/>
 		</ListNotificationProvider>
 	)

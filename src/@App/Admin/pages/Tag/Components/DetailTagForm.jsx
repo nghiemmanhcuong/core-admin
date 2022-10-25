@@ -28,6 +28,7 @@ import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import { Button, Card, CardMedia, Typography,
      Grid, FormControlLabel, CardContent, RadioGroup, Checkbox,
      FormGroup } from '@mui/material'
+import AdminInput from '@App/Admin/components/Input/AdminInput'
 
 const DetailTagForm = props => {
 	const { t, spotTableHandler } = useAdminPageContext()
@@ -62,38 +63,42 @@ const DetailTagForm = props => {
 	return (
 		<Box>
             <Box className="max-w-lg  mx-auto">
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">{t('title.name')}</Typography>
-					</Box>
-					<CoreInput control={control} name="email" className="w-full sm:w-2/3" placeholder="Default input" size="small" />
-				</Box>
-
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">{t('title.image')}</Typography>
-					</Box>
-					<Box className="flex flex-wrap sm:flex-nowrap w-full sm:w-2/3">
-						<Box className="w-full sm:w-2/3">
-							<Box className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
-								<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
-							</Box>
-							<Card variant="outlined" className="text-center">
-								<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
-							</Card>
-						</Box>
-						<Box className="w-full sm:w-1/3 self-center mt-8 sm:mt-0 text-center sm:text-left">
-							<Box className=" pl-10">
-								<Button variant="contained" color="error" size="small">
-									削除
-								</Button>
-								<Button variant="contained" color="success" className='ml-6' size="small">
-									登録
-								</Button>
-							</Box>
-						</Box>
-					</Box>
-				</Box>
+				<AdminInput
+					label={t('title.id')}
+					control={control}
+					name="id"
+					placeholder="Default input"
+					size="small"
+				/>
+				<AdminInput
+					label={t('title.name')}
+					control={control}
+					name="name"
+					placeholder="Default input"
+					size="small"
+				/>
+				<AdminInput
+					label={t('title.description')}
+					control={control}
+					name="description"
+					size="small"
+					minRows={5}
+					multiline
+				/>
+				<AdminInput
+					label={t('title.number_tag')}
+					control={control}
+					name="number_tag"
+					placeholder="Default input"
+					size="small"
+				/>
+				<AdminInput
+					label={t('title.tag_creator')}
+					control={control}
+					name="tag_creator"
+					placeholder="Default input"
+					size="small"
+				/>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full mt-12 mb-8 sm:mb-0 text-end">

@@ -120,11 +120,11 @@ export const routerAdminConfig = [
 		element: <ItemEdit />
 	},
 	{
-		path: ROUTER_ADMIN.maintaince.list,
+		path: ROUTER_ADMIN.performance.list,
 		element: <Maintaince />
 	},
 	{
-		path: ROUTER_ADMIN.maintaince.config,
+		path: ROUTER_ADMIN.maintaince.list,
 		element: <MaintainceConfig />
 	},
 	{

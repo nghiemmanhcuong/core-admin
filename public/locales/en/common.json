@@ -18,11 +18,12 @@
 		"row_per_page": "Số hàng hiển thị trên trang"
 	},
 	"btn": {
-		"new": "Add New",
+		"new": "登錄",
+		"add": "新規作成",
 		"save": "Save",
 		"save_change": "Save Change",
 		"edit": "Edit",
-		"delete": "Delete",
+		"delete": "削除",
 		"submit": "Submit",
 		"cancel": "Cancel",
 		"view": "View",

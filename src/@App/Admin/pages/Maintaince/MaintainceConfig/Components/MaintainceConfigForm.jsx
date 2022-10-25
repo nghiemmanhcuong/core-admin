@@ -40,7 +40,7 @@ const MaintainceConfigForm = props => {
 
 	return (
 		<Box className="max-w-lg mx-auto">
-			<Box className="flex flex-wrap" sx={{ padding: 2 }}>
+			<Box className="flex flex-wrap flex-col justify-between sm:h-[650px]" sx={{ padding: 2 }}>
 				<Box className="flex w-full flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary">
@@ -61,7 +61,7 @@ const MaintainceConfigForm = props => {
 				</Box>
 
 				<Box className="ml-auto">
-					<Button variant="contained" color="error" size="small" onClick={() => console.log('delete')}>
+					<Button className='py-8 text-14' variant="contained" color="error" size="small" onClick={() => console.log('delete')}>
 						{t('common:btn.delete')}
 					</Button>
 					<Button
@@ -69,7 +69,7 @@ const MaintainceConfigForm = props => {
 						color="primary"
 						size="small"
 						onClick={() => console.log('add')}
-						className="mx-8"
+						className="mx-8 py-8 text-14"
 					>
 						{t('common:btn.new')}
 					</Button>

@@ -21,7 +21,6 @@ import { Controller } from 'react-hook-form'
 const CoreRadioGroup = props => {
 	const { className, control, name, legendLabel, options, labelInValue, row, required, helperText, ...restProps } =
 		props
-
 	return (
 		<div className={className}>
 			<Controller

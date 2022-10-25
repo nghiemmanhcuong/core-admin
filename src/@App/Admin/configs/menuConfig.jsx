@@ -76,10 +76,10 @@ export const menuAdminConfig = [
 	// 	title: 'ユーザーリスト',
 	// 	url: ROUTER_ADMIN.user.list
 	// },
-	{
-		title: 'メンテナンス・コンフィグ',
-		url: ROUTER_ADMIN.maintaince.config
-	}
+	// {
+	// 	title: 'メンテナンス・コンフィグ',
+	// 	url: ROUTER_ADMIN.maintaince.config
+	// }
 	// {
 	// 	title: 'Level 1',
 	// 	type: 'collapse',

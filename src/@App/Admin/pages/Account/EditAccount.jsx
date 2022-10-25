@@ -4,7 +4,7 @@
  * Email: you@you.you
  * -----
  * Last Modified: Tue Oct 25 2022
- * Modified By: TheAnh58
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -33,11 +33,11 @@ const EditAccount = props => {
 		<ListAccountProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.detail_account')}
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.account.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
+				// headerAction={
+				// 	<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.account.list)}>
+				// 		{t('common:btn.back')}
+				// 	</Button>
+				// }
 				content={
                     loadingAccount ? (
                         <div className='mt-40 text-center'>
