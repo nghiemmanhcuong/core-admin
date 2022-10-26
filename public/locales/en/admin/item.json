@@ -1,6 +1,7 @@
 {
 	"title": {
 		"item": "引換アイテム一覧",
+		"item_detail": "引換アイテム詳細",
 		"filter": "検索条件",
 		"state": "狀態",
 		"name": "引換アイテム名",
@@ -40,7 +41,7 @@
 				"exchangeable_currency": "引換可能通貨",
 				"unit": "通貨必要数",
 				"situation": "状態",
-				"creator": "周辺情報作成者"
+				"creator": "引換アイテム作成者"
 			},
 			"check_box": {
 				"label": {

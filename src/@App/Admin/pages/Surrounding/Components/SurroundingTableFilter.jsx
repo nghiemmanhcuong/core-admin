@@ -66,11 +66,11 @@ const SurroundingTableFilter = props => {
 					</Box>
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
-							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+							<Box className="col-span-1 -my-3 ml-20">
+								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+								<CoreCheckbox control={control} name="checkbox2" label={t('value.non_representation')} />
 							</Box>
 						</Box>
 					</Card>

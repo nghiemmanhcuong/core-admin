@@ -14,7 +14,7 @@ import CardMedia from '@mui/material/CardMedia'
 
 const CurrencyFilter = props => {
 	const { eventTableHandler } = useAdminPageContext()
-	const { t } = useTranslation(TRANSLATE_ADMIN.course)
+	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
 	const handleFilter = () => {
 		const params = {
 			// TODO : param filter
@@ -42,13 +42,13 @@ const CurrencyFilter = props => {
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						イベントタイトル
+						{t('title.name')}
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						開催地
+						{t('title.date')}
 					</Box>
 					<FormAutocomplete
 						control={control}
@@ -60,12 +60,36 @@ const CurrencyFilter = props => {
 						placeholder="Choose..."
 					/>
 				</Box>
-                <Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-                    検索
-                </Button>
+				</Box>
+				<Box className="flex p-10  w-full">
+				<Box className="flex w-1/2 items-start  ">
+					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					{t('title.name_currency')}
+					</Box>
+					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
+				</Box>
+				<Box className="flex w-1/2 items-start mx-8 ">
+					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					{t('title.situation')}
+					</Box>
+					<Card variant="outlined">
+						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
+							<Box className="col-span-1 -my-3 ml-20">
+								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+							</Box>
+							<Box className="col-span-1 -my-3">
+								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+							</Box>
+						</Box>
+					</Card>
+					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+					{t('btn.search')}
+					</Button>
+				</Box>
+			</Box>
 			</Box>
             
-		</Box>
+		
 	)
 }
 

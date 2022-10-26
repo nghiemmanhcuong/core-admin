@@ -68,6 +68,10 @@ module.exports = {
 				A200: '#AAAAAA',
 				A400: '#303030',
 				A700: '#616161'
+			},
+			blue: {
+				500: '#007BFF',
+				DEFAULT: '#007BFF'
 			}
 		},
 		spacing: {

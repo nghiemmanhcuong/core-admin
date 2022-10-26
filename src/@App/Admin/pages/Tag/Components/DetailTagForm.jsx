@@ -48,6 +48,21 @@ const DetailTagForm = props => {
         }
     ];
 
+	const tagType = [
+		{
+			value: 1,
+			label: 'イベント'
+		},
+		{
+			value: 2,
+			label: 'コース'
+		},
+		{
+			value: 3,
+			label: 'スポット'
+		}
+	]
+
     const {control} = useForm({
         mode: 'onTouched',
         defaultValues: {
@@ -77,6 +92,22 @@ const DetailTagForm = props => {
 					placeholder="Default input"
 					size="small"
 				/>
+				<Box className='my-12 flex'>
+					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary" className="flex items-center mb-4">
+							{t('title.tag_type')}
+						</Typography>
+					</Box>
+					<Box className="w-full sm:w-2/3 border-grey-300 border-1">
+						<CoreRadioGroup 
+							control={control}
+							name='radio1'
+							row
+							options={tagType}
+							className='ml-20'
+						/>
+					</Box>
+				</Box>
 				<AdminInput
 					label={t('title.description')}
 					control={control}
@@ -92,6 +123,45 @@ const DetailTagForm = props => {
 					placeholder="Default input"
 					size="small"
 				/>
+				<Box className='my-12 flex'>
+					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary" className="flex items-center mb-4">
+							{t('title.popular_tag')}
+						</Typography>
+					</Box>
+					<Box className="w-full sm:w-2/3 border-grey-300 border-1">
+						<CoreCheckbox 
+							control={control}
+							name='checkbox1'
+							row
+							label={t('title.test')}
+							className='ml-20'
+						/>
+					</Box>
+				</Box>
+				<Box className='my-12 flex'>
+					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary" className="flex items-center mb-4">
+							{t('title.hide/show')}
+						</Typography>
+					</Box>
+					<Box className="w-full flex sm:w-2/3 border-grey-300 border-1">
+						<CoreCheckbox 
+							control={control}
+							name='hide'
+							row
+							label={t('title.hide')}
+							className='ml-20'
+						/>
+						<CoreCheckbox 
+							control={control}
+							name='show'
+							row
+							label={t('title.show')}
+							className='ml-20'
+						/>
+					</Box>
+				</Box>
 				<AdminInput
 					label={t('title.tag_creator')}
 					control={control}

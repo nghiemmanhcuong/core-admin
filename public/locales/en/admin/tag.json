@@ -10,7 +10,7 @@
 	},
 	"title": {
         "no": "NO",
-		"list_tag": "カード一覧",
+		"list_tag": "タグ一覧",
 		"filter": "検索条件",
 		"tag": "タグ情報",
 		"image": "画像",
@@ -22,8 +22,15 @@
 		"description": "タグ説明",
 		"number_tag": "タグ番号",
 		"popular_tag": "よく使われるタグ",
+		"only_popular_tag": "よく使われるタグのみ",
 		"status": "表示・非表示",
-		"tag_creator": "タグ作成者"
+		"tag_creator": "タグ作成者",
+		"tag_name": "タグ名称",
+		"tag_type": "タグ種別",
+		"test": "チェック",
+		"hide/show": "表示·非表示",
+		"hide": "表示",
+		"show": "非表示"
 	},
 	"value": {
 		"express": "表示",

@@ -1,10 +1,10 @@
 /*
- * Created Date: 22-10-2022, 9:50:55 pm
- * Author: Hai Tran
+ * Created Date: 26-10-2022, 11:39:58 pm
+ * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified:
- * Modified By:
+ * Last Modified: Wed Oct 26 2022
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -19,31 +19,31 @@ import { Button } from '@mui/material'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import EditItemForm from './Components/EditItemForm'
-import ListItemProvider from './ListItemProvider'
+import DetailCurrency from './DetailCurrency'
+import ListCurrencyProvider from './ListCurrencyProvider'
 // import PropTypes from 'prop-types'
 
-const EditItem = props => {
-	const { t } = useTranslation(TRANSLATE_ADMIN.item)
+const EditCurrency = (props) => {
+    const { t } = useTranslation(TRANSLATE_ADMIN.currency)
 	const navigate = useNavigate()
 
 	return (
-		<ListItemProvider t={t}>
+		<ListCurrencyProvider t={t}>
 			<AdminContentPage
-				pageTitle={t('title.item_detail')}
+				pageTitle={t('title.currency_detail')}
 				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.item.list)}>
+					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.currency.list)}>
 						{t('common:btn.back')}
 					</Button>
 				}
-				content={<EditItemForm />}
+				content={<DetailCurrency />}
 			/>
-		</ListItemProvider>
+		</ListCurrencyProvider>
 	)
 }
 
-// EditItem.defaultProps = {}
+// EditCurrency.defaultProps = {}
 
-// EditItem.propTypes = {}
+// EditCurrency.propTypes = {}
 
-export default React.memo(EditItem)
+export default React.memo(EditCurrency)

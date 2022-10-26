@@ -19,20 +19,14 @@ const ListCurrencyTable = props => {
 			columnHelper.accessor('name', {
 				header: 'アプリ内通貸名'
 			}),
-			columnHelper.accessor('area', {
-				header: '通貸単位名'
-			}),
-			columnHelper.accessor('range', {
-				header: 'ポイント換算レート'
+			columnHelper.accessor('unit', {
+				header: 'アプリ内通貨単位'
 			}),
 			columnHelper.accessor('start_date', {
 				header: '使用可能開始日'
 			}),
 			columnHelper.accessor('end_date', {
 				header: '使用可能終了日'
-			}),
-			columnHelper.accessor('author', {
-				header: '状態'
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),

@@ -15,7 +15,7 @@
 
 import AdminContentPage from '@App/Admin/components/Layout/AdminContentPage'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -31,16 +31,20 @@ const ListItem = props => {
 		<ListItemProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.item')}
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => navigate(ROUTER_ADMIN.item.list + '/new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
-				content={<ListItemTable />}
+				content={<>
+					<ListItemTable />
+					<Box className='my-40 mr-40 text-right'>
+						<Button
+							variant="contained"
+							color="primary"
+							className='bg-blue w-160 text-18'
+							onClick={() => navigate(ROUTER_ADMIN.item.list + '/new')}
+						>
+							{t('common:btn.add')}
+						</Button>
+					</Box>
+				</>
+			}
 			/>
 		</ListItemProvider>
 	)

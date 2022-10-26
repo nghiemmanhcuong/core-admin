@@ -94,7 +94,7 @@ const AdminInputUpload = ({ control = {}, name = '', rules, required = false, la
 						{helperText && (
 							<>
 								<Divider />
-								<Box className="p-12">Image size : 100 x 100</Box>
+								<Box className="p-12">推奨サイズ : 100 x 100</Box>
 							</>
 						)}
 					</Box>
@@ -104,7 +104,7 @@ const AdminInputUpload = ({ control = {}, name = '', rules, required = false, la
 					<Button variant="contained" color="error" size="small" onClick={handleDeleteFile}>
 						{t('btn.delete')}
 					</Button>
-					<Button variant="contained" color="primary" size="small" onClick={handleAddFile} className="mx-8">
+					<Button variant="contained" color="primary" className='bg-[#58AAFF] mx-8' size="small" onClick={handleAddFile} >
 						{t('btn.new')}
 					</Button>
 				</Box>

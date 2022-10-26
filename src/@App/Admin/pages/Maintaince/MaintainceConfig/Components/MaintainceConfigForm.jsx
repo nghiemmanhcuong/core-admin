@@ -69,7 +69,7 @@ const MaintainceConfigForm = props => {
 						color="primary"
 						size="small"
 						onClick={() => console.log('add')}
-						className="mx-8 py-8 text-14"
+						className="mx-8 py-8 text-14 bg-[#007BFF]"
 					>
 						{t('common:btn.new')}
 					</Button>

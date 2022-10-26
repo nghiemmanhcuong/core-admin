@@ -36,8 +36,14 @@ const ListTagTable = props => {
 			columnHelper.accessor('name', {
 				header: t('title.name')
 			}),
-			columnHelper.accessor('image', {
-				header: t('title.image')
+			columnHelper.accessor('tag_type', {
+				header: t('title.tag_type')
+			}),
+			columnHelper.accessor('number_tag', {
+				header: t('title.number_tag')
+			}),
+			columnHelper.accessor('popular_tag', {
+				header: t('title.popular_tag')
 			}),
 			columnHelper.accessor('action', {
 				header: t('title.action'),

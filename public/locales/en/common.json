@@ -30,7 +30,7 @@
 		"update": "Update",
 		"unSubscribe": "Bỏ đăng ký",
 		"subscribed": "Đăng ký",
-		"back": "Back"
+		"back": "戻る"
 	},
 	"message": {
 		"fetch_list_failed": "Không lấy được dữ liệu",

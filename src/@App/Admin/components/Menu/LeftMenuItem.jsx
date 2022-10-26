@@ -20,9 +20,9 @@ import { useMatch, useNavigate } from 'react-router-dom'
 
 const LeftMenuItem = props => {
 	const { item, sx } = props
+
 	const navigate = useNavigate()
-	const match = useMatch(item?.url ?? '/')
-	// console.log('============= match', match)
+	const match = useMatch((item?.url) ?? '/')
 
 	const handleClickMenu = url => {
 		if (url) navigate(url)

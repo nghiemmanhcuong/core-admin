@@ -18,7 +18,8 @@
 		"situation": "状態",
 		"type": "周辺情報種別",
         "action": "スペシャルアクション",
-        "area": "エリア"
+        "area": "エリア",
+		"clear_condition": "クリア条件"
 	},
 	"value": {
 		"express": "表示",

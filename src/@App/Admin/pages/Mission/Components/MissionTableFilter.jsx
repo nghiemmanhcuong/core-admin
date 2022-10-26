@@ -40,7 +40,7 @@ const MissionTableFilter = props => {
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.area')}
+					{t('title.clear_condition')}
 					</Box>
 					<FormAutocomplete
 						control={control}
@@ -61,11 +61,11 @@ const MissionTableFilter = props => {
 					</Box>
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
-							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+							<Box className="col-span-1 -my-3 ml-20">
+								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+								<CoreCheckbox control={control} name="checkbox2" label={t('value.non_representation')} />
 							</Box>
 						</Box>
 					</Card>

@@ -1,0 +1,42 @@
+{
+    "edit": {
+        "form": {
+            "check_box": {
+				"label": {
+					"express": "表示",
+					"representation": "非表示"
+				}
+			},
+            "label": {
+                "hide/show": "表示·非表示",
+                "id": "通貨ID",
+                "name": "アプリ内通貨名",
+                "description": "アプリ内通貨説明",
+                "image": "アプリ内通貨画像",
+                "to": "~",
+                "time": "使用可能期間",
+                "creator": "アプリ内通貨作成者"
+            },
+            "btn": {
+				"selection": "選択",
+				"delete": "削除",
+				"register": "登録"
+			}
+        }
+    },
+    "title": {
+        "name": "アプリ内通貨名",
+        "date": "使用可能年月日",
+        "currency_detail": "アプリ内通貨詳細",
+        "name_currency": "通貨单位名",
+		"situation": "状態"
+
+    },
+    "value": {
+		"express": "表示",
+		"non_representation": "非表示"
+	},
+	"btn": {
+		"search": "検索"
+	}
+}

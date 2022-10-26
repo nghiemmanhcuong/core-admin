@@ -16,6 +16,7 @@
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
+import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInput from '@Core/components/Input/CoreInput'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import Yup from '@Core/helper/Yup'
@@ -92,6 +93,7 @@ const EditItemForm = props => {
 					name="image"
 					size="small"
 					className="w-full sm:w-2/3"
+					helperText
 				/>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
@@ -205,14 +207,20 @@ const EditItemForm = props => {
 							{t('edit.form.label.situation')}
 						</Typography>
 					</Box>
-					<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
-						<CoreRadioGroup
-							className="flex-row"
+					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
+						<CoreCheckbox 
 							control={control}
-							name="description"
-							options={sex}
-							row="true"
+							name='checkbox1'
+							label={t('edit.form.check_box.label.express')}
+							
 						/>
+						<CoreCheckbox 
+							control={control}
+							name='checkbox2'
+							label={t('edit.form.check_box.label.representation')}
+							className='ml-20'
+						/>
+						
 					</Box>
 				</Box>
 
@@ -223,20 +231,14 @@ const EditItemForm = props => {
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex flex-nowrap">
-						<CoreInput control={control} name="creator" size="small" className="w-4/5" />
-						<Button variant="contained" color="primary" className="ml-auto w-1/5">
-							{t('edit.form.btn.selection')}
+						<CoreInput control={control} name="creator" size="small" className="w-4/5 mr-12" />
+						<Button variant="contained" color="error" className="ml-auto">
+							{t('edit.form.btn.delete')}
+						</Button>
+						<Button variant="contained" className="ml-[10px] bg-blue">
+							{t('edit.form.btn.register')}
 						</Button>
 					</Box>
-				</Box>
-
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Button variant="contained" color="error" className="ml-auto">
-						{t('edit.form.btn.delete')}
-					</Button>
-					<Button variant="contained" color="primary" className="ml-[10px]">
-						{t('edit.form.btn.register')}
-					</Button>
 				</Box>
 			</Box>
 		</Box>

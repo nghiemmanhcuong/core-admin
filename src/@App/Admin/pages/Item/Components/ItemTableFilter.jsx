@@ -86,13 +86,15 @@ const ItemTableFilter = props => {
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.state')}
 					</Box>
-					<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[5px]" />
-					<CoreCheckbox
-						control={control}
-						name="non_representation"
-						label={t('value.non_representation')}
-						className="ml-[5px]"
-					/>
+					<Box className='border-grey-300 border-1 flex'>
+						<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[20px]" />
+						<CoreCheckbox
+							control={control}
+							name="non_representation"
+							label={t('value.non_representation')}
+							className="ml-[5px]"
+						/>
+					</Box>
 				</Box>
 				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 					{t('btn.search')}

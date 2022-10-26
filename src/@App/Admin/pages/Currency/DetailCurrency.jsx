@@ -15,8 +15,10 @@ import TableBody from '@mui/material/TableBody'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import Grid from '@mui/material/Grid'
 import CoreDatePicker from "@Core/components/Input/CoreDatePicker"
+import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
+import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 
-const FontTitle = ({ variant = 'h1', title = '' }) => {
+const FontTitle = ({ variant = 'h1', title = 'アプリ内通貨詳細' }) => {
 	return (
 		<Typography variant={variant} className="text-primary">
 			{title}
@@ -28,7 +30,8 @@ function createData(no, name, fat, carbs, protein, carbs1, protein1) {
 }
 
 
-const contentCourse = () => {
+const contentCurrency = () => {
+	const {t} = useTranslation(TRANSLATE_ADMIN.currency)
 	const { control } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
@@ -43,73 +46,125 @@ const contentCourse = () => {
 	})
 	return (
 		<form>
-			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
-				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
-                    <Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="アプリ内通貸ID" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
+			<Box>
+			<Box sx={{ padding: 2 }} className="max-w-lg mx-auto">
+				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary">
+							{t('edit.form.label.id')}
+						</Typography>
 					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="アプリ内通貸名" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
+					<CoreInput control={control} name="id" size="small" className="w-full sm:w-2/3" placeholder='Default input' />
+				</Box>
+
+				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary">
+							{t('edit.form.label.name')}
+						</Typography>
 					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="通貸単位名" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
+					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" placeholder='Default input' />
+				</Box>
+
+				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary">
+							{t('edit.form.label.description')}
+						</Typography>
 					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="ポイント換算レート" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
+					<CoreInput
+						control={control}
+						name="description"
+						size="small"
+						minRows={5}
+						multiline
+						className="w-full sm:w-2/3"
+					/>
+				</Box>
+
+				<AdminInputUpload
+					label={t('edit.form.label.image')}
+					control={control}
+					name="image"
+					size="small"
+					className="w-full sm:w-2/3"
+					helperText
+				/>
+
+				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary">
+							{t('edit.form.label.time')}
+						</Typography>
 					</Box>
-                    <Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="使用可能開始日" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<Box className="grid grid-flow-row-dense grid-cols-3">
-								<Box className="col-span-1">
-                                <CoreDatePicker
-										control={control}
-										name="start"
-										size="small"
-									/>
-								</Box>
-								<Box className="col-span-1 text-center pt-10">
-									<FontTitle variant="h3" title="使用可能終了日" />
-								</Box>
-								<Box className="col-span-1">
-									<CoreDatePicker
-										control={control}
-										name="end"
-										size="small"
-									/>
-								</Box>
-							</Box>
-						</Box>
+					<Box className="w-full sm:w-2/3 flex">
+						<FormAutocomplete
+							control={control}
+							size="small"
+							fullWidth
+							variant="outlined"
+							placeholder="Choose..."
+							name="from_date"
+							className="w-full"
+						/>
+						<Typography variant="h3" color="primary" className="mx-8 self-center">
+							{t('edit.form.label.to')}
+						</Typography>
+						<FormAutocomplete
+							control={control}
+							size="small"
+							fullWidth
+							variant="outlined"
+							placeholder="Choose..."
+							name="to_date"
+							className="w-full"
+						/>
 					</Box>
-                    <Grid className="text-end pt-20">
-                        <Button variant="contained" color="success" size="small">
-                            登録
-                        </Button>
-                    </Grid>
+				</Box>
+
+				
+
+				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary">
+							{t('edit.form.label.hide/show')}
+						</Typography>
+					</Box>
+					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
+						<CoreCheckbox 
+							control={control}
+							name='checkbox1'
+							label={t('edit.form.check_box.label.express')}
+							
+						/>
+						<CoreCheckbox 
+							control={control}
+							name='checkbox2'
+							label={t('edit.form.check_box.label.representation')}
+							className='ml-20'
+						/>
+						
+					</Box>
+				</Box>
+
+				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary">
+							{t('edit.form.label.creator')}
+						</Typography>
+					</Box>
+					<Box className="w-full sm:w-2/3 flex flex-nowrap">
+						<CoreInput control={control} name="creator" size="small" className="w-4/5 mr-12" />
+						<Button variant="contained" color="error" className="ml-auto">
+							{t('edit.form.btn.delete')}
+						</Button>
+						<Button variant="contained" className="ml-[10px] bg-blue">
+							{t('edit.form.btn.register')}
+						</Button>
+					</Box>
 				</Box>
 			</Box>
+		</Box>
             
 		</form>
 	)
@@ -117,12 +172,7 @@ const contentCourse = () => {
 const DetailCurrency = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
 	return (
-		<ListCurrencyProvider t={t}>
-			<AdminContentPage
-				pageTitle="アプリ内通貸"
-				content={contentCourse()}
-			/>
-		</ListCurrencyProvider>
+		contentCurrency()
 	)
 }
 

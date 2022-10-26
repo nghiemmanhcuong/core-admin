@@ -32,16 +32,21 @@ const ListSurrounding = props => {
 		<ListSurroundingProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.surrounding')}
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => navigate(ROUTER_ADMIN.surrounding.list + '/new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
-				content={<ListSpotTable />}
+			
+				content={<>
+					<ListSpotTable />
+					<Box className='text-right my-40 mr-40'>
+						<Button
+							variant="contained"
+							color="primary"
+							className='bg-blue text-18 w-160'
+							onClick={() => navigate(ROUTER_ADMIN.surrounding.list + '/new')}
+						>
+							{t('common:btn.add')}
+						</Button>
+					</Box>
+				</>
+			}
 			/>
 		</ListSurroundingProvider>
 	)

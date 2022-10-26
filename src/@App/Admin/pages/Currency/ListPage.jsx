@@ -7,24 +7,29 @@ import AdminContentPage from '../../components/Layout/AdminContentPage'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListCurrencyProvider from './ListCurrencyProvider'
 import ListCurrencyTable from './Components/ListCurrencyTable'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 
 const ListCourse = props => {
     const { t } = useTranslation(TRANSLATE_ADMIN.course)
 	return (
 		<ListCurrencyProvider t={t}>
 			<AdminContentPage
-				pageTitle="アプリ内通貸"
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => console.log('============= navigate page add new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
-				content={<ListCurrencyTable />}
+				pageTitle="アプリ内通貨一覧"
+				content={<>
+					<ListCurrencyTable />
+					<Box className='my-40 mr-40 text-right'>
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={() => console.log('============= navigate page add new')}
+							className='bg-blue text-18 w-160 '
+						>
+							{t('common:btn.add')}
+						</Button>
+
+					</Box>
+				</>
+			}
 			/>
 		</ListCurrencyProvider>
 	)
