@@ -39,5 +39,8 @@
 	},
 	"form": {
 		"input_file_empty": "Chưa chọn file nào"
+	},
+	"validation": {
+		"password": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character."
 	}
 }

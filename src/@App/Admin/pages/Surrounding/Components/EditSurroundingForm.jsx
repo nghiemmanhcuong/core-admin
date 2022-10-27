@@ -88,16 +88,17 @@ const EditSurroundingForm = props => {
 	]
 
 	return (
-		<form onSubmit={onSubmit} className="mt-20">
+		<form onSubmit={onSubmit} className="mt-20 px-20">
 			<Box className="max-w-lg mx-8 sm:mx-auto">
-				{/* <AdminInput
+				<AdminInput
 					control={control}
 					label={t('edit.form.label.id')}
 					name="id"
 					placeholder="Default input"
 					size="small"
+					readOnly
 					// required
-				/> */}
+				/>
 				<AdminInput
 					control={control}
 					label={t('edit.form.label.name')}
@@ -176,7 +177,7 @@ const EditSurroundingForm = props => {
 				/>
 			</Box>
 
-			<Box className="flex flex-wrap sm:flex-nowrap mb-16 ml-auto sm:mb-20">
+			<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 				<Box className="w-full mt-12 mb-8 sm:mb-0 text-end">
 					<Button
 						variant="contained"

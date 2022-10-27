@@ -36,12 +36,19 @@ const ListEventTable = props => {
 				className: 'w-[10%]',
 				cell: ({ row }) => {
 					return row?.original?.tag?.map((item, index) => {
-						return <span className="mb-4 bg-grey-300 p-4 rounded-4 m-4">{item}</span>
+						return (
+							<span key={index} className="mb-4 bg-grey-300 p-4 rounded-4 m-4">
+								{item}
+							</span>
+						)
 					})
 				}
 			}),
-			columnHelper.accessor('author', {
-				header: t('label.author')
+			columnHelper.accessor('publish', {
+				header: t('label.status'),
+				cell: ({ row }) => {
+					return row?.original?.publish === 1 ? t('label.publish') : t('label.unpublish')
+				}
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),

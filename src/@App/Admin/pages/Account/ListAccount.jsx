@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Tue Oct 25 2022
- * Modified By: use
+ * Last Modified: Thu Oct 27 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -35,18 +35,18 @@ const ListAccount = props => {
 				content={
 					<>
 						<ListAccountTable />
-						<Box className='text-right mt-80 pr-20'>
+						<Box className="text-right mt-80 pr-20">
 							<Button
 								variant="contained"
 								color="primary"
+								className="ml-[2px]"
 								onClick={() => navigate(ROUTER_ADMIN.account.list + '/new')}
-								className='text-16 py-4'
 							>
 								{t('common:btn.add')}
 							</Button>
 						</Box>
 					</>
-			}
+				}
 			/>
 		</ListAccountProvider>
 	)

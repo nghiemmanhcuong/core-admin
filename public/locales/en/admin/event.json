@@ -21,7 +21,9 @@
 		"event_start": "開催年月日",
 		"event_end": "受付年月日",
 		"tag": "タグ情報",
-		"author": "状態",
-		"action": "スペシャルアクション"
+		"status": "状態",
+		"action": "スペシャルアクション",
+		"publish": "公開",
+		"unpublish": "非公開"
 	}
 }

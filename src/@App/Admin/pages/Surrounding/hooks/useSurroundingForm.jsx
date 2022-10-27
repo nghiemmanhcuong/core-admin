@@ -42,14 +42,11 @@ export const useSurroundingForm = props => {
 	const onSubmit = methodForm.handleSubmit(
 		async data => {
 			try {
-				console.log('============= data', data)
 				const newData = {
 					...data,
 					type: +data?.type,
-					image: data?.image?.name,
-					image_info: data?.image
+					image: data?.image?.name
 				}
-				console.log('============= newData', newData)
 
 				await surroundingService.save(newData)
 				navigate(ROUTER_ADMIN.surrounding.list)
