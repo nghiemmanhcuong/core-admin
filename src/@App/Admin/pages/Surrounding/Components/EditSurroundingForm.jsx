@@ -96,7 +96,7 @@ const EditSurroundingForm = props => {
 					name="id"
 					placeholder="Default input"
 					size="small"
-					readOnly
+					disabled
 					// required
 				/>
 				<AdminInput

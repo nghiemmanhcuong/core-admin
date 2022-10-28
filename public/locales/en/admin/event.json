@@ -25,5 +25,41 @@
 		"action": "スペシャルアクション",
 		"publish": "公開",
 		"unpublish": "非公開"
+	},
+	"edit": {
+		"form": {
+			"label": {
+				"id": "イベントID",
+				"title": "イベントタイトル",
+				"description": "イベント説明",
+				"display": "状態",
+				"category": "イベントカテゴリ",
+				"venue": "イベント開催場所",
+				"type": "イベントタイプ",
+				"period": "イベント開催期間",
+				"to": "～",
+				"entry_period": "イベントエントリ期間",
+				"entry_fee": "エントリー料金",
+				"payment_method": "支払方法",
+				"entry_option": "エントリーオプション",
+				"mission": "イベントミッション",
+				"tag": "イベントタグ",
+				"precaution_when_entering": "エントリー時の注意事項",
+				"trouble_contact_name": "トラブル時連絡先名称",
+				"contact_address": "連絡先",
+				"related_event": "関連イベント",
+				"creator": "イベント作成者"
+			},
+			"check_box": {
+				"label": {
+					"display": "表示",
+					"hidden": "非表示",
+					"men_only": "男性限定",
+					"women_only": "女性限定",
+					"men_over_50s": "男性50代以上",
+					"all_participants": "参加者全員"
+				}
+			}
+		}
 	}
 }
