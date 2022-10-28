@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Oct 27 2022
- * Modified By: haitran
+ * Last Modified: Fri Oct 28 2022
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -14,6 +14,7 @@
  */
 
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
+import AdminInput from '@App/Admin/components/Input/AdminInput'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { accountSerivce } from '@App/Admin/services/accountService'
@@ -81,68 +82,45 @@ const EditAccountForm = props => {
 	return (
 		<form onSubmit={onSubmit}>
 			<Box className="max-w-lg mx-auto">
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 mt-12 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.id')}
-						</Typography>
-					</Box>
-					<CoreInput
-						control={control}
-						name="id"
-						size="small"
-						className="w-full sm:w-2/3"
-						disabled
-						placeholder="Default input"
-					/>
-				</Box>
+				
+				<AdminInput
+					label={t('edit.form.label.id')}
+					control={control}
+					name="id"
+					placeholder="Default input"
+					size="small"
+				/>
+		
+				<AdminInput
+					label={t('edit.form.label.name')}
+					control={control}
+					name="name"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+				
+				<AdminInput
+					label={t('edit.form.label.mail')}
+					control={control}
+					name="mail"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+				<AdminInput
+					label={t('edit.form.label.password')}
+					control={control}
+					name="password"
+					type="password"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.name')}
-						</Typography>
-					</Box>
-					<CoreInput
-						control={control}
-						name="name"
-						size="small"
-						className="w-full sm:w-2/3"
-						placeholder="Default input"
-					/>
-				</Box>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.mail')}
-						</Typography>
-					</Box>
-					<CoreInput
-						control={control}
-						name="mail"
-						size="small"
-						className="w-full sm:w-2/3"
-						placeholder="Default input"
-					/>
-				</Box>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.password')}
-						</Typography>
-					</Box>
-					<CoreInput
-						control={control}
-						name="password"
-						type="password"
-						size="small"
-						className="w-full sm:w-2/3"
-						placeholder="Default input"
-					/>
-				</Box>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.role')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.role')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<FormAutocomplete
@@ -158,8 +136,8 @@ const EditAccountForm = props => {
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.roll')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.roll')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<FormAutocomplete
@@ -174,8 +152,8 @@ const EditAccountForm = props => {
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.active')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.active')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="border-gray-300 flex">
@@ -195,8 +173,8 @@ const EditAccountForm = props => {
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.account_creator')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.account_creator')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<CoreInput control={control} name="account_creator" size="small" className="w-full sm:w-2/3" />

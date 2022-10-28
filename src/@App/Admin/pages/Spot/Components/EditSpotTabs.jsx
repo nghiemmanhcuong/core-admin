@@ -82,42 +82,37 @@ const EditSpotTabs = props => {
 			<Box sx={{ padding: 2 }}>
 				{tabIndex === 0 && (
 					<Box className="max-w-lg  mx-auto">
-						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.id')}
-								</Typography>
-							</Box>
-							<CoreInput control={control} name="id" size="small" className="w-full sm:w-2/3" />
-						</Box>
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.title')}
-								</Typography>
-							</Box>
-							<CoreInput control={control} name="title" size="small" className="w-full sm:w-2/3" />
-						</Box>
+						<AdminInput
+							label={t('edit.form.label.id')}
+							control={control}
+							name="id"
+							placeholder="Default input"
+							size="small"
+						/>
+						<AdminInput
+							label={t('edit.form.label.title')}
+							control={control}
+							name="title"
+							placeholder="Default input"
+							size="small"
+							required
+						/>
+						
+						<AdminInput
+							label={t('edit.form.label.description')}
+							control={control}
+							name="description"
+							placeholder="Default input"
+							size="small"
+							minRows={5}
+							multiline
+							required
+						/>
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.description')}
-								</Typography>
-							</Box>
-							<CoreInput
-								control={control}
-								name="description"
-								size="small"
-								multiline
-								className="w-full sm:w-2/3"
-							/>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.situation')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.situation')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -133,8 +128,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.category')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.category')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -177,8 +172,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.venue')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.venue')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 sm:flex">
@@ -212,8 +207,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.period')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.period')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex">
@@ -243,9 +238,9 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.entry_period')}
-								</Typography>
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.entry_period')} <Typography className="text-error mx-8">必須</Typography>
+								</Typography> 
 							</Box>
 							<Box className="w-full sm:w-2/3 flex">
 								<FormAutocomplete
@@ -274,8 +269,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.entry_fee')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.entry_fee')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex flex-wrap">
@@ -317,8 +312,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.entry_option')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.entry_option')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box
@@ -357,8 +352,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.mission')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.mission')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex flex-nowrap">
@@ -371,8 +366,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.reward')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.reward')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex flex-nowrap">
@@ -385,8 +380,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.tag')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.tag')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="w-full rounded-md sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -482,44 +477,38 @@ const EditSpotTabs = props => {
 								</FormGroup>
 							</Box>
 						</Box>
+						<AdminInput
+							label={t('edit.form.label.precautions')}
+							control={control}
+							name="precautions"
+							placeholder="Default input"
+							size="small"
+							minRows={5}
+							multiline
+							required
+						/>
+						<AdminInput
+							label={t('edit.form.label.contact_name')}
+							control={control}
+							name="contact_name"
+							placeholder="Default input"
+							size="small"
+							required
+						/>
+						
+						<AdminInput
+							label={t('edit.form.label.address')}
+							control={control}
+							name="address"
+							placeholder="Default input"
+							size="small"
+							required
+						/>
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.precautions')}
-								</Typography>
-							</Box>
-							<CoreInput
-								control={control}
-								name="precautions"
-								size="small"
-								multiline
-								className="w-full sm:w-2/3"
-							/>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.contact_name')}
-								</Typography>
-							</Box>
-							<CoreInput control={control} name="contact_name" size="small" className="w-full sm:w-2/3" />
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.address')}
-								</Typography>
-							</Box>
-							<CoreInput control={control} name="address" size="small" className="w-full sm:w-2/3" />
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.related')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.related')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<FormAutocomplete
@@ -535,8 +524,8 @@ const EditSpotTabs = props => {
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary">
-									{t('edit.form.label.creator')}
+								<Typography variant="h3" color="primary" className='flex items-center'>
+									{t('edit.form.label.creator')} <Typography className="text-error mx-8">必須</Typography>
 								</Typography>
 							</Box>
 							<Box className="w-full sm:w-2/3 flex flex-nowrap">

@@ -17,6 +17,7 @@ import Grid from '@mui/material/Grid'
 import CoreDatePicker from "@Core/components/Input/CoreDatePicker"
 import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import AdminInput from '@App/Admin/components/Input/AdminInput'
 
 const FontTitle = ({ variant = 'h1', title = 'アプリ内通貨詳細' }) => {
 	return (
@@ -48,39 +49,33 @@ const contentCurrency = () => {
 		<form>
 			<Box>
 			<Box sx={{ padding: 2 }} className="max-w-lg mx-auto">
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.id')}
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="id" size="small" className="w-full sm:w-2/3" placeholder='Default input' />
-				</Box>
+				
+				<AdminInput
+					label={t('edit.form.label.id')}
+					control={control}
+					name="id"
+					placeholder="Default input"
+					size="small"
+				/>
+				<AdminInput
+					label={t('edit.form.label.name')}
+					control={control}
+					name="name"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.name')}
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" placeholder='Default input' />
-				</Box>
-
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.description')}
-						</Typography>
-					</Box>
-					<CoreInput
-						control={control}
-						name="description"
-						size="small"
-						minRows={5}
-						multiline
-						className="w-full sm:w-2/3"
-					/>
-				</Box>
+				<AdminInput
+					label={t('edit.form.label.description')}
+					control={control}
+					name="description"
+					placeholder="Default input"
+					size="small"
+					minRows={5}
+					multiline
+					required
+				/>
 
 				<AdminInputUpload
 					label={t('edit.form.label.image')}
@@ -89,12 +84,13 @@ const contentCurrency = () => {
 					size="small"
 					className="w-full sm:w-2/3"
 					helperText
+					required
 				/>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.time')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.time')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex">
@@ -126,8 +122,8 @@ const contentCurrency = () => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.hide/show')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.hide/show')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -149,8 +145,8 @@ const contentCurrency = () => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.creator')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.creator')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex flex-nowrap">

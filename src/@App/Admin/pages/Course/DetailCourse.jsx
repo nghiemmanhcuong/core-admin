@@ -20,6 +20,8 @@ import TableRow from '@mui/material/TableRow'
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import AdminInput from '@App/Admin/components/Input/AdminInput'
+import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -112,171 +114,144 @@ const contentCourse = () => {
 		<form>
 			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
-                    <Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コースID" />
+					<AdminInput
+						label='コースID'
+						control={control}
+						name="id"
+						placeholder="Default input"
+						size="small"
+					/>
+					<AdminInput
+						label='コースタイトル'
+						control={control}
+						name="name"
+						placeholder="Default input"
+						size="small"
+						required
+					/>
+					<AdminInput
+						label='キャッチフレーズ'
+						control={control}
+						name="catchphrase"
+						placeholder="Default input"
+						size="small"
+						required
+					/>
+					<AdminInput
+						label='コース説明'
+						control={control}
+						name="description"
+						placeholder="Default input"
+						size="small"
+						minRows={5}
+						multiline
+						required
+					/>
+					<AdminInputUpload
+						label='コース画像'
+						control={control}
+						name="image"
+						size="small"
+						className="w-full sm:w-2/3"
+						helperText
+						required
+					/>
+				
+					<AdminInput
+						label='コース距離'
+						control={control}
+						name="course_distance"
+						placeholder="Default input"
+						size="small"
+						required
+					/>
+					
+					<AdminInput
+						label='平均勾配'
+						control={control}
+						name="average_gradient"
+						placeholder="Default input"
+						size="small"
+						required
+					/>
+					
+					<AdminInput
+						label='獲得標高'
+						control={control}
+						name="elevation_gain"
+						placeholder="Default input"
+						size="small"
+						required
+					/>
+					
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className='flex items-center'>
+								体力度 <Typography className="text-error mx-8">必須</Typography>
+							</Typography>
 						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="獲得標高" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コースタイトル" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース説明" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput multiline rows={4} control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース画像" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-                            <Box className="grid grid-flow-row-dense grid-cols-3">
-								<Box className="col-span-2">
-									<Box className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
-										<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
-									</Box>
-									<Card variant="outlined" className="text-center">
-										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
-									</Card>
-								</Box>
-								<Box className="col-span-1 relative">
-									<Box className="absolute top-1/3 pl-10">
-										<Button variant="contained" color="error" size="small">
-											削除
-										</Button>
-										<Button variant="contained" color="success" size="small">
-											登録
-										</Button>
-									</Box>
-								</Box>
-							</Box>
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース距離" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="平均勾配" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="獲得標高" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="体力度" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
+						<Box className="w-full sm:w-2/3 sm:flex">
 							<FormAutocomplete
 								control={control}
-								name="spot_id"
 								size="small"
-								className="w-2/3"
 								fullWidth
 								variant="outlined"
 								placeholder="Choose..."
+								name="area"
+								className="w-full sm:w-2/3"
 							/>
 						</Box>
 					</Box>
+					
+					<AdminInput
+						label='完走目安'
+						control={control}
+						name="approximate_finish"
+						placeholder="Default input"
+						size="small"
+						required
+					/>
+				
+					<AdminInput
+						label='ルートURL'
+						control={control}
+						name="root_url"
+						placeholder="Default input"
+						size="small"
+					/>
+					<AdminInputUpload
+						label='ルート画像'
+						control={control}
+						name="image"
+						size="small"
+						className="w-full sm:w-2/3"
+						helperText
+					/>
+	
+					<AdminInput
+						label='ルートファイル（kml形式）'
+						control={control}
+						name="route_file"
+						placeholder="Default input"
+						size="small"
+					/>
+			
+					<AdminInput
+						label='高低図URL'
+						control={control}
+						name="height_map"
+						placeholder="Default input"
+						size="small"
+					/>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="完走目安" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="ルートURL" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="ルート画像" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<Box className="grid grid-flow-row-dense grid-cols-3">
-								<Box className="col-span-2">
-									<Box className="relative" style={{ backgroundColor:"darkgray", height:"150px" }}>
-										<img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png" alt="" style={{width:"150px"}} />
-									</Box>
-									<Card variant="outlined" className="text-center">
-										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
-									</Card>
-								</Box>
-								<Box className="col-span-1 relative">
-									<Box className="absolute top-1/3 pl-10">
-										<Button variant="contained" color="error" size="small">
-											削除
-										</Button>
-										<Button variant="contained" color="success" size="small">
-											登録
-										</Button>
-									</Box>
-								</Box>
-							</Box>
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="ルートファイル（kml形式）" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="高低図URL" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コースタグ" />
+							<Typography variant="h3" color="primary" className='flex items-center'>
+							コースタグ <Typography className="text-error mx-8">必須</Typography>
+							</Typography>
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<Card variant="outlined">
-								<Box className="grid grid-flow-row-dense grid-cols-4 p-5">
+								<Box className="grid grid-flow-row-dense grid-cols-4 p-5 pl-20">
 									<Box className="col-span-2 sm:col-span-1">
 										<CoreCheckbox control={control} name="checkbox" label="獲得標高" />
 									</Box>
@@ -333,7 +308,9 @@ const contentCourse = () => {
 				</Box>
 				<Box className="grid grid-flow-row-dense grid-cols-3 pt-40">
 					<Box className="col-span-3 sm:col-span-1 pt-10">
-						<FontTitle variant="h3" title="コース作成者" />
+						<Typography variant="h3" color="primary" className='flex items-center'>
+						コース作成者 <Typography className="text-error mx-8">必須</Typography>
+							</Typography>
 					</Box>
 					<Box className="col-span-3 sm:col-span-1">
                         <Box style={{position:"relative"}}>
