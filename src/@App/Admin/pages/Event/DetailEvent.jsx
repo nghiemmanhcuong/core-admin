@@ -2,8 +2,8 @@ import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
 import ListEventProvider from './ListEventProvider'
-import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button, Paper, Typography, TextField, Box, Card} from '@mui/material'
+import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { Button, Paper, Typography, TextField, Box, Card } from '@mui/material'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -21,14 +21,25 @@ import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/componen
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import TabHeader from './Components/TabHeader'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 const DetailEvent = props => {
-	const { t } = useTranslation(TRANSLATE_ADMIN.course)
+	const { t } = useTranslation(TRANSLATE_ADMIN.event)
+	const navigate = useNavigate()
+	const location = useLocation()
+	const { id } = useParams()
+	const isEdit = id !== 'new'
+
 	return (
-		<ListEventProvider t={t}>
+		<ListEventProvider t={t} eventData={location?.state} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle="イベント情報詳細"
-                tabHeader={<TabHeader/>}
+				headerAction={
+					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.event.list)}>
+						{t('common:btn.back')}
+					</Button>
+				}
+				tabHeader={<TabHeader />}
 			/>
 		</ListEventProvider>
 	)
