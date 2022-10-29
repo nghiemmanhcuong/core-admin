@@ -105,7 +105,7 @@ const AdminInputUpload = ({ control = {}, name = '', rules, required = false, la
 						{t('btn.delete')}
 					</Button>
 					<Button variant="contained" color="primary" className='bg-[#58AAFF] mx-8' size="small" onClick={handleAddFile} >
-						{t('btn.new')}
+						{t('btn.addition')}
 					</Button>
 				</Box>
 			</Box>

@@ -54,7 +54,7 @@ export const ROUTER_ADMIN = {
 	},
 	tag: {
 		list: basePath + '/tags',
-		detail: basePath + '/tags/detail'
+		detail: basePath + '/tags/:id'
 	},
 	surrounding: {
 		list: basePath + '/surrounding',

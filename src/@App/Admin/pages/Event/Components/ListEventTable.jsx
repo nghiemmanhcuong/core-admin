@@ -1,5 +1,5 @@
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
-import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
+import { CoreActionDelete, CoreActionEdit, CoreActionReview, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo, useState } from 'react'
@@ -7,9 +7,16 @@ import EventFilter from './EventFilter'
 import { Link, useNavigate } from 'react-router-dom'
 import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
+import { renderTextTruncate } from '@App/Admin/hooks/useHelpRender'
+import { useEventReviewDialog } from '../hooks/useEventReviewDialog'
+import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
+import { IconButton } from '@mui/material'
+import { useEventDetailDialog } from '../hooks/useEventDetailDialog'
 
 const ListEventTable = props => {
 	const { t, eventTableHandler, handleDeleteEvent } = useAdminPageContext()
+	const {handleOpen, handleClose, renderEventReview} = useEventReviewDialog()
+	const {handleOpenEventDetail, handleCloseEventDetail, renderEventDetail} = useEventDetailDialog()
 	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
@@ -20,7 +27,8 @@ const ListEventTable = props => {
 			}),
 			columnHelper.accessor('title', {
 				className: 'w-[20%] whitespace-normal',
-				header: t('label.title')
+				header: t('label.title'),
+				cell: info => renderTextTruncate(info.getValue())
 			}),
 			columnHelper.accessor('venue', {
 				header: t('label.venue')
@@ -57,7 +65,8 @@ const ListEventTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => console.log('============= data', data)} />
+							<CoreActionView onClick={() => handleOpenEventDetail(data)} />
+							<CoreActionReview onClick={() => handleOpen(data?.id)} />
 							<CoreActionEdit
 								onClick={() => navigate(ROUTER_ADMIN.event.list + `/${data.id}`, { state: data })}
 							/>
@@ -73,6 +82,8 @@ const ListEventTable = props => {
 		<Box>
 			<EventFilter />
 			<CoreTable isShowPagination columns={columns} {...eventTableHandler} data={eventTableHandler?.events} />
+			{renderEventReview()}
+			{renderEventDetail()}
 		</Box>
 	)
 }

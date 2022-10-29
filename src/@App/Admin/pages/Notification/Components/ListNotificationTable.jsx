@@ -26,6 +26,7 @@ import NotificationTableFilter from './NotificationTableFilter'
 const ListNotificationTable = props => {
 	const navigate = useNavigate()
 	const { t, notificationTableHandler, handleDeleteNotification } = useAdminPageContext()
+	console.log('============= notificationTableHandler',notificationTableHandler)
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -35,7 +36,7 @@ const ListNotificationTable = props => {
 			columnHelper.accessor('title', {
 				header: t('column.title')
 			}),
-			columnHelper.accessor('type', {
+			columnHelper.accessor('category', {
 				header: t('column.type')
 			}),
 			columnHelper.accessor('from_date', {
@@ -52,8 +53,8 @@ const ListNotificationTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.notification.edit)} />
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.notification.edit)} />
+							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {state: {data: data}})} />
+							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {state: {data: data}})} />
 							<CoreActionDelete onConfirmDelete={() => handleDeleteNotification(data.id)} />
 						</div>
 					)
@@ -64,7 +65,7 @@ const ListNotificationTable = props => {
 	return (
 		<Box>
 			<NotificationTableFilter />
-			<CoreTable isShowPagination columns={columns} {...notificationTableHandler} />
+			<CoreTable isShowPagination columns={columns} {...notificationTableHandler} data={notificationTableHandler?.information} />
 		</Box>
 	)
 }

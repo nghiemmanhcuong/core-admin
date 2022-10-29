@@ -41,7 +41,7 @@ const ListCourseTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => console.log('============= data', data)} />
+							{/* <CoreActionView onClick={() => console.log('============= data', data)} /> */}
 							<Link to={`/admin/course/${data.id}`}>
 								<CoreActionEdit onClick={() => console.log('============= data', data)} />
 							</Link>

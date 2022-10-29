@@ -71,7 +71,7 @@ const CoreDialog = props => {
 					sx={{
 						fontSize: 18
 					}}
-					className={clsx('text-center uppercase', dialogTitleClassName)}
+					className={clsx('text-center uppercase font-bold', dialogTitleClassName)}
 					{...DialogTitleProps}
 				>
 					{dialogTitle}

@@ -13,19 +13,20 @@
  * ----------	---	----------------------------------------------------------
  */
 
+import { env } from '@App/env'
 import BaseService from '@Core/api/BaseService'
 import { notificationFactory } from './factory/notificationFactory'
 
 class Notification extends BaseService {
-	BASE_URL = '/'
+	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/v1/admin/notifications'
+	BASE_ENDPOINT = '/api/resource/information'
 
 	constructor(params) {
 		super(params)
 		this.setRequest()
-		this.createFactory(notificationFactory)
-		this.setMockAdapter()
+		// this.createFactory(notificationFactory)
+		// this.setMockAdapter()
 	}
 }
 

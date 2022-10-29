@@ -3,6 +3,8 @@ import { IconButton, Tooltip, useTheme } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import { BiEdit, BiShow, BiTrash } from 'react-icons/bi'
+import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
+
 
 /*
  * Created Date: 04-09-2022, 9:42:53 am
@@ -36,6 +38,24 @@ export const CoreActionEdit = ({ onClick = () => {}, disabled = false }) => {
 	)
 }
 
+export const CoreActionReview = ({ onClick = () => {}, disabled = false }) => {
+	const { t } = useTranslation('common')
+	if (disabled) {
+		return (
+			<IconButton disabled color="primary">
+				<RateReviewOutlinedIcon />
+			</IconButton>
+		)
+	}
+	return (
+		<Tooltip title={t('btn.review')}>
+			<IconButton onClick={onClick} color="primary">
+				<RateReviewOutlinedIcon />
+			</IconButton>
+		</Tooltip>
+	)
+}
+
 export const CoreActionView = ({ onClick = () => {}, title = null, placement }) => {
 	const { t } = useTranslation('common')
 	const theme = useTheme()
@@ -56,7 +76,8 @@ export const CoreActionDelete = ({ onConfirmDelete = () => {}, disabled = false 
 		confirm({
 			content: t('table.delete_confirm'),
 			color: 'error',
-			onOk: onConfirmDelete
+			onOk: onConfirmDelete,
+			zIndex: 9999
 		})
 	}
 

@@ -18,13 +18,15 @@ import { useTranslation } from 'react-i18next'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
 import { Box } from '@mui/system'
-import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListTagProvider from './ListTagProvider'
 import ListTagTable from './Components/ListTagTable'
 import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const ListTag = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.tag)
+	const navigate = useNavigate()
 
 	return (
 		<ListTagProvider t={t}>
@@ -37,7 +39,7 @@ const ListTag = props => {
 						<Button
 							variant="contained"
 							color="primary"
-							onClick={() => console.log('============= navigate page add new')}
+							onClick={() => navigate(ROUTER_ADMIN.tag.list + '/new')}
 							className='px-20 w-160 bg-[#007BFF] text-18'
 						>
 							{t('common:btn.add')}
