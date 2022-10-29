@@ -91,11 +91,12 @@ const DetailTagForm = props => {
 					name="name"
 					placeholder="Default input"
 					size="small"
+					required
 				/>
 				<Box className='my-12 flex'>
 					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							{t('title.tag_type')}
+							{t('title.tag_type')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 border-grey-300 border-1">
@@ -122,6 +123,7 @@ const DetailTagForm = props => {
 					name="number_tag"
 					placeholder="Default input"
 					size="small"
+					required
 				/>
 				<Box className='my-12 flex'>
 					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
@@ -142,7 +144,7 @@ const DetailTagForm = props => {
 				<Box className='my-12 flex'>
 					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							{t('title.hide/show')}
+							{t('title.hide/show')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full flex sm:w-2/3 border-grey-300 border-1">

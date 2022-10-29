@@ -39,7 +39,7 @@ const ListAccount = props => {
 							<Button
 								variant="contained"
 								color="primary"
-								className="ml-[2px]"
+								className="bg-blue text-18 w-160"
 								onClick={() => navigate(ROUTER_ADMIN.account.list + '/new')}
 							>
 								{t('common:btn.add')}

@@ -58,7 +58,9 @@ const ListEventTable = props => {
 					return (
 						<div className="flex">
 							<CoreActionView onClick={() => console.log('============= data', data)} />
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.event + `/${data.id}`)} />
+							<CoreActionEdit
+								onClick={() => navigate(ROUTER_ADMIN.event.list + `/${data.id}`, { state: data })}
+							/>
 							<CoreActionDelete onConfirmDelete={() => handleDeleteEvent(data.id)} />
 						</div>
 					)

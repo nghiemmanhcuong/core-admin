@@ -14,6 +14,7 @@
  */
 
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
+import AdminInput from '@App/Admin/components/Input/AdminInput'
 import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
@@ -54,38 +55,30 @@ const EditItemForm = props => {
 	return (
 		<Box>
 			<Box sx={{ padding: 2 }} className="max-w-lg mx-auto">
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.id')}
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="id" size="small" className="w-full sm:w-2/3" />
-				</Box>
-
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.name')}
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" />
-				</Box>
-
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.description')}
-						</Typography>
-					</Box>
-					<CoreInput
-						control={control}
-						name="description"
-						size="small"
-						multiline
-						className="w-full sm:w-2/3"
-					/>
-				</Box>
+				<AdminInput
+					label={t('edit.form.label.id')}
+					control={control}
+					name="id"
+					placeholder="Default input"
+					size="small"
+				/>
+				<AdminInput
+					label={t('edit.form.label.name')}
+					control={control}
+					name="name"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+				<AdminInput
+					label={t('edit.form.label.description')}
+					control={control}
+					name="description"
+					size="small"
+					minRows={5}
+					multiline
+					required
+				/>
 
 				<AdminInputUpload
 					label={t('edit.form.label.image')}
@@ -94,12 +87,13 @@ const EditItemForm = props => {
 					size="small"
 					className="w-full sm:w-2/3"
 					helperText
+					required
 				/>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.time')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.time')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex">
@@ -113,7 +107,7 @@ const EditItemForm = props => {
 							className="w-full"
 						/>
 						<Typography variant="h3" color="primary" className="mx-8 self-center">
-							{t('edit.form.label.to')}
+							{t('edit.form.label.to')} 
 						</Typography>
 						<FormAutocomplete
 							control={control}
@@ -129,8 +123,8 @@ const EditItemForm = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.area')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.area')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 sm:flex">
@@ -146,37 +140,37 @@ const EditItemForm = props => {
 					</Box>
 				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.location')}
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="location" size="small" className="w-full sm:w-2/3" />
-				</Box>
+				<AdminInput
+					label={t('edit.form.label.location')}
+					control={control}
+					name="location"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+
+				<AdminInput
+					label={t('edit.form.label.address_location')}
+					control={control}
+					name="address_location"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+
+				<AdminInput
+					label={t('edit.form.label.inventory')}
+					control={control}
+					name="inventory"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.address_location')}
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="address_location" size="small" className="w-full sm:w-2/3" />
-				</Box>
-
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.inventory')}
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="inventory" size="small" className="w-full sm:w-2/3" />
-				</Box>
-
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.exchangeable_currency')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.exchangeable_currency')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 sm:flex">
@@ -192,19 +186,19 @@ const EditItemForm = props => {
 					</Box>
 				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.unit')}
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="unit" size="small" className="w-full sm:w-2/3" />
-				</Box>
-
+				<AdminInput
+					label={t('edit.form.label.unit')}
+					control={control}
+					name="unit"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+				
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.situation')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.situation')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -226,8 +220,8 @@ const EditItemForm = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.creator')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.creator')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex flex-nowrap">

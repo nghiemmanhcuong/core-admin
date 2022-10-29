@@ -58,24 +58,24 @@ const EditNotification = props => {
 							{t('edit.form.label.id')}
 						</Typography>
 					</Box>
-					<CoreInput control={control} name="id" size="small" className="w-full sm:w-2/3" />
+					<CoreInput control={control} name="id" size="small" className="w-full sm:w-2/3" placeholder='Default input' />
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.title')}
+						<Typography variant="h3" color="primary" className='flex'>
+							{t('edit.form.label.title')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
-					<CoreInput control={control} name="title" size="small" className="w-full sm:w-2/3" />
+					<CoreInput control={control} name="title" size="small" className="w-full sm:w-2/3" placeholder='Default input' />
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography
 							variant="h3"
 							color="primary"
-							className="self-center w-full py-10 sm:py-0"
+							className="self-center flex items-center w-full py-10 sm:py-0"
 						>
-							{t('edit.form.label.type')}
+							{t('edit.form.label.type')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 sm:flex">
@@ -92,8 +92,8 @@ const EditNotification = props => {
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.period')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.period')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex">
@@ -123,8 +123,8 @@ const EditNotification = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.notification')}
+						<Typography variant="h3" color="primary" className='flex items center'>
+							{t('edit.form.label.notification')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<CoreInput
@@ -138,8 +138,8 @@ const EditNotification = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.check_box.label.status')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.check_box.label.status')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -150,8 +150,8 @@ const EditNotification = props => {
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary">
-							{t('edit.form.label.creator')}
+						<Typography variant="h3" color="primary" className='flex items-center'>
+							{t('edit.form.label.creator')} <Typography className="text-error mx-8">必須</Typography>
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex flex-nowrap">
