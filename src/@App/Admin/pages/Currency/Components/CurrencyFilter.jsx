@@ -13,13 +13,13 @@ import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CardMedia from '@mui/material/CardMedia'
 
 const CurrencyFilter = props => {
-	const { eventTableHandler } = useAdminPageContext()
+	const { currencyTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
 	const handleFilter = () => {
 		const params = {
 			// TODO : param filter
 		}
-		eventTableHandler.handleFetchData(params)
+		currencyTableHandler.handleFetchData(params)
 	}
 	const { control } = useForm({
 		mode: 'onTouched',
@@ -60,17 +60,17 @@ const CurrencyFilter = props => {
 						placeholder="Choose..."
 					/>
 				</Box>
-				</Box>
-				<Box className="flex p-10  w-full">
+			</Box>
+			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.name_currency')}
+						{t('title.name_currency')}
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.situation')}
+						{t('title.situation')}
 					</Box>
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
@@ -83,13 +83,11 @@ const CurrencyFilter = props => {
 						</Box>
 					</Card>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-					{t('btn.search')}
+						{t('btn.search')}
 					</Button>
 				</Box>
 			</Box>
-			</Box>
-            
-		
+		</Box>
 	)
 }
 

@@ -68,7 +68,7 @@ const ItemTableFilter = props => {
 				</Button>
 			</Box>
 			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start  ">
+				<Box className="flex w-1/2 items-start">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.unit')}
 					</Box>
@@ -82,12 +82,17 @@ const ItemTableFilter = props => {
 						placeholder="Choose..."
 					/>
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
+				<Box className="flex w-1/2 items-start mx-8">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.state')}
 					</Box>
-					<Box className='border-grey-300 border-1 flex'>
-						<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[20px]" />
+					<Box className="border-grey-300 border-1 flex rounded-r-4">
+						<CoreCheckbox
+							control={control}
+							name="express"
+							label={t('value.express')}
+							className="ml-[20px]"
+						/>
 						<CoreCheckbox
 							control={control}
 							name="non_representation"

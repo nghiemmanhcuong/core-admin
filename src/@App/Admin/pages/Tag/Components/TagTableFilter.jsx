@@ -12,13 +12,13 @@ import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInputFile from '@Core/components/Input/CoreInputFile'
 
 const TagTableFilter = props => {
-	const { spotTableHandler } = useAdminPageContext()
+	const { tagTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.tag)
 	const handleFilter = () => {
 		const params = {
 			// TODO : param filter
 		}
-		spotTableHandler.handleFetchData(params)
+		tagTableHandler.handleFetchData(params)
 	}
 
 	const { control } = useForm({
@@ -61,18 +61,27 @@ const TagTableFilter = props => {
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.popular_tag')}
 					</Box>
-					<Box className='border-grey-300 border-1 w-2/3'>
-						<CoreCheckbox control={control} name="popular_tag" label={t('title.only_popular_tag')} className="ml-[5px] pl-20" />
+					<Box className="border-grey-300 border-1 w-2/3">
+						<CoreCheckbox
+							control={control}
+							name="popular_tag"
+							label={t('title.only_popular_tag')}
+							className="ml-[5px] pl-20"
+						/>
 					</Box>
-
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.state')}
 					</Box>
 					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}
-					<Box className='border-1 border-grey-300 rounded-4 flex'>
-						<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[20px]" />
+					<Box className="border-1 border-grey-300 rounded-4 flex">
+						<CoreCheckbox
+							control={control}
+							name="express"
+							label={t('value.express')}
+							className="ml-[20px]"
+						/>
 						<CoreCheckbox
 							control={control}
 							name="non_representation"

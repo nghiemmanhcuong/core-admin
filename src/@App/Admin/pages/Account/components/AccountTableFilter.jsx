@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Tue Oct 25 2022
- * Modified By: use
+ * Last Modified: Sat Oct 29 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -33,7 +33,7 @@ const AccountTableFilter = props => {
 		const params = {
 			// TODO : param filter
 		}
-		// accountTableHandler.handleFetchData(params)
+		accountTableHandler.handleFetchData(params)
 	}
 
 	const { control } = useForm({
@@ -91,8 +91,13 @@ const AccountTableFilter = props => {
 						{t('title.state')}
 					</Box>
 					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}
-					<Box className='border-1 border-grey-300 rounded-4 flex'>
-						<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[5px]" />
+					<Box className="border-1 border-grey-300 rounded-4 flex">
+						<CoreCheckbox
+							control={control}
+							name="express"
+							label={t('value.express')}
+							className="ml-[5px]"
+						/>
 						<CoreCheckbox
 							control={control}
 							name="non_representation"
