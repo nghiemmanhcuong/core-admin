@@ -26,6 +26,7 @@ import NotificationTableFilter from './NotificationTableFilter'
 const ListNotificationTable = props => {
 	const navigate = useNavigate()
 	const { t, notificationTableHandler, handleDeleteNotification } = useAdminPageContext()
+	console.log('============= notificationTableHandler',notificationTableHandler)
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
