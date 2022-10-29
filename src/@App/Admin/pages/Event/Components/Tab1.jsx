@@ -9,7 +9,7 @@ import Yup from '@Core/helper/Yup'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import Grid from '@mui/material/Grid'
-import { errorMsg } from '@Core/helper/Message'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 import AdminInput from '@App/Admin/components/Input/AdminInput'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { useNavigate } from 'react-router-dom'
@@ -150,8 +150,9 @@ const Tab1 = props => {
 				tag: newTag,
 				category: newCategory
 			}
-			await eventService.save(data)
+			await eventService.save(newData)
 			navigate(ROUTER_ADMIN.event.list)
+			successMsg(isEdit ? 'Edit success' : 'Create success')
 		} catch (error) {
 			errorMsg(error)
 		}
