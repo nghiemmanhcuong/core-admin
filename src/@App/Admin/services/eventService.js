@@ -14,6 +14,17 @@ class Event extends BaseService {
 		// this.createFactory(eventFactory)
 		// this.setMockAdapter()
 	}
+
+	getEventReview = (params) => {
+		const endpoint = '/api/resource/event/review'
+		return this.request.get(endpoint, {params})
+	}
+	
+	deleteEventReview = (id) => {
+		const endpoint = `/api/resource/event/review/${id}`
+		return this.request.delete(endpoint)
+
+	}
 }
 
 export const eventService = new Event()

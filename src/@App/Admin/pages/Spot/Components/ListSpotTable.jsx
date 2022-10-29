@@ -23,6 +23,7 @@ import { TextField, Button, Tooltip } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { truncate } from 'lodash'
+import { renderTextTruncate } from '@App/Admin/hooks/useHelpRender'
 const ListSpotTable = props => {
 	const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
 	const navigate = useNavigate()
@@ -37,19 +38,19 @@ const ListSpotTable = props => {
 				header: t('label.name')
 			}),
 			columnHelper.accessor('address', {
-				header: t('label.address')
+				header: t('label.address'),
+				cell: info => {
+					return renderTextTruncate(info.getValue())
+				}
 			}),
 			columnHelper.accessor('tel', {
-				header: t('label.phone')
+				header: t('label.phone'),
+				
 			}),
 			columnHelper.accessor('url', {
 				header: 'URL', //t('label.point'),
 				cell: info => {
-					return (
-						<Tooltip title={info.getValue()}>
-							<div>{truncate(info.getValue())}</div>
-						</Tooltip>
-					)
+					return renderTextTruncate(info.getValue())
 				}
 			}),
 			columnHelper.accessor('action', {
@@ -60,7 +61,7 @@ const ListSpotTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.spot.edit)} />
+							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.spot.edit)} /> */}
 							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.spot.edit)} />
 							<CoreActionDelete onConfirmDelete={() => handleDeleteSpot(data.id)} />
 						</div>

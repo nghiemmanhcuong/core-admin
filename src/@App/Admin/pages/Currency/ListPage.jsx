@@ -4,13 +4,16 @@ import { useTranslation } from 'react-i18next'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
 // import TableFilter from './Components/SpotTableFilter'
 // import { Box } from '@mui/system'
-import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListCurrencyProvider from './ListCurrencyProvider'
 import ListCurrencyTable from './Components/ListCurrencyTable'
 import { Box, Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
-const ListCourse = props => {
+const ListCurrency = props => {
     const { t } = useTranslation(TRANSLATE_ADMIN.course)
+	const navigate = useNavigate()
+
 	return (
 		<ListCurrencyProvider t={t}>
 			<AdminContentPage
@@ -21,7 +24,7 @@ const ListCourse = props => {
 						<Button
 							variant="contained"
 							color="primary"
-							onClick={() => console.log('============= navigate page add new')}
+							onClick={() => navigate(ROUTER_ADMIN.currency.list + '/new')}
 							className='bg-blue text-18 w-160 '
 						>
 							{t('common:btn.add')}
@@ -37,4 +40,4 @@ const ListCourse = props => {
 
 
 
-export default React.memo(ListCourse)
+export default React.memo(ListCurrency)

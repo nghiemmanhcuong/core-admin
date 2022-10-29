@@ -7,7 +7,7 @@ import AdminContentPage from '../../components/Layout/AdminContentPage'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListEventProvider from './ListEventProvider'
 import ListEventTable from './Components/ListEventTable'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 const ListCourse = props => {
@@ -17,16 +17,20 @@ const ListCourse = props => {
 		<ListEventProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.event')}
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => navigate(ROUTER_ADMIN.event.list + '/new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
-				content={<ListEventTable />}
+				content={<>
+					<ListEventTable />
+					<Box className='text-right my-40 mr-40'>
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={() => navigate(ROUTER_ADMIN.event.list + '/new')}
+							className='bg-blue w-160 font bold text-18'
+						>
+							{t('common:btn.add')}
+						</Button>
+					</Box>
+				</>
+			}
 			/>
 		</ListEventProvider>
 	)

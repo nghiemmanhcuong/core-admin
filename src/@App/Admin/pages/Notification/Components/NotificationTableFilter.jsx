@@ -88,7 +88,7 @@ const NotificationTableFilter = props => {
 						{t('title.state')}
 					</Box>
 					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}
-					<Box className='border-grey-300 border-1 flex'>
+					<Box className='border-grey-300 border-1 flex pl-20'>
 						<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[5px]" />
 						<CoreCheckbox
 							control={control}

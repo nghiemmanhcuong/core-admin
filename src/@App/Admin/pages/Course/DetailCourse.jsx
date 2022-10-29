@@ -50,19 +50,19 @@ const tableForm = () => {
 						<TableCell style={{ width: '10%' }}>
                             <Box sx={{ fontWeight: 'bold'}}>No</Box>
                         </TableCell>
-						<TableCell style={{ width: '20%' }}>
+						<TableCell style={{ width: '10%' }}>
                             <Box sx={{ fontWeight: 'bold'}}>スポット名</Box>
                         </TableCell>
 						<TableCell style={{ width: '20%' }}>
                             <Box sx={{ fontWeight: 'bold'}}>スポット種別</Box>
                         </TableCell>
-						<TableCell style={{ width: '20%' }}>
+						<TableCell style={{ width: '10%' }}>
                             <Box sx={{ fontWeight: 'bold'}}>住所</Box>
                         </TableCell>
-						<TableCell style={{ width: '10%' }}>
-                            <Box sx={{ fontWeight: 'bold'}}>推奨ポイント</Box>
+						<TableCell style={{ width: '20%' }}>
+                            <Box sx={{ fontWeight: 'bold'}}>獲得ポイント</Box>
                         </TableCell>
-						<TableCell style={{ width: '10%' }}>
+						<TableCell style={{ width: '20%' }}>
                             <Box sx={{ fontWeight: 'bold'}}>次スポットへの時間</Box>
                         </TableCell>
 						<TableCell>
@@ -80,10 +80,10 @@ const tableForm = () => {
 							<TableCell>{row.fat}</TableCell>
 							<TableCell>{row.carbs}</TableCell>
 							<TableCell>
-								<TextField type="number" id="outlined-search" size="small" defaultValue={row.carbs1} />
+								<TextField className='w-1/3' type="number" id="outlined-search" size="small" defaultValue={row.carbs1} />
 							</TableCell>
-							<TableCell>
-								<TextField type="number" id="outlined-search" size="small" defaultValue={row.protein1} />
+							<TableCell className='flex items-center'>
+								<TextField className='w-1/3 mr-12' type="number" id="outlined-search" size="small" defaultValue={row.protein1} /> 分
 							</TableCell>
 							<TableCell>
 								<Box className="flex">
@@ -301,33 +301,37 @@ const contentCourse = () => {
 			</Box>
 			<Box className="p-20">
 				{tableForm()}
-				<Box className="text-end pt-40">
-					<Button variant="contained" color="success" size="small">
-                        スポット追加
-					</Button>
-				</Box>
-				<Box className="grid grid-flow-row-dense grid-cols-3 pt-40">
-					<Box className="col-span-3 sm:col-span-1 pt-10">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						コース作成者 <Typography className="text-error mx-8">必須</Typography>
-							</Typography>
+			</Box>
+			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
+				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
+					<Box className="text-end pt-40">
+						<Button variant="contained" className='bg-blue w-160 text-16' size="small">
+							スポット追加
+						</Button>
 					</Box>
-					<Box className="col-span-3 sm:col-span-1">
-                        <Box style={{position:"relative"}}>
-                        <TextField fullWidth type="text" size="small" />
-                        <Button variant="contained" color="third" style={{position:"absolute"}}>
-                            選択
-                        </Button>
-                        </Box>
-					</Box>
-					<Box className="col-span-3 sm:col-span-1">
-						<Box className="text-end">
-							<Button variant="contained" color="error" className="mr-10" size="small">
-                                削除
+					<Box className="grid grid-flow-row-dense grid-cols-3 pt-40">
+						<Box className="col-span-3 sm:col-span-1 pt-10">
+							<Typography variant="h3" color="primary" className='flex items-center'>
+							コース作成者 <Typography className="text-error mx-8">必須</Typography>
+								</Typography>
+						</Box>
+						<Box className="col-span-3 sm:col-span-1">
+							<Box style={{position:"relative"}}>
+							<TextField fullWidth type="text" size="small" />
+							<Button variant="contained" color="third" style={{position:"absolute"}}>
+								選択
 							</Button>
-							<Button variant="contained" color="success" size="small">
-                                登録
-							</Button>
+							</Box>
+						</Box>
+						<Box className="col-span-3 sm:col-span-1">
+							<Box className="text-end">
+								<Button variant="contained" color="error" className="mr-10" size="small">
+									削除
+								</Button>
+								<Button variant="contained" className='bg-blue' size="small">
+									登録
+								</Button>
+							</Box>
 						</Box>
 					</Box>
 				</Box>

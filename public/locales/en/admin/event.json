@@ -24,7 +24,23 @@
 		"status": "状態",
 		"action": "スペシャルアクション",
 		"publish": "公開",
-		"unpublish": "非公開"
+		"unpublish": "非公開",
+		"course_id": "コースID",
+		"event_id": "イベントID",
+		"rating": "評価",
+		"text": "文章",
+		"image": "画像",
+		"type": "タイプ",
+		"author": "著者",
+		"reception_end": "受付終了",
+		"reception_start": "受付開始",
+		"entry_fee": "エントリー料金",
+		"special_feature_id": "特集ID",
+		"category": "イベントカテゴリ",
+		"sos_info": "SOS情報",
+		"summary": "まとめ",
+		"none": "なし"
+		
 	},
 	"edit": {
 		"form": {
