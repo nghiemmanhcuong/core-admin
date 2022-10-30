@@ -10,21 +10,32 @@ import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { useForm } from 'react-hook-form'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInputFile from '@Core/components/Input/CoreInputFile'
+import CoreInput from '@Core/components/Input/CoreInput'
+import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 
 const MissionTableFilter = props => {
 	const { missionTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.mission)
 	const handleFilter = () => {
-		const params = {
-			// TODO : param filter
-		}
+		const params = getValues()
 		missionTableHandler.handleFetchData(params)
 	}
 
-	const { control } = useForm({
+	const { control, getValues } = useForm({
 		mode: 'onTouched',
-		defaultValues: {}
+		defaultValues: {
+			name: '',
+			status: ''
+		}
 	})
+
+	const statusOptions = [
+		{ value: 'Spot 1', label: 'Spot 1' },
+		{ value: 'Spot 2', label: 'Spot 2' },
+		{ value: 'Spot 3', label: 'Spot 3' },
+		{ value: 'Spot 4', label: 'Spot 4' },
+		{ value: 'Spot 5', label: 'Spot 5' }
+	]
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
@@ -34,22 +45,22 @@ const MissionTableFilter = props => {
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.name')}
+						{t('title.name')}
 					</Box>
-					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
+					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.clear_condition')}
+						{t('title.clear_condition')}
 					</Box>
-					<FormAutocomplete
+					<CoreAutocomplete
 						control={control}
-						name="course"
+						name="status"
 						size="small"
-						className="w-2/3"
-						fullWidth
-						variant="outlined"
+						className="w-full sm:w-2/3"
 						placeholder="Choose..."
+						options={statusOptions}
+						returnValueType="enum"
 					/>
 				</Box>
 			</Box>
@@ -57,7 +68,7 @@ const MissionTableFilter = props => {
 				<Box className="flex w-1/2 items-start"></Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.situation')}
+						{t('title.situation')}
 					</Box>
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
@@ -65,12 +76,16 @@ const MissionTableFilter = props => {
 								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox2" label={t('value.non_representation')} />
+								<CoreCheckbox
+									control={control}
+									name="checkbox2"
+									label={t('value.non_representation')}
+								/>
 							</Box>
 						</Box>
 					</Card>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-					{t('btn.search')}
+						{t('btn.search')}
 					</Button>
 				</Box>
 			</Box>

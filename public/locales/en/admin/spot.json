@@ -14,7 +14,10 @@
 		"name": "スポット名",
 		"tag": "タグ情報",
 		"area": "エリア",
-		"state": "狀態"
+		"state": "狀態",
+		"detail": "詳細",
+		"facility": "施設",
+		"type": "タイプ"
 	},
 	"value": {
 		"express": "表示",
@@ -70,7 +73,6 @@
 					"best_view": "景色最高",
 					"autumn": "秋におすすめ",
 					"beginners": "初心者におすすめ"
-					
 				}
 			},
 			"btn": {

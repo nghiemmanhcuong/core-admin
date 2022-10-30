@@ -44,8 +44,7 @@ const ListSpotTable = props => {
 				}
 			}),
 			columnHelper.accessor('tel', {
-				header: t('label.phone'),
-				
+				header: t('label.phone')
 			}),
 			columnHelper.accessor('url', {
 				header: 'URL', //t('label.point'),
