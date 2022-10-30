@@ -155,8 +155,8 @@ const EventFilter = props => {
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 					費用
 					</Box>
-					<CoreInput control={control} name='min_fee' className='w-1/3' size='small' />
-					<CoreInput control={control} name='max_fee' className='w-1/3' size='small' />
+					<CoreInput control={control} name='min_fee' placeholder='最低料金' className='w-1/3' size='small' />
+					<CoreInput control={control} name='max_fee' placeholder='最大料金' className='w-1/3' size='small' />
 				</Box>
 			</Box>
 			<Box className="flex p-10  w-full">
