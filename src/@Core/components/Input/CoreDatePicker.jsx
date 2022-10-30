@@ -4,7 +4,7 @@
  * Email: phantrung696@gmail.com
  * -----
  * Last Modified:
- * Modified By: Peter
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -29,7 +29,8 @@ const CoreDatePicker = ({
 	rules,
 	required = false,
 	helperText,
-	placeholder = ''
+	placeholder = '',
+	size = ''
 }) => {
 	const {
 		field: { onChange, onBlur, value, ref },
@@ -55,6 +56,7 @@ const CoreDatePicker = ({
 			inputProps={{
 				readOnly: true
 			}}
+			size={size}
 			placeholder={placeholder}
 		/>
 	))

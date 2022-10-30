@@ -65,7 +65,7 @@ const ListEventTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => handleOpenEventDetail(data)} />
+							{/* <CoreActionView onClick={() => handleOpenEventDetail(data)} /> */}
 							<CoreActionReview onClick={() => handleOpen(data?.id)} />
 							<CoreActionEdit
 								onClick={() => navigate(ROUTER_ADMIN.event.list + `/${data.id}`, { state: data })}
