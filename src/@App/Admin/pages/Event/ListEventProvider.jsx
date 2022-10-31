@@ -10,7 +10,7 @@ const ListEventProvider = props => {
 	const requestEvents = useRequest(eventService.list, {
 		manual: true,
 		onError: res => {
-			errorMsg('Get list failed!!!')
+			errorMsg(res?.response?.data?.error_message)
 		}
 	})
 

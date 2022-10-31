@@ -3,8 +3,8 @@
  * Author: Peter
  * Email: phantrung696@gmail.com
  * -----
- * Last Modified: Thu Oct 13 2022
- * Modified By: Peter
+ * Last Modified: Sun Oct 30 2022
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -117,7 +117,7 @@ const CoreAutocomplete = props => {
 							}}
 							loading={loading}
 							options={options}
-							noOptionsText={t('form.autocomplete.no_options')}
+							noOptionsText='データーがない'
 							disabled={disabled}
 							onChange={(_, value) => {
 								return returnValueType === 'enum'

@@ -6,6 +6,7 @@
 		"title": "タイトル",
 		"type": "お知らせ種別",
 		"period": "掲載期間",
+		"detail": "お知らせ本文",
 		"state": "狀態"
 	},
 	"column": {
@@ -14,7 +15,8 @@
 		"type": "お知らせ種別",
 		"from_date": "掲載開始日時",
 		"to_date": "掲載終了時",
-		"action": "スペシャルアクション"
+		"action": "スペシャルアクション",
+		"detail": "お知らせ詳細"
 	},
 	"value": {
 		"express": "表示",

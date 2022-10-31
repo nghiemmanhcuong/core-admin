@@ -100,9 +100,9 @@ const CoreInput = props => {
 				// eslint-disable-next-line react/jsx-no-duplicate-props
 				InputProps={{
 					...InputProps,
-					...(type === 'number' && {
-						inputComponent: NumberFormatCustom
-					})
+					// ...(type === 'number' && {
+					// 	inputComponent: NumberFormatCustom
+					// })
 				}}
 				{...restProps}
 			/>
