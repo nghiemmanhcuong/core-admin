@@ -72,7 +72,12 @@ module.exports = {
 			blue: {
 				500: '#007BFF',
 				DEFAULT: '#007BFF'
+			},
+			yellow: {
+				500: '#FFC107',
+				DEFAULT: '#FFC107'
 			}
+
 		},
 		spacing: {
 			xs: '32rem',

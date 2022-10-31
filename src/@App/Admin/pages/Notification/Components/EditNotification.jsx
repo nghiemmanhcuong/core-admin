@@ -34,17 +34,16 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 const EditNotification = props => {
 	const navigate = useNavigate()
-	const { state } = useLocation();
-	const {data} = state
-	console.log('============= data',data)
+	const { state } = useLocation()
+
 	const { t, notificationTableHandler } = useAdminPageContext()
 	const { control, handleSubmit, watch, formState: {isSubmitting} } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			id: data?.id ?? '',
-			title: data?.title ?? '',
-			category: data?.category ?? null,
-			detail: data?.detail ?? ''
+			id: state?.data?.id ?? '',
+			title: state?.data?.title ?? '',
+			category: state?.data?.category ?? null,
+			detail: state?.data?.detail ?? ''
 			// render: 0,
 		},
 		resolver: yupResolver(
@@ -54,7 +53,6 @@ const EditNotification = props => {
 		)
 	})
 
-	console.log('============= watch()',watch())
 	const onSubmit = handleSubmit(async data => {
 		try {
 			await notificationService.save(data)
@@ -93,7 +91,7 @@ const EditNotification = props => {
 								color="primary"
 								className="self-center flex items-center w-full py-10 sm:py-0"
 							>
-								{t('edit.form.label.type')} <Typography className="text-error mx-8">必須</Typography>
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.type')}
 							</Typography>
 						</Box>
 						<Box className="w-full sm:w-2/3 sm:flex">
@@ -122,7 +120,7 @@ const EditNotification = props => {
 					{/* <Box className="flex flex-wrap sm:flex-nowrap mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 							<Typography variant="h3" color="primary" className='flex items-center'>
-								{t('edit.form.label.period')} <Typography className="text-error mx-8">必須</Typography>
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.period')}
 							</Typography>
 						</Box>
 						<Box className="w-full sm:w-2/3 flex">
@@ -162,7 +160,7 @@ const EditNotification = props => {
 					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 							<Typography variant="h3" color="primary" className='flex items-center'>
-								{t('edit.form.check_box.label.status')} <Typography className="text-error mx-8">必須</Typography>
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.check_box.label.status')}
 							</Typography>
 						</Box>
 						<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -186,7 +184,7 @@ const EditNotification = props => {
 					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 							<Typography variant="h3" color="primary" className='flex items-center'>
-								{t('edit.form.label.creator')} <Typography className="text-error mx-8">必須</Typography>
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.creator')}
 							</Typography>
 						</Box>
 						<Box className="w-full sm:w-2/3 flex flex-nowrap">

@@ -18,6 +18,7 @@ import { Box } from '@mui/system'
 import React from 'react'
 import { useController } from 'react-hook-form'
 import PropTypes from 'prop-types'
+import clsx from 'clsx'
 
 const CoreInput = props => {
 	const {
@@ -67,7 +68,7 @@ const CoreInput = props => {
 	const renderLabel = () => {
 		return (
 			<Typography variant="body2" className="flex items-center mb-4">
-				{label} {required ? <Typography className="text-error mx-8">必須</Typography> : ''}
+				<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {label} 
 			</Typography>
 		)
 	}

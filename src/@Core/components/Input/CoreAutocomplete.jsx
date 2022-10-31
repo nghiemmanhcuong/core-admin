@@ -3,7 +3,7 @@
  * Author: Peter
  * Email: phantrung696@gmail.com
  * -----
- * Last Modified: Sun Oct 30 2022
+ * Last Modified: Tue Nov 01 2022
  * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -16,6 +16,7 @@
 
 import { Autocomplete, CircularProgress, FormHelperText, TextField, Typography } from '@mui/material'
 import { useRequest } from 'ahooks'
+import clsx from 'clsx'
 import { find, get, isObject, map } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo } from 'react'
@@ -88,7 +89,7 @@ const CoreAutocomplete = props => {
     const renderLabel = () => {
 		return (
 			<Typography component="div" variant="body2" className="flex items-center mb-4">
-				{label} {required ? <Typography className="text-error mx-8">必須</Typography> : ''}
+				<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {label} 
 			</Typography>
 		)
 	}

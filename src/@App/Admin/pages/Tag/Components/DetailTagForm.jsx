@@ -84,6 +84,8 @@ const DetailTagForm = props => {
 					name="id"
 					placeholder="Default input"
 					size="small"
+					classNameField='bg-grey-300'
+					readOnly
 				/>
 				<AdminInput
 					label={t('title.name')}
@@ -96,7 +98,7 @@ const DetailTagForm = props => {
 				<Box className='my-12 flex'>
 					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							{t('title.tag_type')} <Typography className="text-error mx-8">必須</Typography>
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('title.tag_type')} 
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 border-grey-300 border-1">
@@ -128,7 +130,7 @@ const DetailTagForm = props => {
 				<Box className='my-12 flex'>
 					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							{t('title.popular_tag')}
+							<Typography className='w-72' /> {t('title.popular_tag')}
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 border-grey-300 border-1">
@@ -144,7 +146,7 @@ const DetailTagForm = props => {
 				<Box className='my-12 flex'>
 					<Box className="w-full sm:w-1/3 mt-12 text-primary mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							{t('title.hide/show')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 w-60 bg-yellow mx-8">必須</Typography> {t('title.hide/show')}
 						</Typography>
 					</Box>
 					<Box className="w-full flex sm:w-2/3 border-grey-300 border-1">
@@ -170,6 +172,9 @@ const DetailTagForm = props => {
 					name="tag_creator"
 					placeholder="Default input"
 					size="small"
+					classNameField='bg-grey-300'
+					readOnly
+
 				/>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">

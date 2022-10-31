@@ -123,7 +123,7 @@ const Tab3 = props => {
 							<FontTitle variant="h3" title="イベントID" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+							<CoreInput control={control} name="id" placeholder="Default input" size="small" readOnly className='bg-grey-300' />
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -131,7 +131,7 @@ const Tab3 = props => {
 							<FontTitle variant="h3" title="イベント名" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
+							<CoreInput control={control} name="name" placeholder="Default input" size="small" readOnly className='bg-grey-300' />
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">

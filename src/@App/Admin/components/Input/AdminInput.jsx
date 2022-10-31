@@ -38,6 +38,7 @@ const AdminInput = props => {
 		helperText,
 		allowTranslation,
 		disabled,
+		classNameField,
 		rules,
 		defaultValue,
 		...restProps
@@ -68,7 +69,7 @@ const AdminInput = props => {
 		if (label)
 			return (
 				<Typography variant="h3" color="primary" className="flex items-center mb-4">
-					{label} {required ? <Typography className="text-error mx-8">必須</Typography> : ''}
+					<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {label} 
 				</Typography>
 			)
 	}
@@ -89,6 +90,7 @@ const AdminInput = props => {
 					multiline={multiline}
 					minRows={minRows}
 					disabled={disabled}
+					className={classNameField}
 					error={!!error}
 					InputLabelProps={{
 						shrink: placeholder ? true : undefined,

@@ -96,7 +96,8 @@ const EditSurroundingForm = props => {
 					name="id"
 					placeholder="Default input"
 					size="small"
-					disabled
+					readOnly
+					classNameField='bg-grey-300'
 					// required
 				/>
 				<AdminInput
@@ -110,8 +111,8 @@ const EditSurroundingForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							{t('edit.form.label.type')}
-							<Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.type')}
+						
 						</Typography>
 					</Box>
 					<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>

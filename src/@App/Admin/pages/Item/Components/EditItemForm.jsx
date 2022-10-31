@@ -61,6 +61,8 @@ const EditItemForm = props => {
 					name="id"
 					placeholder="Default input"
 					size="small"
+					readOnly
+					classNameField='bg-grey-300'
 				/>
 				<AdminInput
 					label={t('edit.form.label.name')}
@@ -93,7 +95,7 @@ const EditItemForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.time')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.time')} 
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex">
@@ -124,7 +126,7 @@ const EditItemForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.area')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.area')} 
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 sm:flex">
@@ -170,7 +172,7 @@ const EditItemForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.exchangeable_currency')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.exchangeable_currency')} 
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 sm:flex">
@@ -198,7 +200,7 @@ const EditItemForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.situation')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.situation')} 
 						</Typography>
 					</Box>
 					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -221,11 +223,11 @@ const EditItemForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.creator')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.creator')} 
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex flex-nowrap">
-						<CoreInput control={control} name="creator" size="small" className="w-4/5 mr-12" />
+						<CoreInput control={control} name="creator" size="small" className="w-4/5 mr-12 bg-grey-300" readOnly />
 						<Button variant="contained" color="error" className="ml-auto">
 							{t('edit.form.btn.delete')}
 						</Button>

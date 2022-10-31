@@ -15,6 +15,7 @@
 
 import { FormHelperText, Icon, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+import clsx from 'clsx'
 import React, { forwardRef, useState } from 'react'
 import ReactDatePicker from 'react-datepicker'
 import { useController } from 'react-hook-form'
@@ -64,7 +65,7 @@ const CoreDatePicker = ({
 	const renderLabel = () => {
 		return (
 			<Typography component="div" variant="body2" className="flex items-center mb-4">
-				{label} {required ? <Typography className="text-error mx-8">必須</Typography> : ''}
+				<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {label} 
 			</Typography>
 		)
 	}

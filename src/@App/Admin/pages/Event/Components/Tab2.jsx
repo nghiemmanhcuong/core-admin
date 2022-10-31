@@ -20,6 +20,8 @@ import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import Grid from '@mui/material/Grid'
+import AdminInput from '@App/Admin/components/Input/AdminInput'
+import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -72,13 +74,13 @@ const tableForm = () => {
 					{rows.map(row => (
 						<TableRow key={row.no}>
 							<TableCell>
-								<TextField type="number" id="outlined-search" size="small" defaultValue={row.no} />
+								<TextField type="number" id="outlined-search" size="small" defaultValue={row.no} readOnly className='bg-grey-300' disabled />
 							</TableCell>
 							<TableCell>{row.name}</TableCell>
 							<TableCell>{row.fat}</TableCell>
 							<TableCell>{row.carbs}</TableCell>
 							<TableCell>
-								<TextField type="number" id="outlined-search" size="small" defaultValue={row.carbs1} />
+								<TextField type="number" id="outlined-search" size="small" defaultValue={row.carbs1} readOnly className='bg-grey-300' disabled />
 							</TableCell>
 							<TableCell>
 								<TextField
@@ -86,6 +88,9 @@ const tableForm = () => {
 									id="outlined-search"
 									size="small"
 									defaultValue={row.protein1}
+									readOnly
+									className='bg-grey-300'
+									disabled
 								/>
 							</TableCell>
 							<TableCell>
@@ -109,7 +114,7 @@ const Tab2 = props => {
 		},
 		resolver: yupResolver(
 			Yup.object({
-				firstname: Yup.string().required()
+				// firstname: Yup.string().required()
 			})
 		)
 	})
@@ -118,27 +123,31 @@ const Tab2 = props => {
 		<form>
 			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
+					<AdminInput 
+						control={control} 
+						label='イベントID' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300' 
+						required 
+					/>
+					<AdminInput 
+						control={control} 
+						label='イベントタイトル' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300' 
+						required 
+					/>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="イベントID" />
+						<Box className="col-span-3 sm:col-span-1 pt-10 flex items-center">
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> <FontTitle variant="h3" title="イベントコース" />
 						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="イベントタイトル" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="イベントコース" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
+						<Box className="col-span-3 sm:col-span-2 mb-20">
                             <Grid container rowSpacing={1} columnSpacing={ 12 }>
                                 <Grid item xs={6}>
                                 <FormAutocomplete
@@ -164,164 +173,164 @@ const Tab2 = props => {
                             </Grid>
 						</Box>
 					</Box>
+					<AdminInput 
+						control={control} 
+						label='コースタイトル' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					<AdminInput 
+						control={control} 
+						label='キャッチフレーズ' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					
+					<AdminInput 
+						control={control} 
+						label='コース説明' 
+						name="firstname" 
+						placeholder="Default input" 
+						multiline
+						rows={4}
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					
+					<AdminInput 
+						control={control} 
+						label='コース距離' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					
+					<AdminInput 
+						control={control} 
+						label='平均勾配' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					
+					<AdminInput 
+						control={control} 
+						label='獲得標高' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					
+					<AdminInput 
+						control={control} 
+						label='完走目安' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					
+					<AdminInput 
+						control={control} 
+						label='ルートURL' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					<AdminInputUpload
+						label='ルート画像'
+						control={control}
+						name="image"
+						size="small"
+						className="w-full sm:w-2/3"
+						helperText
+						hideButton
+					/>
+					
+					<AdminInput 
+						control={control} 
+						label='ルートファイル（kml形式）' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
+					
+					<AdminInput 
+						control={control} 
+						label='高低図URL' 
+						name="firstname" 
+						placeholder="Default input" 
+						size="small" 
+						readOnly 
+						classNameField='bg-grey-300'
+					/>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コースタイトル" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="キャッチフレーズ" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース説明" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput
-								multiline
-								rows={4}
-								control={control}
-								name="firstname"
-								placeholder="Default input"
-								size="small"
-							/>
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="コース距離" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="平均勾配" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="獲得標高" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="完走目安" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="ルートURL" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="ルート画像" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<Box className="grid grid-flow-row-dense grid-cols-3">
-								<Box className="col-span-2">
-									<Box className="relative" style={{ backgroundColor: 'darkgray', height: '150px' }}>
-										<img
-											className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-											src="https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png"
-											alt=""
-											style={{ width: '150px' }}
-										/>
-									</Box>
-									<Card variant="outlined" className="text-center">
-										<CardMedia class="py-5">推奨サイズ：100px x 100px</CardMedia>
-									</Card>
-								</Box>
-							</Box>
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="ルートファイル（kml形式）" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
-							<FontTitle variant="h3" title="高低図URL" />
-						</Box>
-						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="firstname" placeholder="Default input" size="small" />
-						</Box>
-					</Box>
-					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
+						<Box className="col-span-3 sm:col-span-1 pt-10 pl-72">
 							<FontTitle variant="h3" title="コースタグ" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
 							<Card variant="outlined">
                                 <Box className="grid grid-flow-row-dense grid-cols-4 p-5">
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled  />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                     <Box className="col-span-2 sm:col-span-1">
-                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" />
+                                        <CoreCheckbox control={control} name="checkbox" label="温泉あり" disabled />
                                     </Box>
                                 </Box>
 							</Card>
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-10">
+						<Box className="col-span-3 sm:col-span-1 pt-10 pl-72">
 							<FontTitle variant="h3" title="スポットリスト" />
 						</Box>
 					</Box>

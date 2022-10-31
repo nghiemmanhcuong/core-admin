@@ -120,6 +120,8 @@ const contentCourse = () => {
 						name="id"
 						placeholder="Default input"
 						size="small"
+						classNameField='bg-grey-300'
+						readOnly
 					/>
 					<AdminInput
 						label='コースタイトル'
@@ -154,7 +156,6 @@ const contentCourse = () => {
 						size="small"
 						className="w-full sm:w-2/3"
 						helperText
-						required
 					/>
 				
 					<AdminInput
@@ -187,7 +188,7 @@ const contentCourse = () => {
 					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 							<Typography variant="h3" color="primary" className='flex items-center'>
-								体力度 <Typography className="text-error mx-8">必須</Typography>
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> 体力度 
 							</Typography>
 						</Box>
 						<Box className="w-full sm:w-2/3 sm:flex">
@@ -246,7 +247,7 @@ const contentCourse = () => {
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<Typography variant="h3" color="primary" className='flex items-center'>
-							コースタグ <Typography className="text-error mx-8">必須</Typography>
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> コースタグ 
 							</Typography>
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
@@ -293,7 +294,7 @@ const contentCourse = () => {
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-						<Box className="col-span-3 sm:col-span-1 pt-20">
+						<Box className="col-span-3 sm:col-span-1 pt-20 pl-72">
 							<FontTitle variant="h3" title="スポットリスト" />
 						</Box>
 					</Box>
@@ -312,7 +313,7 @@ const contentCourse = () => {
 					<Box className="grid grid-flow-row-dense grid-cols-3 pt-40">
 						<Box className="col-span-3 sm:col-span-1 pt-10">
 							<Typography variant="h3" color="primary" className='flex items-center'>
-							コース作成者 <Typography className="text-error mx-8">必須</Typography>
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> コース作成者 
 								</Typography>
 						</Box>
 						<Box className="col-span-3 sm:col-span-1">

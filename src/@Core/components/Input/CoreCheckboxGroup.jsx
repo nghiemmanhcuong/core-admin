@@ -17,6 +17,7 @@ import { Box, Checkbox, FormControlLabel, FormGroup, FormHelperText, FormLabel, 
 import { Controller } from 'react-hook-form'
 import PropTypes from 'prop-types'
 import React from 'react'
+import clsx from 'clsx'
 
 const CoreCheckboxGroup = props => {
 	const { className, control, name, legendLabel, options, row, required, renderOption, disabled, ...restProps } =
@@ -25,7 +26,7 @@ const CoreCheckboxGroup = props => {
 	const renderLabel = () => {
 		return (
 			<Typography variant="body2" className="flex items-center mb-4">
-				{legendLabel} {required ? <Typography className="text-error mx-8">必須</Typography> : ''}
+				<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {legendLabel} 
 			</Typography>
 		)
 	}
@@ -49,7 +50,7 @@ const CoreCheckboxGroup = props => {
 							</Box>
 
 							<Box className="rounded-md flex w-full sm:w-2/3">
-								<Box className="rounded-md w-full p-5" sx={{ border: '1px solid #cccc' }}>
+								<Box className="rounded-md w-full p-5 pl-12" sx={{ border: '1px solid #cccc' }}>
 									<FormGroup row={row} {...restProps}>
 										{options.map((field, index) =>
 											renderOption ? (

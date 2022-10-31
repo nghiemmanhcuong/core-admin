@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Fri Oct 28 2022
+ * Last Modified: Mon Oct 31 2022
  * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -89,6 +89,8 @@ const EditAccountForm = props => {
 					name="id"
 					placeholder="Default input"
 					size="small"
+					readOnly
+					classNameField='bg-grey-300'
 				/>
 		
 				<AdminInput
@@ -120,7 +122,7 @@ const EditAccountForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.role')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.role')}
 						</Typography>
 					</Box>
 					<FormAutocomplete
@@ -137,7 +139,7 @@ const EditAccountForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.roll')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.roll')} 
 						</Typography>
 					</Box>
 					<FormAutocomplete
@@ -153,7 +155,7 @@ const EditAccountForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.active')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.active')} 
 						</Typography>
 					</Box>
 					<Box className="border-gray-300 flex">
@@ -174,10 +176,10 @@ const EditAccountForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className='flex items-center'>
-							{t('edit.form.label.account_creator')} <Typography className="text-error mx-8">必須</Typography>
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.account_creator')} 
 						</Typography>
 					</Box>
-					<CoreInput control={control} name="account_creator" size="small" className="w-full sm:w-2/3" />
+					<CoreInput control={control} name="account_creator" size="small" className="w-full sm:w-2/3 bg-grey-300" readOnly />
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Button

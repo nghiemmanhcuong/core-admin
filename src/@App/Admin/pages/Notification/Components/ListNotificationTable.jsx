@@ -55,9 +55,9 @@ const ListNotificationTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {state: {data: data}})} />
+							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {state: {data: data}})} /> */}
 							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {state: {data: data}})} />
-							<CoreActionDelete onConfirmDelete={() => handleDeleteNotification(data.id)} />
+							{/* <CoreActionDelete onConfirmDelete={() => handleDeleteNotification(data.id)} /> */}
 						</div>
 					)
 				}
