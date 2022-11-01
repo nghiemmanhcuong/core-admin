@@ -23,8 +23,8 @@ const Tab1 = props => {
 	const navigate = useNavigate()
 
 	const displayOptions = [
-		{ value: '1', label: t('edit.form.check_box.label.display') },
-		{ value: '2', label: t('edit.form.check_box.label.hidden') }
+		{ value: 1, label: t('edit.form.check_box.label.display') },
+		{ value: 0, label: t('edit.form.check_box.label.hidden') }
 	]
 
 	const categoryData = [
@@ -108,7 +108,7 @@ const Tab1 = props => {
 			venue: eventData?.venue ?? '',
 			entry_fee: eventData?.entry_fee ?? 0,
 			tag: [],
-			publish: eventData?.publish ?? '1',
+			publish: eventData?.publish ?? 1,
 			special_feature_id: eventData?.special_feature_id ?? 0,
 			author: eventData?.author ?? '',
 			sos_info: eventData?.sos_info ?? '',
@@ -127,6 +127,8 @@ const Tab1 = props => {
 		watch,
 		formState: { isSubmitting, isDirty }
 	} = methodForm
+
+	console.log('============= watch()',watch())
 
 	const onSubmit = methodForm.handleSubmit(async data => {
 		try {

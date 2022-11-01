@@ -16,6 +16,7 @@
 import { FormHelperText, Icon, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import clsx from 'clsx'
+import moment from 'moment'
 import React, { forwardRef, useState } from 'react'
 import ReactDatePicker from 'react-datepicker'
 import { useController } from 'react-hook-form'
@@ -47,7 +48,7 @@ const CoreDatePicker = ({
 		<TextField
 			fullWidth
 			variant="outlined"
-			value={value}
+			value={value ? moment(value).format('YYYY/MM/DD') : null}
 			onClick={onClick}
 			InputProps={{
 				endAdornment: <Icon>calendar_month</Icon>

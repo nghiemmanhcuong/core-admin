@@ -11,13 +11,19 @@ import { useForm } from 'react-hook-form'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInput from '@Core/components/Input/CoreInput'
 import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
+import { errorMsg } from '@Core/helper/Message'
 
 const SpotTableFilter = props => {
 	const { spotTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
-	const handleFilter = () => {
-		const params = getValues()
-		spotTableHandler.handleFetchData(params)
+	const handleFilter = async () => {
+		try {
+			const params = getValues()
+			await spotTableHandler.handleFetchData(params)
+		} catch (error) {
+			errorMsg(error?.response?.data?.error_message)
+		}
+		
 	}
 
 	const { control, getValues } = useForm({
@@ -28,7 +34,7 @@ const SpotTableFilter = props => {
 			address: '',
 			detail: '',
 			facility: '',
-			type: 0
+			type: null
 		}
 	})
 

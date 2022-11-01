@@ -10,6 +10,7 @@ import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { useForm } from 'react-hook-form'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInputFile from '@Core/components/Input/CoreInputFile'
+import CoreInput from '@Core/components/Input/CoreInput'
 
 const TagTableFilter = props => {
 	const { tagTableHandler } = useAdminPageContext()
@@ -23,7 +24,9 @@ const TagTableFilter = props => {
 
 	const { control } = useForm({
 		mode: 'onTouched',
-		defaultValues: {}
+		defaultValues: {
+			tag_name: ''
+		}
 	})
 
 	return (
@@ -42,14 +45,13 @@ const TagTableFilter = props => {
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.tag_type')}
 					</Box>
-					<FormAutocomplete
+					<CoreInput
 						control={control}
-						name="spot_id"
+						name="tag_name"
 						size="small"
 						className="w-2/3"
 						fullWidth
 						variant="outlined"
-						placeholder="Choose..."
 					/>
 				</Box>
 				<Button variant="contained" color="primary" className="ml-auto invisible">

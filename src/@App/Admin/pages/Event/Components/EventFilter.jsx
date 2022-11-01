@@ -16,6 +16,7 @@ import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 import { errorMsg } from '@Core/helper/Message'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
+import moment from 'moment/moment'
 
 const EventFilter = props => {
 	const { eventTableHandler } = useAdminPageContext()
@@ -45,6 +46,10 @@ const EventFilter = props => {
 			const data = getValues()
 			const params = {
 				...data,
+				event_date_from: data?.event_date_from ? moment(data?.event_date_from).add(7, 'hours').format('YYYY-MM-DD') : null,
+				event_date_until: data?.event_date_until ? moment(data?.event_date_until).add(7, 'hours').format('YYYY-MM-DD') : null,
+				reception_date_from: data?.reception_date_from ? moment(data?.reception_date_from).add(7, 'hours').format('YYYY-MM-DD') : null,
+				reception_date_until: data?.reception_date_until ? moment(data?.reception_date_until).add(7, 'hours').format('YYYY-MM-DD') : null,
 				category: data?.category?.join(','),
 				tag: data?.tag?.join(',')
 			}
