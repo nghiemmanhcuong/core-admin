@@ -23,7 +23,6 @@ const SpotTableFilter = props => {
 		} catch (error) {
 			errorMsg(error?.response?.data?.error_message)
 		}
-		
 	}
 
 	const { control, getValues } = useForm({
@@ -61,7 +60,7 @@ const SpotTableFilter = props => {
 			label: '〒103-0013 東京都中央区日本橋人形町２丁目１１−３'
 		},
 		{ value: '〒160-0011 東京都新宿区若葉１丁目１０', label: '	〒160-0011 東京都新宿区若葉１丁目１０' },
-		{ value: '〒106-0045 東京都港区麻布十番１丁目８−１４', label: '	東京都千代田区神田小川町１丁目６' }
+		{ value: '〒106-0045 東京都港区麻布十番１丁目８−１４', label: '〒106-0045 東京都港区麻布十番１丁目８−１４' }
 	]
 
 	return (
@@ -70,14 +69,14 @@ const SpotTableFilter = props => {
 				<Typography variant="h4">{t('title.filter')}</Typography>
 			</Box>
 			<Box className="flex p-10 w-full">
-				<Box className="flex w-1/2 items-start">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-start">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.name')}
 					</Box>
 					<CoreInput name="name" control={control} size="small" className="w-full sm:w-2/3" />
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-start mx-8">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.area')}
 					</Box>
 					<CoreAutocomplete
@@ -92,15 +91,15 @@ const SpotTableFilter = props => {
 				</Box>
 			</Box>
 			<Box className="flex p-10 w-full">
-				<Box className="flex w-full sm:w-1/2 rounded-md">
-					<Box className="w-full sm:w-1/3 px-10 h-full bg-grey-300 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-start">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.facility')}
 					</Box>
 					<CoreInput control={control} name="facility" size="small" className="w-full sm:w-2/3" />
 				</Box>
 
-				<Box className="flex w-1/2 items-start mx-8">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-start mx-8">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.type')}
 					</Box>
 					<CoreAutocomplete
@@ -115,17 +114,18 @@ const SpotTableFilter = props => {
 				</Box>
 			</Box>
 			<Box className="flex p-10 w-full">
-				<Box className="flex w-full sm:w-1/2 rounded-md">
-					<Box className="w-full sm:w-1/3 px-10 h-full bg-grey-300 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-start">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.tag')}
 					</Box>
 					<CoreInput control={control} name="tag" size="small" className="w-full sm:w-2/3" />
 				</Box>
-				<Box className="flex w-full sm:w-1/2 rounded-md">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+
+				<Box className="flex w-full sm:w-1/2 items-start">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.detail')}
 					</Box>
-					<CoreInput control={control} name="detail" size="small" className="w-full sm:w-2/3" />
+					<CoreInput control={control} name="detail" size="small" className="w-full sm:w-2/3 mr-5" />
 
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}

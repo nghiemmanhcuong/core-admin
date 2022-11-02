@@ -47,7 +47,7 @@ const NotificationTableFilter = props => {
 			errorMsg(error?.response?.data?.error_message)
 		}
 	}
-	
+
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
 			<Box className="p-10 bg-grey-300">
@@ -55,34 +55,34 @@ const NotificationTableFilter = props => {
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.title')}
 					</Box>
-					<CoreInput control={control} name='title' size="small" className="w-2/3" />
+					<CoreInput control={control} name="title" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.type')}
 					</Box>
 					<CoreAutocomplete
-								control={control}
-								size="small"
-								name="category"
-								fullWidth
-								variant="outlined"
-								returnValueType='enum'
-								placeholder="Choose..."
-								className="w-2/3"
-								options={[
-									{
-										value: '重要',
-										label: '重要'
-									},
-									{
-										value: '重要1',
-										label: '重要1'
-									}
-								]}
+						control={control}
+						size="small"
+						name="category"
+						fullWidth
+						variant="outlined"
+						returnValueType="enum"
+						placeholder="Choose..."
+						className="w-2/3"
+						options={[
+							{
+								value: '重要',
+								label: '重要'
+							},
+							{
+								value: '重要1',
+								label: '重要1'
+							}
+						]}
 					/>
 				</Box>
 				{/* <Button variant="contained" color="primary" className="ml-auto invisible">
@@ -91,13 +91,13 @@ const NotificationTableFilter = props => {
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.detail')}
 					</Box>
-					<CoreInput control={control} name='detail' size="small" className="w-2/3" />
+					<CoreInput control={control} name="detail" size="small" className="w-2/3" />
 				</Box>
 				{/* <Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.state')}
 					</Box>
 					<FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" />

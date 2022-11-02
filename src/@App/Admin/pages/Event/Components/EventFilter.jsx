@@ -21,7 +21,7 @@ import moment from 'moment/moment'
 const EventFilter = props => {
 	const { eventTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
-	
+
 	const { control, getValues } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
@@ -46,43 +46,50 @@ const EventFilter = props => {
 			const data = getValues()
 			const params = {
 				...data,
-				event_date_from: data?.event_date_from ? moment(data?.event_date_from).add(7, 'hours').format('YYYY-MM-DD') : null,
-				event_date_until: data?.event_date_until ? moment(data?.event_date_until).add(7, 'hours').format('YYYY-MM-DD') : null,
-				reception_date_from: data?.reception_date_from ? moment(data?.reception_date_from).add(7, 'hours').format('YYYY-MM-DD') : null,
-				reception_date_until: data?.reception_date_until ? moment(data?.reception_date_until).add(7, 'hours').format('YYYY-MM-DD') : null,
+				event_date_from: data?.event_date_from
+					? moment(data?.event_date_from).add(7, 'hours').format('YYYY-MM-DD')
+					: null,
+				event_date_until: data?.event_date_until
+					? moment(data?.event_date_until).add(7, 'hours').format('YYYY-MM-DD')
+					: null,
+				reception_date_from: data?.reception_date_from
+					? moment(data?.reception_date_from).add(7, 'hours').format('YYYY-MM-DD')
+					: null,
+				reception_date_until: data?.reception_date_until
+					? moment(data?.reception_date_until).add(7, 'hours').format('YYYY-MM-DD')
+					: null,
 				category: data?.category?.join(','),
 				tag: data?.tag?.join(',')
 			}
 			await eventTableHandler.handleFetchData(params)
 		} catch (error) {
 			// errorMsg(error?.response?.data?.error_message)
-			console.log('============= error',error)
+			console.log('============= error', error)
 		}
 	}
-
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
 			<Box className="p-10 bg-grey-300">
 				<Typography variant="h4">検索条件</Typography>
 			</Box>
-			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+			<Box className="flex p-10 w-full">
+				<Box className="flex w-1/2 items-start">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						イベントタイトル
 					</Box>
-					<CoreInput control={control} name='title' size="small" className="w-2/3" />
+					<CoreInput control={control} name="title" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					カテゴリー
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+						カテゴリー
 					</Box>
 					<CoreAutocomplete
 						control={control}
 						name="category"
 						size="small"
 						className="w-2/3"
-						returnValueType='enum'
+						returnValueType="enum"
 						placeholder="Choose..."
 						multiple
 						options={[
@@ -100,73 +107,52 @@ const EventFilter = props => {
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					まとめ
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+						まとめ
 					</Box>
-					<CoreInput control={control} name='summary' size="small" className="w-2/3" />
+					<CoreInput control={control} name="summary" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						開催地
 					</Box>
-					<CoreInput control={control} name='venue' size="small" className="w-2/3" />
-					
+					<CoreInput control={control} name="venue" size="small" className="w-2/3" />
 				</Box>
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						開催年月日
 					</Box>
-					<CoreDatePicker
-						control={control}
-						name="event_date_from"
-						size="small"
-						className="w-1/3"
-					/>
-					<CoreDatePicker
-						control={control}
-						name="event_date_until"
-						size="small"
-						className="w-1/3"
-					/>
+					<CoreDatePicker control={control} name="event_date_from" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="event_date_until" size="small" className="w-1/3" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						受付年月日
 					</Box>
-					<CoreDatePicker
-						control={control}
-						name="reception_date_from"
-						size="small"
-						className="w-1/3"
-					/>
-					<CoreDatePicker
-						control={control}
-						name="reception_date_until"
-						size="small"
-						className="w-1/3"
-					/>
+					<CoreDatePicker control={control} name="reception_date_from" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="reception_date_until" size="small" className="w-1/3" />
 				</Box>
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						著者
 					</Box>
-					<CoreInput control={control} name='author' size="small" className="w-2/3" />
+					<CoreInput control={control} name="author" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					費用
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+						費用
 					</Box>
-					<CoreInput control={control} name='min_fee' placeholder='最低料金' className='w-1/3' size='small' />
-					<CoreInput control={control} name='max_fee' placeholder='最大料金' className='w-1/3' size='small' />
+					<CoreInput control={control} name="min_fee" placeholder="最低料金" className="w-1/3" size="small" />
+					<CoreInput control={control} name="max_fee" placeholder="最大料金" className="w-1/3" size="small" />
 				</Box>
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						タグ情報
 					</Box>
 					<CoreAutocomplete
@@ -174,7 +160,7 @@ const EventFilter = props => {
 						name="tag"
 						size="small"
 						className="w-2/3"
-						returnValueType='enum'
+						returnValueType="enum"
 						placeholder="Choose..."
 						multiple
 						options={[
@@ -190,16 +176,16 @@ const EventFilter = props => {
 					/>
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						状態
 					</Box>
 					<Card variant="outlined">
 						<Box>
-							<CoreRadioGroup 
+							<CoreRadioGroup
 								control={control}
-								name='publish'
+								name="publish"
 								row
-								className='ml-12'
+								className="ml-12"
 								options={[
 									{
 										value: 0,

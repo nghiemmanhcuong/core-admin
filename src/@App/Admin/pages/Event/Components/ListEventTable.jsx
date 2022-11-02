@@ -1,5 +1,10 @@
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
-import { CoreActionDelete, CoreActionEdit, CoreActionReview, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
+import {
+	CoreActionDelete,
+	CoreActionEdit,
+	CoreActionReview,
+	CoreActionView
+} from '@Core/components/Table/components/CoreTableAction'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo, useState } from 'react'
@@ -9,14 +14,14 @@ import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { renderTextTruncate } from '@App/Admin/hooks/useHelpRender'
 import { useEventReviewDialog } from '../hooks/useEventReviewDialog'
-import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
+import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined'
 import { IconButton } from '@mui/material'
 import { useEventDetailDialog } from '../hooks/useEventDetailDialog'
 
 const ListEventTable = props => {
 	const { t, eventTableHandler, handleDeleteEvent } = useAdminPageContext()
-	const {handleOpen, handleClose, renderEventReview} = useEventReviewDialog()
-	const {handleOpenEventDetail, handleCloseEventDetail, renderEventDetail} = useEventDetailDialog()
+	const { handleOpen, handleClose, renderEventReview } = useEventReviewDialog()
+	const { handleOpenEventDetail, handleCloseEventDetail, renderEventDetail } = useEventDetailDialog()
 	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
@@ -36,13 +41,14 @@ const ListEventTable = props => {
 			columnHelper.accessor('event_start', {
 				header: t('label.event_start')
 			}),
-			columnHelper.accessor('event_end', {
-				header: t('label.event_end')
+			columnHelper.accessor('reception_start', {
+				header: t('label.reception_start')
 			}),
 			columnHelper.accessor('tag', {
 				header: t('label.tag'),
 				className: 'w-[10%]',
 				cell: ({ row }) => {
+					console.log('============= row?.original', row?.original)
 					return row?.original?.tag?.map((item, index) => {
 						return (
 							<span key={index} className="mb-4 bg-grey-300 p-4 rounded-4 m-4">

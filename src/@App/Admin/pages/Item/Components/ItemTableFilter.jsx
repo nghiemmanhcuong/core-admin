@@ -17,6 +17,7 @@ import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import CoreInput from '@Core/components/Input/CoreInput'
 import { Box, Button, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -34,7 +35,9 @@ const ItemTableFilter = props => {
 	}
 	const { control } = useForm({
 		mode: 'onTouched',
-		defaultValues: {}
+		defaultValues: {
+			name: ''
+		}
 	})
 
 	return (
@@ -44,13 +47,13 @@ const ItemTableFilter = props => {
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.name')}
 					</Box>
-					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
+					<CoreInput control={control} name="name" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.area')}
 					</Box>
 					<FormAutocomplete
@@ -69,7 +72,7 @@ const ItemTableFilter = props => {
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.unit')}
 					</Box>
 					<FormAutocomplete
@@ -83,7 +86,7 @@ const ItemTableFilter = props => {
 					/>
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 h-full bg-grey-300 pt-9 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.state')}
 					</Box>
 					<Box className="border-grey-300 border-1 flex rounded-r-4">

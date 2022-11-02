@@ -62,7 +62,7 @@ const EditItemForm = props => {
 					placeholder="Default input"
 					size="small"
 					readOnly
-					classNameField='bg-grey-300'
+					classNameField="bg-grey-300"
 				/>
 				<AdminInput
 					label={t('edit.form.label.name')}
@@ -94,8 +94,9 @@ const EditItemForm = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.time')} 
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.time')}
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex">
@@ -109,7 +110,7 @@ const EditItemForm = props => {
 							className="w-full"
 						/>
 						<Typography variant="h3" color="primary" className="mx-8 self-center">
-							{t('edit.form.label.to')} 
+							{t('edit.form.label.to')}
 						</Typography>
 						<FormAutocomplete
 							control={control}
@@ -125,8 +126,9 @@ const EditItemForm = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.area')} 
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.area')}
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 sm:flex">
@@ -171,8 +173,9 @@ const EditItemForm = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.exchangeable_currency')} 
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.exchangeable_currency')}
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 sm:flex">
@@ -196,38 +199,44 @@ const EditItemForm = props => {
 					size="small"
 					required
 				/>
-				
+
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.situation')} 
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.situation')}
 						</Typography>
 					</Box>
 					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
-						<CoreCheckbox 
+						<CoreCheckbox
 							control={control}
-							name='checkbox1'
+							name="checkbox1"
 							label={t('edit.form.check_box.label.express')}
-							
 						/>
-						<CoreCheckbox 
+						<CoreCheckbox
 							control={control}
-							name='checkbox2'
+							name="checkbox2"
 							label={t('edit.form.check_box.label.representation')}
-							className='ml-20'
+							className="ml-20"
 						/>
-						
 					</Box>
 				</Box>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.creator')} 
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.creator')}
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex flex-nowrap">
-						<CoreInput control={control} name="creator" size="small" className="w-4/5 mr-12 bg-grey-300" readOnly />
+						<CoreInput
+							control={control}
+							name="creator"
+							size="small"
+							className="w-full mr-12 bg-grey-300"
+							readOnly
+						/>
 						<Button variant="contained" color="error" className="ml-auto">
 							{t('edit.form.btn.delete')}
 						</Button>

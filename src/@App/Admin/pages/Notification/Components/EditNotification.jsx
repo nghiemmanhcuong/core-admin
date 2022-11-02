@@ -37,7 +37,12 @@ const EditNotification = props => {
 	const { state } = useLocation()
 
 	const { t, notificationTableHandler } = useAdminPageContext()
-	const { control, handleSubmit, watch, formState: {isSubmitting} } = useForm({
+	const {
+		control,
+		handleSubmit,
+		watch,
+		formState: { isSubmitting }
+	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
 			id: state?.data?.id ?? '',
@@ -74,8 +79,9 @@ const EditNotification = props => {
 						placeholder="Default input"
 						size="small"
 						readOnly
+						classNameField="bg-grey-300"
 					/>
-					
+
 					<AdminInput
 						label={t('edit.form.label.title')}
 						control={control}
@@ -91,7 +97,8 @@ const EditNotification = props => {
 								color="primary"
 								className="self-center flex items-center w-full py-10 sm:py-0"
 							>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.type')}
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.type')}
 							</Typography>
 						</Box>
 						<Box className="w-full sm:w-2/3 sm:flex">
@@ -101,7 +108,7 @@ const EditNotification = props => {
 								name="category"
 								fullWidth
 								variant="outlined"
-								returnValueType='enum'
+								returnValueType="enum"
 								placeholder="Choose..."
 								className="w-full sm:w-1/3"
 								options={[
@@ -154,9 +161,8 @@ const EditNotification = props => {
 						placeholder="Default input"
 						size="small"
 						multiline
-
 					/>
-{/* 
+					{/* 
 					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 							<Typography variant="h3" color="primary" className='flex items-center'>
@@ -183,17 +189,30 @@ const EditNotification = props => {
 					</Box> */}
 					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-							<Typography variant="h3" color="primary" className='flex items-center'>
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.creator')}
+							<Typography variant="h3" color="primary" className="flex items-center">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.creator')}
 							</Typography>
 						</Box>
 						<Box className="w-full sm:w-2/3 flex flex-nowrap">
-							<CoreInput control={control} name="creator" size="small" className="w-4/5" readOnly />
-							
+							<CoreInput
+								control={control}
+								name="creator"
+								size="small"
+								className="w-4/5 bg-grey-300 mr-12"
+								readOnly
+							/>
+
 							<Button variant="contained" color="error" className="ml-auto">
-							{t('edit.form.btn.delete')}
+								{t('edit.form.btn.delete')}
 							</Button>
-							<LoadingButton type='submit' loading={isSubmitting} variant="contained" color="primary" className="ml-[10px] bg-blue">
+							<LoadingButton
+								type="submit"
+								loading={isSubmitting}
+								variant="contained"
+								color="primary"
+								className="ml-[10px] bg-blue"
+							>
 								{t('edit.form.btn.register')}
 							</LoadingButton>
 						</Box>

@@ -19,7 +19,8 @@
 		"title": "イベントタイトル",
 		"venue": "開催地",
 		"event_start": "開催年月日",
-		"event_end": "受付年月日",
+		"event_end": "開催終了日",
+		"reception_start": "受付年月日",
 		"tag": "タグ情報",
 		"status": "状態",
 		"action": "スペシャルアクション",
@@ -33,14 +34,13 @@
 		"type": "タイプ",
 		"author": "著者",
 		"reception_end": "受付終了",
-		"reception_start": "受付開始",
+		"reception_start_edit": "受付開始",
 		"entry_fee": "エントリー料金",
 		"special_feature_id": "特集ID",
 		"category": "イベントカテゴリ",
 		"sos_info": "SOS情報",
 		"summary": "まとめ",
 		"none": "なし"
-		
 	},
 	"edit": {
 		"form": {

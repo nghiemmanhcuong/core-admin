@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Sun Oct 30 2022
+ * Last Modified: Thu Nov 03 2022
  * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -70,14 +70,14 @@ const AccountTableFilter = props => {
 				<Typography variant="h4">{t('title.filter')}</Typography>
 			</Box>
 			<Box className="flex p-10 w-full">
-				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-start">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.account_name')}
 					</Box>
 					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" />
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-1/2 items-start mx-8">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.email')}
 					</Box>
 					<CoreAutocomplete
@@ -92,8 +92,8 @@ const AccountTableFilter = props => {
 				</Box>
 			</Box>
 			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-start">
+					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.roll')}
 					</Box>
 					<CoreAutocomplete

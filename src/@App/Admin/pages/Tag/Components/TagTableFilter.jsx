@@ -36,13 +36,13 @@ const TagTableFilter = props => {
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.tag_name')}
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.tag_type')}
 					</Box>
 					<CoreInput
@@ -60,7 +60,7 @@ const TagTableFilter = props => {
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 h-full bg-grey-300 pt-9 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.popular_tag')}
 					</Box>
 					<Box className="border-grey-300 border-1 w-2/3">
@@ -73,7 +73,7 @@ const TagTableFilter = props => {
 					</Box>
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					<Box className="w-1/3 p-10 h-full bg-grey-300 pt-9 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.state')}
 					</Box>
 					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}

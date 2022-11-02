@@ -3,8 +3,8 @@
  * Author: Peter
  * Email: phantrung696@gmail.com
  * -----
- * Last Modified: Tue Nov 01 2022
- * Modified By: use
+ * Last Modified: Thu Nov 03 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -12,7 +12,6 @@
  * Date      	By	Comments
  * ----------	---	----------------------------------------------------------
  */
-
 
 import { Autocomplete, CircularProgress, FormHelperText, TextField, Typography } from '@mui/material'
 import { useRequest } from 'ahooks'
@@ -53,10 +52,7 @@ const CoreAutocomplete = props => {
 		...restProps
 	} = props
 
-    const { t } = useTranslation('common')
-
-
-	
+	const { t } = useTranslation('common')
 
 	const getValueOption = useCallback(
 		value => {
@@ -86,10 +82,15 @@ const CoreAutocomplete = props => {
 		[options]
 	)
 
-    const renderLabel = () => {
+	const renderLabel = () => {
 		return (
 			<Typography component="div" variant="body2" className="flex items-center mb-4">
-				<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {label} 
+				<Typography
+					className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', required ? 'bg-yellow' : 'bg-white')}
+				>
+					{required ? '必須' : ''}
+				</Typography>{' '}
+				{label}
 			</Typography>
 		)
 	}
@@ -102,75 +103,75 @@ const CoreAutocomplete = props => {
 				defaultValue={defaultValue}
 				render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => {
 					return (
-                        <>
-                            {renderLabel()}
-						<Autocomplete
-							className={AutoCompleteClassName}
-							multiple={multiple}
-							isOptionEqualToValue={(option, value) => {
-								if (value instanceof Object) {
-									return get(option, valuePath) === get(value, valuePath)
-								}
-								return get(option, valuePath) === value
-							}}
-							getOptionLabel={option => {
-								return get(option, labelPath) ?? ''
-							}}
-							loading={loading}
-							options={options}
-							noOptionsText='データーがない'
-							disabled={disabled}
-							onChange={(_, value) => {
-								return returnValueType === 'enum'
-									? onChange(multiple ? value.map(v => get(v, valuePath)) : get(value, valuePath))
-									: onChange(value)
-							}}
-							onBlur={onBlur}
-							value={getValueOption(value)}
-							renderOption={(props, option) => (
-								<li {...props} key={option[valuePath]}>
-									{get(option, labelPath)}
-								</li>
-							)}
-							renderInput={params => (
-								<>
-									<TextField
-										{...params}
-										placeholder={placeholder || t('form.autocomplete.placeholder', { label })}
-										inputRef={ref}
-										error={!!error}
-										helperText={error && error.message}
-										InputLabelProps={{
-											...params.InputLabelProps,
-											shrink: true,
-											required,
-											...InputLabelProps
-										}}
-										inputProps={{
-											...params.inputProps,
-											readOnly,
-											...inputProps
-										}}
-										// eslint-disable-next-line react/jsx-no-duplicate-props
-										InputProps={{
-											...params.InputProps,
-											endAdornment: (
-												<>
-													{loading ? (
-														<CircularProgress color="inherit" size={20} />
-													) : null}
-													{params.InputProps.endAdornment}
-												</>
-											),
-											...InputProps
-										}}
-									/>
-									{helperText && <FormHelperText>{helperText}</FormHelperText>}
-								</>
-							)}
-							{...restProps}
-						/>
-                        </>
+						<>
+							{label !== null ? renderLabel() : null}
+							<Autocomplete
+								className={AutoCompleteClassName}
+								multiple={multiple}
+								isOptionEqualToValue={(option, value) => {
+									if (value instanceof Object) {
+										return get(option, valuePath) === get(value, valuePath)
+									}
+									return get(option, valuePath) === value
+								}}
+								getOptionLabel={option => {
+									return get(option, labelPath) ?? ''
+								}}
+								loading={loading}
+								options={options}
+								noOptionsText="データーがない"
+								disabled={disabled}
+								onChange={(_, value) => {
+									return returnValueType === 'enum'
+										? onChange(multiple ? value.map(v => get(v, valuePath)) : get(value, valuePath))
+										: onChange(value)
+								}}
+								onBlur={onBlur}
+								value={getValueOption(value)}
+								renderOption={(props, option) => (
+									<li {...props} key={option[valuePath]}>
+										{get(option, labelPath)}
+									</li>
+								)}
+								renderInput={params => (
+									<>
+										<TextField
+											{...params}
+											placeholder={placeholder || t('form.autocomplete.placeholder', { label })}
+											inputRef={ref}
+											error={!!error}
+											helperText={error && error.message}
+											InputLabelProps={{
+												...params.InputLabelProps,
+												shrink: true,
+												required,
+												...InputLabelProps
+											}}
+											inputProps={{
+												...params.inputProps,
+												readOnly,
+												...inputProps
+											}}
+											// eslint-disable-next-line react/jsx-no-duplicate-props
+											InputProps={{
+												...params.InputProps,
+												endAdornment: (
+													<>
+														{loading ? (
+															<CircularProgress color="inherit" size={20} />
+														) : null}
+														{params.InputProps.endAdornment}
+													</>
+												),
+												...InputProps
+											}}
+										/>
+										{helperText && <FormHelperText>{helperText}</FormHelperText>}
+									</>
+								)}
+								{...restProps}
+							/>
+						</>
 					)
 				}}
 				rules={rules}

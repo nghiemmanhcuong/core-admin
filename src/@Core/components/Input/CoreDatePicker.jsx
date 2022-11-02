@@ -4,7 +4,7 @@
  * Email: phantrung696@gmail.com
  * -----
  * Last Modified:
- * Modified By: use
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -66,7 +66,12 @@ const CoreDatePicker = ({
 	const renderLabel = () => {
 		return (
 			<Typography component="div" variant="body2" className="flex items-center mb-4">
-				<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {label} 
+				<Typography
+					className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', required ? 'bg-yellow' : 'bg-white')}
+				>
+					{required ? '必須' : ''}
+				</Typography>{' '}
+				{label}
 			</Typography>
 		)
 	}
@@ -83,7 +88,7 @@ const CoreDatePicker = ({
 				}
 			}}
 		>
-			{renderLabel()}
+			{label !== '' ? renderLabel() : null}
 			<ReactDatePicker
 				selected={value}
 				onChange={date => onChange(date)}
