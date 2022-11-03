@@ -36,8 +36,17 @@
 		"form": {
 			"label": {
 				"id": "スポットID",
-				"title": "スポットタイトル",
+				"name": "スポット名",
 				"description": "スポット説明",
+				"catchphrase": "キャッチフレーズ",
+				"post_code": "郵便番号",
+				"address": "住所",
+				"phone_number": "電話番号",
+				"web_url": "WEBサイトURL",
+				"google_map_url": "Google Map URL",
+				"location_info_latitude": "緯度",
+				"location_info_longitude": "経度",
+				"special_action": "スペシャルアクション",
 				"situation": "状態",
 				"category": "スポットカテゴリ",
 				"venue": "スポット開催場所",
@@ -54,7 +63,6 @@
 				"tag": "スポットタグ",
 				"precautions": "エントリー時の注意事項",
 				"contact_name": "トラブル時連絡先名称",
-				"address": "連絡先",
 				"related": "関連スポット",
 				"creator": "スポット作成者"
 			},

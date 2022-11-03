@@ -61,7 +61,7 @@ const ListSpotTable = props => {
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.spot.edit)} /> */}
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.spot.edit)} />
+							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.spot.edit, { state: data })} />
 							<CoreActionDelete onConfirmDelete={() => handleDeleteSpot(data.id)} />
 						</div>
 					)

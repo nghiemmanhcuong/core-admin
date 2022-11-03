@@ -26,7 +26,12 @@ const CoreCheckboxGroup = props => {
 	const renderLabel = () => {
 		return (
 			<Typography variant="body2" className="flex items-center mb-4">
-				<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {legendLabel} 
+				<Typography
+					className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', required ? 'bg-yellow' : 'bg-white')}
+				>
+					{required ? '必須' : ''}
+				</Typography>{' '}
+				{legendLabel}
 			</Typography>
 		)
 	}
@@ -54,15 +59,15 @@ const CoreCheckboxGroup = props => {
 									<FormGroup row={row} {...restProps}>
 										{options.map((field, index) =>
 											renderOption ? (
-												renderOption(`${name}.${field.key}`, { ...field, disabled })
+												renderOption(`${name}.${field?.key}`, { ...field, disabled })
 											) : (
 												<FormControlLabel
 													key={index}
 													label={<Typography>{field?.label}</Typography>}
 													control={
 														<Checkbox
-															name={field.key}
-															checked={Boolean(value[field.key])}
+															name={field?.key}
+															checked={Boolean(value[field?.key])}
 															onChange={handleChange}
 															color="primary"
 														/>

@@ -14,7 +14,6 @@
  */
 
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
-import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo, useState } from 'react'
@@ -25,27 +24,24 @@ import { useForm } from 'react-hook-form'
 import CoreInput from '@Core/components/Input/CoreInput'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
-import {
-	TextField,
-	Button,
-	Tabs,
-	Tab,
-	Typography,
-	Grid,
-	FormControlLabel,
-	Radio,
-	RadioGroup,
-	Checkbox,
-	FormGroup
-} from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import AdminInput from '@App/Admin/components/Input/AdminInput'
+import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
+import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
+import { LoadingButton } from '@mui/lab'
+import { errorMsg, successMsg } from '@Core/helper/Message'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
+import { spotSerivce } from '@App/Admin/services/spotService'
 
 const EditSpotTabs = props => {
 	const { t, spotTableHandler } = useAdminPageContext()
-	const [tabIndex, setTabIndex] = useState(0)
-	const handleTabChange = (event, newTabIndex) => {
-		setTabIndex(newTabIndex)
-	}
+	const { id } = useParams()
+	const isEdit = id !== 'new'
+	const navigate = useNavigate()
+	const location = useLocation()
+
+	console.log('============= location', location)
 
 	const sex = [
 		{
@@ -58,508 +54,298 @@ const EditSpotTabs = props => {
 		}
 	]
 
-	const { control } = useForm({
+	const typeOptions = [
+		{ value: '1', label: '1' },
+		{ value: '2', label: '2' },
+		{ value: '3', label: '3' },
+		{ value: '4', label: '4' },
+		{ value: '5', label: '5' },
+		{ value: '6', label: '6' },
+		{ value: '7', label: '7' },
+		{ value: '8', label: '8' },
+		{ value: '9', label: '9' },
+		{ value: '10', label: '10' },
+		{ value: '11', label: '11' },
+		{ value: '12', label: '12' }
+	]
+
+	const tagDatas = [
+		{ key: '1', value: 1, label: 'タグ1' },
+		{ key: '2', value: 2, label: 'タグ2' },
+		{ key: '3', value: 3, label: 'タグ3' },
+		{ key: '4', value: 4, label: 'タグ4' },
+		{ key: '5', value: 5, label: 'タグ5' },
+		{ key: '6', value: 6, label: 'タグ6' },
+		{ key: '7', value: 7, label: 'タグ7' },
+		{ key: '8', value: 8, label: 'タグ8' },
+		{ key: '9', value: 9, label: 'タグ9' },
+		{ key: '10', value: 10, label: 'タグ10' },
+		{ key: '11', value: 11, label: 'タグ11' },
+		{ key: '12', value: 12, label: 'タグ12' }
+	]
+
+	const specialActionsData = [
+		{ key: '1', label: 'フォト' },
+		{ key: '2', label: '音楽再生' },
+		{ key: '3', label: 'クイズ' },
+		{ key: '4', label: '特別ポイント' }
+	]
+
+	const {
+		control,
+		formState: { isSubmitting, isDirty },
+		handleSubmit
+	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			verification_code: ''
+			id: location?.state?.id ?? '',
+			type: location?.state?.type ?? 1,
+			name: location?.state?.name ?? '',
+			detail: location?.state?.detail ?? '',
+			address: location?.state?.address ?? '',
+			tel: location?.state?.tel ?? '',
+			url: location?.state?.url ?? '',
+			google_map_url: location?.state?.google_map_url ?? '',
+			location_info_latitude: location?.state?.location_info_latitude ?? '',
+			location_info_longitude: location?.state?.location_info_longitude ?? '',
+			image: '',
+			tag: location?.state?.type ?? [],
+			facility: location?.state?.type ?? []
 		},
 		resolver: yupResolver(
 			Yup.object({
-				verification_code: Yup.string().required()
+				name: Yup.string().required()
 			})
 		)
 	})
 
+	const onSubmit = handleSubmit(
+		async data => {
+			try {
+				const newFacility = []
+				const newTag = []
+
+				for (const facilityKey in data?.facility) {
+					if (data?.facility[facilityKey]) {
+						newFacility.push(+facilityKey)
+					}
+				}
+
+				for (const tagKey in data?.tag) {
+					if (data?.tag[tagKey]) {
+						newTag.push(+tagKey)
+					}
+				}
+
+				const newData = {
+					...data,
+					tag: newTag,
+					facility: newFacility,
+					image: data?.image?.name,
+					type: +data?.type
+				}
+
+				await spotSerivce.save(newData)
+				navigate(ROUTER_ADMIN.spot.list)
+				successMsg(isEdit ? 'Edit success' : 'Create success')
+			} catch (error) {
+				errorMsg(error)
+			}
+		},
+		err => console.log('============= err', err)
+	)
+
 	return (
-		<Box>
-			<Box>
-				<Tabs aria-label="basic tabs example" value={tabIndex} onChange={handleTabChange}>
-					<Tab label={t('edit.tabs.label.information')} />
-					<Tab label={t('edit.tabs.label.information')} />
-					<Tab label={t('edit.tabs.label.information')} />
-				</Tabs>
-			</Box>
-			<Box sx={{ padding: 2 }}>
-				{tabIndex === 0 && (
-					<Box className="max-w-lg  mx-auto">
-						<AdminInput
-							label={t('edit.form.label.id')}
-							control={control}
-							name="id"
-							placeholder="Default input"
-							size="small"
-							classNameField='bg-grey-300'
-							readOnly
-						/>
-						<AdminInput
-							label={t('edit.form.label.title')}
-							control={control}
-							name="title"
-							placeholder="Default input"
-							size="small"
-							required
-						/>
-						
-						<AdminInput
-							label={t('edit.form.label.description')}
+		<form onSubmit={onSubmit} sx={{ padding: 2 }}>
+			<Box className="max-w-lg  mx-auto">
+				<AdminInput
+					label={t('edit.form.label.id')}
+					control={control}
+					name="id"
+					placeholder="Default input"
+					size="small"
+					classNameField="bg-grey-300"
+					readOnly
+				/>
+
+				<AdminInput
+					label={t('edit.form.label.name')}
+					control={control}
+					name="name"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+
+				{/* <AdminInput
+					label={t('edit.form.label.catchphrase')}
+					control={control}
+					name="catchphrase"
+					placeholder="Default input"
+					size="small"
+					required
+				/> */}
+
+				<AdminInput
+					label={t('edit.form.label.description')}
+					control={control}
+					name="detail"
+					placeholder="Default input"
+					size="small"
+					minRows={5}
+					multiline
+					required
+				/>
+
+				<AdminInputUpload
+					label="スッポト画像"
+					control={control}
+					name="image"
+					size="small"
+					className="w-full sm:w-2/3"
+					helperText
+				/>
+
+				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary" className="flex items-center mb-4">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.type')}
+						</Typography>
+					</Box>
+					<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
+						<CoreRadioGroup className="flex-row" control={control} name="type" options={typeOptions} row />
+					</Box>
+				</Box>
+
+				{/* <AdminInput
+					label={t('edit.form.label.post_code')}
+					control={control}
+					name="post_code"
+					placeholder="Default input"
+					size="small"
+					required
+				/> */}
+
+				<AdminInput
+					label={t('edit.form.label.address')}
+					control={control}
+					name="address"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+
+				<AdminInput
+					label={t('edit.form.label.phone_number')}
+					control={control}
+					name="tel"
+					placeholder="Default input"
+					size="small"
+				/>
+
+				<AdminInput
+					label={t('edit.form.label.web_url')}
+					control={control}
+					name="url"
+					placeholder="Default input"
+					size="small"
+				/>
+
+				<AdminInput
+					control={control}
+					label={t('edit.form.label.location_info_latitude')}
+					name="location_info_latitude"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+
+				<AdminInput
+					control={control}
+					label={t('edit.form.label.location_info_longitude')}
+					name="location_info_longitude"
+					placeholder="Default input"
+					size="small"
+					required
+				/>
+
+				<AdminInput
+					label={t('edit.form.label.google_map_url')}
+					control={control}
+					name="google_map_url"
+					placeholder="Default input"
+					size="small"
+				/>
+
+				<CoreCheckboxGroup
+					control={control}
+					name="tag"
+					options={tagDatas}
+					legendLabel={t('edit.form.label.tag')}
+					row
+					required
+				/>
+
+				<CoreCheckboxGroup
+					control={control}
+					name="facility"
+					options={specialActionsData}
+					legendLabel={t('edit.form.label.special_action')}
+					row
+					required
+				/>
+
+				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.situation')}
+						</Typography>
+					</Box>
+					<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
+						<CoreRadioGroup
+							className="flex-row"
 							control={control}
 							name="description"
-							placeholder="Default input"
-							size="small"
-							minRows={5}
-							multiline
-							required
+							options={sex}
+							row="true"
 						/>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.situation')}
-								</Typography>
-							</Box>
-							<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
-								<CoreRadioGroup
-									className="flex-row"
-									control={control}
-									name="description"
-									options={sex}
-									row="true"
-								/>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.category')}
-								</Typography>
-							</Box>
-							<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
-								<FormGroup row>
-									<CoreCheckbox
-										className="w-1/2"
-										control={control}
-										name="category"
-										size="small"
-										value={1}
-										label={t('edit.form.check_box.label.men')}
-									/>
-									<CoreCheckbox
-										className="w-1/2"
-										control={control}
-										name="category"
-										size="small"
-										value={2}
-										label={t('edit.form.check_box.label.women')}
-									/>
-									<CoreCheckbox
-										control={control}
-										className="w-1/2"
-										name="category"
-										size="small"
-										value={3}
-										label={t('edit.form.check_box.label.50s')}
-									/>
-									<CoreCheckbox
-										control={control}
-										className="w-1/2"
-										name="category"
-										size="small"
-										value={4}
-										label={t('edit.form.check_box.label.participants')}
-									/>
-								</FormGroup>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.venue')}
-								</Typography>
-							</Box>
-							<Box className="w-full sm:w-2/3 sm:flex">
-								<FormAutocomplete
-									control={control}
-									size="small"
-									fullWidth
-									variant="outlined"
-									placeholder="Choose..."
-									name="venue"
-									className="w-full sm:w-1/3"
-								/>
-								<Typography
-									variant="h3"
-									color="primary"
-									className="self-center w-full py-10 sm:py-0 sm:w-1/3 sm:text-center"
-								>
-									{t('edit.form.label.type')}
-								</Typography>
-								<FormAutocomplete
-									control={control}
-									size="small"
-									fullWidth
-									variant="outlined"
-									placeholder="Choose..."
-									name="type"
-									className="w-full sm:w-1/3"
-								/>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.period')}
-								</Typography>
-							</Box>
-							<Box className="w-full sm:w-2/3 flex">
-								<FormAutocomplete
-									control={control}
-									size="small"
-									fullWidth
-									variant="outlined"
-									placeholder="Choose..."
-									name="period"
-									className="w-full"
-								/>
-								<Typography variant="h3" color="primary" className="mx-8 self-center">
-									{t('edit.form.label.to')}
-								</Typography>
-								<FormAutocomplete
-									control={control}
-									size="small"
-									fullWidth
-									variant="outlined"
-									placeholder="Choose..."
-									name="period_to"
-									className="w-full"
-								/>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.entry_period')}
-								</Typography> 
-							</Box>
-							<Box className="w-full sm:w-2/3 flex">
-								<FormAutocomplete
-									control={control}
-									size="small"
-									fullWidth
-									variant="outlined"
-									placeholder="Choose..."
-									name="entry_period"
-									className="w-full"
-								/>
-								<Typography variant="h3" color="primary" className="mx-8 self-center">
-									{t('edit.form.label.to')}
-								</Typography>
-								<FormAutocomplete
-									control={control}
-									size="small"
-									fullWidth
-									variant="outlined"
-									placeholder="Choose..."
-									name="entry_period_to"
-									className="w-full"
-								/>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.entry_fee')}
-								</Typography>
-							</Box>
-							<Box className="w-full sm:w-2/3 flex flex-wrap">
-								<CoreInput
-									control={control}
-									name="entry_fee"
-									fullWidth
-									size="small"
-									className="w-full sm:w-1/3"
-								/>
-								<Typography
-									variant="h3"
-									color="primary"
-									className="w-full py-10 sm:py-0 sm:w-1/3 self-center sm:text-center"
-								>
-									{t('edit.form.label.payment')}
-								</Typography>
-								<Box className="w-full rounded-md pl-10 sm:w-1/3" sx={{ border: '1px solid #cccc' }}>
-									<CoreRadioGroup
-										className="flex-row"
-										control={control}
-										name="description"
-										fullWidth
-										options={[
-											{
-												value: 1,
-												label: t('edit.form.check_box.label.card')
-											},
-											{
-												value: 2,
-												label: t('edit.form.check_box.label.qr')
-											}
-										]}
-										row="true"
-									/>
-								</Box>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.entry_option')}
-								</Typography>
-							</Box>
-							<Box
-								className="w-full rounded-md pl-10 sm:w-2/3 flex flex-wrap py-10"
-								sx={{ border: '1px solid #cccc' }}
-							>
-								<Box className="w-full flex flex-wrap py-10">
-									<CoreCheckbox
-										control={control}
-										name="bicycle"
-										size="small"
-										label={t('edit.form.check_box.label.bicycle_rental')}
-										className="w-2/4"
-									/>
-									<CoreInput control={control} name="bicycle_circle" size="small" className="w-1/3" />
-									<Typography variant="h3" className="self-center ml-5">
-										{t('edit.form.label.circle')}
-									</Typography>
-								</Box>
-
-								<Box className="w-full flex flex-wrap py-10">
-									<CoreCheckbox
-										control={control}
-										name="xxx"
-										size="small"
-										className="w-2/4"
-										label="XXXXXXX"
-									/>
-									<CoreInput control={control} name="xxx_circle" size="small" className="w-1/3" />
-									<Typography variant="h3" className="self-center ml-5">
-										{t('edit.form.label.circle')}
-									</Typography>
-								</Box>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.mission')}
-								</Typography>
-							</Box>
-							<Box className="w-full sm:w-2/3 flex flex-nowrap">
-								<CoreInput control={control} name="mission" size="small" className="w-4/5" />
-								<Button variant="contained" color="primary" className="ml-auto w-1/5">
-									{t('edit.form.btn.selection')}
-								</Button>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.reward')}
-								</Typography>
-							</Box>
-							<Box className="w-full sm:w-2/3 flex flex-nowrap">
-								<CoreInput control={control} name="reward" size="small" className="w-4/5" />
-								<Button variant="contained" color="primary" className="ml-auto w-1/5">
-									{t('edit.form.btn.selection')}
-								</Button>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.tag')}
-								</Typography>
-							</Box>
-							<Box className="w-full rounded-md sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
-								<FormGroup row>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.spring_available')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.best_view')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.autumn')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.beginners')}
-									/>
-								</FormGroup>
-								<FormGroup row>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.spring_available')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.best_view')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.autumn')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.beginners')}
-									/>
-								</FormGroup>
-								<FormGroup row>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.spring_available')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.best_view')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.autumn')}
-									/>
-									<CoreCheckbox
-										control={control}
-										name="tag"
-										size="small"
-										className="w-1/2 sm:w-auto"
-										label={t('edit.form.check_box.label.beginners')}
-									/>
-								</FormGroup>
-							</Box>
-						</Box>
-						<AdminInput
-							label={t('edit.form.label.precautions')}
-							control={control}
-							name="precautions"
-							placeholder="Default input"
-							size="small"
-							minRows={5}
-							multiline
-							required
-						/>
-						<AdminInput
-							label={t('edit.form.label.contact_name')}
-							control={control}
-							name="contact_name"
-							placeholder="Default input"
-							size="small"
-							required
-						/>
-						
-						<AdminInput
-							label={t('edit.form.label.address')}
-							control={control}
-							name="address"
-							placeholder="Default input"
-							size="small"
-							required
-						/>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.related')}
-								</Typography>
-							</Box>
-							<FormAutocomplete
-								control={control}
-								size="small"
-								fullWidth
-								className="w-full sm:w-2/3"
-								variant="outlined"
-								placeholder="Choose..."
-								name="related"
-							/>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-								<Typography variant="h3" color="primary" className='flex items-center'>
-								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.creator')}
-								</Typography>
-							</Box>
-							<Box className="w-full sm:w-2/3 flex flex-nowrap">
-								<CoreInput control={control} name="creator" size="small" className="w-4/5" />
-								<Button variant="contained" color="primary" className="ml-auto w-1/5">
-									{t('edit.form.btn.selection')}
-								</Button>
-							</Box>
-						</Box>
-
-						<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-							<Button variant="contained" color="error" className="ml-auto">
-								{t('edit.form.btn.delete')}
-							</Button>
-							<Button variant="contained" color="primary" className="ml-[10px]">
-								{t('edit.form.btn.register')}
-							</Button>
-						</Box>
 					</Box>
-				)}
-				{tabIndex === 1 && (
-					<Box>
-						<Typography>The second tab</Typography>
+				</Box> */}
+
+				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.creator')}
+						</Typography>
 					</Box>
-				)}
-				{tabIndex === 2 && (
-					<Box>
-						<Typography>The third tab</Typography>
+					<Box className="w-full sm:w-2/3 flex flex-nowrap">
+						<CoreInput control={control} name="creator" size="small" className="w-full  sm:w-4/5" />
+						<Button variant="contained" color="primary" className="ml-auto">
+							{t('edit.form.btn.selection')}
+						</Button>
 					</Box>
-				)}
+				</Box> */}
+
+				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+					<Button variant="contained" color="error" className="ml-auto">
+						{t('edit.form.btn.delete')}
+					</Button>
+					<LoadingButton
+						type="submit"
+						variant="contained"
+						color="primary"
+						loading={isSubmitting}
+						disabled={!isDirty}
+						className="ml-[10px]"
+					>
+						{t('edit.form.btn.register')}
+					</LoadingButton>
+				</Box>
 			</Box>
-		</Box>
+		</form>
 	)
 }
 
