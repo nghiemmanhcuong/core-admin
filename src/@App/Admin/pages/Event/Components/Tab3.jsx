@@ -45,22 +45,22 @@ const tableForm = () => {
 			<Table sx={{ minWidth: 650 }} aria-label="simple table">
 				<TableHead>
 					<TableRow>
-						<TableCell style={{ width: '10%' }}>
+						<TableCell style={{ width: '12%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>エントリーID</Box>
 						</TableCell>
 						<TableCell style={{ width: '20%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>ユーザーID</Box>
 						</TableCell>
-						<TableCell style={{ width: '20%' }}>
+						<TableCell style={{ width: '12%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>ユーザー名</Box>
 						</TableCell>
-						<TableCell style={{ width: '20%' }}>
+						<TableCell style={{ width: '14%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>エントリー日時</Box>
 						</TableCell>
-						<TableCell style={{ width: '10%' }}>
+						<TableCell style={{ width: '16%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>エントリーカテゴリー</Box>
 						</TableCell>
-						<TableCell style={{ width: '10%' }}>
+						<TableCell style={{ width: '16%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>エントリー料</Box>
 						</TableCell>
 						<TableCell>
@@ -123,7 +123,14 @@ const Tab3 = props => {
 							<FontTitle variant="h3" title="イベントID" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="id" placeholder="Default input" size="small" readOnly className='bg-grey-300' />
+							<CoreInput
+								control={control}
+								name="id"
+								placeholder="Default input"
+								size="small"
+								readOnly
+								className="bg-grey-300"
+							/>
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -131,7 +138,14 @@ const Tab3 = props => {
 							<FontTitle variant="h3" title="イベント名" />
 						</Box>
 						<Box className="col-span-3 sm:col-span-2">
-							<CoreInput control={control} name="name" placeholder="Default input" size="small" readOnly className='bg-grey-300' />
+							<CoreInput
+								control={control}
+								name="name"
+								placeholder="Default input"
+								size="small"
+								readOnly
+								className="bg-grey-300"
+							/>
 						</Box>
 					</Box>
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
@@ -144,11 +158,11 @@ const Tab3 = props => {
 			<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 				<Box className="col-span-3">{tableForm()}</Box>
 			</Box>
-            <Grid className="text-end pt-20">
-                <Button variant="contained" color="success" size="small">
+			<Grid className="text-end pt-20">
+				<Button variant="contained" className="bg-blue" color="success" size="small">
 					登録
-                </Button>
-            </Grid>
+				</Button>
+			</Grid>
 		</form>
 	)
 }

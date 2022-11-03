@@ -45,7 +45,7 @@ const ListCourseTable = props => {
 							<Link to={`/admin/course/${data.id}`}>
 								<CoreActionEdit onClick={() => console.log('============= data', data)} />
 							</Link>
-							<ConfirmDialog title="course" content="Delete course" action={<CoreActionDelete />} />
+							<CoreActionDelete onClick={() => console.log('============= data', data)} />
 						</div>
 					)
 				}

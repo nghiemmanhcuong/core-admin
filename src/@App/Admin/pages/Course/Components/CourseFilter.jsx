@@ -24,7 +24,8 @@ const CourseFilter = props => {
 		mode: 'onTouched',
 		defaultValues: {
 			firstname: '',
-			checkbox: false
+			checkbox1: false,
+			checkbox2: false
 		},
 		resolver: yupResolver(
 			Yup.object({
@@ -41,13 +42,13 @@ const CourseFilter = props => {
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.name')}
+						{t('title.name')}
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.area')}
+						{t('title.area')}
 					</Box>
 					<FormAutocomplete
 						control={control}
@@ -63,33 +64,35 @@ const CourseFilter = props => {
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.tag')}
+						{t('title.tag')}
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-					{t('title.state')}
+						{t('title.state')}
 					</Box>
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+								<CoreCheckbox
+									control={control}
+									name="checkbox2"
+									label={t('value.non_representation')}
+								/>
 							</Box>
 						</Box>
 					</Card>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-					{t('btn.search')}
+						{t('btn.search')}
 					</Button>
 				</Box>
 			</Box>
 		</Box>
 	)
 }
-
-
 
 export default React.memo(CourseFilter)

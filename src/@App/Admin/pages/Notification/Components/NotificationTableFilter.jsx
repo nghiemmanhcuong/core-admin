@@ -119,9 +119,11 @@ const NotificationTableFilter = props => {
 				{/* <Box className="w-full">
 					<CoreInputFile control={control} name="image" />
 				</Box> */}
-				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-					{t('btn.search')}
-				</Button>
+				<Box className="flex w-1/2 items-start mx-8 ">
+					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+						{t('btn.search')}
+					</Button>
+				</Box>
 			</Box>
 		</Box>
 	)
