@@ -24,7 +24,6 @@ const CoreAppTheme = props => {
 	const theme = {
 		...defaultTheme
 	}
-	console.log('============= theme', theme)
 	return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 }
 

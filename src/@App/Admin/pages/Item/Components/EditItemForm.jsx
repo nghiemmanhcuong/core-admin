@@ -222,7 +222,7 @@ const EditItemForm = props => {
 					</Box>
 				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+				<Box className="flex w-full mb-20 items-center">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center">
 							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
@@ -234,7 +234,7 @@ const EditItemForm = props => {
 							control={control}
 							name="creator"
 							size="small"
-							className="w-full mr-12 bg-grey-300"
+							className="w-full mr-12"
 							readOnly
 						/>
 						<Button variant="contained" color="error" className="ml-auto">

@@ -20,7 +20,7 @@ import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { errorMsg } from '@Core/helper/Message'
-import { Button, TextField, Typography } from '@mui/material'
+import { Button, Card, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -50,18 +50,18 @@ const NotificationTableFilter = props => {
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
-			<Box className="p-10 bg-grey-300">
+			<Box className="p-8 bg-grey-300">
 				<Typography variant="h4">{t('title.filter')}</Typography>
 			</Box>
-			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+			<Box className="flex p-8  w-full">
+				<Box className="flex w-1/2 items-center mx-8">
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.title')}
 					</Box>
 					<CoreInput control={control} name="title" size="small" className="w-2/3" />
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-1/2 items-center mx-8 ">
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.type')}
 					</Box>
 					<CoreAutocomplete
@@ -89,39 +89,46 @@ const NotificationTableFilter = props => {
 					{t('btn.search')}
 				</Button> */}
 			</Box>
-			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start">
-					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+			<Box className="flex p-8  w-full">
+				<Box className="flex w-1/2 mx-8 items-center">
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
+						{t('title.period')}
+					</Box>
+					<CoreAutocomplete control={control} placeholder='Default select' name="123" size="small" className="w-2/3" />
+				</Box>
+				<Box className="flex w-1/2 items-center mx-8 ">
+					<Box className="w-1/3 px-10 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
+						{t('title.state')}
+					</Box>
+					<Card variant="outlined">
+						<Box className="grid grid-flow-row-dense grid-cols-2 ml-20">
+							<Box className="col-span-1 -my-3">
+								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+							</Box>
+							<Box className="col-span-1 -my-3">
+								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+							</Box>
+						</Box>
+					</Card>
+					
+				</Box>
+				{/* <Box className="w-full">
+					<CoreInputFile control={control} name="image" />
+				</Box> */}
+				
+			</Box>
+			<Box className="flex p-8  w-full">
+				<Box className="flex w-1/2 mx-8 items-center">
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.detail')}
 					</Box>
 					<CoreInput control={control} name="detail" size="small" className="w-2/3" />
 				</Box>
-				{/* <Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.state')}
-					</Box>
-					<FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" />
-					<Box className='border-grey-300 border-1 flex pl-20'>
-						<CoreCheckbox control={control} name="express" label={t('value.express')} className="ml-[5px]" />
-						<CoreCheckbox
-							control={control}
-							name="non_representation"
-							label={t('value.non_representation')}
-							className="ml-[5px]"
-						/>
-					</Box>
-					<FormControlLabel
-						control={<Checkbox />}
-						label={t('value.non_representation')}
-						className="ml-[5px]"
-					/>
-				</Box> */}
-				{/* <Box className="w-full">
-					<CoreInputFile control={control} name="image" />
-				</Box> */}
-				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-					{t('btn.search')}
-				</Button>
+				<Box className='flex w-1/2 mx-8 items-center'>
+					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+						{t('btn.search')}
+					</Button>
+				</Box>
 			</Box>
 		</Box>
 	)

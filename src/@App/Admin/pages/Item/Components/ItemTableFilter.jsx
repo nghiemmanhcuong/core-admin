@@ -18,7 +18,7 @@ import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPagePro
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInput from '@Core/components/Input/CoreInput'
-import { Box, Button, TextField, Typography } from '@mui/material'
+import { Box, Button, Card, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -42,18 +42,18 @@ const ItemTableFilter = props => {
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
-			<Box className="p-10 bg-grey-300">
+			<Box className="p-8 bg-grey-300">
 				<Typography variant="h4">{t('title.filter')}</Typography>
 			</Box>
-			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+			<Box className="flex p-8 w-full">
+				<Box className="flex w-1/2 items-center">
+					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.name')}
 					</Box>
 					<CoreInput control={control} name="name" size="small" className="w-2/3" />
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-1/2 items-center mx-8 ">
+					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.area')}
 					</Box>
 					<FormAutocomplete
@@ -66,13 +66,10 @@ const ItemTableFilter = props => {
 						placeholder="Choose..."
 					/>
 				</Box>
-				<Button variant="contained" color="primary" className="ml-auto invisible">
-					{t('btn.search')}
-				</Button>
 			</Box>
-			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start">
-					<Box className="w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+			<Box className="flex p-8 w-full">
+				<Box className="flex w-1/2 items-center">
+					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.unit')}
 					</Box>
 					<FormAutocomplete
@@ -85,28 +82,24 @@ const ItemTableFilter = props => {
 						placeholder="Choose..."
 					/>
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8">
-					<Box className="w-1/3 p-10 h-full bg-grey-300 pt-9 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-1/2 items-center mx-8">
+					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box>
-					<Box className="border-grey-300 border-1 flex rounded-r-4">
-						<CoreCheckbox
-							control={control}
-							name="express"
-							label={t('value.express')}
-							className="ml-[20px]"
-						/>
-						<CoreCheckbox
-							control={control}
-							name="non_representation"
-							label={t('value.non_representation')}
-							className="ml-[5px]"
-						/>
-					</Box>
+					<Card variant="outlined">
+						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
+							<Box className="col-span-1 -my-3 ml-20">
+								<CoreCheckbox control={control} name="express" label={t('value.express')} />
+							</Box>
+							<Box className="col-span-1 -my-3">
+								<CoreCheckbox control={control} name="non_representation" label={t('value.non_representation')} />
+							</Box>
+						</Box>
+					</Card>
+					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+						{t('btn.search')}
+					</Button>
 				</Box>
-				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-					{t('btn.search')}
-				</Button>
 			</Box>
 		</Box>
 	)

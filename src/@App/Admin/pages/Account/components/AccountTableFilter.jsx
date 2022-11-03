@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Nov 03 2022
- * Modified By: haitran
+ * Last Modified: Fri Nov 04 2022
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -16,7 +16,7 @@
 import { Box } from '@mui/system'
 import React from 'react'
 import TextField from '@mui/material/TextField'
-import { Button, Icon, InputAdornment, Typography, FormControlLabel, Checkbox } from '@mui/material'
+import { Button, Icon, InputAdornment, Typography, FormControlLabel, Checkbox, Card } from '@mui/material'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import FormInputSearch from '@App/Admin/components/Form/FormInputSearch'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
@@ -70,14 +70,14 @@ const AccountTableFilter = props => {
 				<Typography variant="h4">{t('title.filter')}</Typography>
 			</Box>
 			<Box className="flex p-10 w-full">
-				<Box className="flex w-full sm:w-1/2 items-start">
-					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-center">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.account_name')}
 					</Box>
 					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" />
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8">
-					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-1/2 items-center mx-8">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.email')}
 					</Box>
 					<CoreAutocomplete
@@ -92,8 +92,8 @@ const AccountTableFilter = props => {
 				</Box>
 			</Box>
 			<Box className="flex p-10  w-full">
-				<Box className="flex w-full sm:w-1/2 items-start">
-					<Box className="w-full sm:w-1/3 p-10 bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-center">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300  border-grey-300 border-1 rounded-4">
 						{t('title.roll')}
 					</Box>
 					<CoreAutocomplete
@@ -106,8 +106,8 @@ const AccountTableFilter = props => {
 						returnValueType="enum"
 					/>
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
-					{/* <Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-1/2 items-center mx-8 ">
+					{/* <Box className="w-1/3 px-10 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box> */}
 					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}
@@ -125,6 +125,21 @@ const AccountTableFilter = props => {
 							className="ml-[5px]"
 						/>
 					</Box> */}
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300  border-grey-300 border-1 rounded-4">
+						{t('title.state')}
+					</Box>
+					<Card variant="outlined">
+						<Box className="grid grid-flow-row-dense grid-cols-2 ml-20">
+							<Box className="col-span-1 -my-3">
+								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+							</Box>
+							<Box className="col-span-1 -my-3">
+								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+							</Box>
+						</Box>
+					</Card>
+					
+				
 
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}

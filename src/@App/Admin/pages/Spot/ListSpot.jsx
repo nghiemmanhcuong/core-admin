@@ -32,16 +32,20 @@ const ListSpot = props => {
 		<ListSpotProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.spot')}
-				headerAction={
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => navigate(ROUTER_ADMIN.spot.list + '/new')}
-					>
-						{t('common:btn.new')}
-					</Button>
-				}
-				content={<ListSpotTable />}
+				content={<>
+					<ListSpotTable />
+					<Box className='my-40 mr-40 text-right'>
+							<Button
+								variant="contained"
+								color="primary"
+								className='bg-blue w-160 text-18'
+								onClick={() => navigate(ROUTER_ADMIN.spot.list + '/new')}
+							>
+								{t('common:btn.add')}
+							</Button>
+					</Box>
+				</>
+			}
 			/>
 		</ListSpotProvider>
 	)

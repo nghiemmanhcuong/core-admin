@@ -39,7 +39,7 @@ const CurrencyFilter = props => {
 			<Box className="p-10 bg-grey-300">
 				<Typography variant="h4">検索条件</Typography>
 			</Box>
-			<Box className="flex p-10  w-full">
+			<Box className="flex p-10 w-full">
 				<Box className="flex w-1/2 items-start  ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.name')}
