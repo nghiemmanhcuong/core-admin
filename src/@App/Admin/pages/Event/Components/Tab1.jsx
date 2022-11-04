@@ -487,35 +487,37 @@ const Tab1 = props => {
 						
 					</Typography>
 				</Box>
-				<Box className="rounded-md flex w-full ml-auto sm:w-2/3">
-					<Box className="flex w-full sm:w-2/3">
-						<CoreInput control={control} name="" size="small" className="w-full" />
-						<Button variant="contained" color="third">
-							選択
-						</Button>
+				<Box className="rounded-md flex w-full ml-auto items-center sm:w-2/3">
+					<Box className="flex w-full sm:w-full">
+						<Box className='flex w-2/3'>
+							<CoreInput control={control} name="123" size="small" className="w-full" />
+							<Button variant="contained" color="third">
+								選択
+							</Button>
+						</Box>
+						<Box className='flex w-1/3 justify-end'>
+							<Button
+								onClick={() => navigate(ROUTER_ADMIN.event.list)}
+								variant="contained"
+								color="error"
+								className="mr-10"
+								size="small"
+							>
+								削除
+							</Button>
+							<LoadingButton
+								loading={isSubmitting}
+								disabled={!isDirty}
+								variant="contained"
+								color="success"
+								size="small"
+								type="submit"
+							>
+								登録
+							</LoadingButton>
+						</Box>
 					</Box>
-
-					<Box className="flex w-auto ml-auto">
-						<Button
-							onClick={() => navigate(ROUTER_ADMIN.event.list)}
-							variant="contained"
-							color="error"
-							className="mr-10"
-							size="small"
-						>
-							削除
-						</Button>
-						<LoadingButton
-							loading={isSubmitting}
-							disabled={!isDirty}
-							variant="contained"
-							color="success"
-							size="small"
-							type="submit"
-						>
-							登録
-						</LoadingButton>
-					</Box>
+					
 				</Box>
 			</Box>
 		</form>

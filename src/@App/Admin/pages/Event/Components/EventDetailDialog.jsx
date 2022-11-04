@@ -4,7 +4,7 @@
  * Email: you@you.you
  * -----
  * Last Modified: Thu Nov 03 2022
- * Modified By: haitran
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -24,7 +24,6 @@ import { useTranslation } from 'react-i18next'
 const EventDetailDialog = props => {
 	const { data } = props
 	const { t } = useTranslation(TRANSLATE_ADMIN.event)
-	console.log('============= data', data)
 	return (
 		<Table
 			className="w-full"

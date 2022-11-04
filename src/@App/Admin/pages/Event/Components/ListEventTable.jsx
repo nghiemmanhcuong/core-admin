@@ -23,6 +23,7 @@ const ListEventTable = props => {
 	const { handleOpen, handleClose, renderEventReview } = useEventReviewDialog()
 	const { handleOpenEventDetail, handleCloseEventDetail, renderEventDetail } = useEventDetailDialog()
 	const navigate = useNavigate()
+
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -48,7 +49,6 @@ const ListEventTable = props => {
 				header: t('label.tag'),
 				className: 'w-[10%]',
 				cell: ({ row }) => {
-					console.log('============= row?.original', row?.original)
 					return row?.original?.tag?.map((item, index) => {
 						return (
 							<span key={index} className="mb-4 bg-grey-300 p-4 rounded-4 m-4">

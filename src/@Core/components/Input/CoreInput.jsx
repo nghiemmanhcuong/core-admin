@@ -67,7 +67,7 @@ const CoreInput = props => {
 
 	const renderLabel = () => {
 		return (
-			<Typography variant="body2" className="flex items-center mb-4">
+			<Typography variant="body2" className="flex items-center">
 				<Typography
 					className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', required ? 'bg-yellow' : 'bg-white')}
 				>
@@ -79,7 +79,7 @@ const CoreInput = props => {
 	}
 
 	return (
-		<Box className={clsx('admin-input flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20', className)}>
+		<Box className={clsx('admin-input flex flex-wrap sm:flex-nowrap', className)}>
 			{label != null ? renderLabel() : ''}
 			<TextField
 				fullWidth
