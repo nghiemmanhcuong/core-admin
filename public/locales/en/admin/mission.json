@@ -9,6 +9,7 @@
 		"condition": "クリア条件"
 	},
 	"title": {
+		"mission_detail": "ミッション詳細",
         "mission": "ミッション一覧",
         "no": "NO",
 		"list_tag": "カード一覧",
@@ -38,11 +39,20 @@
 		},
 		"form": {
 			"label": {
-				"id": "スポットID",
+				"id": "ミッションID",
+				"name": "ミッション名",
 				"title": "スポットタイトル",
-				"description": "スポット説明",
+				"description": "ミッション説明",
+                "hide/show": "表示·非表示",
+				"name_card": "カード名",
+				"description_card": "カード説明",
 				"situation": "状態",
+				"creator_card": "カード作成者",
+				"creator_mission": "ミッション作成者",
+				"clear_condition": "クリア条件",
 				"category": "スポットカテゴリ",
+				"image_card": "カード画像",
+				"earn_in-app_currency": "獲得アプリ内通貨",
 				"venue": "スポット開催場所",
 				"type": "スポットタイプ",
 				"period": "スポット開催期間",

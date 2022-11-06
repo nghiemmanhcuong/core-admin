@@ -31,6 +31,7 @@ const LazyTagList = React.lazy(() => import('../pages/Tag/ListTag'))
 const LazySurroundingList = React.lazy(() => import('../pages/Surrounding/ListSurrounding'))
 const SurroundingEdit = React.lazy(() => import('../pages/Surrounding/EditSurrounding'))
 const LazyMissionList = React.lazy(() => import('../pages/Mission/ListMission'))
+const LazyMissionDetail = React.lazy(() => import('../pages/Mission/DetailMission'))
 const NotificationList = React.lazy(() => import('../pages/Notification/ListNotification'))
 const NotificationEdit = React.lazy(() => import('../pages/Notification/DetailNotification'))
 const ItemList = React.lazy(() => import('../pages/Item/ListItem'))
@@ -105,6 +106,10 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.mission.list,
 		element: <LazyMissionList />
+	},
+	{
+		path: ROUTER_ADMIN.mission.detail,
+		element: <LazyMissionDetail />
 	},
 	{
 		path: ROUTER_ADMIN.auth.login,

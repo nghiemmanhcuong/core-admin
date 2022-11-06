@@ -17,7 +17,7 @@ const ListCurrencyTable = props => {
 				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('name', {
-				header: 'アプリ内通貸名'
+				header: 'アプリ内通貨名'
 			}),
 			columnHelper.accessor('unit', {
 				header: 'アプリ内通貨単位'

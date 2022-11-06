@@ -61,7 +61,9 @@ export const ROUTER_ADMIN = {
 		edit: basePath + '/surrounding/:id'
 	},
 	mission: {
-		list: basePath + '/mission'
+		list: basePath + '/mission',
+		detail: basePath + '/mission/:id',
+
 	},
 	notification: {
 		list: basePath + '/notifications',
