@@ -57,7 +57,7 @@ const ListItemTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => navigate(ROUTER_ADMIN.item.edit)} />
+							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.item.edit)} /> */}
 							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.item.edit)} />
 							<CoreActionDelete onConfirmDelete={() => handleDeleteItem(data.id)} />
 						</div>

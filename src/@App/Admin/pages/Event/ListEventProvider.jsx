@@ -25,10 +25,12 @@ const ListEventProvider = props => {
 		}
 	})
 
+	const { run: getEvents } = requestEvents
 	const eventTableHandler = useCoreTable(requestEvents)
 
 	useEffect(() => {
-		eventTableHandler.handleFetchData()
+		// eventTableHandler.handleFetchData()
+		getEvents()
 	}, [])
 
 	const data = {

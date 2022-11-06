@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Fri Nov 04 2022
- * Modified By: use
+ * Last Modified: Sun Nov 06 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -41,7 +41,9 @@ const AccountTableFilter = props => {
 		defaultValues: {
 			name: '',
 			mail: '',
-			role: ''
+			role: '',
+			checkbox1: false,
+			checkbox2: false
 		}
 	})
 
@@ -131,15 +133,17 @@ const AccountTableFilter = props => {
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-20">
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
+								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+								<CoreCheckbox
+									control={control}
+									name="checkbox2"
+									label={t('value.non_representation')}
+								/>
 							</Box>
 						</Box>
 					</Card>
-					
-				
 
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}

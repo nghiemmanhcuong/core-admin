@@ -17,12 +17,14 @@ import { errorMsg } from '@Core/helper/Message'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import moment from 'moment/moment'
+import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
+import { SignalCellularNullSharp } from '@mui/icons-material'
 
 const EventFilter = props => {
 	const { eventTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
 
-	const { control, getValues } = useForm({
+	const { control, getValues, watch } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
 			title: '',
@@ -37,14 +39,16 @@ const EventFilter = props => {
 			author: '',
 			min_fee: null,
 			max_fee: null,
-			publish: null
+			publish: SignalCellularNullSharp
 		}
 	})
 
+	console.log('============= watch()', watch())
 	const handleFilter = async () => {
-		console.log('============= 123',123)
+		console.log('============= 123', 123)
 		try {
 			const data = getValues()
+			console.log('============= data', data)
 			const params = {
 				...data,
 				event_date_from: data?.event_date_from
@@ -59,7 +63,8 @@ const EventFilter = props => {
 				reception_date_until: data?.reception_date_until
 					? moment(data?.reception_date_until).add(7, 'hours').format('YYYY-MM-DD')
 					: null,
-				category: data?.category?.join(',')
+				category: data?.category?.join(','),
+				publish: +data?.publish
 			}
 			await eventTableHandler.handleFetchData(params)
 		} catch (error) {
@@ -75,15 +80,11 @@ const EventFilter = props => {
 			</Box>
 			<Box className="flex p-8 w-full">
 				<Box className="flex w-1/2 items-center">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						イベントタイトル
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">イベントタイトル</Box>
 					<CoreInput control={control} name="title" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						カテゴリー
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">カテゴリー</Box>
 					<CoreAutocomplete
 						control={control}
 						name="category"
@@ -107,54 +108,40 @@ const EventFilter = props => {
 			</Box>
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center  ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						まとめ
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">まとめ</Box>
 					<CoreInput control={control} name="summary" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						開催地
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">開催地</Box>
 					<CoreInput control={control} name="venue" size="small" className="w-2/3" />
 				</Box>
 			</Box>
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center  ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						開催年月日
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">開催年月日</Box>
 					<CoreDatePicker control={control} name="event_date_from" size="small" className="w-1/3" />
 					<CoreDatePicker control={control} name="event_date_until" size="small" className="w-1/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						受付年月日
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">受付年月日</Box>
 					<CoreDatePicker control={control} name="reception_date_from" size="small" className="w-1/3" />
 					<CoreDatePicker control={control} name="reception_date_until" size="small" className="w-1/3" />
 				</Box>
 			</Box>
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center  ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						著者
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">著者</Box>
 					<CoreInput control={control} name="author" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						費用
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">費用</Box>
 					<CoreInput control={control} name="min_fee" placeholder="最低料金" className="w-1/3" size="small" />
 					<CoreInput control={control} name="max_fee" placeholder="最大料金" className="w-1/3" size="small" />
 				</Box>
 			</Box>
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						タグ情報
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">タグ情報</Box>
 					{/* <CoreAutocomplete
 						control={control}
 						name="tag"
@@ -174,27 +161,37 @@ const EventFilter = props => {
 							}
 						]}
 					/> */}
-					<CoreInput 
-						control={control}
-						name="tag"
-						size="small"
-						className="w-2/3"
-					/>
+					<CoreInput control={control} name="tag" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">状態</Box>
+					<Card variant="outlined">
+						<CoreRadioGroup
+							control={control}
+							name="publish"
+							// legendLabel="状態"
+							className="ml-10"
+							options={[
+								{ key: '1', value: 1, label: t('value.express') },
+								{ key: '2', value: 2, label: t('value.non_representation') }
+							]}
+							row
+						/>
+					</Card>
+
+					{/* <Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						状態
 					</Box>
 					<Card variant="outlined">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-20">
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
+								<CoreCheckbox control={control} name="publish" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+								<CoreCheckbox control={control} name="checkbox2" label={t('value.non_representation')} />
 							</Box>
 						</Box>
-					</Card>
+					</Card> */}
 					{/* <Card variant="outlined">
 						<Box>
 							<CoreRadioGroup

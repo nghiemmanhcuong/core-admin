@@ -35,7 +35,7 @@ const ListCurrencyTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							<CoreActionView onClick={() => console.log('============= data', data)} />
+							{/* <CoreActionView onClick={() => console.log('============= data', data)} /> */}
 							<Link to={`/admin/currency/${data.id}`}>
 								<CoreActionEdit />
 							</Link>
