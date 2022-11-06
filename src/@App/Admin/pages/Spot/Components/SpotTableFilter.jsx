@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import React from 'react'
 import TextField from '@mui/material/TextField'
-import { Button, Typography } from '@mui/material'
+import { Button, Card, Typography } from '@mui/material'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import FormInputSearch from '@App/Admin/components/Form/FormInputSearch'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
@@ -121,11 +121,36 @@ const SpotTableFilter = props => {
 					<CoreInput control={control} name="tag" size="small" className="w-full sm:w-2/3" />
 				</Box>
 
-				<Box className="flex w-full sm:w-1/2 mx-8 items-center">
+				<Box className="flex w-1/2 items-center mx-8 ">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300  border-grey-300 border-1 rounded-4">
+						{t('title.state')}
+					</Box>
+					<Card variant="outlined">
+						<Box className="grid grid-flow-row-dense grid-cols-2 ml-20">
+							<Box className="col-span-1 -my-3">
+								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
+							</Box>
+							<Box className="col-span-1 -my-3">
+								<CoreCheckbox
+									control={control}
+									name="checkbox2"
+									label={t('value.non_representation')}
+								/>
+							</Box>
+						</Box>
+					</Card>
+				</Box>
+			</Box>
+
+			<Box className="flex p-8 w-full">
+				<Box className="flex w-full sm:w-1/2 items-start">
 					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.detail')}
 					</Box>
-					<CoreInput control={control} name="detail" size="small" className="w-full sm:w-1/2 mr-5" />
+					<CoreInput control={control} name="detail" size="small" className="w-full sm:w-2/3 mr-5" />
+				</Box>
+
+				<Box className="flex w-full sm:w-1/2 mx-8 items-center">
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>

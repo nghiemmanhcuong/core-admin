@@ -66,15 +66,11 @@ const SurroundingTableFilter = props => {
 			</Box>
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						{t('title.name')}
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">{t('title.name')}</Box>
 					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						{t('title.area')}
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">{t('title.area')}</Box>
 					<CoreAutocomplete
 						control={control}
 						name="address"
@@ -88,9 +84,7 @@ const SurroundingTableFilter = props => {
 			</Box>
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						{t('title.type')}
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">{t('title.type')}</Box>
 					<CoreAutocomplete
 						control={control}
 						name="type"
@@ -102,7 +96,7 @@ const SurroundingTableFilter = props => {
 					/>
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
-					{/* <Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.situation')}
 					</Box>
 					<Card variant="outlined">
@@ -118,7 +112,7 @@ const SurroundingTableFilter = props => {
 								/>
 							</Box>
 						</Box>
-					</Card> */}
+					</Card>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>

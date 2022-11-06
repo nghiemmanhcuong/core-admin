@@ -25,7 +25,7 @@ const CoreCheckboxGroup = props => {
 
 	const renderLabel = () => {
 		return (
-			<Typography variant="body2" className="flex items-center mb-4">
+			<Typography variant="h3" className="text-primary flex items-center mb-4">
 				<Typography
 					className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', required ? 'bg-yellow' : 'bg-white')}
 				>

@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Oct 27 2022
+ * Last Modified: Mon Nov 07 2022
  * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -20,11 +20,13 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/material'
 import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDetailAccountDialog } from '../hooks/useDetailAccountDialog'
 import AccountTableFilter from './AccountTableFilter'
 // import PropTypes from 'prop-types'
 
 const ListAccountTable = props => {
 	const { t, accountTableHandler, handleDeleteAccount } = useAdminPageContext()
+	const { handleOpenDetailAccount, renderDetailAccountDialog } = useDetailAccountDialog()
 	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
@@ -53,7 +55,12 @@ const ListAccountTable = props => {
 					const data = row.original
 					return (
 						<div className="flex">
-							{/* <CoreActionView onClick={() => console.log('============= data', data)} /> */}
+							{/* <CoreActionView
+								onClick={() => {
+									// handleOpenDetailAccount(data?.id)
+									console.log('=============== data', data)
+								}}
+							/> */}
 							<CoreActionEdit
 								onClick={() => navigate(ROUTER_ADMIN.account.list + `/${data.id}`, { state: { data } })}
 							/>
@@ -73,6 +80,7 @@ const ListAccountTable = props => {
 				{...accountTableHandler}
 				data={accountTableHandler?.accounts}
 			/>
+			{renderDetailAccountDialog()}
 		</Box>
 	)
 }

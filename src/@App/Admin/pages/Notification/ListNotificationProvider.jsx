@@ -26,6 +26,8 @@ const ListNotificationProvider = props => {
 		manual: true
 	})
 
+	const { run: getNotifications } = requestNotifications
+
 	const notificationTableHandler = useCoreTable(requestNotifications)
 
 	const { runAsync: handleDeleteNotification } = useRequest(notificationService.delete, {
@@ -40,7 +42,8 @@ const ListNotificationProvider = props => {
 	})
 
 	useEffect(() => {
-		notificationTableHandler.handleFetchData()
+		// notificationTableHandler.handleFetchData()
+		getNotifications()
 	}, [])
 
 	const data = {

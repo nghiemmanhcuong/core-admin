@@ -161,6 +161,7 @@ const EditNotification = props => {
 						placeholder="Default input"
 						size="small"
 						multiline
+						required
 					/>
 					{/* 
 					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">

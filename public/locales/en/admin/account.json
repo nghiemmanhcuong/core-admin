@@ -7,7 +7,8 @@
 		"roll": "ロール",
 		"state": "狀態",
 		"detail_account": "アカウント詳細",
-		"email": "メール"
+		"email": "メール",
+		"permission": "權限"
 	},
 	"value": {
 		"express": "表示",

@@ -194,13 +194,13 @@ const Tab2 = props => {
 								</Grid>
 								<Grid item xs={6}>
 									<Button variant="contained" color="primary" className="mr-3" size="small">
-										削除
+										選択
 									</Button>
 									<Button variant="contained" color="error" className="mr-3" size="small">
 										削除
 									</Button>
 									<Button variant="contained" color="success" className="bg-blue mr-3" size="small">
-										登録
+										追加
 									</Button>
 								</Grid>
 							</Grid>

@@ -99,7 +99,7 @@ const NotificationTableFilter = props => {
 					/>
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
+					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box>
 					<Card variant="outlined">

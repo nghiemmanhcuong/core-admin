@@ -38,26 +38,32 @@ const ListNotificationTable = props => {
 			columnHelper.accessor('category', {
 				header: t('column.type')
 			}),
-			columnHelper.accessor('detail', {
-				header: t('column.detail')
+			// columnHelper.accessor('detail', {
+			// 	header: t('column.detail')
+			// }),
+			columnHelper.accessor('updated_at', {
+				header: t('column.from_date')
 			}),
-			// columnHelper.accessor('from_date', {
-			// 	header: t('column.from_date')
-			// }),
-			// columnHelper.accessor('to_date', {
-			// 	header: t('column.to_date')
-			// }),
-			,
+			columnHelper.accessor('deleted_at', {
+				header: t('column.to_date')
+			}),
 			columnHelper.accessor('action', {
 				header: t('column.action'),
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
+					console.log('============= data', data)
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {state: {data: data}})} /> */}
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {state: {data: data}})} />
-							{/* <CoreActionDelete onConfirmDelete={() => handleDeleteNotification(data.id)} /> */}
+							<CoreActionEdit
+								onClick={() =>
+									navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {
+										state: { data: data }
+									})
+								}
+							/>
+							<CoreActionDelete onConfirmDelete={() => handleDeleteNotification(data.id)} />
 						</div>
 					)
 				}
@@ -67,7 +73,12 @@ const ListNotificationTable = props => {
 	return (
 		<Box>
 			<NotificationTableFilter />
-			<CoreTable isShowPagination columns={columns} {...notificationTableHandler} data={notificationTableHandler?.information} />
+			<CoreTable
+				isShowPagination
+				columns={columns}
+				{...notificationTableHandler}
+				data={notificationTableHandler?.information}
+			/>
 		</Box>
 	)
 }
