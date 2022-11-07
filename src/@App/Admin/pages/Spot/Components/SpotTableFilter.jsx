@@ -122,10 +122,10 @@ const SpotTableFilter = props => {
 				</Box>
 
 				<Box className="flex w-1/2 items-center mx-8 ">
-					<Box className="w-full sm:w-1/3 p-8 bg-grey-300  border-grey-300 border-1 rounded-4">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box>
-					<Card variant="outlined">
+					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-20">
 							<Box className="col-span-1 -my-3">
 								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
@@ -138,7 +138,7 @@ const SpotTableFilter = props => {
 								/>
 							</Box>
 						</Box>
-					</Card>
+					</Box>
 				</Box>
 			</Box>
 

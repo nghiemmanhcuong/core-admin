@@ -25,10 +25,13 @@ const ListUserProvider = props => {
 		manual: true
 	})
 
+	const { run: getSpots } = requestSpots
+
 	const spotTableHandler = useCoreTable(requestSpots)
 
 	useEffect(() => {
-		spotTableHandler.handleFetchData()
+		// spotTableHandler.handleFetchData()
+		getSpots()
 	}, [])
 
 	const data = {

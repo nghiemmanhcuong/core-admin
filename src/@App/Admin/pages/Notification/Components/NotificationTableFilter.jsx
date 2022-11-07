@@ -102,7 +102,7 @@ const NotificationTableFilter = props => {
 					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box>
-					<Card variant="outlined">
+					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-20">
 							<Box className="col-span-1 -my-3">
 								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
@@ -115,7 +115,7 @@ const NotificationTableFilter = props => {
 								/>
 							</Box>
 						</Box>
-					</Card>
+					</Box>
 				</Box>
 				{/* <Box className="w-full">
 					<CoreInputFile control={control} name="image" />

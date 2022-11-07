@@ -29,6 +29,8 @@ const ListSpotProvider = props => {
 		}
 	})
 
+	const { run: getSpots } = requestSpots
+
 	const { runAsync: handleDeleteSpot } = useRequest(spotSerivce.delete, {
 		manual: true,
 		onSuccess: res => {
@@ -43,7 +45,8 @@ const ListSpotProvider = props => {
 	const spotTableHandler = useCoreTable(requestSpots)
 
 	useEffect(() => {
-		spotTableHandler.handleFetchData()
+		// spotTableHandler.handleFetchData()
+		getSpots()
 	}, [])
 
 	const data = {

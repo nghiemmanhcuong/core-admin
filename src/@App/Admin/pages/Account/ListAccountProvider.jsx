@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Mon Oct 24 2022
- * Modified By: TheAnh58
+ * Last Modified: Mon Nov 07 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -29,6 +29,8 @@ const ListAccountProvider = props => {
 		}
 	})
 
+	const { run: getAccounts } = requestAccounts
+
 	const { runAsync: handleDeleteAccount } = useRequest(accountSerivce.delete, {
 		manual: true,
 		onSuccess: res => {
@@ -43,7 +45,8 @@ const ListAccountProvider = props => {
 	const accountTableHandler = useCoreTable(requestAccounts)
 
 	useEffect(() => {
-		accountTableHandler.handleFetchData()
+		// accountTableHandler.handleFetchData()
+		getAccounts()
 	}, [])
 
 	const data = {

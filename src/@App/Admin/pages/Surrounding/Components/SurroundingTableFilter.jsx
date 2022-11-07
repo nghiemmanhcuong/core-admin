@@ -99,7 +99,7 @@ const SurroundingTableFilter = props => {
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.situation')}
 					</Box>
-					<Card variant="outlined">
+					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
 							<Box className="col-span-1 -my-3 ml-20">
 								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
@@ -112,7 +112,7 @@ const SurroundingTableFilter = props => {
 								/>
 							</Box>
 						</Box>
-					</Card>
+					</Box>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>

@@ -44,9 +44,7 @@ const MissionTableFilter = props => {
 			</Box>
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center  ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						{t('title.name')}
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">{t('title.name')}</Box>
 					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
@@ -70,7 +68,7 @@ const MissionTableFilter = props => {
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.situation')}
 					</Box>
-					<Card variant="outlined">
+					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
 							<Box className="col-span-1 -my-3 ml-20">
 								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
@@ -83,7 +81,7 @@ const MissionTableFilter = props => {
 								/>
 							</Box>
 						</Box>
-					</Card>
+					</Box>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>

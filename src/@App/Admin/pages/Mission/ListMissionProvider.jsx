@@ -25,10 +25,13 @@ const ListMissionProvider = props => {
 		manual: true
 	})
 
+	const { run: getMissions } = requestMissions
+
 	const missionTableHandler = useCoreTable(requestMissions)
 
 	useEffect(() => {
-		missionTableHandler.handleFetchData()
+		// missionTableHandler.handleFetchData()
+		getMissions()
 	}, [])
 
 	const data = {

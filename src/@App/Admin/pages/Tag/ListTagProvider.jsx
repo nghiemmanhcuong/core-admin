@@ -25,10 +25,13 @@ const ListTagProvider = props => {
 		manual: true
 	})
 
+	const { run: getTags } = requestTags
+
 	const tagTableHandler = useCoreTable(requestTags)
 
 	useEffect(() => {
-		tagTableHandler.handleFetchData()
+		// tagTableHandler.handleFetchData()
+		getTags()
 	}, [])
 
 	const data = {

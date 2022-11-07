@@ -18,7 +18,6 @@ import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import moment from 'moment/moment'
 import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
-import { SignalCellularNullSharp } from '@mui/icons-material'
 
 const EventFilter = props => {
 	const { eventTableHandler } = useAdminPageContext()
@@ -31,40 +30,34 @@ const EventFilter = props => {
 			category: [],
 			summary: '',
 			venue: '',
-			event_date_from: null,
-			event_date_until: null,
-			reception_date_from: null,
-			reception_date_until: null,
-			tag: '',
+			event_start: null,
+			event_end: null,
+			reception_start: null,
+			reception_end: null,
+			tag: [],
 			author: '',
 			min_fee: null,
 			max_fee: null,
-			publish: SignalCellularNullSharp
+			publish: ''
 		}
 	})
 
-	console.log('============= watch()', watch())
 	const handleFilter = async () => {
-		console.log('============= 123', 123)
 		try {
 			const data = getValues()
-			console.log('============= data', data)
 			const params = {
 				...data,
-				event_date_from: data?.event_date_from
-					? moment(data?.event_date_from).add(7, 'hours').format('YYYY-MM-DD')
+				event_start: data?.event_start ? moment(data?.event_start).add(7, 'hours').format('YYYY-MM-DD') : null,
+				event_end: data?.event_end ? moment(data?.event_end).add(7, 'hours').format('YYYY-MM-DD') : null,
+				reception_start: data?.reception_start
+					? moment(data?.reception_start).add(7, 'hours').format('YYYY-MM-DD')
 					: null,
-				event_date_until: data?.event_date_until
-					? moment(data?.event_date_until).add(7, 'hours').format('YYYY-MM-DD')
-					: null,
-				reception_date_from: data?.reception_date_from
-					? moment(data?.reception_date_from).add(7, 'hours').format('YYYY-MM-DD')
-					: null,
-				reception_date_until: data?.reception_date_until
-					? moment(data?.reception_date_until).add(7, 'hours').format('YYYY-MM-DD')
+				reception_end: data?.reception_end
+					? moment(data?.reception_end).add(7, 'hours').format('YYYY-MM-DD')
 					: null,
 				category: data?.category?.join(','),
-				publish: +data?.publish
+				publish: +data?.publish,
+				tag: data?.tag?.join(',')
 			}
 			await eventTableHandler.handleFetchData(params)
 		} catch (error) {
@@ -119,13 +112,13 @@ const EventFilter = props => {
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center  ">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">開催年月日</Box>
-					<CoreDatePicker control={control} name="event_date_from" size="small" className="w-1/3" />
-					<CoreDatePicker control={control} name="event_date_until" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="event_start" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="event_end" size="small" className="w-1/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">受付年月日</Box>
-					<CoreDatePicker control={control} name="reception_date_from" size="small" className="w-1/3" />
-					<CoreDatePicker control={control} name="reception_date_until" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="reception_start" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="reception_end" size="small" className="w-1/3" />
 				</Box>
 			</Box>
 			<Box className="flex p-8  w-full">
@@ -142,7 +135,7 @@ const EventFilter = props => {
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">タグ情報</Box>
-					{/* <CoreAutocomplete
+					<CoreAutocomplete
 						control={control}
 						name="tag"
 						size="small"
@@ -153,19 +146,50 @@ const EventFilter = props => {
 						options={[
 							{
 								value: 1,
-								label: '鬼ごっこ 1'
+								label: 'タグ1'
 							},
 							{
 								value: 2,
-								label: '鬼ごっこ 2'
+								label: 'タグ2'
+							},
+							{
+								value: 3,
+								label: 'タグ3'
+							},
+							{
+								value: 4,
+								label: 'タグ4'
+							},
+							{
+								value: 5,
+								label: 'タグ5'
+							},
+							{
+								value: 6,
+								label: 'タグ6'
+							},
+							{
+								value: 7,
+								label: 'タグ7'
+							},
+							{
+								value: 8,
+								label: 'タグ8'
+							},
+							{
+								value: 9,
+								label: 'タグ9'
+							},
+							{
+								value: 10,
+								label: 'タグ10'
 							}
 						]}
-					/> */}
-					<CoreInput control={control} name="tag" size="small" className="w-2/3" />
+					/>
 				</Box>
-				<Box className="flex w-1/2 items-center mx-8 ">
+				<Box className="flex w-1/2 items-center mx-8">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">状態</Box>
-					<Card variant="outlined">
+					<Box className="border-grey-400 border-1 rounded-4">
 						<CoreRadioGroup
 							control={control}
 							name="publish"
@@ -173,11 +197,11 @@ const EventFilter = props => {
 							className="ml-10"
 							options={[
 								{ key: '1', value: 1, label: t('value.express') },
-								{ key: '2', value: 2, label: t('value.non_representation') }
+								{ key: '0', value: 0, label: t('value.non_representation') }
 							]}
 							row
 						/>
-					</Card>
+					</Box>
 
 					{/* <Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						状態

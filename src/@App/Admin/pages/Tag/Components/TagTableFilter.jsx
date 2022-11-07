@@ -60,11 +60,10 @@ const TagTableFilter = props => {
 					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.popular_tag')}
 					</Box>
-					<Card variant="outlined" className='w-2/3 h-full'>
+					<Card variant="outlined" className="w-2/3 h-full">
 						<Box className="col-span-1 -my-3 ml-8">
 							<CoreCheckbox control={control} name="12345" label={t('title.only_popular_tag')} />
 						</Box>
-						
 					</Card>
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
@@ -72,21 +71,24 @@ const TagTableFilter = props => {
 						{t('title.state')}
 					</Box>
 					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}
-					<Card variant="outlined" className='h-full'>
+					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
 							<Box className="col-span-1 -my-3 ml-8">
 								<CoreCheckbox control={control} name="express" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="non_representation" label={t('value.non_representation')} />
+								<CoreCheckbox
+									control={control}
+									name="non_representation"
+									label={t('value.non_representation')}
+								/>
 							</Box>
 						</Box>
-					</Card>
+					</Box>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>
 				</Box>
-				
 			</Box>
 		</Box>
 	)

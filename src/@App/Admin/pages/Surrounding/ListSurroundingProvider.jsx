@@ -29,6 +29,8 @@ const ListSurroundingProvider = props => {
 		}
 	})
 
+	const { run: getSurrounding } = requestSurroundings
+
 	const { runAsync: handleDeleteSurrounding } = useRequest(surroundingService.delete, {
 		manual: true,
 		onSuccess: res => {
@@ -43,7 +45,8 @@ const ListSurroundingProvider = props => {
 	const surroundingTableHandler = useCoreTable(requestSurroundings)
 
 	useEffect(() => {
-		surroundingTableHandler.handleFetchData()
+		// surroundingTableHandler.handleFetchData()
+		getSurrounding()
 	}, [])
 
 	const data = {

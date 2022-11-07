@@ -10,10 +10,13 @@ const ListCurrencyProvider = props => {
 		manual: true
 	})
 
+	const { run: getCurrency } = requestCurrency
+
 	const currencyTableHandler = useCoreTable(requestCurrency)
 
 	useEffect(() => {
-		currencyTableHandler.handleFetchData()
+		// currencyTableHandler.handleFetchData()
+		getCurrency()
 	}, [])
 
 	const data = {
@@ -23,6 +26,5 @@ const ListCurrencyProvider = props => {
 
 	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>
 }
-
 
 export default React.memo(ListCurrencyProvider)

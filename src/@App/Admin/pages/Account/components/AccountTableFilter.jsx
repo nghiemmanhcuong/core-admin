@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Sun Nov 06 2022
+ * Last Modified: Mon Nov 07 2022
  * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -15,10 +15,7 @@
 
 import { Box } from '@mui/system'
 import React from 'react'
-import TextField from '@mui/material/TextField'
 import { Button, Icon, InputAdornment, Typography, FormControlLabel, Checkbox, Card } from '@mui/material'
-import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
-import FormInputSearch from '@App/Admin/components/Form/FormInputSearch'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
@@ -31,9 +28,14 @@ import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 const AccountTableFilter = props => {
 	const { accountTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.account)
-	const handleFilter = () => {
-		const params = getValues()
-		accountTableHandler.handleFetchData(params)
+	const handleFilter = async () => {
+		try {
+			const params = getValues()
+			console.log('============= params', params)
+			await accountTableHandler.handleFetchData(params)
+		} catch (error) {
+			console.log('============= error', error)
+		}
 	}
 
 	const { control, getValues } = useForm({
@@ -111,7 +113,7 @@ const AccountTableFilter = props => {
 					<Box className="w-full sm:w-1/3 p-8 bg-grey-300  border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box>
-					<Card variant="outlined">
+					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-20">
 							<Box className="col-span-1 -my-3">
 								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
@@ -124,7 +126,7 @@ const AccountTableFilter = props => {
 								/>
 							</Box>
 						</Box>
-					</Card>
+					</Box>
 				</Box>
 			</Box>
 
@@ -135,7 +137,7 @@ const AccountTableFilter = props => {
 					</Box>
 					<CoreAutocomplete
 						control={control}
-						name="email"
+						name="mail"
 						size="small"
 						placeholder="Default Select"
 						options={emailOptions}

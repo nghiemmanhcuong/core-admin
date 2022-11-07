@@ -72,7 +72,7 @@ const CurrencyFilter = props => {
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.situation')}
 					</Box>
-					<Card variant="outlined">
+					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
 							<Box className="col-span-1 -my-3 ml-20">
 								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
@@ -81,7 +81,7 @@ const CurrencyFilter = props => {
 								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
 							</Box>
 						</Box>
-					</Card>
+					</Box>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>

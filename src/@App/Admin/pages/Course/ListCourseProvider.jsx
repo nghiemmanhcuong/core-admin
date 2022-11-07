@@ -14,10 +14,13 @@ const ListCourseProvider = props => {
 		}
 	})
 
+	const { run: getCourses } = requestCourses
+
 	const courseTableHandler = useCoreTable(requestCourses)
 
 	useEffect(() => {
-		courseTableHandler.handleFetchData()
+		// courseTableHandler.handleFetchData()
+		getCourses()
 	}, [])
 
 	const data = {

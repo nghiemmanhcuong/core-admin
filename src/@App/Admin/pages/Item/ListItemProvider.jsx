@@ -26,6 +26,8 @@ const ListItemProvider = props => {
 		manual: true
 	})
 
+	const { run: getItems } = requestItems
+
 	const itemTableHandler = useCoreTable(requestItems)
 
 	const { runAsync: handleDeleteItem } = useRequest(itemService.delete, {
@@ -40,7 +42,8 @@ const ListItemProvider = props => {
 	})
 
 	useEffect(() => {
-		itemTableHandler.handleFetchData()
+		// itemTableHandler.handleFetchData()
+		getItems()
 	}, [])
 
 	const data = {
