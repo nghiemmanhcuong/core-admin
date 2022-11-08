@@ -41,7 +41,11 @@ const contentCurrency = () => {
 		},
 		resolver: yupResolver(
 			Yup.object({
-				firstname: Yup.string().required()
+				name: Yup.string().required(),
+				description: Yup.string().required(),
+				from_date: Yup.mixed().nullable().required(),
+				to_date: Yup.mixed().nullable().required(),
+				creator: Yup.string().required(),
 			})
 		)
 	})

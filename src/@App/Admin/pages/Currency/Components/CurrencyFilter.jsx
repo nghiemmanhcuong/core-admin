@@ -78,7 +78,7 @@ const CurrencyFilter = props => {
 								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.non_representation')} />
+								<CoreCheckbox control={control} name="checkbox1" label={t('value.non_representation')} />
 							</Box>
 						</Box>
 					</Box>

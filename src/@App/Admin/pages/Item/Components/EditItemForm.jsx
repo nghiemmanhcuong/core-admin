@@ -47,7 +47,17 @@ const EditItemForm = props => {
 		},
 		resolver: yupResolver(
 			Yup.object({
-				name: Yup.string().required().trim().min(1).matches(30)
+				name: Yup.string().required().trim().min(1).matches(30),
+				description: Yup.string().required(),
+				creator: Yup.string().required(),
+				location: Yup.string().required(),
+				address_location: Yup.string().required(),
+				inventory: Yup.string().required(),
+				unit: Yup.string().required(),
+				from_date: Yup.mixed().nullable().required(),
+				to_date: Yup.mixed().nullable().required(),
+				area: Yup.mixed().nullable().required(),
+				exchangeable_currency: Yup.mixed().nullable().required(),
 			})
 		)
 	})

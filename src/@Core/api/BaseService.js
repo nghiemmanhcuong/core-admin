@@ -16,7 +16,7 @@ export const DEFAULT_RESPONSE = {
 	data: [],
 	total: 0,
 	page: 1,
-	size: 10
+	per_page: 10
 }
 class BaseService {
 	BASE_URL = '/'
@@ -69,7 +69,7 @@ class BaseService {
 		this.request = createInstance(this.BASE_URL, this.middleware)
 		this.paramsGet = {
 			page: this.DEFAULT_PAGE,
-			size: this.DEFAULT_LIMIT,
+			per_page: this.DEFAULT_LIMIT,
 			sort: this.DEFAULT_SORT
 			// sort : this.DEFAULT_SORT,
 		}

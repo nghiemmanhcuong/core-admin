@@ -39,7 +39,7 @@ const ListNotification = props => {
 								variant="contained"
 								color="primary"
 								onClick={() => navigate(ROUTER_ADMIN.notification.list + '/new')}
-								className='text-16 bg-blue'
+								className='text-18 w-160 bg-blue'
 							>
 								{t('common:btn.add')}
 							</Button>

@@ -200,6 +200,12 @@ const EventFilter = props => {
 								{ key: '0', value: 0, label: t('value.non_representation') }
 							]}
 							row
+							sx={{
+								'& .MuiSvgIcon-root': {
+								  fontSize: 17,
+								},
+							  }}
+					  
 						/>
 					</Box>
 

@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Mon Nov 07 2022
- * Modified By: haitran
+ * Last Modified: Tue Nov 08 2022
+ * Modified By: TheAnh58
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -90,6 +90,7 @@ const AccountTableFilter = props => {
 						name="permission"
 						size="small"
 						className="w-2/3"
+						options={roleOptions}
 					/>
 				</Box>
 			</Box>
@@ -104,7 +105,16 @@ const AccountTableFilter = props => {
 						size="small"
 						className="w-full sm:w-2/3"
 						placeholder="Default Select"
-						options={roleOptions}
+						options={[
+							{
+								value: 1,
+								label: 'ロール'
+							},
+							{
+								value: 2,
+								label: 'ロール1'
+							}
+						]}
 						returnValueType="enum"
 					/>
 				</Box>

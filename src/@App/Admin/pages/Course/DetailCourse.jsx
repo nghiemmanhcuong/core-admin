@@ -106,7 +106,17 @@ const contentCourse = () => {
 		},
 		resolver: yupResolver(
 			Yup.object({
-				firstname: Yup.string().required()
+				firstname: Yup.string().required(),
+				name: Yup.string().required(),
+				creator: Yup.string().required(),
+				catchphrase: Yup.string().required(),
+				description: Yup.string().required(),
+				course_distance: Yup.string().required(),
+				average_gradient: Yup.string().required(),
+				elevation_gain: Yup.string().required(),
+				area: Yup.mixed().nullable().required(),
+				approximate_finish: Yup.string().required(),
+				// catchphrase: Yup.string().required(),
 			})
 		)
 	})
@@ -317,9 +327,9 @@ const contentCourse = () => {
 								</Typography>
 						</Box>
 						<Box className="col-span-3 sm:col-span-1">
-							<Box style={{position:"relative"}}>
-							<TextField fullWidth type="text" size="small" />
-							<Button variant="contained" color="third" style={{position:"absolute"}}>
+							<Box className='flex'>
+							<CoreInput control={control} name='creator' type="text" size="small" />
+							<Button variant="contained" color="third">
 								選択
 							</Button>
 							</Box>

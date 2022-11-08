@@ -99,14 +99,14 @@ const Tab1 = props => {
 		defaultValues: {
 			id: eventData?.id ?? '',
 			title: eventData?.title ?? '',
-			type: eventData?.type ?? '',
+			type: eventData?.type ?? null,
 			category: [],
-			event_start: eventData?.event_start ?? '',
-			event_end: eventData?.event_end ?? '',
-			reception_start: eventData?.reception_start ?? '',
-			reception_end: eventData?.reception_end ?? '',
-			venue: eventData?.venue ?? '',
-			entry_fee: eventData?.entry_fee ?? 0,
+			event_start: eventData?.event_start ?? null,
+			event_end: eventData?.event_end ?? null,
+			reception_start: eventData?.reception_start ?? null,
+			reception_end: eventData?.reception_end ?? null,
+			venue: eventData?.venue ?? null,
+			entry_fee: eventData?.entry_fee ?? null,
 			tag: [],
 			publish: eventData?.publish ?? 1,
 			special_feature_id: eventData?.special_feature_id ?? 0,
@@ -117,7 +117,16 @@ const Tab1 = props => {
 		},
 		resolver: yupResolver(
 			Yup.object({
-				title: Yup.string().required()
+				title: Yup.string().required(),
+				creator: Yup.string().required(),
+				venue: Yup.mixed().nullable().required(),
+				type: Yup.mixed().nullable().required(),
+				event_start: Yup.mixed().nullable().required(),
+				event_end: Yup.mixed().nullable().required(),
+				reception_start: Yup.mixed().nullable().required(),
+				reception_end: Yup.mixed().nullable().required(),
+				entry_fee: Yup.mixed().nullable().required(),
+				
 			})
 		)
 	})
@@ -128,7 +137,6 @@ const Tab1 = props => {
 		formState: { isSubmitting, isDirty }
 	} = methodForm
 
-	console.log('============= watch()',watch())
 
 	const onSubmit = methodForm.handleSubmit(async data => {
 		try {
@@ -490,7 +498,7 @@ const Tab1 = props => {
 				<Box className="rounded-md flex w-full ml-auto items-center sm:w-2/3">
 					<Box className="flex w-full sm:w-full">
 						<Box className='flex w-2/3'>
-							<CoreInput control={control} name="123" size="small" className="w-full" />
+							<CoreInput control={control} name="creator" size="small" className="w-full" />
 							<Button variant="contained" color="third">
 								選択
 							</Button>
@@ -509,7 +517,7 @@ const Tab1 = props => {
 								loading={isSubmitting}
 								disabled={!isDirty}
 								variant="contained"
-								color="success"
+								className='bg-blue text-white'
 								size="small"
 								type="submit"
 							>

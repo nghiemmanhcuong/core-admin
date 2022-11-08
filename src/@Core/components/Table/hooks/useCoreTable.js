@@ -40,7 +40,7 @@ const useCoreTable = requestFetchData => {
 	return {
 		...data,
 		pageIndex: data?.page - 1 ?? 0, //data?.current_page ? data?.current_page - 1 : 0,
-		pageSize: data?.size ?? 10,
+		pageSize: data?.per_page ?? 10,
 		loading,
 		handleFetchData
 	}

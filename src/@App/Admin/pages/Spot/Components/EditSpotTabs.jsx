@@ -114,7 +114,11 @@ const EditSpotTabs = props => {
 		},
 		resolver: yupResolver(
 			Yup.object({
-				name: Yup.string().required()
+				name: Yup.string().required(),
+				detail: Yup.string().required(),
+				address: Yup.string().required(),
+				location_info_latitude: Yup.string().required(),
+				location_info_longitude: Yup.string().required()
 			})
 		)
 	})

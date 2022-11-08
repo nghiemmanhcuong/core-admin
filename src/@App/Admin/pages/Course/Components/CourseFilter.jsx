@@ -74,7 +74,7 @@ const CourseFilter = props => {
 					</Box>
 					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
-							<Box className="col-span-1 -my-3">
+							<Box className="col-span-1 -my-3 ml-12">
 								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
 							</Box>
 							<Box className="col-span-1 -my-3">

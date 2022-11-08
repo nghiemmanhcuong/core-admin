@@ -75,10 +75,13 @@ const DetailTagForm = props => {
 	const { control } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			verification_code: ''
+			verification_code: '',
+			radio1: 1
 		},
 		resolver: yupResolver(
 			Yup.object({
+				name: Yup.string().required(),
+				number_tag: Yup.string().required(),
 				verification_code: Yup.string().required()
 			})
 		)

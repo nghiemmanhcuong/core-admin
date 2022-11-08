@@ -3,8 +3,8 @@
  * Author: TheAnh58_DELL
  * Email: you@you.you
  * -----
- * Last Modified: Sun Nov 06 2022
- * Modified By: Dell
+ * Last Modified: Tue Nov 08 2022
+ * Modified By: TheAnh58
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -32,11 +32,20 @@ const MissionForm = (props) => {
 		mode: 'onTouched',
 		defaultValues: {
 			firstname: '',
-			checkbox: false
+			checkbox: false,
+            clear_condition:1
 		},
 		resolver: yupResolver(
 			Yup.object({
-				firstname: Yup.string().required()
+				name: Yup.string().required(),
+				description: Yup.string().required(),
+				course: Yup.string().required(),
+				spot: Yup.string().required(),
+				name_card: Yup.string().required(),
+				description_card: Yup.string().required(),
+				earn_in_app_currency: Yup.mixed().nullable().required(),
+				creator_card: Yup.string().required(),
+				creator_mission: Yup.string().required(),
 			})
 		)
 	})
@@ -76,12 +85,12 @@ const MissionForm = (props) => {
                     </Typography>
                 </Box>
                 <Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
-                    <CoreRadioGroup control={control} className='my-8' name='abc' options={[
+                    <CoreRadioGroup control={control} className='my-8' name='clear_condition' options={[
                         {
                             value: 1,
                             label: <Box className='flex items-center w-full'>
                                 <Typography className='w-80'>完走</Typography>
-                                <CoreInput control={control} name='input1' size='small' className='w-full sm:w-1/3 mx-20'  /> 
+                                <CoreInput control={control} name='course' size='small' className='w-full sm:w-1/3 mx-20'  /> 
                                 <Typography className='w-1/3'>コース</Typography>
                             </Box>
                         },
@@ -89,7 +98,7 @@ const MissionForm = (props) => {
                             value: 2,
                             label: <Box className='flex items-center w-full'>
                             <Typography className='w-80'>ポイント獲得</Typography>
-                            <CoreInput control={control} name='input1' size='small' className='w-full sm:w-1/3 mx-20'  /> 
+                            <CoreInput control={control} name='spot' size='small' className='w-full sm:w-1/3 mx-20'  /> 
                             <Typography className='w-1/3'>ポイント以上</Typography>
                         </Box>
                         }
@@ -161,7 +170,7 @@ const MissionForm = (props) => {
                     <CoreAutocomplete
                         control={control}
                         size="small"
-                        name="earn_in-app_currency"
+                        name="earn_in_app_currency"
                         fullWidth
                         variant="outlined"
                         returnValueType="enum"

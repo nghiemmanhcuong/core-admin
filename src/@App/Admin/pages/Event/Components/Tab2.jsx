@@ -99,16 +99,17 @@ const tableForm = () => {
 									disabled
 								/>
 							</TableCell>
-							<TableCell>
+							<TableCell className='flex items-center'>
 								<TextField
 									type="number"
 									id="outlined-search"
 									size="small"
 									defaultValue={row.protein1}
 									readOnly
-									className="bg-grey-300"
+									className="bg-grey-300 w-80 mr-12"
 									disabled
 								/>
+								分
 							</TableCell>
 							<TableCell>
 								<Box className="flex">
@@ -142,11 +143,15 @@ const Tab2 = props => {
 		mode: 'onTouched',
 		defaultValues: {
 			firstname: '',
-			tag: ''
+			tag: '',
+			course: null,
+			title: ''
 		},
 		resolver: yupResolver(
 			Yup.object({
 				// firstname: Yup.string().required()
+				course: Yup.mixed().nullable().required(),
+				title: Yup.string().required()
 			})
 		)
 	})
@@ -189,17 +194,27 @@ const Tab2 = props => {
 										size="small"
 										fullWidth
 										variant="outlined"
-										placeholder="Choose..."
+										placeholder="Default Select"
+										options={[
+											{
+												value: 1,
+												label: 'イベントコース1'
+											},
+											{
+												value: 2,
+												label: 'イベントコース2'
+											}
+										]}
 									/>
 								</Grid>
 								<Grid item xs={6}>
-									<Button variant="contained" color="primary" className="mr-3" size="small">
+									<Button variant="contained" color="primary" className="px-8 py-6 text-14 mr-3" size="small">
 										選択
 									</Button>
-									<Button variant="contained" color="error" className="mr-3" size="small">
+									<Button variant="contained" className="px-8 py-6 text-14 mr-3 bg-[#E97B86]" size="small">
 										削除
 									</Button>
-									<Button variant="contained" color="success" className="bg-blue mr-3" size="small">
+									<Button variant="contained" color="success" className="px-8 py-6 text-14 bg-blue mr-3" size="small">
 										追加
 									</Button>
 								</Grid>
@@ -229,7 +244,6 @@ const Tab2 = props => {
 						control={control}
 						label="コース説明"
 						name="firstname"
-						placeholder="Default input"
 						multiline
 						rows={4}
 						size="small"

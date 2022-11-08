@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Mon Oct 31 2022
- * Modified By: use
+ * Last Modified: Tue Nov 08 2022
+ * Modified By: TheAnh58
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -63,6 +63,7 @@ const EditAccountForm = props => {
 				name: Yup.string().required(),
 				mail: Yup.string().required(),
 				role: Yup.mixed().nullable().required(),
+				roll: Yup.mixed().nullable().required(),
 				password: Yup.string().password().required()
 			})
 		)
@@ -149,6 +150,16 @@ const EditAccountForm = props => {
 						variant="outlined"
 						placeholder="Choose..."
 						name="roll"
+						options={[
+							{
+								value: 1,
+								label: 'ロール'
+							},
+							{
+								value: 2,
+								label: 'ロール1'
+							}
+						]}
 						className="w-full sm:w-1/3"
 					/>
 				</Box>
