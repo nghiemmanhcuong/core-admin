@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Tue Nov 08 2022
- * Modified By: TheAnh58
+ * Last Modified: Wed Nov 09 2022
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -18,6 +18,7 @@ import AdminInput from '@App/Admin/components/Input/AdminInput'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { accountSerivce } from '@App/Admin/services/accountService'
+import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { errorMsg, successMsg } from '@Core/helper/Message'
@@ -36,17 +37,18 @@ const EditAccountForm = props => {
 	const { t, accountTableHandler } = useAdminPageContext()
 	const role = [
 		{
-			value: 1,
+			value: 'admin',
 			label: t('edit.form.option.label.admin')
 		},
 		{
-			value: 2,
-			label: t('edit.form.option.label.other')
+			value: 'event_creator',
+			label: t('edit.form.option.label.event_creator')
 		}
 	]
 
 	const {
 		control,
+		watch,
 		handleSubmit,
 		formState: { isSubmitting, isDirty }
 	} = useForm({
@@ -56,6 +58,7 @@ const EditAccountForm = props => {
 			name: account?.name ?? '',
 			mail: account?.mail ?? '',
 			role: account?.role ?? null,
+			roll: account?.roll ?? null,
 			password: ''
 		},
 		resolver: yupResolver(
@@ -69,9 +72,10 @@ const EditAccountForm = props => {
 		)
 	})
 
+	console.log('============= watch',watch)
+
 	const onSubmit = handleSubmit(async data => {
 		data.confirm_password = data?.password
-		data.role = data?.role?.label
 		try {
 			await accountSerivce.save(data)
 			successMsg('success')
@@ -126,15 +130,14 @@ const EditAccountForm = props => {
 						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.role')}
 						</Typography>
 					</Box>
-					<FormAutocomplete
+					<CoreAutocomplete
 						control={control}
 						size="small"
-						fullWidth
-						variant="outlined"
 						placeholder="Choose..."
 						name="role"
 						className="w-full sm:w-1/3"
 						options={role}
+						returnValueType='enum'
 					/>
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
@@ -143,20 +146,19 @@ const EditAccountForm = props => {
 						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.roll')} 
 						</Typography>
 					</Box>
-					<FormAutocomplete
+					<CoreAutocomplete
 						control={control}
 						size="small"
-						fullWidth
-						variant="outlined"
 						placeholder="Choose..."
 						name="roll"
+						returnValueType='enum'
 						options={[
 							{
-								value: 1,
+								value: 'ロール',
 								label: 'ロール'
 							},
 							{
-								value: 2,
+								value: 'ロール1',
 								label: 'ロール1'
 							}
 						]}
@@ -206,8 +208,7 @@ const EditAccountForm = props => {
 						loading={isSubmitting}
 						disabled={!isDirty}
 						type="submit"
-						color="primary"
-						className="ml-[10px]"
+						className="ml-[10px] bg-blue"
 					>
 						{t('edit.form.btn.register')}
 					</LoadingButton>

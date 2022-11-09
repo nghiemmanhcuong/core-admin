@@ -22,6 +22,7 @@ import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import AdminInput from '@App/Admin/components/Input/AdminInput'
 import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
+import { useListSpotDialog } from './hooks/useListSpotDialog'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -98,6 +99,7 @@ const tableForm = () => {
 	)
 }
 const contentCourse = () => {
+	const {handleClose, handleOpen, renderListSpotDialog} = useListSpotDialog()
 	const { control } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
@@ -121,6 +123,7 @@ const contentCourse = () => {
 		)
 	})
 	return (
+		<>
 		<form>
 			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
@@ -316,7 +319,7 @@ const contentCourse = () => {
 			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
 					<Box className="text-end pt-40">
-						<Button variant="contained" className='bg-blue w-160 text-16' size="small">
+						<Button variant="contained" className='bg-blue w-160 text-16' onClick={() => handleOpen()} size="small">
 							スポット追加
 						</Button>
 					</Box>
@@ -348,6 +351,8 @@ const contentCourse = () => {
 				</Box>
 			</Box>
 		</form>
+		{renderListSpotDialog()} 
+		</>
 	)
 }
 const DetailCourse = props => {

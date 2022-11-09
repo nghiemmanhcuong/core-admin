@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Tue Nov 08 2022
- * Modified By: TheAnh58
+ * Last Modified: Wed Nov 09 2022
+ * Modified By: use
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -55,8 +55,8 @@ const AccountTableFilter = props => {
 			label: t('edit.form.option.label.admin')
 		},
 		{
-			value: 'other',
-			label: t('edit.form.option.label.other')
+			value: 'event_creator',
+			label: t('edit.form.option.label.event_creator')
 		}
 	]
 
@@ -87,10 +87,11 @@ const AccountTableFilter = props => {
 					<CoreAutocomplete
 						control={control}
 						placeholder="Default select"
-						name="permission"
+						name="role"
 						size="small"
 						className="w-2/3"
 						options={roleOptions}
+						returnValueType='enum'
 					/>
 				</Box>
 			</Box>
@@ -101,7 +102,7 @@ const AccountTableFilter = props => {
 					</Box>
 					<CoreAutocomplete
 						control={control}
-						name="role"
+						name="roll"
 						size="small"
 						className="w-full sm:w-2/3"
 						placeholder="Default Select"

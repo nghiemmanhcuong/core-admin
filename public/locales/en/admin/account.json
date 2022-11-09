@@ -40,7 +40,8 @@
 			"option": {
 				"label": {
 					"admin": "admin",
-					"other": "other"
+					"other": "other",
+					"event_creator": "event creator"
 				}
 			},
 			"btn": {

@@ -24,14 +24,14 @@
 		"save_change": "Save Change",
 		"edit": "編集",
 		"delete": "削除",
-		"submit": "Submit",
-		"cancel": "Cancel",
+		"submit": "参加する",
+		"cancel": "キャンセル",
 		"view": "見る",
 		"update": "Update",
 		"unSubscribe": "Bỏ đăng ký",
 		"subscribed": "Đăng ký",
 		"back": "戻る",
-		"review": "Review",
+		"review": "レビュー",
 		"addition": "追加"
 	},
 	"message": {
