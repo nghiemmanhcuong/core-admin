@@ -4,7 +4,7 @@
  * Email: you@you.you
  * -----
  * Last Modified: Wed Nov 09 2022
- * Modified By: use
+ * Modified By: TheAnh58
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -43,7 +43,7 @@ export const useListSpotDialog = (props) => {
             handleClose={handleClose}
             maxWidth='lg'
             dialogContent={<ListSpotProvider t={t}>
-                <TableSpotDialog />
+                <TableSpotDialog  handleClose={handleClose} />
             </ListSpotProvider>}            
 
         />)

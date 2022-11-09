@@ -4,7 +4,7 @@
  * Email: you@you.you
  * -----
  * Last Modified: Wed Nov 09 2022
- * Modified By: use
+ * Modified By: TheAnh58
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -25,6 +25,7 @@ import SpotTableFilter from '../../Spot/Components/SpotTableFilter'
 // import PropTypes from 'prop-types'
 
 const TableSpotDialog = (props) => {
+    const {handleClose} = props
     const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
     const {control, watch} = useForm({
         defaultValues: {
@@ -32,7 +33,6 @@ const TableSpotDialog = (props) => {
         }
     })
 
-    console.log('============= watch()',watch())
 	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
@@ -96,7 +96,7 @@ const TableSpotDialog = (props) => {
 				</Button>
 			</Box> */}
             <Box className='text-right my-20'>
-                <Button className='bg-blue px-12' variant='contained'>選択</Button>
+                <Button className='bg-blue px-12' onClick={() => handleClose()} variant='contained'>選択</Button>
             </Box>
 		</Box>
 	)
