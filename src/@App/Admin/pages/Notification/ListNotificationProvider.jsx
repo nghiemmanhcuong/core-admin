@@ -33,11 +33,11 @@ const ListNotificationProvider = props => {
 	const { runAsync: handleDeleteNotification } = useRequest(notificationService.delete, {
 		manual: true,
 		onSuccess: res => {
-			successMsg('Deleted successfully')
+			successMsg(t('common:message.delete_success'))
 			notificationTableHandler.handleFetchData()
 		},
 		onError: err => {
-			errorMsg('Delete failed')
+			errorMsg(t('common:message.delete_failed'))
 		}
 	})
 

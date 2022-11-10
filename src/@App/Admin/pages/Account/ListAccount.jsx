@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Oct 27 2022
+ * Last Modified: Thu Nov 10 2022
  * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -20,7 +20,7 @@ import AdminContentPage from '../../components/Layout/AdminContentPage'
 // import TableFilter from './Components/SpotTableFilter'
 // import { Box } from '@mui/system'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Box, Button } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import ListAccountProvider from './ListAccountProvider'
 import ListAccountTable from './components/ListAccountTable'
@@ -31,7 +31,7 @@ const ListAccount = props => {
 	return (
 		<ListAccountProvider t={t}>
 			<AdminContentPage
-				pageTitle={t('title.account')}
+				pageTitle={<Typography className="font-bold">{t('title.account')}</Typography>}
 				content={
 					<>
 						<ListAccountTable />

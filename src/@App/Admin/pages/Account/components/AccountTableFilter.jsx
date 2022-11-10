@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Wed Nov 09 2022
- * Modified By: use
+ * Last Modified: Thu Nov 10 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -70,10 +70,10 @@ const AccountTableFilter = props => {
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
-			<Box className="p-10 bg-grey-300">
+			<Box className="p-8 bg-grey-300">
 				<Typography variant="h4">{t('title.filter')}</Typography>
 			</Box>
-			<Box className="flex p-10 w-full">
+			<Box className="flex p-8 w-full">
 				<Box className="flex w-full sm:w-1/2 items-center">
 					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.account_name')}
@@ -91,11 +91,11 @@ const AccountTableFilter = props => {
 						size="small"
 						className="w-2/3"
 						options={roleOptions}
-						returnValueType='enum'
+						returnValueType="enum"
 					/>
 				</Box>
 			</Box>
-			<Box className="flex p-10 w-full">
+			<Box className="flex p-8 w-full">
 				<Box className="flex w-full sm:w-1/2 items-center">
 					<Box className="w-full sm:w-1/3 p-8 bg-grey-300  border-grey-300 border-1 rounded-4">
 						{t('title.roll')}
@@ -120,7 +120,7 @@ const AccountTableFilter = props => {
 					/>
 				</Box>
 
-				<Box className="flex w-1/2 items-center mx-8 ">
+				<Box className="flex w-1/2 items-center mx-8">
 					<Box className="w-full sm:w-1/3 p-8 bg-grey-300  border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box>
@@ -141,7 +141,7 @@ const AccountTableFilter = props => {
 				</Box>
 			</Box>
 
-			<Box className="flex p-10 w-full">
+			<Box className="flex p-8 w-full">
 				<Box className="flex w-full sm:w-1/2 items-center">
 					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.email')}
@@ -150,15 +150,18 @@ const AccountTableFilter = props => {
 						control={control}
 						name="mail"
 						size="small"
+						className="w-full sm:w-2/3"
 						placeholder="Default Select"
 						options={emailOptions}
 						returnValueType="enum"
-						className="w-full sm:w-2/3"
 					/>
 				</Box>
-				<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
-					{t('btn.search')}
-				</Button>
+
+				<Box className="flex w-full sm:w-1/2 mx-8 items-center">
+					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+						{t('btn.search')}
+					</Button>
+				</Box>
 			</Box>
 		</Box>
 	)

@@ -35,9 +35,9 @@
 		"addition": "追加"
 	},
 	"message": {
-		"fetch_list_failed": "Không lấy được dữ liệu",
-		"delete_success": "Xoá dữ liệu thành công",
-		"delete_failed": "Xoá dữ liệu thất bại"
+		"fetch_list_failed": "データに失敗",
+		"delete_success": "削除成功",
+		"delete_failed": "削除失敗"
 	},
 	"form": {
 		"input_file_empty": "Chưa chọn file nào",

@@ -57,7 +57,7 @@ const EditItemForm = props => {
 				from_date: Yup.mixed().nullable().required(),
 				to_date: Yup.mixed().nullable().required(),
 				area: Yup.mixed().nullable().required(),
-				exchangeable_currency: Yup.mixed().nullable().required(),
+				exchangeable_currency: Yup.mixed().nullable().required()
 			})
 		)
 	})
@@ -244,7 +244,7 @@ const EditItemForm = props => {
 							control={control}
 							name="creator"
 							size="small"
-							className="w-full mr-12"
+							className="w-full mr-12 bg-grey-300"
 							readOnly
 						/>
 						<Button variant="contained" color="error" className="ml-auto">

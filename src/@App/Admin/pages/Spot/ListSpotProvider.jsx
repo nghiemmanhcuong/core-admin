@@ -34,11 +34,11 @@ const ListSpotProvider = props => {
 	const { runAsync: handleDeleteSpot } = useRequest(spotSerivce.delete, {
 		manual: true,
 		onSuccess: res => {
-			successMsg('Deleted successfully')
+			successMsg(t('common:message.delete_success'))
 			spotTableHandler.handleFetchData()
 		},
 		onError: res => {
-			errorMsg('Deleted failed')
+			errorMsg(t('common:message.delete_failed'))
 		}
 	})
 

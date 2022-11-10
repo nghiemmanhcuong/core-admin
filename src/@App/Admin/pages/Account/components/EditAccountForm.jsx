@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Wed Nov 09 2022
- * Modified By: use
+ * Last Modified: Thu Nov 10 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -72,7 +72,7 @@ const EditAccountForm = props => {
 		)
 	})
 
-	console.log('============= watch',watch)
+	console.log('============= watch', watch)
 
 	const onSubmit = handleSubmit(async data => {
 		data.confirm_password = data?.password
@@ -87,7 +87,6 @@ const EditAccountForm = props => {
 	return (
 		<form onSubmit={onSubmit}>
 			<Box className="max-w-lg mx-auto">
-				
 				<AdminInput
 					label={t('edit.form.label.id')}
 					control={control}
@@ -95,9 +94,9 @@ const EditAccountForm = props => {
 					placeholder="Default input"
 					size="small"
 					readOnly
-					classNameField='bg-grey-300'
+					classNameField="bg-grey-300"
 				/>
-		
+
 				<AdminInput
 					label={t('edit.form.label.name')}
 					control={control}
@@ -106,7 +105,7 @@ const EditAccountForm = props => {
 					size="small"
 					required
 				/>
-				
+
 				<AdminInput
 					label={t('edit.form.label.mail')}
 					control={control}
@@ -126,8 +125,9 @@ const EditAccountForm = props => {
 				/>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.role')}
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.role')}
 						</Typography>
 					</Box>
 					<CoreAutocomplete
@@ -137,13 +137,14 @@ const EditAccountForm = props => {
 						name="role"
 						className="w-full sm:w-1/3"
 						options={role}
-						returnValueType='enum'
+						returnValueType="enum"
 					/>
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.roll')} 
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.roll')}
 						</Typography>
 					</Box>
 					<CoreAutocomplete
@@ -151,7 +152,7 @@ const EditAccountForm = props => {
 						size="small"
 						placeholder="Choose..."
 						name="roll"
-						returnValueType='enum'
+						returnValueType="enum"
 						options={[
 							{
 								value: 'ロール',
@@ -167,8 +168,9 @@ const EditAccountForm = props => {
 				</Box>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.active')} 
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.active')}
 						</Typography>
 					</Box>
 					<Box className="border-gray-300 flex">
@@ -186,14 +188,17 @@ const EditAccountForm = props => {
 						/>
 					</Box>
 				</Box>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className='flex items-center'>
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.account_creator')} 
-						</Typography>
-					</Box>
-					<CoreInput control={control} name="account_creator" size="small" className="w-full sm:w-2/3 bg-grey-300" readOnly />
-				</Box>
+
+				<AdminInput
+					label={t('edit.form.label.account_creator')}
+					control={control}
+					name="account_creator"
+					placeholder="Default input"
+					size="small"
+					readOnly
+					classNameField="bg-grey-300"
+					required
+				/>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Button
 						onClick={() => navigate(ROUTER_ADMIN.account.list)}

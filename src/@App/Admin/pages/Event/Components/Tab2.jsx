@@ -57,17 +57,14 @@ const tableForm = () => {
 						<TableCell style={{ width: '20%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>スポット種別</Box>
 						</TableCell>
-						<TableCell style={{ width: '12%' }}>
+						<TableCell style={{ width: '15%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>住所</Box>
 						</TableCell>
-						<TableCell style={{ width: '12%' }}>
+						<TableCell style={{ width: '15%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>推奨ポイント</Box>
 						</TableCell>
 						<TableCell style={{ width: '16%' }}>
 							<Box sx={{ fontWeight: 'bold' }}>次スポットへの時間</Box>
-						</TableCell>
-						<TableCell>
-							<Box sx={{ fontWeight: 'bold' }}>アクション</Box>
 						</TableCell>
 					</TableRow>
 				</TableHead>
@@ -99,7 +96,7 @@ const tableForm = () => {
 									disabled
 								/>
 							</TableCell>
-							<TableCell className='flex items-center'>
+							<TableCell className="flex items-center">
 								<TextField
 									type="number"
 									id="outlined-search"
@@ -110,11 +107,6 @@ const tableForm = () => {
 									disabled
 								/>
 								分
-							</TableCell>
-							<TableCell>
-								<Box className="flex">
-									<CoreActionDelete onClick={() => console.log('============= data', data)} />
-								</Box>
 							</TableCell>
 						</TableRow>
 					))}
@@ -208,13 +200,27 @@ const Tab2 = props => {
 									/>
 								</Grid>
 								<Grid item xs={6}>
-									<Button variant="contained" color="primary" className="px-8 py-6 text-14 mr-3" size="small">
+									<Button
+										variant="contained"
+										color="primary"
+										className="px-8 py-6 text-14 mr-3"
+										size="small"
+									>
 										選択
 									</Button>
-									<Button variant="contained" className="px-8 py-6 text-14 mr-3 bg-[#E97B86]" size="small">
+									<Button
+										variant="contained"
+										className="px-8 py-6 text-14 mr-3 bg-[#E97B86]"
+										size="small"
+									>
 										削除
 									</Button>
-									<Button variant="contained" color="success" className="px-8 py-6 text-14 bg-blue mr-3" size="small">
+									<Button
+										variant="contained"
+										color="success"
+										className="px-8 py-6 text-14 bg-blue mr-3"
+										size="small"
+									>
 										追加
 									</Button>
 								</Grid>
@@ -342,7 +348,7 @@ const Tab2 = props => {
 				<Box className="col-span-3">{tableForm()}</Box>
 			</Box>
 			<Grid className="text-end pt-20">
-				<Button variant="contained" className='bg-blue' size="small">
+				<Button variant="contained" className="bg-blue" size="small">
 					登録
 				</Button>
 			</Grid>

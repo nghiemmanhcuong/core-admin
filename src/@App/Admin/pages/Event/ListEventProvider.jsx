@@ -1,12 +1,15 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
+import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { eventService } from '@App/Admin/services/eventService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 // import PropTypes from 'prop-types'
 
 const ListEventProvider = props => {
+	const { t } = useTranslation(TRANSLATE_ADMIN.event)
 	const requestEvents = useRequest(eventService.list, {
 		manual: true,
 		onError: res => {
@@ -18,10 +21,10 @@ const ListEventProvider = props => {
 		manual: true,
 		onSuccess: res => {
 			eventTableHandler.handleFetchData()
-			successMsg('Deleted successfully!!!')
+			successMsg(t('common:message.delete_success'))
 		},
 		onError: res => {
-			errorMsg('Deleted failed!!!')
+			errorMsg(t('common:message.delete_failed'))
 		}
 	})
 

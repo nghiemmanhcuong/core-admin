@@ -147,7 +147,7 @@ const SpotTableFilter = props => {
 					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.detail')}
 					</Box>
-					<CoreInput control={control} name="detail" size="small" className="w-full sm:w-2/3 mr-5" />
+					<CoreInput control={control} name="detail" size="small" className="w-full sm:w-2/3" />
 				</Box>
 
 				<Box className="flex w-full sm:w-1/2 mx-8 items-center">

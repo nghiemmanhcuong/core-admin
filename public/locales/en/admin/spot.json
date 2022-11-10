@@ -64,7 +64,8 @@
 				"precautions": "エントリー時の注意事項",
 				"contact_name": "トラブル時連絡先名称",
 				"related": "関連スポット",
-				"creator": "スポット作成者"
+				"creator": "スポット作成者",
+				"csv": "CSVファイル"
 			},
 			"check_box": {
 				"label": {

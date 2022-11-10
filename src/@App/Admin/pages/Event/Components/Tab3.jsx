@@ -10,7 +10,8 @@ import {
 	Card,
 	FormControlLabel,
 	TableFooter,
-	Pagination
+	Pagination,
+	TablePagination
 } from '@mui/material'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { useForm } from 'react-hook-form'
@@ -42,32 +43,36 @@ const rows = [
 	createData(3, 'Eclair', 262, 16.0, 2, 6, 1),
 	createData(1, 'Cupcake', 305, 3.7, 6, 4, 1),
 	createData(5, 'Gingerbread', 356, 16.0, 49, 9, 1),
-	createData(6, 'Cupcake', 305, 3.7, 67, 4.3),
-	createData(7, 'Donut', 452, 25.0, 51, 4.9),
-	createData(8, 'Eclair', 262, 16.0, 24, 6.0),
-	createData(9, 'Frozen yoghurt', 159, 6.0, 24, 4.0),
-	createData(10, 'Gingerbread', 356, 16.0, 49, 3.9),
-	createData(11, 'Honeycomb', 408, 3.2, 87, 6.5),
-	createData(12, 'Ice cream sandwich', 237, 9.0, 37, 4.3),
-	createData(13, 'Jelly Bean', 375, 0.0, 94, 0.0),
-	createData(14, 'KitKat', 518, 26.0, 65, 7.0),
-	createData(15, 'Lollipop', 392, 0.2, 98, 0.0),
-	createData(16, 'Marshmallow', 318, 0, 81, 2.0),
-	createData(17, 'Nougat', 360, 19.0, 9, 37.0),
-	createData(18, 'Oreo', 437, 18.0, 63, 4.0)
+	createData(6, 'Cupcake', 305, 3.7, 67, 4.3)
+	// createData(7, 'Donut', 452, 25.0, 51, 4.9),
+	// createData(8, 'Eclair', 262, 16.0, 24, 6.0),
+	// createData(9, 'Frozen yoghurt', 159, 6.0, 24, 4.0),
+	// createData(10, 'Gingerbread', 356, 16.0, 49, 3.9),
+	// createData(11, 'Honeycomb', 408, 3.2, 87, 6.5),
+	// createData(12, 'Ice cream sandwich', 237, 9.0, 37, 4.3),
+	// createData(13, 'Jelly Bean', 375, 0.0, 94, 0.0),
+	// createData(14, 'KitKat', 518, 26.0, 65, 7.0),
+	// createData(15, 'Lollipop', 392, 0.2, 98, 0.0),
+	// createData(16, 'Marshmallow', 318, 0, 81, 2.0),
+	// createData(17, 'Nougat', 360, 19.0, 9, 37.0),
+	// createData(18, 'Oreo', 437, 18.0, 63, 4.0)
 ]
 
 const tableForm = () => {
-	const [page, setPage] = React.useState(0)
-	const [rowsPerPage, setRowsPerPage] = React.useState(10)
+	// const [page, setPage] = React.useState(0)
+	// const [rowsPerPage, setRowsPerPage] = React.useState(10)
 
-	const handleChangePage = (event, newPage) => {
-		setPage(newPage)
-	}
+	// const handleChangePage = (event, newPage) => {
+	// 	setPage(newPage)
+	// }
 
-	const handleChangeRowsPerPage = event => {
-		setRowsPerPage(+event.target.value)
-		setPage(0)
+	// const handleChangeRowsPerPage = event => {
+	// 	setRowsPerPage(+event.target.value)
+	// 	setPage(0)
+	// }
+	const [page, setPage] = React.useState(1)
+	const handleChange = value => {
+		setPage(value)
 	}
 	return (
 		<>
@@ -124,9 +129,10 @@ const tableForm = () => {
 									/>
 								</TableCell>
 								<TableCell>
-									<Box className="flex">
+									{/* <Box className="flex">
 										<CoreActionDelete onClick={() => console.log('============= data', data)} />
-									</Box>
+									</Box> */}
+									書き込み
 								</TableCell>
 							</TableRow>
 						))}
@@ -135,16 +141,16 @@ const tableForm = () => {
 			</TableContainer>
 			<Box className="my-12 flex flex-row-reverse">
 				<Pagination
-					count={Math.ceil(rows?.length / 10) ?? 1}
+					count={Math.ceil(rows?.length / 10) ?? 10}
 					variant="outlined"
 					shape="rounded"
-					onChange={handleChangeRowsPerPage}
+					onChange={(e, page) => handleChange(page + 1)}
 				/>
 			</Box>
 			{/* <TablePagination
 				rowsPerPageOptions={[10, 25, 100]}
 				component="div"
-				count={rows.length}
+				count={Math.ceil(rows?.length / 10) ?? 10}
 				rowsPerPage={rowsPerPage}
 				page={page}
 				onPageChange={handleChangePage}

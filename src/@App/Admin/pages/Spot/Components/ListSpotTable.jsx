@@ -19,7 +19,7 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import SpotTableFilter from './SpotTableFilter'
-import { TextField, Button, Tooltip } from '@mui/material'
+import { TextField, Button, Tooltip, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { truncate } from 'lodash'
@@ -74,12 +74,15 @@ const ListSpotTable = props => {
 		<Box>
 			<SpotTableFilter />
 			<CoreTable isShowPagination columns={columns} {...spotTableHandler} data={spotTableHandler?.spots} />
-			{/* <Box className="flex justify-end">
-				<TextField type="file"/>
-				<Button variant="contained" color="primary" className="ml-[2px]" >
+			<Box className="flex justify-end">
+				<Typography variant="subtitle2" className="p-10 bg-grey-300 rounded" sx={{ border: '1px solid #cccc' }}>
+					{t('edit.form.label.csv')}
+				</Typography>
+				<TextField type="file" />
+				<Button variant="contained" color="primary" className="ml-[2px]">
 					{t('btn.upload')}
 				</Button>
-			</Box> */}
+			</Box>
 		</Box>
 	)
 }

@@ -14,14 +14,17 @@
  */
 
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
+import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { itemService } from '@App/Admin/services/itemService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 // import PropTypes from 'prop-types'
 
 const ListItemProvider = props => {
+	const { t } = useTranslation(TRANSLATE_ADMIN.item)
 	const requestItems = useRequest(itemService.list, {
 		manual: true
 	})
@@ -33,11 +36,11 @@ const ListItemProvider = props => {
 	const { runAsync: handleDeleteItem } = useRequest(itemService.delete, {
 		manual: true,
 		onSuccess: res => {
-			successMsg('Deleted successfully')
 			itemTableHandler.handleFetchData()
+			successMsg(t('common:message.delete_success'))
 		},
-		onError: err => {
-			errorMsg('Delete failed')
+		onError: res => {
+			errorMsg(t('common:message.delete_failed'))
 		}
 	})
 

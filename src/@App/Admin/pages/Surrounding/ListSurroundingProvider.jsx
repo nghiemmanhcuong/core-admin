@@ -34,11 +34,11 @@ const ListSurroundingProvider = props => {
 	const { runAsync: handleDeleteSurrounding } = useRequest(surroundingService.delete, {
 		manual: true,
 		onSuccess: res => {
-			successMsg('Deleted successfully!!!')
+			successMsg(t('common:message.delete_success'))
 			surroundingTableHandler.handleFetchData()
 		},
 		onError: res => {
-			errorMsg(res, 'Deleted failed!!!')
+			errorMsg(t('common:message.delete_failed'))
 		}
 	})
 

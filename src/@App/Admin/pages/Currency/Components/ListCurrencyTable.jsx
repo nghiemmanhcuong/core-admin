@@ -9,6 +9,7 @@ import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
 
 const ListCurrencyTable = props => {
 	const { t, currencyTableHandler } = useAdminPageContext()
+	console.log('============= currencyTableHandler', currencyTableHandler)
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
