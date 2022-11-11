@@ -38,7 +38,8 @@
 				"location_info_longitude": "経度",
 				"url": "周辺情報URL",
 				"tel": "周辺情報TEL",
-				"image": "周辺情報IMAGE"
+				"image": "周辺情報IMAGE",
+				"csv": "CSVファイル"
 			},
 			"check_box": {
 				"label": {

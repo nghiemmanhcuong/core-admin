@@ -80,10 +80,29 @@ const ListSurroundingTable = props => {
 				data={surroundingTableHandler?.surrounding_info}
 			/>
 			<Box className="flex justify-end">
-				{/* <Typography variant="h3" color="primary" className='px-40' sx={{ border: '1px solid #cccc' }}>
-					{t('edit.form.label.situation')}
-				</Typography> */}
-				<TextField type="file" />
+				<Typography
+					variant="subtitle2"
+					className="p-10 bg-grey-300 rounded flex"
+					sx={{ border: '1px solid #cccc' }}
+				>
+					<span className="m-auto">{t('edit.form.label.csv')}</span>
+				</Typography>
+				<div className="flex border-grey-300 border-1 rounded-4 relative" htmlFor="formId">
+					<Typography
+						className="ml-10 mr-5 my-auto text-white rounded-4 p-6"
+						sx={{ backgroundColor: '#19A2B8' }}
+					>
+						ファイルを選択
+					</Typography>
+					<Typography className="ml-5 mr-10 my-auto">選択されていません</Typography>
+					<input
+						type="file"
+						id="formId"
+						value=""
+						className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+					/>
+				</div>
+
 				<Button variant="contained" color="primary" className="ml-[2px]">
 					{t('btn.upload')}
 				</Button>

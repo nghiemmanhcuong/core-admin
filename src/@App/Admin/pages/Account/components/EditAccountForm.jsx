@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Nov 10 2022
+ * Last Modified: Fri Nov 11 2022
  * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -213,7 +213,7 @@ const EditAccountForm = props => {
 						loading={isSubmitting}
 						disabled={!isDirty}
 						type="submit"
-						className="ml-[10px] bg-blue"
+						className="ml-[10px] bg-blue text-white"
 					>
 						{t('edit.form.btn.register')}
 					</LoadingButton>

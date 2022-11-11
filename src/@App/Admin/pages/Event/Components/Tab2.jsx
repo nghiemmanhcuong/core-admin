@@ -348,7 +348,7 @@ const Tab2 = props => {
 				<Box className="col-span-3">{tableForm()}</Box>
 			</Box>
 			<Grid className="text-end pt-20">
-				<Button variant="contained" className="bg-blue" size="small">
+				<Button variant="contained" className="bg-blue text-white" size="small">
 					登録
 				</Button>
 			</Grid>

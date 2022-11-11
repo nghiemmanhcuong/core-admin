@@ -343,7 +343,7 @@ const EditSpotTabs = props => {
 						color="primary"
 						loading={isSubmitting}
 						disabled={!isDirty}
-						className="ml-[10px]"
+						className="ml-[10px] bg-blue text-white"
 					>
 						{t('edit.form.btn.register')}
 					</LoadingButton>

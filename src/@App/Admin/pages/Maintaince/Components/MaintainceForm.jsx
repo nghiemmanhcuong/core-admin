@@ -313,7 +313,7 @@ const MaintainceForm = props => {
 					</Box>
 				</Box>
 
-				<Button variant="contained" color="primary" className="ml-auto">
+				<Button variant="contained" color="primary" className="ml-auto bg-blue text-white">
 					{t('btn.csv_output')}
 				</Button>
 			</Box>
