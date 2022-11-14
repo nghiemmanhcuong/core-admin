@@ -27,7 +27,8 @@ export const TRANSLATE_ADMIN = {
 	maintaince: basePath + '/maintaince',
 	event: basePath + '/event',
 	account: basePath + '/account',
-	currency: basePath + '/currency'
+	currency: basePath + '/currency',
+	card: basePath + '/card'
 }
 
 export const ROUTER_ADMIN = {
@@ -62,8 +63,7 @@ export const ROUTER_ADMIN = {
 	},
 	mission: {
 		list: basePath + '/mission',
-		detail: basePath + '/mission/:id',
-
+		detail: basePath + '/mission/:id'
 	},
 	notification: {
 		list: basePath + '/notifications',

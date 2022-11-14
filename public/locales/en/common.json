@@ -37,7 +37,9 @@
 	"message": {
 		"fetch_list_failed": "データに失敗",
 		"delete_success": "削除成功",
-		"delete_failed": "削除失敗"
+		"delete_failed": "削除失敗",
+		"edit_success": "成功編集",
+		"create_success": "成功作成"
 	},
 	"form": {
 		"input_file_empty": "Chưa chọn file nào",

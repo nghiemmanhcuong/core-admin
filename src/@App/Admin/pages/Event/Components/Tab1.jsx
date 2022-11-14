@@ -125,8 +125,7 @@ const Tab1 = props => {
 				event_end: Yup.mixed().nullable().required(),
 				reception_start: Yup.mixed().nullable().required(),
 				reception_end: Yup.mixed().nullable().required(),
-				entry_fee: Yup.mixed().nullable().required(),
-				
+				entry_fee: Yup.mixed().nullable().required()
 			})
 		)
 	})
@@ -136,7 +135,6 @@ const Tab1 = props => {
 		watch,
 		formState: { isSubmitting, isDirty }
 	} = methodForm
-
 
 	const onSubmit = methodForm.handleSubmit(async data => {
 		try {
@@ -162,7 +160,7 @@ const Tab1 = props => {
 			}
 			await eventService.save(newData)
 			navigate(ROUTER_ADMIN.event.list)
-			successMsg(isEdit ? 'Edit success' : 'Create success')
+			successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))
 		} catch (error) {
 			errorMsg(error)
 		}
@@ -178,7 +176,7 @@ const Tab1 = props => {
 					placeholder="Default input"
 					size="small"
 					readOnly
-					classNameField='bg-grey-300'
+					classNameField="bg-grey-300"
 				/>
 
 				<AdminInput
@@ -204,8 +202,8 @@ const Tab1 = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.display')}
-							
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.display')}
 						</Typography>
 					</Box>
 					<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
@@ -230,8 +228,8 @@ const Tab1 = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.venue')}
-							
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.venue')}
 						</Typography>
 					</Box>
 					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
@@ -268,8 +266,8 @@ const Tab1 = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.period')}
-							
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.period')}
 						</Typography>
 					</Box>
 					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
@@ -306,8 +304,8 @@ const Tab1 = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.entry_period')}
-							
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.entry_period')}
 						</Typography>
 					</Box>
 					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
@@ -344,8 +342,8 @@ const Tab1 = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.entry_fee')}
-							
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							{t('edit.form.label.entry_fee')}
 						</Typography>
 					</Box>
 					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
@@ -491,19 +489,19 @@ const Tab1 = props => {
 			<Box className="flex max-w-lg mx-8 sm:mx-auto">
 				<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 					<Typography variant="h3" color="primary" className="flex items-center mb-4">
-					<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> {t('edit.form.label.creator')}
-						
+						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+						{t('edit.form.label.creator')}
 					</Typography>
 				</Box>
 				<Box className="rounded-md flex w-full ml-auto items-center sm:w-2/3">
 					<Box className="flex w-full sm:w-full">
-						<Box className='flex w-2/3'>
+						<Box className="flex w-2/3">
 							<CoreInput control={control} name="creator" size="small" className="w-full" />
 							<Button variant="contained" color="third">
 								選択
 							</Button>
 						</Box>
-						<Box className='flex w-1/3 justify-end'>
+						<Box className="flex w-1/3 justify-end">
 							<Button
 								onClick={() => navigate(ROUTER_ADMIN.event.list)}
 								variant="contained"
@@ -517,7 +515,7 @@ const Tab1 = props => {
 								loading={isSubmitting}
 								disabled={!isDirty}
 								variant="contained"
-								className='bg-blue text-white'
+								className="bg-blue text-white"
 								size="small"
 								type="submit"
 							>
@@ -525,7 +523,6 @@ const Tab1 = props => {
 							</LoadingButton>
 						</Box>
 					</Box>
-					
 				</Box>
 			</Box>
 		</form>

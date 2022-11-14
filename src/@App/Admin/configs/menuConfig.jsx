@@ -71,7 +71,7 @@ export const menuAdminConfig = [
 	{
 		title: '美績管理',
 		url: ROUTER_ADMIN.performance.list
-	},
+	}
 	// {
 	// 	title: 'ユーザーリスト',
 	// 	url: ROUTER_ADMIN.user.list

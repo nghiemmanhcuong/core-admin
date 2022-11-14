@@ -41,7 +41,8 @@ const MaintainceConfig = React.lazy(() => import('../pages/Maintaince/Maintaince
 const LazyAccountList = React.lazy(() => import('../pages/Account/ListAccount'))
 const LazyAccountDetail = React.lazy(() => import('../pages/Account/EditAccount'))
 const LazyCurrencyDetail = React.lazy(() => import('../pages/Currency/EditCurrency'))
-
+const CardList = React.lazy(() => import('../pages/Card/ListCard'))
+const CardEdit = React.lazy(() => import('../pages/Card/EditCard'))
 
 // auth
 const LazyLogin = React.lazy(() => import('../pages/Auth/Login'))
@@ -150,5 +151,13 @@ export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.account.edit,
 		element: <LazyAccountDetail />
+	},
+	{
+		path: ROUTER_ADMIN.card.list,
+		element: <CardList />
+	},
+	{
+		path: ROUTER_ADMIN.card.edit,
+		element: <CardEdit />
 	}
 ]
