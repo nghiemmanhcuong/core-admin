@@ -55,8 +55,8 @@ const EditNotification = props => {
 			Yup.object({
 				title: Yup.string().required().trim().min(1).max(30),
 				category: Yup.mixed().nullable().required(),
-				detail: Yup.string().required(),
-				creator: Yup.string().required()
+				detail: Yup.string().required()
+				// creator: Yup.string().required()
 			})
 		)
 	})
