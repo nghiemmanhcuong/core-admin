@@ -66,12 +66,19 @@ export const routerAdminConfig = [
 	},
 	{
 		path: ROUTER_ADMIN.course,
-		element: <ListCourse />
+		// element: <ListCourse />,
+		children: [
+			{
+				path: '',
+				element: <ListCourse />
+			},
+			{
+				path: ':id',
+				element: <DetailCourse />
+			}
+		]
 	},
-	{
-		path: ROUTER_ADMIN.courseDetail,
-		element: <DetailCourse />
-	},
+
 	{
 		path: ROUTER_ADMIN.user.list,
 		element: <LazyUserList />

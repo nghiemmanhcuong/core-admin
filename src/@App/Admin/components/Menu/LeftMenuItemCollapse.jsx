@@ -21,11 +21,11 @@ import { ArrowRight, ArrowRightAlt, ExpandLess, ExpandMore } from '@mui/icons-ma
 import LeftMenuItem from './LeftMenuItem'
 import { useLocation } from 'react-router-dom'
 
-const needsToBeOpened = (pathname, item) => {
+export const needsToBeOpened = (pathname, item) => {
 	return pathname && isUrlInChildren(item, pathname)
 }
 
-const isUrlInChildren = (parent, url) => {
+export const isUrlInChildren = (parent, url) => {
 	if (!parent.children) {
 		return false
 	}

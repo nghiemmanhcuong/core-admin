@@ -14,16 +14,23 @@
  */
 
 import { Divider, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
-import React from 'react'
-import { useMatch, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useLocation, useMatch, useMatches, useNavigate } from 'react-router-dom'
+import { needsToBeOpened } from './LeftMenuItemCollapse'
 // import PropTypes from 'prop-types'
-
+const isMenuSelected = (matches = [], item) => {
+	return matches.find(i => i.pathname === item?.url) ?? null
+}
 const LeftMenuItem = props => {
 	const { item, sx } = props
 
 	const navigate = useNavigate()
-	const match = useMatch((item?.url) ?? '/')
+	const { pathname } = useLocation()
+	const matches = useMatches()
+	const match = isMenuSelected(matches, item)
+	// console.log('============= match', match)
 
+	// console.log('============= matches', matches)
 	const handleClickMenu = url => {
 		if (url) navigate(url)
 	}
