@@ -16,13 +16,22 @@
 import { Box } from '@mui/system'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Card, CardContent, CardHeader, Divider } from '@mui/material'
+import { Button, Card, CardContent, CardHeader, Divider, Typography } from '@mui/material'
 
 const AdminContentPage = props => {
 	const { content, pageTitle, headerAction, tabHeader } = props
 	return (
 		<Card className="shadow-4 h-full">
-			{pageTitle && <CardHeader title={pageTitle} action={headerAction} />}
+			{pageTitle && (
+				<CardHeader
+					title={
+						<Typography variant="h1" className="font-900">
+							{pageTitle}
+						</Typography>
+					}
+					action={headerAction}
+				/>
+			)}
 			<Box>{tabHeader}</Box>
 			<Divider />
 			<Box className="my-8">{content}</Box>
@@ -36,7 +45,7 @@ AdminContentPage.propTypes = {
 	content: PropTypes.any,
 	pageTitle: PropTypes.any,
 	headerAction: PropTypes.any,
-	tabHeader: PropTypes.any,
+	tabHeader: PropTypes.any
 }
 
 export default React.memo(AdminContentPage)

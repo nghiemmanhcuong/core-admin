@@ -17,16 +17,31 @@ import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPagePro
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import SpotTableFilter from './SpotTableFilter'
 import { TextField, Button, Tooltip, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { truncate } from 'lodash'
 import { renderTextTruncate } from '@App/Admin/hooks/useHelpRender'
+import { spotSerivce } from '@App/Admin/services/spotService'
+import { errorMsg } from '@Core/helper/Message'
 const ListSpotTable = props => {
 	const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
 	const navigate = useNavigate()
+
+	const onUploadFile = useCallback(async e => {
+		const newFile = e.target.files[0]
+
+		if (newFile) {
+			try {
+				await spotSerivce.csvUploadFile(newFile)
+			} catch (error) {
+				errorMsg(error)
+			}
+		}
+	})
+
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -94,6 +109,7 @@ const ListSpotTable = props => {
 						type="file"
 						id="formId"
 						value=""
+						onChange={onUploadFile}
 						className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
 					/>
 				</div>

@@ -17,16 +17,30 @@ import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPagePro
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import SurroundingTableFilter from './SurroundingTableFilter'
 import { TextField, Button, Typography } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
+import { errorMsg } from '@Core/helper/Message'
+import { surroundingService } from '@App/Admin/services/surroundingService'
 
 const ListSurroundingTable = props => {
 	const { t, surroundingTableHandler, handleDeleteSurrounding } = useAdminPageContext()
 	const navigate = useNavigate()
 	const location = useLocation()
+
+	const onUploadFile = useCallback(async e => {
+		const newFile = e.target.files[0]
+
+		if (newFile) {
+			try {
+				await surroundingService.csvUploadFile(newFile)
+			} catch (error) {
+				errorMsg(error)
+			}
+		}
+	})
 
 	const columns = useMemo(() => {
 		return [
@@ -99,6 +113,7 @@ const ListSurroundingTable = props => {
 						type="file"
 						id="formId"
 						value=""
+						onChange={onUploadFile}
 						className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
 					/>
 				</div>

@@ -29,6 +29,14 @@ class Spot extends BaseService {
 		// this.createFactory(spotFactory)
 		// this.setMockAdapter()
 	}
+
+	csvUploadFile = async file => {
+		const api = `${this.BASE_ENDPOINT}/csvUpload`
+		const formData = new FormData()
+		formData.append('file', file)
+
+		return await this.request.post(api, formData, { timeout: 0 })
+	}
 }
 
 export const spotSerivce = new Spot()

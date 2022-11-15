@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Nov 10 2022
+ * Last Modified: Tue Nov 15 2022
  * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -31,7 +31,7 @@ const ListAccount = props => {
 	return (
 		<ListAccountProvider t={t}>
 			<AdminContentPage
-				pageTitle={<Typography className="font-bold">{t('title.account')}</Typography>}
+				pageTitle={t('title.account')}
 				content={
 					<>
 						<ListAccountTable />
