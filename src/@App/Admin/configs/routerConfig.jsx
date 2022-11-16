@@ -50,19 +50,29 @@ const LazyLogin = React.lazy(() => import('../pages/Auth/Login'))
 export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.event.list,
-		element: <LazyEventList />
-	},
-	{
-		path: ROUTER_ADMIN.event.detail,
-		element: <DetailEvent />
+		children: [
+			{
+				path: '',
+				element: <LazyEventList />
+			},
+			{
+				path: ':id',
+				element: <DetailEvent />
+			}
+		]
 	},
 	{
 		path: ROUTER_ADMIN.spot.list,
-		element: <LazySpotList />
-	},
-	{
-		path: ROUTER_ADMIN.spot.edit,
-		element: <LazySpotDetail />
+		children: [
+			{
+				path: '',
+				element: <LazySpotList />
+			},
+			{
+				path: ':id',
+				element: <LazySpotDetail />
+			}
+		]
 	},
 	{
 		path: ROUTER_ADMIN.course,
@@ -81,35 +91,58 @@ export const routerAdminConfig = [
 
 	{
 		path: ROUTER_ADMIN.user.list,
-		element: <LazyUserList />
+		// element: <LazyUserList />,
+		children: [
+			{
+				path: '',
+				element: <LazyUserList />
+			},
+			{
+				path: ':id',
+				element: <LazyUserDetail />
+			}
+		]
 	},
-	{
-		path: ROUTER_ADMIN.user.edit,
-		element: <LazyUserDetail />
-	},
-	{
-		path: ROUTER_ADMIN.tag.detail,
-		element: <LazyTagDetail />
-	},
+
 	{
 		path: ROUTER_ADMIN.tag.list,
-		element: <LazyTagList />
+		children: [
+			{
+				path: '',
+				element: <LazyTagList />
+			},
+			{
+				path: ':id',
+				element: <LazyTagDetail />
+			}
+		]
 	},
 	{
 		path: ROUTER_ADMIN.surrounding.list,
-		element: <LazySurroundingList />
-	},
-	{
-		path: ROUTER_ADMIN.surrounding.edit,
-		element: <SurroundingEdit />
+		children: [
+			{
+				path: '',
+				element: <LazySurroundingList />
+			},
+			{
+				path: ':id',
+				element: <SurroundingEdit />
+			}
+		]
 	},
 	{
 		path: ROUTER_ADMIN.currency.list,
-		element: <ListCurrency />
-	},
-	{
-		path: ROUTER_ADMIN.currency.edit,
-		element: <LazyCurrencyDetail />
+		// element: <ListCurrency />,
+		children: [
+			{
+				path: '',
+				element: <ListCurrency />
+			},
+			{
+				path: ':id',
+				element: <LazyCurrencyDetail />
+			}
+		]
 	},
 	{
 		path: ROUTER_ADMIN.mission.list,
