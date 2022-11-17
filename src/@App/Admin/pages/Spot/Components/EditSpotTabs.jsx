@@ -169,6 +169,7 @@ const EditSpotTabs = props => {
 					placeholder="Default input"
 					size="small"
 					classNameField="bg-grey-300"
+					className="mb-16 sm:mb-20"
 					readOnly
 				/>
 
@@ -177,6 +178,7 @@ const EditSpotTabs = props => {
 					control={control}
 					name="name"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -187,6 +189,7 @@ const EditSpotTabs = props => {
 					name="catchphrase"
 					placeholder="Default input"
 					size="small"
+					className="mb-16 sm:mb-20"
 					required
 				/> */}
 
@@ -195,6 +198,7 @@ const EditSpotTabs = props => {
 					control={control}
 					name="detail"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					minRows={5}
 					multiline
@@ -206,7 +210,7 @@ const EditSpotTabs = props => {
 					control={control}
 					name="image"
 					size="small"
-					className="w-full sm:w-2/3"
+					className="w-full sm:w-2/3 mb-16 sm:mb-20"
 					helperText
 				/>
 
@@ -217,7 +221,7 @@ const EditSpotTabs = props => {
 							{t('edit.form.label.type')}
 						</Typography>
 					</Box>
-					<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
+					<Box className="border-grey-400 border-1 rounded-4 w-full sm:w-2/3 pl-[15px]">
 						<CoreRadioGroup className="flex-row" control={control} name="type" options={typeOptions} row />
 					</Box>
 				</Box>
@@ -227,6 +231,7 @@ const EditSpotTabs = props => {
 					control={control}
 					name="post_code"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/> */}
@@ -236,6 +241,7 @@ const EditSpotTabs = props => {
 					control={control}
 					name="address"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -245,6 +251,7 @@ const EditSpotTabs = props => {
 					control={control}
 					name="tel"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 				/>
 
@@ -253,6 +260,7 @@ const EditSpotTabs = props => {
 					control={control}
 					name="url"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 				/>
 
@@ -261,6 +269,7 @@ const EditSpotTabs = props => {
 					label={t('edit.form.label.location_info_latitude')}
 					name="location_info_latitude"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -269,6 +278,7 @@ const EditSpotTabs = props => {
 					control={control}
 					label={t('edit.form.label.location_info_longitude')}
 					name="location_info_longitude"
+					className="mb-16 sm:mb-20"
 					placeholder="Default input"
 					size="small"
 					required
@@ -279,6 +289,7 @@ const EditSpotTabs = props => {
 					control={control}
 					name="google_map_url"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 				/>
 

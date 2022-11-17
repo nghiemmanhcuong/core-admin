@@ -84,6 +84,7 @@ const EditCardForm = props => {
 					size="small"
 					readOnly
 					classNameField="bg-grey-300"
+					className="mb-16 sm:mb-20"
 				/>
 
 				<AdminInput
@@ -91,6 +92,7 @@ const EditCardForm = props => {
 					label={t('edit.form.label.name')}
 					name="name"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -175,7 +177,7 @@ const EditCardForm = props => {
 					control={control}
 					name="image"
 					size="small"
-					className="w-full sm:w-2/3"
+					className="w-full sm:w-2/3 mb-16 sm:mb-20"
 					helperText
 					required
 				/>

@@ -97,6 +97,7 @@ const DetailTagForm = props => {
 					placeholder="Default input"
 					size="small"
 					classNameField="bg-grey-300"
+					className="mb-16 sm:mb-20"
 					readOnly
 				/>
 				<AdminInput
@@ -105,6 +106,7 @@ const DetailTagForm = props => {
 					name="name"
 					placeholder="Default input"
 					size="small"
+					className="mb-16 sm:mb-20"
 					required
 				/>
 				<Box className="my-12 flex">
@@ -114,7 +116,7 @@ const DetailTagForm = props => {
 							{t('title.tag_type')}
 						</Typography>
 					</Box>
-					<Box className="w-full sm:w-2/3 border-grey-300 border-1">
+					<Box className="w-full sm:w-2/3 border-grey-400 border-1 rounded-4">
 						<CoreRadioGroup control={control} name="radio1" row options={tagType} className="ml-20" />
 					</Box>
 				</Box>
@@ -122,6 +124,7 @@ const DetailTagForm = props => {
 					label={t('title.description')}
 					control={control}
 					name="description"
+					className="mb-16 sm:mb-20"
 					size="small"
 					minRows={5}
 					multiline
@@ -131,6 +134,7 @@ const DetailTagForm = props => {
 					control={control}
 					name="number_tag"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -140,7 +144,7 @@ const DetailTagForm = props => {
 							<Typography className="w-72" /> {t('title.popular_tag')}
 						</Typography>
 					</Box>
-					<Box className="w-full sm:w-2/3 border-grey-300 border-1">
+					<Box className="w-full sm:w-2/3 border-grey-400 border-1 rounded-4">
 						<CoreCheckbox
 							control={control}
 							name="checkbox1"
@@ -159,7 +163,7 @@ const DetailTagForm = props => {
 							{t('title.hide/show')}
 						</Typography>
 					</Box>
-					<Box className="w-full flex sm:w-2/3 border-grey-300 border-1">
+					<Box className="w-full flex sm:w-2/3 border-grey-400 border-1 rounded-4">
 						<CoreCheckbox control={control} name="hide" row label={t('title.hide')} className="ml-20" />
 						<CoreCheckbox control={control} name="show" row label={t('title.show')} className="ml-20" />
 					</Box>
@@ -171,6 +175,7 @@ const DetailTagForm = props => {
 					placeholder="Default input"
 					size="small"
 					classNameField="bg-grey-300"
+					className="mb-16 sm:mb-20"
 					readOnly
 				/>
 

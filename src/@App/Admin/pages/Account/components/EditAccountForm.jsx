@@ -3,9 +3,9 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Fri Nov 11 2022
+ * Last Modified: Fri Nov 18 2022
  * Modified By: haitran
- * -----
+ * -----a
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
  * HISTORY:
@@ -95,6 +95,7 @@ const EditAccountForm = props => {
 					size="small"
 					readOnly
 					classNameField="bg-grey-300"
+					className="mb-16 sm:mb-20"
 				/>
 
 				<AdminInput
@@ -102,6 +103,7 @@ const EditAccountForm = props => {
 					control={control}
 					name="name"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -111,6 +113,7 @@ const EditAccountForm = props => {
 					control={control}
 					name="mail"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -120,6 +123,7 @@ const EditAccountForm = props => {
 					name="password"
 					type="password"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -197,6 +201,7 @@ const EditAccountForm = props => {
 					size="small"
 					readOnly
 					classNameField="bg-grey-300"
+					className="mb-16 sm:mb-20"
 					required
 				/>
 				<Box className="flex flex-wrap sm:flex-nowrap mb-20">

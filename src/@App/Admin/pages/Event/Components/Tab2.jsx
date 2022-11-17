@@ -160,6 +160,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 						required
 					/>
 					<AdminInput
@@ -167,6 +168,7 @@ const Tab2 = props => {
 						label="イベントタイトル"
 						name="firstname"
 						placeholder="Default input"
+						className="mb-16 sm:mb-20"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -235,6 +237,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 					<AdminInput
 						control={control}
@@ -244,6 +247,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<AdminInput
@@ -255,6 +259,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<AdminInput
@@ -265,6 +270,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<AdminInput
@@ -275,6 +281,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<AdminInput
@@ -285,6 +292,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<AdminInput
@@ -295,6 +303,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<AdminInput
@@ -305,13 +314,14 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 					<AdminInputUpload
 						label="ルート画像"
 						control={control}
 						name="image"
 						size="small"
-						className="w-full sm:w-2/3"
+						className="w-full sm:w-2/3 mb-16 sm:mb-20"
 						helperText
 						hideButton
 					/>
@@ -324,6 +334,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<AdminInput
@@ -334,6 +345,7 @@ const Tab2 = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<CoreCheckboxGroup control={control} name="tag" options={tagDatas} legendLabel="コースタグ" row />

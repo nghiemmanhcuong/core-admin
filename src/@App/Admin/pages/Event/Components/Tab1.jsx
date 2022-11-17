@@ -177,6 +177,7 @@ const Tab1 = props => {
 					size="small"
 					readOnly
 					classNameField="bg-grey-300"
+					className="mb-16 sm:mb-20"
 				/>
 
 				<AdminInput
@@ -185,6 +186,7 @@ const Tab1 = props => {
 					name="title"
 					placeholder="Default input"
 					size="small"
+					className="mb-16 sm:mb-20"
 					required
 				/>
 
@@ -193,6 +195,7 @@ const Tab1 = props => {
 					name="description"
 					label={t('edit.form.label.description')}
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					multiline
 					rows={5}
@@ -347,12 +350,12 @@ const Tab1 = props => {
 						</Typography>
 					</Box>
 					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
-						<CoreInput
+						<AdminInput
 							control={control}
 							name="entry_fee"
 							placeholder="Default input"
 							size="small"
-							className="w-full sm:w-1/3"
+							classNameField="w-full"
 						/>
 
 						{/* <Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
@@ -446,6 +449,7 @@ const Tab1 = props => {
 					name="precaution_when_entering"
 					label={t('edit.form.label.precaution_when_entering')}
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					multiline
 					rows={5}
@@ -456,6 +460,7 @@ const Tab1 = props => {
 					name="trouble_contact_name"
 					label={t('edit.form.label.trouble_contact_name')}
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 				/> */}
 
@@ -464,6 +469,7 @@ const Tab1 = props => {
 					name="contact_address"
 					label={t('edit.form.label.contact_address')}
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 				/> */}
 
@@ -496,8 +502,8 @@ const Tab1 = props => {
 				<Box className="rounded-md flex w-full ml-auto items-center sm:w-2/3">
 					<Box className="flex w-full sm:w-full">
 						<Box className="flex w-2/3">
-							<CoreInput control={control} name="creator" size="small" className="w-full" />
-							<Button variant="contained" color="third">
+							<AdminInput control={control} name="creator" size="small" className="w-full" />
+							<Button variant="contained" color="third" className="h-32">
 								選択
 							</Button>
 						</Box>
@@ -506,7 +512,7 @@ const Tab1 = props => {
 								onClick={() => navigate(ROUTER_ADMIN.event.list)}
 								variant="contained"
 								color="error"
-								className="mr-10"
+								className="mr-10 h-32"
 								size="small"
 							>
 								削除
@@ -515,7 +521,7 @@ const Tab1 = props => {
 								loading={isSubmitting}
 								disabled={!isDirty}
 								variant="contained"
-								className="bg-blue text-white"
+								className="bg-blue text-white h-32"
 								size="small"
 								type="submit"
 							>

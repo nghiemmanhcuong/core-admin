@@ -67,6 +67,7 @@ const EditUserForm = props => {
 						control={control}
 						name="email"
 						placeholder="Default input"
+						className="mb-16 sm:mb-20"
 						size="small"
 						required
 					/>
@@ -76,6 +77,7 @@ const EditUserForm = props => {
 						control={control}
 						name="firstname"
 						placeholder="Default input"
+						className="mb-16 sm:mb-20"
 						size="small"
 						required
 					/>
@@ -85,6 +87,7 @@ const EditUserForm = props => {
 						control={control}
 						name="firstname"
 						placeholder="Default input"
+						className="mb-16 sm:mb-20"
 						size="small"
 						required
 					/>
@@ -111,6 +114,7 @@ const EditUserForm = props => {
 						control={control}
 						name="address"
 						placeholder="Default input"
+						className="mb-16 sm:mb-20"
 						size="small"
 						// required
 					/>

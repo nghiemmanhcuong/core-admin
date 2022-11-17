@@ -73,12 +73,14 @@ const EditItemForm = props => {
 					size="small"
 					readOnly
 					classNameField="bg-grey-300"
+					className="mb-16 sm:mb-20"
 				/>
 				<AdminInput
 					label={t('edit.form.label.name')}
 					control={control}
 					name="name"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -86,6 +88,7 @@ const EditItemForm = props => {
 					label={t('edit.form.label.description')}
 					control={control}
 					name="description"
+					className="mb-16 sm:mb-20"
 					size="small"
 					minRows={5}
 					multiline
@@ -97,7 +100,7 @@ const EditItemForm = props => {
 					control={control}
 					name="image"
 					size="small"
-					className="w-full sm:w-2/3"
+					className="w-full sm:w-2/3 mb-16 sm:mb-20"
 					helperText
 					required
 				/>
@@ -159,6 +162,7 @@ const EditItemForm = props => {
 					control={control}
 					name="location"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -168,6 +172,7 @@ const EditItemForm = props => {
 					control={control}
 					name="address_location"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -177,6 +182,7 @@ const EditItemForm = props => {
 					control={control}
 					name="inventory"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -206,6 +212,7 @@ const EditItemForm = props => {
 					control={control}
 					name="unit"
 					placeholder="Default input"
+					className="mb-16 sm:mb-20"
 					size="small"
 					required
 				/>
@@ -217,7 +224,7 @@ const EditItemForm = props => {
 							{t('edit.form.label.situation')}
 						</Typography>
 					</Box>
-					<Box className="flex rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
+					<Box className="flex w-full sm:w-2/3 pl-[15px] border-grey-400 border-1 rounded-4">
 						<CoreCheckbox
 							control={control}
 							name="checkbox1"
@@ -240,17 +247,18 @@ const EditItemForm = props => {
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 flex flex-nowrap">
-						<CoreInput
+						<AdminInput
 							control={control}
 							name="creator"
 							size="small"
-							className="w-full mr-12 bg-grey-300"
+							className="w-full mr-12"
+							classNameField="bg-grey-300"
 							readOnly
 						/>
-						<Button variant="contained" color="error" className="ml-auto">
+						<Button variant="contained" color="error" className="ml-auto h-32">
 							{t('edit.form.btn.delete')}
 						</Button>
-						<Button variant="contained" className="ml-[10px] bg-blue">
+						<Button variant="contained" className="ml-[10px] bg-blue h-32">
 							{t('edit.form.btn.register')}
 						</Button>
 					</Box>

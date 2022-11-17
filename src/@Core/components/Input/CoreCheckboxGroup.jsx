@@ -55,7 +55,7 @@ const CoreCheckboxGroup = props => {
 							</Box>
 
 							<Box className="rounded-md flex w-full sm:w-2/3">
-								<Box className="rounded-md w-full p-5 pl-12" sx={{ border: '1px solid #cccc' }}>
+								<Box className="border-grey-400 border-1 rounded-4 w-full p-5 pl-12">
 									<FormGroup row={row} {...restProps}>
 										{options.map((field, index) =>
 											renderOption ? (

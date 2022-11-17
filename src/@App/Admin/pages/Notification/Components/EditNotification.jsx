@@ -56,7 +56,10 @@ const EditNotification = props => {
 				title: Yup.string().required().trim().min(1).max(30),
 				category: Yup.mixed().nullable().required(),
 				detail: Yup.string().required()
-				// creator: Yup.string().required()
+				// creator: Yup.mixed().when('title', {
+				// 	is: Boolean(state),
+				// 	then: Yup.string().required()
+				// })
 			})
 		)
 	})
@@ -83,6 +86,7 @@ const EditNotification = props => {
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
 
 					<AdminInput
@@ -90,6 +94,7 @@ const EditNotification = props => {
 						control={control}
 						name="title"
 						placeholder="Default input"
+						className="mb-16 sm:mb-20"
 						size="small"
 						required
 					/>
@@ -162,6 +167,7 @@ const EditNotification = props => {
 						control={control}
 						name="detail"
 						placeholder="Default input"
+						className="mb-16 sm:mb-20"
 						size="small"
 						multiline
 						required
@@ -199,15 +205,16 @@ const EditNotification = props => {
 							</Typography>
 						</Box>
 						<Box className="w-full sm:w-2/3 flex flex-nowrap">
-							<CoreInput
+							<AdminInput
 								control={control}
 								name="creator"
 								size="small"
-								className="w-4/5 bg-grey-300 mr-12"
+								className="w-full mr-12"
+								classNameField="bg-grey-300"
 								readOnly
 							/>
 
-							<Button variant="contained" color="error" className="ml-auto">
+							<Button variant="contained" color="error" className="ml-auto h-32">
 								{t('edit.form.btn.delete')}
 							</Button>
 							<LoadingButton
@@ -215,7 +222,7 @@ const EditNotification = props => {
 								loading={isSubmitting}
 								variant="contained"
 								color="primary"
-								className="ml-[10px] bg-blue"
+								className="ml-[10px] bg-blue h-32 text-white"
 							>
 								{t('edit.form.btn.register')}
 							</LoadingButton>

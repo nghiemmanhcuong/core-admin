@@ -146,32 +146,53 @@ export const routerAdminConfig = [
 	},
 	{
 		path: ROUTER_ADMIN.mission.list,
-		element: <LazyMissionList />
+		// element: <LazyMissionList />,
+		children: [
+			{
+				path: '',
+				element: <LazyMissionList />
+			},
+			{
+				path: ':id',
+				element: <LazyMissionDetail />
+			}
+		]
 	},
-	{
-		path: ROUTER_ADMIN.mission.detail,
-		element: <LazyMissionDetail />
-	},
+
 	{
 		path: ROUTER_ADMIN.auth.login,
 		element: <LazyLogin />
 	},
 	{
 		path: ROUTER_ADMIN.notification.list,
-		element: <NotificationList />
+		// element: <NotificationList />,
+		children: [
+			{
+				path: '',
+				element: <NotificationList />
+			},
+			{
+				path: ':id',
+				element: <NotificationEdit />
+			}
+		]
 	},
-	{
-		path: ROUTER_ADMIN.notification.edit,
-		element: <NotificationEdit />
-	},
+
 	{
 		path: ROUTER_ADMIN.item.list,
-		element: <ItemList />
+		// element: <ItemList />
+		children: [
+			{
+				path: '',
+				element: <ItemList />
+			},
+			{
+				path: ':id',
+				element: <ItemEdit />
+			}
+		]
 	},
-	{
-		path: ROUTER_ADMIN.item.edit,
-		element: <ItemEdit />
-	},
+
 	{
 		path: ROUTER_ADMIN.performance.list,
 		element: <Maintaince />
@@ -186,18 +207,31 @@ export const routerAdminConfig = [
 	},
 	{
 		path: ROUTER_ADMIN.account.list,
-		element: <LazyAccountList />
+		// element: <LazyAccountList />
+		children: [
+			{
+				path: '',
+				element: <LazyAccountList />
+			},
+			{
+				path: ':id',
+				element: <LazyAccountDetail />
+			}
+		]
 	},
-	{
-		path: ROUTER_ADMIN.account.edit,
-		element: <LazyAccountDetail />
-	},
+
 	{
 		path: ROUTER_ADMIN.card.list,
-		element: <CardList />
-	},
-	{
-		path: ROUTER_ADMIN.card.edit,
-		element: <CardEdit />
+		// element: <CardList />
+		children: [
+			{
+				path: '',
+				element: <CardList />
+			},
+			{
+				path: ':id',
+				element: <CardEdit />
+			}
+		]
 	}
 ]
