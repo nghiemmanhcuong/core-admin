@@ -49,9 +49,24 @@ const CoreDatePicker = ({
 			fullWidth
 			variant="outlined"
 			value={value ? moment(value).format('YYYY/MM/DD') : null}
-			onClick={onClick}
+			// onClick={onClick}
 			InputProps={{
-				endAdornment: <Icon>calendar_month</Icon>
+				endAdornment: (
+					<>
+						{value ? (
+							<Icon
+								onClick={() => onChange(null)}
+								fontSize="small"
+								className="cursor-pointer rounded-full"
+							>
+								close
+							</Icon>
+						) : null}
+						<Icon className="cursor-pointer" onClick={onClick}>
+							calendar_month
+						</Icon>
+					</>
+				)
 			}}
 			ref={ref}
 			error={!!error}
