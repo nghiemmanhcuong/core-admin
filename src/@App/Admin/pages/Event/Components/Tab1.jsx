@@ -118,7 +118,7 @@ const Tab1 = props => {
 		resolver: yupResolver(
 			Yup.object({
 				title: Yup.string().required(),
-				creator: Yup.string().required(),
+				author: Yup.string().required(),
 				venue: Yup.mixed().nullable().required(),
 				type: Yup.mixed().nullable().required(),
 				event_start: Yup.mixed().nullable().required(),
@@ -502,7 +502,7 @@ const Tab1 = props => {
 				<Box className="rounded-md flex w-full ml-auto items-center sm:w-2/3">
 					<Box className="flex w-full sm:w-full">
 						<Box className="flex w-2/3">
-							<AdminInput control={control} name="creator" size="small" className="w-full" />
+							<AdminInput control={control} name="author" size="small" className="w-full" />
 							<Button variant="contained" color="third" className="h-32">
 								選択
 							</Button>

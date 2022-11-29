@@ -24,7 +24,7 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const ListMissionTable = props => {
-	const { t, missionTableHandler } = useAdminPageContext()
+	const { t, missionTableHandler, handleDeleteMission } = useAdminPageContext()
 	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
@@ -32,11 +32,35 @@ const ListMissionTable = props => {
 				cell: info => info.getValue(),
 				header: t('label.no')
 			}),
-			columnHelper.accessor('code', {
+			columnHelper.accessor('mission_name', {
 				header: t('label.name')
 			}),
-			columnHelper.accessor('name', {
+			columnHelper.accessor('clear_type', {
 				header: t('label.condition')
+			}),
+			columnHelper.accessor('app_currency', {
+				header: t('label.app_currency')
+			}),
+			columnHelper.accessor('app_currency_amount', {
+				header: t('label.app_currency_amount')
+			}),
+			columnHelper.accessor('card_name', {
+				header: t('label.card_name')
+			}),
+			columnHelper.accessor('action', {
+				header: t('label.action'),
+				className: 'w-[15%]',
+				cell: ({ row }) => {
+					const data = row.original
+					return (
+						<div className="flex">
+							<CoreActionEdit
+								onClick={() => navigate(ROUTER_ADMIN.mission.list + `/${data.id}`, { state: data })}
+							/>
+							<CoreActionDelete onConfirmDelete={() => handleDeleteMission(data.id)} />
+						</div>
+					)
+				}
 			})
 		]
 	}, [t])
@@ -44,7 +68,12 @@ const ListMissionTable = props => {
 	return (
 		<Box>
 			<MissionTableFilter />
-			<CoreTable isShowPagination columns={columns} {...missionTableHandler} />
+			<CoreTable
+				isShowPagination
+				columns={columns}
+				{...missionTableHandler}
+				data={missionTableHandler?.missions}
+			/>
 			<Box className="flex justify-end">
 				{/* <Typography variant="h3" color="primary" className='px-40' sx={{ border: '1px solid #cccc' }}>
 					{t('edit.form.label.situation')}

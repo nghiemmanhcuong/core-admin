@@ -16,6 +16,7 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { missionService } from '@App/Admin/services/missionService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
 // import PropTypes from 'prop-types'
@@ -23,6 +24,18 @@ import React, { useEffect } from 'react'
 const ListMissionProvider = props => {
 	const requestMissions = useRequest(missionService.list, {
 		manual: true
+	})
+
+	const { runAsync: handleDeleteMission } = useRequest(missionService.delete, {
+		manual: true,
+		onSuccess: res => {
+			missionTableHandler.handleFetchData()
+			// getMissions()
+			successMsg(t('common:message.delete_success'))
+		},
+		onError: res => {
+			errorMsg(t('common:message.delete_failed'))
+		}
 	})
 
 	const { run: getMissions } = requestMissions
@@ -35,8 +48,9 @@ const ListMissionProvider = props => {
 	}, [])
 
 	const data = {
+		...props,
 		missionTableHandler,
-		...props
+		handleDeleteMission
 	}
 
 	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>

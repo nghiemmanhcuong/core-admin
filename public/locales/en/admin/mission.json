@@ -6,20 +6,24 @@
 		"type": "周辺情報種別",
 		"lat_long": "緯度・経度",
 		"point": "設定ポイント",
-		"condition": "クリア条件"
+		"condition": "クリア条件",
+		"app_currency": "アプリ通貨",
+		"app_currency_amount": "アプリの通貨量",
+		"action": "スペシャルアクション",
+		"card_name": "カード名"
 	},
 	"title": {
 		"mission_detail": "ミッション詳細",
-        "mission": "ミッション一覧",
-        "no": "NO",
+		"mission": "ミッション一覧",
+		"no": "NO",
 		"list_tag": "カード一覧",
 		"filter": "検索条件",
 		"name": "ミッション名",
 		"tag": "タグ情報",
 		"situation": "状態",
 		"type": "周辺情報種別",
-        "action": "スペシャルアクション",
-        "area": "エリア",
+		"action": "スペシャルアクション",
+		"area": "エリア",
 		"clear_condition": "クリア条件"
 	},
 	"value": {
@@ -43,7 +47,7 @@
 				"name": "ミッション名",
 				"title": "スポットタイトル",
 				"description": "ミッション説明",
-                "hide/show": "表示·非表示",
+				"hide/show": "表示·非表示",
 				"name_card": "カード名",
 				"description_card": "カード説明",
 				"situation": "状態",
@@ -69,7 +73,11 @@
 				"contact_name": "トラブル時連絡先名称",
 				"address": "連絡先",
 				"related": "関連スポット",
-				"creator": "スポット作成者"
+				"creator": "スポット作成者",
+				"clear_type": "クリア条件",
+				"clear_value": "クリア条件",
+				"app_currency_id": "アプリ通貨",
+				"currency": "通貨"
 			},
 			"check_box": {
 				"label": {
@@ -86,7 +94,6 @@
 					"best_view": "景色最高",
 					"autumn": "秋におすすめ",
 					"beginners": "初心者におすすめ"
-					
 				}
 			},
 			"btn": {

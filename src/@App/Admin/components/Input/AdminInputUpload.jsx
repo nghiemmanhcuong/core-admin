@@ -21,7 +21,15 @@ import { useController } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 // import PropTypes from 'prop-types'
 
-const AdminInputUpload = ({ control = {}, name = '', rules, required = false, label = '', helperText = '', hideButton }) => {
+const AdminInputUpload = ({
+	control = {},
+	name = '',
+	rules,
+	required = false,
+	label = '',
+	helperText = '',
+	hideButton
+}) => {
 	const { t } = useTranslation('common')
 	const inputRef = useRef()
 	const [file, setFile] = useState()
@@ -73,7 +81,12 @@ const AdminInputUpload = ({ control = {}, name = '', rules, required = false, la
 	const renderLabel = () => {
 		return (
 			<Typography variant="h3" color="primary" className="flex items-center">
-				<Typography className={clsx("text-black py-4 px-16 rounded-4 w-60  mx-8", required ? 'bg-yellow' : 'bg-white' )}>{required ? '必須' : ''}</Typography> {label} 
+				<Typography
+					className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', required ? 'bg-yellow' : 'bg-white')}
+				>
+					{required ? '必須' : ''}
+				</Typography>{' '}
+				{label}
 			</Typography>
 		)
 	}
@@ -103,13 +116,19 @@ const AdminInputUpload = ({ control = {}, name = '', rules, required = false, la
 				</Box>
 				{!hideButton && (
 					<Box className="w-full sm:w-1/3 self-center">
-					<Button variant="contained" color="error" size="small" onClick={handleDeleteFile}>
-						{t('btn.delete')}
-					</Button>
-					<Button variant="contained" color="primary" className='bg-[#58AAFF] mx-8' size="small" onClick={handleAddFile} >
-						{t('btn.addition')}
-					</Button>
-				</Box>
+						<Button variant="contained" color="error" size="small" onClick={handleDeleteFile}>
+							{t('btn.delete')}
+						</Button>
+						<Button
+							variant="contained"
+							color="primary"
+							className="bg-[#58AAFF] mx-8"
+							size="small"
+							onClick={handleAddFile}
+						>
+							{t('btn.addition')}
+						</Button>
+					</Box>
 				)}
 			</Box>
 			<input className="hidden" type="file" ref={inputRef} onChange={handleChangeInput} accept="image/*" />

@@ -18,23 +18,39 @@ const MissionTableFilter = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.mission)
 	const handleFilter = () => {
 		const params = getValues()
-		missionTableHandler.handleFetchData(params)
+		const valueCheckbox = getValues('display')
+		const arraySelected = []
+
+		//eslint-disable-next-line
+		for (const value in valueCheckbox) {
+			if (valueCheckbox[value]) {
+				arraySelected.push(value)
+			}
+		}
+
+		missionTableHandler.handleFetchData({ ...params, display: arraySelected })
 	}
 
 	const { control, getValues } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			name: '',
-			status: ''
+			mission_name: '',
+			// clear_type: null,
+			card_name: '',
+			display: {},
+			app_currency_id: null
 		}
 	})
 
 	const statusOptions = [
-		{ value: 'Spot 1', label: 'Spot 1' },
-		{ value: 'Spot 2', label: 'Spot 2' },
-		{ value: 'Spot 3', label: 'Spot 3' },
-		{ value: 'Spot 4', label: 'Spot 4' },
-		{ value: 'Spot 5', label: 'Spot 5' }
+		{ value: 0, label: 'すべて' },
+		{ value: 1, label: '完走' },
+		{ value: 2, label: 'ポイント獲得' }
+	]
+
+	const displayOptions = [
+		{ value: 0, label: t('value.non_representation') },
+		{ value: 1, label: t('value.express') }
 	]
 
 	return (
@@ -45,7 +61,7 @@ const MissionTableFilter = props => {
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center  ">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">{t('title.name')}</Box>
-					<CoreInput control={control} name="name" size="small" className="w-full sm:w-2/3" />
+					<CoreInput control={control} name="mission_name" size="small" className="w-full sm:w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
@@ -53,7 +69,7 @@ const MissionTableFilter = props => {
 					</Box>
 					<CoreAutocomplete
 						control={control}
-						name="status"
+						name="clear_type"
 						size="small"
 						className="w-full sm:w-2/3"
 						placeholder="Choose..."
@@ -63,23 +79,56 @@ const MissionTableFilter = props => {
 				</Box>
 			</Box>
 			<Box className="flex p-8  w-full">
-				<Box className="flex w-1/2 items-center"></Box>
+				<Box className="flex w-1/2 items-center  ">
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
+						{t('label.card_name')}
+					</Box>
+					<CoreInput control={control} name="card_name" size="small" className="w-full sm:w-2/3" />
+				</Box>
+				<Box className="flex w-1/2 items-center mx-8 ">
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
+						{t('label.app_currency')}
+					</Box>
+					<CoreAutocomplete
+						control={control}
+						name="app_currency_id"
+						size="small"
+						placeholder="Choose..."
+						options={[
+							{ value: 1, label: 'Travelo共通ポイント' },
+							{ value: 2, label: '通貨名qqllqqllqqll' },
+							{ value: 3, label: '通貨名3' },
+							{ value: 4, label: '通貨名通貨名通貨名通貨名通貨名通貨名通貨名通貨名通貨名通貨名' },
+							{ value: 5, label: '通貨名テスト' },
+							{ value: 6, label: 'あああああああああああああああ' },
+							{ value: 7, label: '通貨名coin' },
+							{ value: 8, label: '通貨名ドル' },
+							{ value: 9, label: '通貨名円' },
+							{ value: 10, label: '通貨名bitCoin' },
+							{ value: 11, label: '江戸城下町ポイント' },
+							{ value: 12, label: '北の大地ポイント' }
+						]}
+						returnValueType="enum"
+						className="w-full sm:w-2/3"
+					/>
+				</Box>
+			</Box>
+			<Box className="flex p-8  w-full">
+				<Box className="flex w-1/2 items-center  "></Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.situation')}
 					</Box>
 					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
-							<Box className="col-span-1 -my-3 ml-20">
-								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
-							</Box>
-							<Box className="col-span-1 -my-3">
+							{displayOptions?.map(item => (
 								<CoreCheckbox
 									control={control}
-									name="checkbox2"
-									label={t('value.non_representation')}
+									className="col-span-1 -my-3 ml-20"
+									name={`display.${item?.value}`}
+									label={item?.label}
 								/>
-							</Box>
+							))}
 						</Box>
 					</Box>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>

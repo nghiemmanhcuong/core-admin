@@ -13,19 +13,25 @@
  * ----------	---	----------------------------------------------------------
  */
 
+import { env } from '@App/env'
 import BaseService from '@Core/api/BaseService'
 import { missionFactory } from './factory/missionFactory'
 
 class Mission extends BaseService {
-	BASE_URL = '/'
+	// BASE_URL = '/'
+	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/v1/admin/mission'
+	BASE_ENDPOINT = '/api/resource/mission'
 
 	constructor(params) {
 		super(params)
 		this.setRequest()
-		this.createFactory(missionFactory)
-		this.setMockAdapter()
+		// this.createFactory(missionFactory)
+		// this.setMockAdapter()
+	}
+
+	updateMission = (data = {}, config = {}) => {
+		return this.request.post(this.BASE_ENDPOINT, data, config)
 	}
 }
 
