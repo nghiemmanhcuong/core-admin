@@ -4,7 +4,7 @@
  * Email: you@you.you
  * -----
  * Last Modified: Tue Nov 29 2022
- * Modified By: haitran
+ * Modified By: Hai Tran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -93,7 +93,7 @@ const MissionForm = props => {
 				formData.append('id', missionId)
 				formData.append('_method', 'PUT')
 
-				await missionService.updateMission(formData)
+				await missionService.updateMission(formData, missionId)
 			} else {
 				const formData = new FormData()
 				formData.append('mission_name', data?.mission_name)

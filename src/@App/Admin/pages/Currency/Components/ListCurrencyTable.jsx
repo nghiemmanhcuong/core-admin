@@ -4,12 +4,13 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo, useState } from 'react'
 import CurrencyFilter from './CurrencyFilter'
-import { Link } from 'react-router-dom'
-import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
+import { Link, useNavigate } from 'react-router-dom'
+import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const ListCurrencyTable = props => {
-	const { t, currencyTableHandler } = useAdminPageContext()
-	console.log('============= currencyTableHandler', currencyTableHandler)
+	const { t, currencyTableHandler, handleDeleteCurrency } = useAdminPageContext()
+
+	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -23,10 +24,10 @@ const ListCurrencyTable = props => {
 			columnHelper.accessor('unit', {
 				header: 'アプリ内通貨単位'
 			}),
-			columnHelper.accessor('start_date', {
+			columnHelper.accessor('available_start', {
 				header: '使用可能開始日'
 			}),
-			columnHelper.accessor('end_date', {
+			columnHelper.accessor('available_end', {
 				header: '使用可能終了日'
 			}),
 			columnHelper.accessor('action', {
@@ -34,13 +35,14 @@ const ListCurrencyTable = props => {
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
+					console.log('============= data', data)
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => console.log('============= data', data)} /> */}
-							<Link to={`/admin/currency/${data.id}`}>
-								<CoreActionEdit />
-							</Link>
-							<CoreActionDelete />
+							<CoreActionEdit
+								onClick={() => navigate(ROUTER_ADMIN.currency.list + `/${data.id}`, { state: data })}
+							/>
+							<CoreActionDelete onConfirmDelete={() => handleDeleteCurrency(data?.id)} />
 						</div>
 					)
 				}
@@ -51,7 +53,12 @@ const ListCurrencyTable = props => {
 	return (
 		<Box>
 			<CurrencyFilter />
-			<CoreTable isShowPagination columns={columns} {...currencyTableHandler} />
+			<CoreTable
+				isShowPagination
+				columns={columns}
+				{...currencyTableHandler}
+				data={currencyTableHandler?.app_currency}
+			/>
 		</Box>
 	)
 }

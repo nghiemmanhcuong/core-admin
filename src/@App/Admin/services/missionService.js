@@ -30,8 +30,9 @@ class Mission extends BaseService {
 		// this.setMockAdapter()
 	}
 
-	updateMission = (data = {}, config = {}) => {
-		return this.request.post(this.BASE_ENDPOINT, data, config)
+	updateMission = (data = {}, id) => {
+		const api = `${this.BASE_ENDPOINT}/${id}`
+		return this.request.post(api, data)
 	}
 }
 

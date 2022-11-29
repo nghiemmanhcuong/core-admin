@@ -2,6 +2,7 @@ import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { currencyService } from '@App/Admin/services/currencyService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -16,18 +17,30 @@ const ListCurrencyProvider = props => {
 		}
 	})
 
+	const { runAsync: handleDeleteCurrency } = useRequest(currencyService.delete, {
+		manual: true,
+		onSuccess: res => {
+			currencyTableHandler.handleFetchData()
+			successMsg(t('common:message.delete_success'))
+		},
+		onError: res => {
+			errorMsg(t('common:message.delete_failed'))
+		}
+	})
+
 	const { run: getCurrency } = requestCurrency
 
 	const currencyTableHandler = useCoreTable(requestCurrency)
 
 	useEffect(() => {
-		currencyTableHandler.handleFetchData()
-		// getCurrency()
+		// currencyTableHandler.handleFetchData()
+		getCurrency()
 	}, [])
 
 	const data = {
+		...props,
 		currencyTableHandler,
-		...props
+		handleDeleteCurrency
 	}
 
 	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>

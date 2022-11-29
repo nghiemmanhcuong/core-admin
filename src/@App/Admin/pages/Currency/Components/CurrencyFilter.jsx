@@ -11,28 +11,44 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import Yup from '@Core/helper/Yup'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CardMedia from '@mui/material/CardMedia'
+import CoreInput from '@Core/components/Input/CoreInput'
+import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 
 const CurrencyFilter = props => {
 	const { currencyTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
 	const handleFilter = () => {
-		const params = {
-			// TODO : param filter
+		const params = getValues()
+		const valueCheckbox = getValues('display')
+		const arraySelected = []
+
+		//eslint-disable-next-line
+		for (const value in valueCheckbox) {
+			if (valueCheckbox[value]) {
+				arraySelected.push(value)
+			}
 		}
-		currencyTableHandler.handleFetchData(params)
+
+		currencyTableHandler.handleFetchData({
+			...params,
+			display: arraySelected,
+			available_date: params?.available_date
+				? moment(params?.available_date).add(7, 'hours').format('YYYY-MM-DD')
+				: undefined,
+			id: +params?.id
+		})
 	}
-	const { control } = useForm({
+	const { control, getValues } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			firstname: '',
-			checkbox: false
-		},
-		resolver: yupResolver(
-			Yup.object({
-				firstname: Yup.string().required()
-			})
-		)
+			id: null
+		}
 	})
+
+	const displayOptions = [
+		{ value: 0, label: t('value.non_representation') },
+		{ value: 1, label: t('value.express') }
+	]
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
@@ -40,33 +56,62 @@ const CurrencyFilter = props => {
 				<Typography variant="h4">検索条件</Typography>
 			</Box>
 			<Box className="flex p-10 w-full">
-				<Box className="flex w-1/2 items-start  ">
+				<Box className="flex w-1/2 items-start">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.name')}
+						{/* {t('title.name')} */}ID
 					</Box>
-					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
-				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.date')}
-					</Box>
-					<FormAutocomplete
+					<CoreInput
 						control={control}
-						name="course"
+						name="id"
 						size="small"
 						className="w-2/3"
 						fullWidth
 						variant="outlined"
-						placeholder="Choose..."
 					/>
+				</Box>
+				<Box className="flex w-1/2 items-start">
+					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+						{t('title.name')}
+					</Box>
+					<CoreInput
+						control={control}
+						name="name"
+						size="small"
+						className="w-2/3"
+						fullWidth
+						variant="outlined"
+					/>
+				</Box>
+			</Box>
+
+			<Box className="flex p-10 w-full">
+				<Box className="flex w-1/2 items-start">
+					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+						アプリ内通貨単位
+					</Box>
+					<CoreInput
+						control={control}
+						name="unit"
+						size="small"
+						className="w-2/3"
+						fullWidth
+						variant="outlined"
+					/>
+				</Box>
+				<Box className="flex w-1/2 items-start">
+					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+						{t('title.date')}
+					</Box>
+
+					<CoreDatePicker control={control} name="available_date" size="small" className="w-2/3" />
 				</Box>
 			</Box>
 			<Box className="flex p-10  w-full">
 				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+					{/* <Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.name_currency')}
 					</Box>
-					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
+					<TextField size="small" className="w-2/3" fullWidth variant="outlined" /> */}
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
@@ -74,12 +119,14 @@ const CurrencyFilter = props => {
 					</Box>
 					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
-							<Box className="col-span-1 -my-3 ml-20">
-								<CoreCheckbox control={control} name="checkbox" label={t('value.express')} />
-							</Box>
-							<Box className="col-span-1 -my-3">
-								<CoreCheckbox control={control} name="checkbox1" label={t('value.non_representation')} />
-							</Box>
+							{displayOptions?.map(item => (
+								<CoreCheckbox
+									control={control}
+									className="col-span-1 -my-3 ml-20"
+									name={`display.${item?.value}`}
+									label={item?.label}
+								/>
+							))}
 						</Box>
 					</Box>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
