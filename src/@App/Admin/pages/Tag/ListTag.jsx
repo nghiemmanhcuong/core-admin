@@ -32,20 +32,21 @@ const ListTag = props => {
 		<ListTagProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.list_tag')}
-				
-				content={<>
-					<ListTagTable />
-					<Box className='text-right my-40 mr-40'>
-						<Button
-							variant="contained"
-							color="primary"
-							onClick={() => navigate(ROUTER_ADMIN.tag.list + '/new')}
-							className='px-20 w-160 bg-[#007BFF] text-18'
-						>
-							{t('common:btn.add')}
-						</Button>
-					</Box>
-				</>}
+				content={
+					<>
+						<ListTagTable />
+						<Box className="text-right my-40 mr-40">
+							<Button
+								variant="contained"
+								color="primary"
+								onClick={() => navigate(ROUTER_ADMIN.tag.list + '/new')}
+								className="px-20 w-160 bg-[#007BFF] text-18"
+							>
+								{t('common:btn.add')}
+							</Button>
+						</Box>
+					</>
+				}
 			/>
 		</ListTagProvider>
 	)

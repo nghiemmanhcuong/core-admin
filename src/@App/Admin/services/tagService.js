@@ -13,19 +13,21 @@
  * ----------	---	----------------------------------------------------------
  */
 
+import { env } from '@App/env'
 import BaseService from '@Core/api/BaseService'
 import { tagFactory } from './factory/tagFactory'
 
 class Tag extends BaseService {
-	BASE_URL = '/'
+	// BASE_URL = '/'
+	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/v1/admin/tag'
+	BASE_ENDPOINT = '/api/resource/tag'
 
 	constructor(params) {
 		super(params)
 		this.setRequest()
-		this.createFactory(tagFactory)
-		this.setMockAdapter()
+		// this.createFactory(tagFactory)
+		// this.setMockAdapter()
 	}
 }
 
