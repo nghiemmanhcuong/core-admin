@@ -41,7 +41,11 @@ const CurrencyFilter = props => {
 	const { control, getValues } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			id: null
+			id: null,
+			// name: null,
+			// unit: null,
+			// available_date: null,
+			display: []
 		}
 	})
 
@@ -69,7 +73,7 @@ const CurrencyFilter = props => {
 						variant="outlined"
 					/>
 				</Box>
-				<Box className="flex w-1/2 items-start">
+				<Box className="flex w-1/2 items-start mx-8">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.name')}
 					</Box>
@@ -98,7 +102,7 @@ const CurrencyFilter = props => {
 						variant="outlined"
 					/>
 				</Box>
-				<Box className="flex w-1/2 items-start">
+				<Box className="flex w-1/2 items-start mx-8">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.date')}
 					</Box>
@@ -107,13 +111,13 @@ const CurrencyFilter = props => {
 				</Box>
 			</Box>
 			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start  ">
+				<Box className="flex w-1/2 items-start">
 					{/* <Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.name_currency')}
 					</Box>
 					<TextField size="small" className="w-2/3" fullWidth variant="outlined" /> */}
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
+				<Box className="flex w-1/2 items-start mx-8">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
 						{t('title.situation')}
 					</Box>

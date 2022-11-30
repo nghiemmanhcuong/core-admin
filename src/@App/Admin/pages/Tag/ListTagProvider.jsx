@@ -35,8 +35,8 @@ const ListTagProvider = props => {
 	}, [])
 
 	const data = {
-		tagTableHandler,
-		...props
+		...props,
+		tagTableHandler
 	}
 
 	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>
