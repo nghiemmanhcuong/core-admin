@@ -36,13 +36,16 @@ const ListTagTable = props => {
 			columnHelper.accessor('name', {
 				header: t('title.name')
 			}),
-			columnHelper.accessor('tag_type', {
+			columnHelper.accessor('type', {
 				header: t('title.tag_type')
 			}),
-			columnHelper.accessor('number_tag', {
+			columnHelper.accessor('order', {
 				header: t('title.number_tag')
 			}),
-			columnHelper.accessor('popular_tag', {
+			columnHelper.accessor('frequently_used', {
+				cell: ({ row }) => {
+					return row?.original?.frequently_used ? 'ある' : 'ない'
+				},
 				header: t('title.popular_tag')
 			}),
 			columnHelper.accessor('action', {
@@ -50,10 +53,13 @@ const ListTagTable = props => {
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
+
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.tag.detail)} /> */}
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.tag.detail)} />
+							<CoreActionEdit
+								onClick={() => navigate(ROUTER_ADMIN.tag.list + `/${data?.id}`, { state: data })}
+							/>
 							<CoreActionDelete />
 						</div>
 					)
@@ -65,7 +71,7 @@ const ListTagTable = props => {
 	return (
 		<Box>
 			<TagTableFilter />
-			<CoreTable isShowPagination columns={columns} {...tagTableHandler} />
+			<CoreTable isShowPagination columns={columns} {...tagTableHandler} data={tagTableHandler?.tags} />
 			{/* <Box className="flex justify-end">
 				<TextField type="file"/>
 				<Button variant="contained" color="primary" className="ml-[2px]" >
