@@ -16,5 +16,5 @@
 import { isLocalhost } from '@Core/helper/Url'
 
 export const env = {
-	CMS_BASE_URL: isLocalhost() ? '/' : 'https://drake.aspr.work'
+	CMS_BASE_URL: isLocalhost() ? '/' : import.meta.env.BASE_URL
 }
