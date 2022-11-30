@@ -19,7 +19,7 @@ import { LoadingButton } from '@mui/lab'
 import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
 
 const Tab1 = props => {
-	const { t, eventData, isEdit } = useAdminPageContext()
+	const { t, eventData, isEdit, tags } = useAdminPageContext()
 	const navigate = useNavigate()
 
 	const displayOptions = [
@@ -48,6 +48,20 @@ const Tab1 = props => {
 		{ key: '11', value: 11, label: '秋におすすめ' },
 		{ key: '12', value: 12, label: '初心者におすすめ' }
 	]
+
+	const tagOptions = tags?.tags?.reduce((result, currentValue) => {
+		const formatResult = {
+			key: `${currentValue?.id}`,
+			value: currentValue?.id,
+			label: currentValue?.name
+		}
+
+		result.push(formatResult)
+
+		return result
+	}, [])
+
+	console.log('============= tagOptions', tagOptions)
 
 	const paymentMethodOptions = [
 		{ value: '1', label: 'クレカ' },
@@ -439,7 +453,7 @@ const Tab1 = props => {
 				<CoreCheckboxGroup
 					control={control}
 					name="tag"
-					options={tagDatas}
+					options={tagOptions}
 					legendLabel={t('edit.form.label.tag')}
 					row
 				/>

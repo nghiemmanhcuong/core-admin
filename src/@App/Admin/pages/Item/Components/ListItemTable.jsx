@@ -35,19 +35,19 @@ const ListItemTable = props => {
 			columnHelper.accessor('name', {
 				header: t('column.name')
 			}),
-			columnHelper.accessor('unit', {
+			columnHelper.accessor('currency_of_consumption', {
 				header: t('column.unit')
 			}),
-			columnHelper.accessor('from_date', {
+			columnHelper.accessor('available_start', {
 				header: t('column.from_date')
 			}),
-			columnHelper.accessor('to_date', {
+			columnHelper.accessor('available_end', {
 				header: t('column.to_date')
 			}),
-			columnHelper.accessor('inventory', {
+			columnHelper.accessor('stock', {
 				header: t('column.inventory')
 			}),
-			columnHelper.accessor('area', {
+			columnHelper.accessor('exchange_area', {
 				header: t('column.area')
 			}),
 			columnHelper.accessor('action', {
@@ -58,7 +58,9 @@ const ListItemTable = props => {
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.item.edit)} /> */}
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.item.edit)} />
+							<CoreActionEdit
+								onClick={() => navigate(ROUTER_ADMIN.item.list + `/${data.id}`, { state: data })}
+							/>
 							<CoreActionDelete onConfirmDelete={() => handleDeleteItem(data.id)} />
 						</div>
 					)
@@ -71,7 +73,12 @@ const ListItemTable = props => {
 	return (
 		<Box>
 			<ItemTableFilter />
-			<CoreTable isShowPagination columns={columns} {...itemTableHandler} />
+			<CoreTable
+				isShowPagination
+				columns={columns}
+				{...itemTableHandler}
+				data={itemTableHandler?.exchange_tickets}
+			/>
 		</Box>
 	)
 }

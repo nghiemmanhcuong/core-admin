@@ -20,7 +20,7 @@ import moment from 'moment/moment'
 import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
 
 const EventFilter = props => {
-	const { eventTableHandler } = useAdminPageContext()
+	const { eventTableHandler, tags } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
 
 	const { control, getValues, watch } = useForm({
@@ -143,48 +143,9 @@ const EventFilter = props => {
 						returnValueType="enum"
 						placeholder="Choose..."
 						multiple
-						options={[
-							{
-								value: 1,
-								label: 'タグ1'
-							},
-							{
-								value: 2,
-								label: 'タグ2'
-							},
-							{
-								value: 3,
-								label: 'タグ3'
-							},
-							{
-								value: 4,
-								label: 'タグ4'
-							},
-							{
-								value: 5,
-								label: 'タグ5'
-							},
-							{
-								value: 6,
-								label: 'タグ6'
-							},
-							{
-								value: 7,
-								label: 'タグ7'
-							},
-							{
-								value: 8,
-								label: 'タグ8'
-							},
-							{
-								value: 9,
-								label: 'タグ9'
-							},
-							{
-								value: 10,
-								label: 'タグ10'
-							}
-						]}
+						options={tags?.tags}
+						valuePath="id"
+						labelPath="name"
 					/>
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8">
@@ -202,10 +163,9 @@ const EventFilter = props => {
 							row
 							sx={{
 								'& .MuiSvgIcon-root': {
-								  fontSize: 17,
-								},
-							  }}
-					  
+									fontSize: 17
+								}
+							}}
 						/>
 					</Box>
 

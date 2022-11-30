@@ -1,6 +1,7 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { eventService } from '@App/Admin/services/eventService'
+import { tagSerivce } from '@App/Admin/services/tagService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
@@ -28,17 +29,26 @@ const ListEventProvider = props => {
 		}
 	})
 
+	const { data: tags, run: getTags } = useRequest(tagSerivce.list, {
+		manual: true,
+		onError: res => {
+			errorMsg(res?.response?.data?.error_message)
+		}
+	})
+
 	const { run: getEvents } = requestEvents
 	const eventTableHandler = useCoreTable(requestEvents)
 
 	useEffect(() => {
 		// eventTableHandler.handleFetchData()
 		getEvents()
+		getTags()
 	}, [])
 
 	const data = {
 		eventTableHandler,
 		handleDeleteEvent,
+		tags,
 		...props
 	}
 

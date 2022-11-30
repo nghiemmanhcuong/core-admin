@@ -20,15 +20,17 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import EditItemForm from './Components/EditItemForm'
+import { useItemDetail } from './hooks/useItemDetail'
 import ListItemProvider from './ListItemProvider'
 // import PropTypes from 'prop-types'
 
 const EditItem = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.item)
 	const navigate = useNavigate()
+	const { isEdit, item, loadingItem, id } = useItemDetail()
 
 	return (
-		<ListItemProvider t={t}>
+		<ListItemProvider t={t} isEdit={isEdit} itemData={item} loadingItem={loadingItem} itemId={id}>
 			<AdminContentPage
 				pageTitle={t('title.item_detail')}
 				headerAction={

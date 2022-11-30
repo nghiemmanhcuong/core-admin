@@ -15,6 +15,7 @@
 
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { currencyService } from '@App/Admin/services/currencyService'
 import { itemService } from '@App/Admin/services/itemService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
 import { errorMsg, successMsg } from '@Core/helper/Message'
@@ -26,7 +27,16 @@ import { useTranslation } from 'react-i18next'
 const ListItemProvider = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.item)
 	const requestItems = useRequest(itemService.list, {
-		manual: true
+		manual: true,
+		onError: res => {
+			errorMsg(t('common:message.fetch_list_failed'))
+		}
+	})
+	const { data: currencies, run: fetchCurrencies } = useRequest(currencyService.list, {
+		manual: true,
+		onError: res => {
+			errorMsg(t('common:message.fetch_list_failed'))
+		}
 	})
 
 	const { run: getItems } = requestItems
@@ -47,11 +57,13 @@ const ListItemProvider = props => {
 	useEffect(() => {
 		// itemTableHandler.handleFetchData()
 		getItems()
+		fetchCurrencies()
 	}, [])
 
 	const data = {
 		itemTableHandler,
 		handleDeleteItem,
+		currencies,
 		...props
 	}
 
