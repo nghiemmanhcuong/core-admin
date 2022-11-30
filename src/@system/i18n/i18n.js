@@ -33,9 +33,11 @@ i18n
 			loadPath: () => {
 				// const query = getQueryUrlObject()
 				// console.log('=======> query', query)
-				return '/locales/{{lng}}/{{ns}}.json'
-			},
-			allowMultiLoading: true
+				return '/cms/locales/{{lng}}/{{ns}}.json'
+				// return '../locales/{{lng}}/{{ns}}.json'
+				// return '../../cms/locales/locales/../{{lng}}/{{ns}}.json'
+			}
+			// allowMultiLoading: true
 			// parse(data) {
 			// 	const newData = flatten(JSON.parse(data))
 			// 	console.log('============= data', JSON.stringify(newData))
@@ -43,7 +45,7 @@ i18n
 			// }
 			// parse
 		},
-		// preload: ['vi'],
+		preload: ['en'],
 		fallbackLng: 'en',
 		lng: 'en',
 		debug: false,

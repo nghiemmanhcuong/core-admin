@@ -13,21 +13,22 @@
  * ----------	---	----------------------------------------------------------
  */
 
-const basePath = '/admin'
+const basePath = '/cms/admin'
+const basePathTran = 'admin/'
 
 export const TRANSLATE_ADMIN = {
-	spot: basePath + '/spot',
-	course: basePath + '/course',
-	user: basePath + '/user',
-	tag: basePath + '/tag',
-	surrounding: basePath + '/surrounding',
-	mission: basePath + '/mission',
-	notification: basePath + '/notification',
-	item: basePath + '/item',
-	maintaince: basePath + '/maintaince',
-	event: basePath + '/event',
-	account: basePath + '/account',
-	currency: basePath + '/currency',
+	spot: basePathTran + 'spot',
+	course: basePathTran + 'course',
+	user: basePathTran + 'user',
+	tag: basePathTran + 'tag',
+	surrounding: basePathTran + 'surrounding',
+	mission: basePathTran + 'mission',
+	notification: basePathTran + 'notification',
+	item: basePathTran + 'item',
+	maintaince: basePathTran + 'maintaince',
+	event: basePathTran + 'event',
+	account: basePathTran + 'account',
+	currency: basePathTran + 'currency',
 	card: basePath + '/card'
 }
 
