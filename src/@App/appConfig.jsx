@@ -30,11 +30,11 @@ export const appRouterConfig = createBrowserRouter([
 	// 	children: [...routerTraveloConfig]
 	// },
 	{
-		path: '/',
+		path: 'cms',
 		element: <Navigate to={ROUTER_ADMIN.homePage} />
 	},
 	{
-		path: '/admin',
+		path: 'cms/admin',
 		element: <AdminCmsLayout />,
 		children: [
 			...routerAdminConfig,
