@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { authService } from '@App/Admin/services/authService'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return <Typography variant={variant}>{title}</Typography>
@@ -75,6 +76,7 @@ const Login = () => {
 			await Cookies.set('CMS_ACCOUNT_INFO', JSON.stringify(res?.account_info))
 			await navigate(ROUTER_ADMIN.homePage)
 		} catch (e) {
+			errorMsg('Invalid email or password')
 			console.log('============= e', e)
 		}
 	})
