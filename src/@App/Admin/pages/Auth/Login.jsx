@@ -14,7 +14,11 @@ import { authService } from '@App/Admin/services/authService'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
-	return <Typography variant={variant}>{title}</Typography>
+	return (
+		<Typography className="text-[30px]" variant={variant}>
+			{title}
+		</Typography>
+	)
 }
 const renderFont = () => {
 	return <FontTitle variant="h2" title="TraVeLo CMS" />
@@ -41,7 +45,7 @@ const Login = () => {
 			<LoadingButton
 				loading={isSubmitting}
 				variant="contained"
-				className="w-full sm:w-2/4 text-18 py-12 px-80 rounded-4 font-bold bg-[#007bff]"
+				className="text-18 py-8 px-20 rounded-4 font-bold bg-[#007bff] mt-20"
 				type="submit"
 			>
 				ログイン
@@ -89,7 +93,9 @@ const Login = () => {
 					control={control}
 					name="username"
 					label="メールアドレス"
+					labelStyle="mb-8"
 					required
+					showTextRequired={false}
 					placeholder="メールアドレスを入力してください"
 				/>
 				<CoreInput
@@ -98,7 +104,9 @@ const Login = () => {
 					control={control}
 					name="password"
 					label="パスワード"
+					labelStyle="mb-8"
 					required
+					showTextRequired={false}
 					placeholder="パスワードを入力してください"
 				/>
 				{renderColor()}
@@ -109,7 +117,7 @@ const Login = () => {
 		<div>
 			<div className="text-center grid grid-flow-row-dense grid-cols-3 pt-40">
 				<div className="col-span-3 sm:col-span-1 sm:col-start-2">
-					<Paper className="max-w-md p-24 m-12">
+					<Paper className="max-w-md p-24 m-12 shadow-none">
 						{renderFont()}
 						{renderFormLogin()}
 					</Paper>
