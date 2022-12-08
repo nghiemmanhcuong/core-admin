@@ -26,11 +26,13 @@ const CoreInput = props => {
 		control,
 		name,
 		label,
+		labelStyle,
 		placeholder,
 		InputLabelProps,
 		inputProps,
 		InputProps,
 		required,
+		showTextRequired = true,
 		readOnly,
 		type,
 		multiline,
@@ -67,12 +69,17 @@ const CoreInput = props => {
 
 	const renderLabel = () => {
 		return (
-			<Typography variant="body2" className="flex items-center">
-				<Typography
-					className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', required ? 'bg-yellow' : 'bg-white')}
-				>
-					{required ? '必須' : ''}
-				</Typography>{' '}
+			<Typography variant="body2" className={clsx('flex items-center', labelStyle)}>
+				{showTextRequired && (
+					<Typography
+						className={clsx(
+							'text-black py-4 px-16 rounded-4 w-60  mx-8',
+							required ? 'bg-yellow' : 'bg-white'
+						)}
+					>
+						{required ? '必須' : ''}
+					</Typography>
+				)}
 				{label}
 			</Typography>
 		)
