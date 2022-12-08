@@ -47,6 +47,13 @@ const CardEdit = React.lazy(() => import('../pages/Card/EditCard'))
 // auth
 const LazyLogin = React.lazy(() => import('../pages/Auth/Login'))
 
+export const routerAuthConfig = [
+    {
+		path: ROUTER_ADMIN.auth.login,
+		element: <LazyLogin />
+	},
+]
+
 export const routerAdminConfig = [
 	{
 		path: ROUTER_ADMIN.event.list,
@@ -157,11 +164,6 @@ export const routerAdminConfig = [
 				element: <LazyMissionDetail />
 			}
 		]
-	},
-
-	{
-		path: ROUTER_ADMIN.auth.login,
-		element: <LazyLogin />
 	},
 	{
 		path: ROUTER_ADMIN.notification.list,

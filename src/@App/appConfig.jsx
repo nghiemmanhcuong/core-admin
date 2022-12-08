@@ -16,8 +16,9 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 import AdminCmsLayout from './Admin/components/Layout/AdminCmsLayout'
+import AuthCmsLayout from './Admin/components/Layout/AuthCmsLayout'
 import { ROUTER_ADMIN } from './Admin/configs/constants'
-import { routerAdminConfig } from './Admin/configs/routerConfig'
+import { routerAdminConfig, routerAuthConfig } from './Admin/configs/routerConfig'
 import DefaultLayout from './Travelo/components/Layout/DefaultLayout'
 import { routerTraveloConfig } from './Travelo/configs/routerConfig'
 import Page404 from './Travelo/pages/Error/Page404'
@@ -32,6 +33,17 @@ export const appRouterConfig = createBrowserRouter([
 	{
 		path: 'cms',
 		element: <Navigate to={ROUTER_ADMIN.homePage} />
+	},
+    {
+		path: 'cms/admin',
+		element: <AuthCmsLayout />,
+		children: [
+			...routerAuthConfig,
+			{
+				path: '*',
+				element: <Page404 />
+			}
+		]
 	},
 	{
 		path: 'cms/admin',

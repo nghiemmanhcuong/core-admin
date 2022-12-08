@@ -1,11 +1,18 @@
-import { Button, Card, Paper, Typography, TextField} from '@mui/material'
-import { green } from '@mui/material/colors'
-import { Box } from '@mui/system'
-import React from 'react'
+import Cookies from 'js-cookie'
 import Yup from '@Core/helper/Yup'
-import CoreInput from '@Core/components/Input/CoreInput'
+import { useRequest } from 'ahooks'
+import React, { useEffect } from 'react'
+import { LoadingButton } from '@mui/lab'
 import { useForm } from 'react-hook-form'
+import { Paper, Typography } from '@mui/material'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigate } from 'react-router-dom'
+
+import CoreInput from '@Core/components/Input/CoreInput'
+import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
+import { authService } from '@App/Admin/services/authService'
+import { errorMsg, successMsg } from '@Core/helper/Message'
+
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return <Typography variant={variant}>{title}</Typography>
 }
@@ -14,10 +21,38 @@ const renderFont = () => {
 }
 
 const Login = () => {
+	const navigate = useNavigate()
+
+	// set XSRF-TOKEN to cookies
+	const {
+		data: csrfData,
+		run: getCSRFData,
+		loading: loadingCSRFData
+	} = useRequest(authService.csrf, {
+		manual: true
+	})
+
+	useEffect(() => {
+		getCSRFData()
+	}, [])
+
 	const renderColor = () => {
-		return <Button variant="contained" color="primary" style={{ background: "#007bff" }}>ログイン</Button>
+		return (
+			<LoadingButton
+				loading={isSubmitting}
+				variant="contained"
+				className="w-full sm:w-2/4 text-18 py-12 px-80 rounded-4 font-bold bg-[#007bff]"
+				type="submit"
+			>
+				ログイン
+			</LoadingButton>
+		)
 	}
-	const { control } = useForm({
+	const {
+		control,
+		handleSubmit,
+		formState: { isSubmitting }
+	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
 			username: '',
@@ -25,33 +60,49 @@ const Login = () => {
 		},
 		resolver: yupResolver(
 			Yup.object({
-				username: Yup.string().required(),
+				username: Yup.string().required().email().min(3),
 				password: Yup.string().required()
 			})
 		)
 	})
-	
+
+	const onSubmit = handleSubmit(async data => {
+		try {
+			const dataRequest = {
+				mail: data.username,
+				password: data.password
+			}
+			const res = await authService.login(dataRequest)
+			await Cookies.set('CMS_ACCOUNT_INFO', JSON.stringify(res?.account_info))
+			await navigate(ROUTER_ADMIN.homePage)
+		} catch (e) {
+			errorMsg('Invalid email or password')
+			console.log('============= e', e)
+		}
+	})
+
 	const renderFormLogin = () => {
 		return (
-				<form className="text-center px-10 pt-10">
-					<CoreInput
-						className="py-10"
-						control={control}
-						name="username"
-						label="メールアドレス"
-						required
-						placeholder="メールアドレスを入力してください"
-					/>
-					<CoreInput
-						className="py-10"
-						type='password'
-						control={control}
-						name="password"
-						label="パスワード"
-						required
-						placeholder="パスワードを入力してください"
-					/>
-				</form>
+			<form onSubmit={onSubmit} className="text-center px-10 pt-10">
+				<CoreInput
+					className="py-10 flex-col"
+					control={control}
+					name="username"
+					label="メールアドレス"
+					required
+					placeholder="メールアドレスを入力してください"
+				/>
+				<CoreInput
+					className="py-10 flex-col"
+					type="password"
+					control={control}
+					name="password"
+					label="パスワード"
+					required
+					placeholder="パスワードを入力してください"
+				/>
+				{renderColor()}
+			</form>
 		)
 	}
 	return (
@@ -59,14 +110,12 @@ const Login = () => {
 			<div className="text-center grid grid-flow-row-dense grid-cols-3 pt-40">
 				<div className="col-span-3 sm:col-span-1 sm:col-start-2">
 					<Paper className="max-w-md p-24 m-12">
-						{ renderFont() }
-						{ renderFormLogin() }
-						{ renderColor() }
+						{renderFont()}
+						{renderFormLogin()}
 					</Paper>
 				</div>
 			</div>
 		</div>
-		
 	)
 }
 
