@@ -13,26 +13,42 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import {
-	Button,
-	Divider,
-	Icon,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-	Toolbar
-} from '@mui/material'
+import Cookies from 'js-cookie'
 import { Box } from '@mui/system'
-import React from 'react'
-import { useMatch, useNavigate } from 'react-router-dom'
-import { menuAdminConfig } from '../../configs/menuConfig'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import { Divider, List, ListItem, ListItemButton, ListItemText, Toolbar } from '@mui/material'
+
 import LeftMenuItem from '../Menu/LeftMenuItem'
+import { menuAdminConfig } from '../../configs/menuConfig'
+import { authService } from '@App/Admin/services/authService'
 import LeftMenuItemCollapse from '../Menu/LeftMenuItemCollapse'
-// import PropTypes from 'prop-types'
 
 const LeftMenu = props => {
+	const navigate = useNavigate()
+	const [open, setOpen] = React.useState(false)
+	const handleClickOpen = () => {
+		setOpen(true)
+	}
+	const handleClose = () => {
+		setOpen(false)
+	}
+
+	const handleLogout = async () => {
+		await authService.logout()
+		// Remove all Cookie
+		Object.keys(Cookies.get()).forEach(function (cookieName) {
+			var neededAttributes = {}
+			Cookies.remove(cookieName, neededAttributes)
+		})
+		await navigate(`/cms/admin/login`)
+	}
+
 	return (
 		<Box>
 			<Toolbar />
@@ -46,10 +62,28 @@ const LeftMenu = props => {
 				})}
 				<ListItem disablePadding>
 					<ListItemButton>
-						<ListItemText primary={'ログアウト'} />
+						<ListItemText primary={'ログアウト'} onClick={handleClickOpen} />
 					</ListItemButton>
 				</ListItem>
 			</List>
+			<Dialog
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+			>
+				<DialogContent>
+					<DialogContentText id="alert-dialog-description">
+						Are you sure you want to logout?
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={handleClose}>Cancel</Button>
+					<Button onClick={handleLogout} autoFocus>
+						ログアウト
+					</Button>
+				</DialogActions>
+			</Dialog>
 		</Box>
 	)
 }

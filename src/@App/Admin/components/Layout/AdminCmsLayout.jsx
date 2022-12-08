@@ -12,17 +12,26 @@
  * Date      	By	Comments
  * ----------	---	----------------------------------------------------------
  */
-
-import { AppBar, Box, CircularProgress, CssBaseline, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
-import React, { useState } from 'react'
-// import PropTypes from 'prop-types'
+import Cookies from 'js-cookie'
 import MenuIcon from '@mui/icons-material/Menu'
+import React, { useState, useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { AppBar, Box, CircularProgress, CssBaseline, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
+
 import LeftMenu from './LeftMenu'
-import { Outlet } from 'react-router-dom'
 
 const drawerWidth = 240
 
 const AdminCmsLayout = props => {
+	const navigate = useNavigate()
+	const cmsInfor = !!Cookies.get('CMS_ACCOUNT_INFO')
+	const xsrfToken = !!Cookies.get('XSRF-TOKEN')
+
+	useEffect(() => {
+		if (!cmsInfor || !xsrfToken) {
+			return navigate(`/cms/admin/login`)
+		}
+	}, [])
 	const { window } = props
 	const [mobileOpen, setMobileOpen] = useState(false)
 
