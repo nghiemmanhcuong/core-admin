@@ -64,7 +64,7 @@ const Login = () => {
 		},
 		resolver: yupResolver(
 			Yup.object({
-				username: Yup.string().required().email().min(3),
+				username: Yup.string().required().trim().email().min(3),
 				password: Yup.string().required()
 			})
 		)
