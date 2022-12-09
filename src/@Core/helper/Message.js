@@ -33,7 +33,7 @@ export const successMsg = msg => {
 	if (msg) toast.success(msg)
 }
 
-export const errorMsg = (error, defaultMsg = 'Có lỗi xảy ra') => {
+export const errorMsg = (error, defaultMsg = 'データの取得に失敗') => {
 	if (error instanceof Error) {
 		console.log('============= error.message', error.message)
 		toast.error(error.message)

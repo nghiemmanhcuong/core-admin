@@ -69,7 +69,7 @@ export const menuAdminConfig = [
 		url: ROUTER_ADMIN.tag.list
 	},
 	{
-		title: '美績管理',
+		title: '実績管理',
 		url: ROUTER_ADMIN.performance.list
 	}
 	// {

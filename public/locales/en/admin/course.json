@@ -4,7 +4,7 @@
 		"name": "コースタイトル",
 		"area": "エリア",
 		"range": "コース距離",
-		"amount": "獲得投稿",
+		"amount": "獲得標高",
 		"physical": "体力度",
 		"author": "作成者",
 		"action": "スペシャルアクション"
@@ -15,7 +15,7 @@
 		"name": "コースタイトル",
 		"tag": "タグ",
 		"area": "エリア",
-		"state": "狀態"
+		"state": "状態"
 	},
 	"value": {
 		"express": "表示",

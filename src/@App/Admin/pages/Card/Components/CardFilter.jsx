@@ -54,13 +54,11 @@ const CardFilter = props => {
 			</Box>
 			<Box className="flex p-8 w-full">
 				<Box className="flex w-1/2 items-center">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">{t('label.name')}</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">カード名前</Box>
 					<CoreInput control={control} name="name" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						{t('label.app_currency')}
-					</Box>
+					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">アプリ通貨</Box>
 					<CoreAutocomplete
 						control={control}
 						name="app_currency_id"

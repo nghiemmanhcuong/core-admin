@@ -5,10 +5,10 @@
 		"account_name": "アカウント名",
 		"authority": "権限",
 		"roll": "ロール",
-		"state": "狀態",
+		"state": "状態",
 		"detail_account": "アカウント詳細",
 		"email": "メール",
-		"permission": "權限"
+		"permission": "権限"
 	},
 	"value": {
 		"express": "表示",
@@ -21,7 +21,7 @@
 		"no": "NO",
 		"name": "アカウント名",
 		"mail": "メールアドレス",
-		"role": "權限",
+		"role": "権限",
 		"roll": "ロール",
 		"action": "スペシャルアクション"
 	},
@@ -32,7 +32,7 @@
 				"name": "アカウント名",
 				"mail": "メールアドレス",
 				"password": "パスワード",
-				"role": "權限",
+				"role": "権限",
 				"roll": "ロール",
 				"active": "表示·非表示",
 				"account_creator": "アカウント作成者"
