@@ -25,7 +25,7 @@ const ListSurroundingProvider = props => {
 	const requestSurroundings = useRequest(surroundingService.list, {
 		manual: true,
 		onError: () => {
-			errorMsg('Get list failed!!!')
+			errorMsg('データの取得に失敗')
 		}
 	})
 

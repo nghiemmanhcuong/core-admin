@@ -10,7 +10,7 @@
 		"customize_column": "Tùy biến cột",
 		"search_column": "Tìm kiếm cột",
 		"column_selected": "Cột được chọn ({{count}})",
-		"no_data": "Không tìm thấy dữ liệu nào!",
+		"no_data": "データの取得に失敗",
 		"hide_column": "Ẩn cột",
 		"move_column": "Di chuyển cột",
 		"save_column": "Lưu thay đổi",
@@ -35,7 +35,7 @@
 		"addition": "追加"
 	},
 	"message": {
-		"fetch_list_failed": "データに失敗",
+		"fetch_list_failed": "データの取得に失敗",
 		"delete_success": "削除成功",
 		"delete_failed": "削除失敗",
 		"edit_success": "成功編集",

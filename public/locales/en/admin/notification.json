@@ -7,7 +7,7 @@
 		"type": "お知らせ種別",
 		"period": "掲載期間",
 		"detail": "お知らせ本文",
-		"state": "狀態"
+		"state": "状態"
 	},
 	"column": {
 		"no": "NO",

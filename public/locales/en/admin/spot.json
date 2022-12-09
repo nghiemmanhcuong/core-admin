@@ -14,7 +14,7 @@
 		"name": "スポット名",
 		"tag": "タグ情報",
 		"area": "エリア",
-		"state": "狀態",
+		"state": "状態",
 		"detail": "詳細",
 		"facility": "施設",
 		"type": "タイプ"

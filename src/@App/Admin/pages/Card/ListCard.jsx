@@ -31,7 +31,7 @@ const ListCard = props => {
 	return (
 		<CardProvider>
 			<AdminContentPage
-				pageTitle={t('title.card')}
+				pageTitle={'カード一覧'}
 				content={
 					<>
 						<ListCardTable />

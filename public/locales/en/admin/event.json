@@ -5,7 +5,7 @@
 		"name": "コースタイトル",
 		"tag": "タグ",
 		"area": "エリア",
-		"state": "狀態"
+		"state": "状態"
 	},
 	"value": {
 		"express": "表示",

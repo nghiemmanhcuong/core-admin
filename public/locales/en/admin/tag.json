@@ -9,13 +9,13 @@
 		"action": "スペシャルアクション"
 	},
 	"title": {
-        "no": "NO",
+		"no": "NO",
 		"list_tag": "タグ一覧",
 		"filter": "検索条件",
 		"tag": "タグ情報",
 		"image": "画像",
-		"state": "狀態",
-        "action": "スペシャルアクション",
+		"state": "状態",
+		"action": "スペシャルアクション",
 		"id": "タグID",
 		"name": "タグ名称",
 		"type": "タグ種別",
@@ -86,7 +86,6 @@
 					"best_view": "景色最高",
 					"autumn": "秋におすすめ",
 					"beginners": "初心者におすすめ"
-					
 				}
 			},
 			"btn": {

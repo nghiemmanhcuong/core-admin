@@ -33,20 +33,20 @@ const ListCardTable = props => {
 		return [
 			columnHelper.accessor('id', {
 				cell: info => info.getValue(),
-				header: t('label.no'),
+				header: 'NO',
 				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('name', {
-				header: t('label.name')
+				header: 'カード名前'
 			}),
 			columnHelper.accessor('app_currency', {
-				header: t('label.app_currency')
+				header: 'アプリ通貨'
 			}),
 			columnHelper.accessor('image', {
-				header: t('label.image')
+				header: 'カード画像'
 			}),
 			columnHelper.accessor('action', {
-				header: t('label.action'),
+				header: 'スペシャルアクション',
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original

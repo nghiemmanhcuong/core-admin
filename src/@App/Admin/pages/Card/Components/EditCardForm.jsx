@@ -79,7 +79,7 @@ const EditCardForm = props => {
 				<AdminInput
 					control={control}
 					name="id"
-					label={t('edit.form.label.id')}
+					label={'カードID'}
 					placeholder="Default input"
 					size="small"
 					readOnly
@@ -89,7 +89,7 @@ const EditCardForm = props => {
 
 				<AdminInput
 					control={control}
-					label={t('edit.form.label.name')}
+					label={'カード名前'}
 					name="name"
 					placeholder="Default input"
 					className="mb-16 sm:mb-20"
@@ -105,7 +105,7 @@ const EditCardForm = props => {
 							className="self-center flex items-center w-full py-10 sm:py-0"
 						>
 							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.app_currency')}
+							アプリ通貨
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 sm:flex">
@@ -173,7 +173,7 @@ const EditCardForm = props => {
 				</Box>
 
 				<AdminInputUpload
-					label={t('edit.form.label.image')}
+					label={'カード画像'}
 					control={control}
 					name="image"
 					size="small"
