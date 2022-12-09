@@ -73,12 +73,10 @@ const LeftMenu = props => {
 				aria-describedby="alert-dialog-description"
 			>
 				<DialogContent>
-					<DialogContentText id="alert-dialog-description">
-						Are you sure you want to logout?
-					</DialogContentText>
+					<DialogContentText id="alert-dialog-description">ログアウトしてもよろしいですか</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose}>Cancel</Button>
+					<Button onClick={handleClose}>キャンセル</Button>
 					<Button onClick={handleLogout} autoFocus>
 						ログアウト
 					</Button>
