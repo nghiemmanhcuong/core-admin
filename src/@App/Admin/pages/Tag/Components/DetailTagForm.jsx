@@ -17,11 +17,12 @@ import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPagePro
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import Yup from '@Core/helper/Yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import { tagSerivce } from '@App/Admin/services/tagService'
 import CoreInput from '@Core/components/Input/CoreInput'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
@@ -35,16 +36,41 @@ import {
 	CardContent,
 	RadioGroup,
 	Checkbox,
-	FormGroup
+	FormGroup,
+	CircularProgress
 } from '@mui/material'
 import AdminInput from '@App/Admin/components/Input/AdminInput'
+import { successMsg } from '@Core/helper/Message'
+import { LoadingButton } from '@mui/lab'
+import { useRequest, useUpdateEffect } from 'ahooks'
+import { useNavigate, useParams } from 'react-router-dom'
+import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const DetailTagForm = props => {
+	const navigate = useNavigate()
+	const { id } = useParams()
+	const isEdit = id !== 'new'
 	const { t, spotTableHandler } = useAdminPageContext()
 	const [tabIndex, setTabIndex] = useState(0)
 	const handleTabChange = (event, newTabIndex) => {
 		setTabIndex(newTabIndex)
 	}
+
+	const {
+		data: tag,
+		run: getTag,
+		loading: loadingTag
+	} = useRequest(tagSerivce.getDetailTag, {
+		manual: true
+	})
+
+	useEffect(() => {
+		if (isEdit) {
+			getTag(id, { id, type: 'spot' })
+		}
+	}, [])
+
+	console.log('============= tag', tag?.tag)
 
 	const sex = [
 		{
@@ -59,36 +85,75 @@ const DetailTagForm = props => {
 
 	const tagType = [
 		{
-			value: 1,
+			value: 'event',
 			label: 'イベント'
 		},
 		{
-			value: 2,
+			value: 'course',
 			label: 'コース'
 		},
 		{
-			value: 3,
+			value: 'spot',
 			label: 'スポット'
 		}
 	]
 
-	const { control } = useForm({
+	console.log('============= tag?.tag?.name', tag?.tag?.name)
+
+	const {
+		control,
+		handleSubmit,
+		formState: { isSubmitting },
+		watch,
+		setValue
+	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			verification_code: '',
-			radio1: 1
+			id: tag?.tag?.id ?? null,
+			name: tag?.tag?.name ?? 'abc',
+			type: tag?.tag?.type ?? 'event',
+			detail: tag?.tag?.detail ?? '',
+			order: tag?.tag?.order ?? null,
+			frequently_used: !!tag?.tag?.frequently_used ?? null,
+			display: tag?.tag?.display ?? 0,
+			author: 'タグ作成者'
 		},
 		resolver: yupResolver(
 			Yup.object({
-				name: Yup.string().required(),
-				number_tag: Yup.string().required(),
-				verification_code: Yup.string().required()
+				// name: Yup.string().required(),
+				// number_tag: Yup.string().required(),
+				// verification_code: Yup.string().required()
 			})
 		)
 	})
 
-	return (
-		<Box>
+	useUpdateEffect(() => {
+		setValue('hide', !watch('show'))
+	}, [watch('show')])
+
+	useUpdateEffect(() => {
+		setValue('show', !watch('hide'))
+	}, [watch('hide')])
+
+	console.log('============= watch()', watch())
+
+	const onSubmit = handleSubmit(async data => {
+		data.display = data?.show ? 1 : 0
+		try {
+			await tagSerivce.save(data)
+			navigate(ROUTER_ADMIN.tag.list)
+			successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))
+		} catch (error) {
+			errorMsg(error?.message)
+		}
+	})
+
+	return loadingTag ? (
+		<Box className="text-center mt-40">
+			<CircularProgress />
+		</Box>
+	) : (
+		<form onSubmit={onSubmit}>
 			<Box className="max-w-lg  mx-auto">
 				<AdminInput
 					label={t('title.id')}
@@ -117,13 +182,13 @@ const DetailTagForm = props => {
 						</Typography>
 					</Box>
 					<Box className="w-full sm:w-2/3 border-grey-400 border-1 rounded-4">
-						<CoreRadioGroup control={control} name="radio1" row options={tagType} className="ml-20" />
+						<CoreRadioGroup control={control} name="type" row options={tagType} className="ml-20" />
 					</Box>
 				</Box>
 				<AdminInput
 					label={t('title.description')}
 					control={control}
-					name="description"
+					name="detail"
 					className="mb-16 sm:mb-20"
 					size="small"
 					minRows={5}
@@ -132,7 +197,7 @@ const DetailTagForm = props => {
 				<AdminInput
 					label={t('title.number_tag')}
 					control={control}
-					name="number_tag"
+					name="order"
 					placeholder="Default input"
 					className="mb-16 sm:mb-20"
 					size="small"
@@ -147,7 +212,7 @@ const DetailTagForm = props => {
 					<Box className="w-full sm:w-2/3 border-grey-400 border-1 rounded-4">
 						<CoreCheckbox
 							control={control}
-							name="checkbox1"
+							name="frequently_used"
 							row
 							label={t('title.test')}
 							className="ml-20"
@@ -171,7 +236,7 @@ const DetailTagForm = props => {
 				<AdminInput
 					label={t('title.tag_creator')}
 					control={control}
-					name="tag_creator"
+					name="author"
 					placeholder="Default input"
 					size="small"
 					classNameField="bg-grey-300"
@@ -181,16 +246,29 @@ const DetailTagForm = props => {
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full mt-12 mb-8 sm:mb-0 text-end">
-						<Button variant="contained" color="error" className="mr-10" size="small">
+						<Button
+							onClick={() => navigate(ROUTER_ADMIN.tag.list)}
+							variant="contained"
+							className="mr-10"
+							color="error"
+							size="small"
+						>
 							削除
 						</Button>
-						<Button variant="contained" color="success" className="bg-blue" size="small">
+						<LoadingButton
+							type="submit"
+							loading={isSubmitting}
+							variant="contained"
+							color="success"
+							className="bg-blue"
+							size="small"
+						>
 							登録
-						</Button>
+						</LoadingButton>
 					</Box>
 				</Box>
 			</Box>
-		</Box>
+		</form>
 	)
 }
 

@@ -48,10 +48,10 @@ const CardEdit = React.lazy(() => import('../pages/Card/EditCard'))
 const LazyLogin = React.lazy(() => import('../pages/Auth/Login'))
 
 export const routerAuthConfig = [
-    {
+	{
 		path: ROUTER_ADMIN.auth.login,
 		element: <LazyLogin />
-	},
+	}
 ]
 
 export const routerAdminConfig = [

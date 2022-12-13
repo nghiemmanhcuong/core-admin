@@ -29,6 +29,11 @@ class Tag extends BaseService {
 		// this.createFactory(tagFactory)
 		// this.setMockAdapter()
 	}
+
+	getDetailTag = (id, params) => {
+		const api = `${this.BASE_ENDPOINT}/${id}`
+		return this.request.get(api, { params })
+	}
 }
 
 export const tagSerivce = new Tag()

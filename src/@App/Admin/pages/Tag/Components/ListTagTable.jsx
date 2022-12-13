@@ -54,11 +54,15 @@ const ListTagTable = props => {
 				cell: ({ row }) => {
 					const data = row.original
 
+					console.log('============= data', data)
+
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.tag.detail)} /> */}
 							<CoreActionEdit
-								onClick={() => navigate(ROUTER_ADMIN.tag.list + `/${data?.id}`, { state: data })}
+								onClick={() =>
+									navigate(ROUTER_ADMIN.tag.list + `/${data?.type}` + `/${data?.id}`, { state: data })
+								}
 							/>
 							<CoreActionDelete />
 						</div>
