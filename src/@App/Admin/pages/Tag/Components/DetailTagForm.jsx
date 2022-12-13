@@ -45,43 +45,18 @@ import { LoadingButton } from '@mui/lab'
 import { useRequest, useUpdateEffect } from 'ahooks'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
+import { useTagDetail } from '../hooks/useTagDetail'
 
 const DetailTagForm = props => {
+	const { tag, isEdit } = props
 	const navigate = useNavigate()
-	const { id } = useParams()
-	const isEdit = id !== 'new'
 	const { t, spotTableHandler } = useAdminPageContext()
 	const [tabIndex, setTabIndex] = useState(0)
 	const handleTabChange = (event, newTabIndex) => {
 		setTabIndex(newTabIndex)
 	}
 
-	const {
-		data: tag,
-		run: getTag,
-		loading: loadingTag
-	} = useRequest(tagSerivce.getDetailTag, {
-		manual: true
-	})
-
-	useEffect(() => {
-		if (isEdit) {
-			getTag(id, { id, type: 'spot' })
-		}
-	}, [])
-
-	console.log('============= tag', tag?.tag)
-
-	const sex = [
-		{
-			value: 1,
-			label: t('edit.form.check_box.label.express')
-		},
-		{
-			value: 2,
-			label: t('edit.form.check_box.label.representation')
-		}
-	]
+	console.log('============= tag', tag)
 
 	const tagType = [
 		{
@@ -98,8 +73,6 @@ const DetailTagForm = props => {
 		}
 	]
 
-	console.log('============= tag?.tag?.name', tag?.tag?.name)
-
 	const {
 		control,
 		handleSubmit,
@@ -109,14 +82,16 @@ const DetailTagForm = props => {
 	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			id: tag?.tag?.id ?? null,
-			name: tag?.tag?.name ?? 'abc',
-			type: tag?.tag?.type ?? 'event',
-			detail: tag?.tag?.detail ?? '',
-			order: tag?.tag?.order ?? null,
-			frequently_used: !!tag?.tag?.frequently_used ?? null,
-			display: tag?.tag?.display ?? 0,
-			author: 'タグ作成者'
+			id: tag?.id ?? null,
+			name: tag?.name ?? 'abc',
+			type: tag?.type ?? 'event',
+			detail: tag?.detail ?? '',
+			order: tag?.order ?? null,
+			frequently_used: !!tag?.frequently_used ?? null,
+			display: tag?.display ?? 0,
+			author: 'タグ作成者',
+			show: tag?.display === 1 ? true : false,
+			hide: tag?.display === 0 ? true : false
 		},
 		resolver: yupResolver(
 			Yup.object({
@@ -148,11 +123,7 @@ const DetailTagForm = props => {
 		}
 	})
 
-	return loadingTag ? (
-		<Box className="text-center mt-40">
-			<CircularProgress />
-		</Box>
-	) : (
+	return (
 		<form onSubmit={onSubmit}>
 			<Box className="max-w-lg  mx-auto">
 				<AdminInput

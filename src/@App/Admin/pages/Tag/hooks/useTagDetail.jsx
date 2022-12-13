@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 
 export const useTagDetail = props => {
-	const { id } = useParams()
+	const { id, type } = useParams()
 	const isEdit = id !== 'new'
 
 	const requestTag = useRequest(tagSerivce.getDetailTag, {
@@ -20,7 +20,7 @@ export const useTagDetail = props => {
 
 	useEffect(() => {
 		if (isEdit) {
-			getTag(id, { id, type: 'spot' })
+			getTag(id, { id, type })
 		}
 	}, [])
 
