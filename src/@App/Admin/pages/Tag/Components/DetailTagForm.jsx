@@ -83,8 +83,8 @@ const DetailTagForm = props => {
 		mode: 'onTouched',
 		defaultValues: {
 			id: tag?.id ?? null,
-			name: tag?.name ?? 'abc',
-			type: tag?.type ?? 'event',
+			name: tag?.name ?? '',
+			type: tag?.type ?? '',
 			detail: tag?.detail ?? '',
 			order: tag?.order ?? null,
 			frequently_used: !!tag?.frequently_used ?? null,
