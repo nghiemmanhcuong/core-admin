@@ -25,6 +25,18 @@ const ListTagProvider = props => {
 		manual: true
 	})
 
+	const { runAsync: handleDeleteTag } = useRequest(tagSerivce.delete, {
+		manual: true,
+		onSuccess: res => {
+			tagTableHandler.handleFetchData()
+			// getMissions()
+			successMsg(t('common:message.delete_success'))
+		},
+		onError: res => {
+			errorMsg(t('common:message.delete_failed'))
+		}
+	})
+
 	const { run: getTags } = requestTags
 
 	const tagTableHandler = useCoreTable(requestTags)
@@ -36,7 +48,8 @@ const ListTagProvider = props => {
 
 	const data = {
 		...props,
-		tagTableHandler
+		tagTableHandler,
+		handleDeleteTag
 	}
 
 	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>

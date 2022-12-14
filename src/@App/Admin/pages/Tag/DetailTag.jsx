@@ -19,16 +19,20 @@ import AdminContentPage from '../../components/Layout/AdminContentPage'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListTagProvider from './ListTagProvider'
 import DetailTagForm from './Components/DetailTagForm'
+import { useTagDetail } from './hooks/useTagDetail'
+import { Box, CircularProgress } from '@mui/material'
 
 const DetailTag = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.tag)
+	const { isEdit, tag, loadingTag, id } = useTagDetail()
 
-	return (
+	return loadingTag ? (
+		<Box className="text-center mt-40">
+			<CircularProgress />
+		</Box>
+	) : (
 		<ListTagProvider t={t}>
-			<AdminContentPage
-				pageTitle={t('title.tag')}
-				content={<DetailTagForm />}
-			/>
+			<AdminContentPage pageTitle={t('title.tag')} content={<DetailTagForm tag={tag} isEdit={isEdit} />} />
 		</ListTagProvider>
 	)
 }
