@@ -98,8 +98,8 @@ const TagTableFilter = props => {
 					/>
 				</Box> */}
 			</Box>
-			<Box className="flex p-8  w-full">
-				<Box className="flex w-1/2 items-start  ">
+			<Box className="flex p-8 w-full">
+				<Box className="flex w-1/2 items-start">
 					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.popular_tag')}
 					</Box>

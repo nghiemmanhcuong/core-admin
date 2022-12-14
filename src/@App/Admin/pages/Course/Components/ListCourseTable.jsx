@@ -4,11 +4,13 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import CourseFilter from './CourseFilter'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
+import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const ListCourseTable = props => {
 	const { t, courseTableHandler, handleDeleteCourse } = useAdminPageContext()
+	const navigate = useNavigate()
 
 	const columns = useMemo(() => {
 		return [
@@ -44,9 +46,9 @@ const ListCourseTable = props => {
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => console.log('============= data', data)} /> */}
-							<Link to={`/admin/course/${data.id}`}>
-								<CoreActionEdit onClick={() => console.log('============= data', data)} />
-							</Link>
+
+							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.course + `/${data?.id}`)} />
+
 							<CoreActionDelete onConfirmDelete={() => handleDeleteCourse(data?.id)} />
 						</div>
 					)

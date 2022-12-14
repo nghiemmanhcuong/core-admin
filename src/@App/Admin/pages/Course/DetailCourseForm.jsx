@@ -30,6 +30,7 @@ import { courseService } from '@App/Admin/services/courseService'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import moment from 'moment'
 import ChooseRouteFile from './Components/ChooseRouteFile'
+import { useCourseForm } from './hooks/useCourseForm'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -121,109 +122,11 @@ const tableForm = () => {
 const DetailCourseForm = props => {
 	const { handleClose, handleOpen, renderListSpotDialog } = useListSpotDialog()
 	const { tags, spots } = useAdminPageContext()
-	const { courseData, isEdit, courseId } = props
+	const { methodForm, onSubmit } = useCourseForm(props)
 
-	// const tagOptions = tags?.tags?.reduce((result, currentValue) => {
-	// 	const formatResult = {
-	// 		key: `${currentValue?.id}`,
-	// 		value: currentValue?.id,
-	// 		label: currentValue?.name
-	// 	}
-
-	// 	result.push(formatResult)
-
-	// 	return result
-	// }, [])
-
-	console.log('============= spots', spots)
-	console.log('============= tags', tags)
-
-	const { control, handleSubmit, watch } = useForm({
-		mode: 'onTouched',
-		defaultValues: {
-			id: courseData?.id ?? null,
-			course_name: courseData?.course_name ?? '新日本橋コース',
-			catchphrase: courseData?.catchphrase ?? 'コースのキャッチフレーズテスト',
-			course_summary: courseData?.course_summary ?? '新日本橋コースの説明',
-			course_image: courseData?.course_image ?? '',
-			course_distance: courseData?.course_distance ?? 100.5,
-			average_gradient: courseData?.average_gradient ?? 0.4,
-			elevation: courseData?.elevation ?? 150,
-			// strength: 3,
-			goal_approximate_time: courseData?.goal_approximate_time ?? null,
-			route_url: courseData?.route_url ?? 'https://ridewithgps.com/routes/38325884',
-			course_map_image: '',
-			route_file: '',
-			elevation_chart_url:
-				courseData?.elevation_chart_url ??
-				'https://ridewithgps.com/embeds?type=route&id=38325884&metricUnits=true&sampleGraph=true',
-			course_tag: [1],
-			author: courseData?.author ?? 'James',
-			spot: []
-		},
-		resolver: yupResolver(
-			Yup.object({
-				course_name: Yup.string().required(),
-				catchphrase: Yup.string().required(),
-				course_distance: Yup.mixed().required(),
-				route_file: Yup.mixed().required(),
-				spot: Yup.array().min(1)
-				// strength: Yup.number().min(1).max(5)
-			})
-		)
-	})
-
+	const { control, watch } = methodForm
 	console.log('============= watch()', watch())
-
-	const onSubmit = handleSubmit(async data => {
-		try {
-			if (isEdit) {
-				const formData = new FormData()
-				formData.append('course_name', data?.course_name)
-				formData.append('catchphrase', data?.catchphrase)
-				formData.append('course_summary', data?.course_summary)
-				formData.append('course_image', data?.course_image)
-				formData.append('course_distance', data?.course_distance)
-				formData.append('average_gradient', data?.average_gradient)
-				formData.append('elevation', data?.elevation)
-				formData.append('goal_approximate_time', moment(data?.goal_approximate_time).format('HH:mm:ss'))
-				formData.append('route_url', data?.route_url)
-				formData.append('course_map_image', data?.course_map_image)
-				formData.append('route_file', data?.route_file)
-				formData.append('elevation_chart_url', data?.elevation_chart_url)
-				formData.append('course_tag', data?.course_tag)
-				formData.append('spot', data?.spot)
-				formData.append('author', data?.author)
-				formData.append('_method', 'PUT')
-
-				await courseService.updateCourse(formData, courseId)
-			} else {
-				const formData = new FormData()
-				formData.append('course_name', data?.course_name)
-				formData.append('catchphrase', data?.catchphrase)
-				formData.append('course_summary', data?.course_summary)
-				formData.append('course_image', data?.course_image)
-				formData.append('course_distance', data?.course_distance)
-				formData.append('average_gradient', data?.average_gradient)
-				formData.append('elevation', data?.elevation)
-				formData.append('goal_approximate_time', moment(data?.goal_approximate_time).format('HH:mm:ss'))
-				formData.append('route_url', data?.route_url)
-				formData.append('course_map_image', data?.course_map_image)
-				formData.append('route_file', data?.route_file)
-				formData.append('elevation_chart_url', data?.elevation_chart_url)
-				formData.append('course_tag', data?.course_tag)
-				formData.append('spot', data?.spot)
-				formData.append('author', data?.author)
-
-				await courseService.save(formData)
-			}
-
-			navigate(ROUTER_ADMIN.course)
-			successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))
-		} catch (error) {
-			errorMsg(error)
-		}
-	})
+	console.log('============= spots', spots)
 
 	return (
 		<>
@@ -375,15 +278,6 @@ const DetailCourseForm = props => {
 							className="mb-16 sm:mb-20"
 						/>
 
-						<AdminInput
-							label="平均勾配"
-							control={control}
-							name="average_gradient"
-							placeholder="Default input"
-							size="small"
-							className="mb-16 sm:mb-20"
-						/>
-
 						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 								<Typography variant="h3" color="primary" className="flex items-center mb-4">
@@ -428,8 +322,8 @@ const DetailCourseForm = props => {
 									className="w-full"
 									variant="outlined"
 									placeholder="Choose..."
-									valuePath="id"
 									labelPath="name"
+									valuePath="id"
 									multiple
 								/>
 							</Box>
