@@ -9,6 +9,8 @@ export const useTagDetail = props => {
 	const { id, type } = useParams()
 	const isEdit = id !== 'new'
 
+	console.log('============= id', id)
+
 	const requestTag = useRequest(tagSerivce.getDetailTag, {
 		manual: true,
 		onError: res => {

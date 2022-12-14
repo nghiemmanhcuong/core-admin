@@ -73,7 +73,7 @@ const ListTagTable = props => {
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.tag.detail)} /> */}
 							<CoreActionEdit
 								onClick={() =>
-									navigate(ROUTER_ADMIN.tag.list + `/${data?.type}` + `/${data?.id}`, { state: data })
+									navigate(ROUTER_ADMIN.tag.list + +`/${data?.id}``/${data?.type}`, { state: data })
 								}
 							/>
 							<CoreActionDelete onConfirmDelete={() => handleDeleteTag(data)} />
