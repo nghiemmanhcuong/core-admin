@@ -40,7 +40,7 @@ import {
 	CircularProgress
 } from '@mui/material'
 import AdminInput from '@App/Admin/components/Input/AdminInput'
-import { successMsg } from '@Core/helper/Message'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 import { LoadingButton } from '@mui/lab'
 import { useRequest, useUpdateEffect } from 'ahooks'
 import { useNavigate, useParams } from 'react-router-dom'
