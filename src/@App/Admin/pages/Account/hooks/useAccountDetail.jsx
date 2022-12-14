@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Tue Oct 25 2022
- * Modified By: TheAnh58
+ * Last Modified: Wed Dec 14 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -19,24 +19,23 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 // import PropTypes from 'prop-types'
 
-export const useAccountDetail = (props) => {
-    const {id} = useParams()
-    const isEdit = id !== 'new'
-    const requestAccount = useRequest(accountSerivce.find, {
-        manual: true,
+export const useAccountDetail = props => {
+	const { id } = useParams()
+	const isEdit = id !== 'new'
+	const requestAccount = useRequest(accountSerivce.find, {
+		manual: true,
 		onError: res => {
 			errorMsg('Get detail failed!!!')
 		}
-    })
+	})
 
-    const {data: account, run: getAccount, loading: loadingAccount} = requestAccount
+	const { data: account, run: getAccount, loading: loadingAccount } = requestAccount
 
-    useEffect(() => {
-        if (isEdit) {
-            getAccount(id)
-        }
-    }, [])
+	useEffect(() => {
+		if (isEdit) {
+			getAccount(id)
+		}
+	}, [])
 
- return {isEdit, account: account?.account, loadingAccount}
+	return { isEdit, account: account?.account, loadingAccount }
 }
-

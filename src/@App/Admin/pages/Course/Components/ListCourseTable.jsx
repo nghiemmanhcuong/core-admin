@@ -4,11 +4,14 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo } from 'react'
 import CourseFilter from './CourseFilter'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
+import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 
 const ListCourseTable = props => {
-	const { t, courseTableHandler } = useAdminPageContext()
+	const { t, courseTableHandler, handleDeleteCourse } = useAdminPageContext()
+	const navigate = useNavigate()
+
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -16,19 +19,19 @@ const ListCourseTable = props => {
 				header: t('label.no'),
 				className: 'w-[5%]'
 			}),
-			columnHelper.accessor('name', {
+			columnHelper.accessor('course_name', {
 				header: t('label.name')
 			}),
-			columnHelper.accessor('area', {
-				header: t('label.area')
-			}),
-			columnHelper.accessor('range', {
+			// columnHelper.accessor('area', {
+			// 	header: t('label.area')
+			// }),
+			columnHelper.accessor('course_distance', {
 				header: t('label.range')
 			}),
-			columnHelper.accessor('amount', {
+			columnHelper.accessor('elevation', {
 				header: t('label.amount')
 			}),
-			columnHelper.accessor('physical', {
+			columnHelper.accessor('strength', {
 				header: t('label.physical')
 			}),
 			columnHelper.accessor('author', {
@@ -39,13 +42,14 @@ const ListCourseTable = props => {
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
+
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => console.log('============= data', data)} /> */}
-							<Link to={`/admin/course/${data.id}`}>
-								<CoreActionEdit onClick={() => console.log('============= data', data)} />
-							</Link>
-							<CoreActionDelete onClick={() => console.log('============= data', data)} />
+
+							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.course + `/${data?.id}`)} />
+
+							<CoreActionDelete onConfirmDelete={() => handleDeleteCourse(data?.id)} />
 						</div>
 					)
 				}
@@ -56,7 +60,7 @@ const ListCourseTable = props => {
 	return (
 		<Box>
 			<CourseFilter />
-			<CoreTable isShowPagination columns={columns} {...courseTableHandler} />
+			<CoreTable isShowPagination columns={columns} {...courseTableHandler} data={courseTableHandler.courses} />
 		</Box>
 	)
 }

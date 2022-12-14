@@ -10,80 +10,83 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Yup from '@Core/helper/Yup'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import CoreInput from '@Core/components/Input/CoreInput'
 
 const CourseFilter = props => {
 	const { courseTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
 	const handleFilter = () => {
+		const data = getValues()
+		const valueCheckbox = getValues('display')
+		const arraySelected = []
+
+		//eslint-disable-next-line
+		for (const value in valueCheckbox) {
+			if (valueCheckbox[value]) {
+				arraySelected.push(value)
+			}
+		}
+
 		const params = {
-			// TODO : param filter
+			...data,
+			display: arraySelected
 		}
 		courseTableHandler.handleFetchData(params)
 	}
-	const { control } = useForm({
+
+	const { control, getValues } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			firstname: '',
-			checkbox1: false,
-			checkbox2: false
-		},
-		resolver: yupResolver(
-			Yup.object({
-				firstname: Yup.string().required()
-			})
-		)
+			course_name: '',
+			district: '',
+			tag: '',
+			display: []
+		}
 	})
+
+	const displayOptions = [
+		{ value: 0, label: t('value.non_representation') },
+		{ value: 1, label: t('value.express') }
+	]
 
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
 			<Box className="p-10 bg-grey-300">
 				<Typography variant="h4">{t('title.filter')}</Typography>
 			</Box>
-			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.name')}
+
+			<Box className="flex p-8 w-full">
+				<Box className="flex w-full sm:w-1/2 items-start">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
+						コースタイトル
 					</Box>
-					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
+					<CoreInput name="course_name" control={control} size="small" className="w-full sm:w-2/3" />
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.area')}
-					</Box>
-					<FormAutocomplete
-						control={control}
-						name="course"
-						size="small"
-						className="w-2/3"
-						fullWidth
-						variant="outlined"
-						placeholder="Choose..."
-					/>
+				<Box className="flex w-full sm:w-1/2 items-start mx-8">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">区域</Box>
+					<CoreInput name="district" control={control} size="small" className="w-full sm:w-2/3" />
 				</Box>
 			</Box>
-			<Box className="flex p-10  w-full">
-				<Box className="flex w-1/2 items-start  ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{t('title.tag')}
-					</Box>
-					<TextField size="small" className="w-2/3" fullWidth variant="outlined" />
+
+			<Box className="flex p-8 w-full">
+				<Box className="flex w-full sm:w-1/2 items-start">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">区域</Box>
+					<CoreInput name="tag" control={control} size="small" className="w-full sm:w-2/3" />
 				</Box>
-				<Box className="flex w-1/2 items-start mx-8 ">
-					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
+				<Box className="flex w-full sm:w-1/2 items-start mx-8">
+					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box>
 					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
-							<Box className="col-span-1 -my-3 ml-12">
-								<CoreCheckbox control={control} name="checkbox1" label={t('value.express')} />
-							</Box>
-							<Box className="col-span-1 -my-3">
+							{displayOptions?.map(item => (
 								<CoreCheckbox
 									control={control}
-									name="checkbox2"
-									label={t('value.non_representation')}
+									className="col-span-1 -my-3 ml-20"
+									name={`display.${item?.value}`}
+									label={item?.label}
 								/>
-							</Box>
+							))}
 						</Box>
 					</Box>
 					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
