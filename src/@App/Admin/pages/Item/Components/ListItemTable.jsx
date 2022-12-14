@@ -50,6 +50,12 @@ const ListItemTable = props => {
 			columnHelper.accessor('exchange_area', {
 				header: t('column.area')
 			}),
+			columnHelper.accessor('display', {
+				header: t('column.status'),
+				cell: ({ row }) => {
+					return row?.original?.display === 1 ? '表示' : row?.original?.display === 0 ? '非表示' : null
+				}
+			}),
 			columnHelper.accessor('action', {
 				header: t('column.action'),
 				maxSize: 200,

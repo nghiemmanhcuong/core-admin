@@ -11,6 +11,9 @@ import { useForm } from 'react-hook-form'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreInputFile from '@Core/components/Input/CoreInputFile'
 import CoreInput from '@Core/components/Input/CoreInput'
+import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
+import { yupResolver } from '@hookform/resolvers/yup'
+import Yup from '@Core/helper/Yup'
 
 const TagTableFilter = props => {
 	const { tagTableHandler } = useAdminPageContext()
@@ -23,32 +26,30 @@ const TagTableFilter = props => {
 		//eslint-disable-next-line
 		for (const value in valueCheckbox) {
 			if (valueCheckbox[value]) {
-				arraySelected.push(value)
+				arraySelected.push(+value)
 			}
 		}
 
 		const params = {
 			...data,
-			frequently_used: data?.frequently_used ? 1 : 0 ?? null,
 			display: arraySelected
 		}
+
 		tagTableHandler.handleFetchData(params)
 	}
 
 	const { control, getValues, watch } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			// id: null,
-			// name: null,
-			// type: null,
-			// frequently_used: null,
-			display: []
+			id: null,
+			name: '',
+			display: {}
 		}
 	})
 
 	const displayOptions = [
-		{ value: 0, label: t('value.non_representation') },
-		{ value: 1, label: t('value.express') }
+		{ id: 0, label: t('value.non_representation') },
+		{ id: 1, label: t('value.express') }
 	]
 
 	return (
@@ -59,7 +60,7 @@ const TagTableFilter = props => {
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-start">
 					<Box className="w-1/3 px-10 h-full bg-grey-300 pt-6 mr-[-2px] border-grey-300 border-1 rounded-l-4">
-						{/* {t('title.name')} */}ID
+						ID
 					</Box>
 					<CoreInput
 						control={control}
@@ -83,20 +84,6 @@ const TagTableFilter = props => {
 						variant="outlined"
 					/>
 				</Box>
-
-				{/* <Box className="flex w-1/2 items-start mx-8">
-					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">
-						{t('title.tag_type')}
-					</Box>
-					<CoreInput
-						control={control}
-						name="tag_name"
-						size="small"
-						className="w-2/3"
-						fullWidth
-						variant="outlined"
-					/>
-				</Box> */}
 			</Box>
 			<Box className="flex p-8 w-full">
 				<Box className="flex w-1/2 items-start">
@@ -114,17 +101,39 @@ const TagTableFilter = props => {
 					</Card>
 				</Box>
 				<Box className="flex w-1/2 items-start mx-8 ">
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">タグ種別</Box>
+					<CoreAutocomplete
+						control={control}
+						name="type"
+						options={[
+							{ value: 'event', label: 'イベント' },
+							{ value: 'course', label: 'コース' },
+							{ value: 'spot', label: 'スポット' }
+						]}
+						size="small"
+						className="w-full sm:w-2/3"
+						placeholder="Choose..."
+						valuePath="value"
+						labelPath="label"
+						returnValueType="enum"
+					/>
+				</Box>
+			</Box>
+
+			<Box className="flex p-8 w-full">
+				<Box className="flex w-full sm:w-1/2 items-start"></Box>
+
+				<Box className="flex w-full sm:w-1/2 mx-8 items-center">
 					<Box className="w-1/3 p-8 h-full bg-grey-300 border-grey-300 border-1 rounded-4">
 						{t('title.state')}
 					</Box>
-					{/* <FormControlLabel control={<Checkbox />} label={t('value.express')} className="ml-[5px]" /> */}
 					<Box className="border-grey-400 border-1 rounded-4">
 						<Box className="grid grid-flow-row-dense grid-cols-2 ml-5">
 							{displayOptions?.map(item => (
 								<CoreCheckbox
 									control={control}
 									className="col-span-1 -my-3 ml-20"
-									name={`display.${item?.value}`}
+									name={`display.${item?.id}`}
 									label={item?.label}
 								/>
 							))}

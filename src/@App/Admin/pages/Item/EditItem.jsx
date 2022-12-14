@@ -15,7 +15,7 @@
 
 import AdminContentPage from '@App/Admin/components/Layout/AdminContentPage'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button } from '@mui/material'
+import { Box, Button, CircularProgress } from '@mui/material'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -30,7 +30,7 @@ const EditItem = props => {
 	const { isEdit, item, loadingItem, id } = useItemDetail()
 
 	return (
-		<ListItemProvider t={t} isEdit={isEdit} itemData={item} loadingItem={loadingItem} itemId={id}>
+		<ListItemProvider t={t} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle={t('title.item_detail')}
 				headerAction={
@@ -38,7 +38,15 @@ const EditItem = props => {
 						{t('common:btn.back')}
 					</Button>
 				}
-				content={<EditItemForm />}
+				content={
+					loadingItem ? (
+						<Box className="text-center mt-40">
+							<CircularProgress />
+						</Box>
+					) : (
+						<EditItemForm itemData={item} itemId={id} />
+					)
+				}
 			/>
 		</ListItemProvider>
 	)
