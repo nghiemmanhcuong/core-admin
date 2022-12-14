@@ -119,7 +119,7 @@ export const routerAdminConfig = [
 				element: <LazyTagList />
 			},
 			{
-				path: ':id',
+				path: ':type/:id',
 				element: <LazyTagDetail />
 			}
 		]

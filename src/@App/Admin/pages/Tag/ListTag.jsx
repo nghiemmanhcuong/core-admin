@@ -39,7 +39,7 @@ const ListTag = props => {
 							<Button
 								variant="contained"
 								color="primary"
-								onClick={() => navigate(ROUTER_ADMIN.tag.list + '/new')}
+								onClick={() => navigate(ROUTER_ADMIN.tag.list + '/create' + '/new')}
 								className="px-20 w-160 bg-[#007BFF] text-18"
 							>
 								{t('common:btn.add')}

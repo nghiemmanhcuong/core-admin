@@ -22,10 +22,22 @@ import TagTableFilter from './TagTableFilter'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER_ADMIN } from '../../../configs/constants'
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
+import { tagSerivce } from '@App/Admin/services/tagService'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 
 const ListTagTable = props => {
 	const navigate = useNavigate()
 	const { t, tagTableHandler } = useAdminPageContext()
+
+	const handleDeleteTag = async data => {
+		try {
+			await tagSerivce.deleteTag(data?.id, { id: data?.id, type: data?.type })
+			successMsg(t('common:message.delete_success'))
+			tagTableHandler.handleFetchData()
+		} catch (error) {
+			errorMsg(error?.message)
+		}
+	}
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -54,13 +66,17 @@ const ListTagTable = props => {
 				cell: ({ row }) => {
 					const data = row.original
 
+					console.log('============= data', data)
+
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.tag.detail)} /> */}
 							<CoreActionEdit
-								onClick={() => navigate(ROUTER_ADMIN.tag.list + `/${data?.id}`, { state: data })}
+								onClick={() =>
+									navigate(ROUTER_ADMIN.tag.list + `/${data?.type}` + `/${data?.id}`, { state: data })
+								}
 							/>
-							<CoreActionDelete />
+							<CoreActionDelete onConfirmDelete={() => handleDeleteTag(data)} />
 						</div>
 					)
 				}

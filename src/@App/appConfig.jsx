@@ -34,7 +34,7 @@ export const appRouterConfig = createBrowserRouter([
 		path: 'cms',
 		element: <Navigate to={ROUTER_ADMIN.homePage} />
 	},
-    {
+	{
 		path: 'cms/admin',
 		element: <AuthCmsLayout />,
 		children: [
