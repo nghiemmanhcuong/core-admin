@@ -16,7 +16,8 @@
 		"to_date": "使用可能修了日",
 		"inventory": "在庫数",
 		"area": "引換エリア",
-		"action": "スペシャルアクション"
+		"action": "スペシャルアクション",
+		"status": "表示・非表示"
 	},
 	"value": {
 		"express": "表示",

@@ -46,6 +46,7 @@ import { useRequest, useUpdateEffect } from 'ahooks'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { useTagDetail } from '../hooks/useTagDetail'
+import { pickBy } from 'lodash'
 
 const DetailTagForm = props => {
 	const { tag, isEdit } = props
@@ -114,7 +115,13 @@ const DetailTagForm = props => {
 
 	const onSubmit = handleSubmit(async data => {
 		data.display = data?.show ? 1 : 0
+		data.frequently_used = data?.frequently_used ? 1 : 0
+
 		try {
+			console.log('============= data', data)
+			data = pickBy(data, val => {
+				return val !== null && val !== '' && val !== 'undefined'
+			})
 			await tagSerivce.save(data)
 			navigate(ROUTER_ADMIN.tag.list)
 			successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))

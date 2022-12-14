@@ -26,10 +26,11 @@ import { LoadingButton } from '@mui/lab'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import moment from 'moment'
 
-const contentCurrency = () => {
+const DetailCurrency = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
 	const navigate = useNavigate()
-	const { isEdit, currencyId, currencyData } = useAdminPageContext()
+	const { isEdit } = useAdminPageContext()
+	const { currencyId, currencyData } = props
 
 	const {
 		control,
@@ -38,7 +39,7 @@ const contentCurrency = () => {
 	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			id: currencyId ?? null,
+			id: currencyData?.id ?? null,
 			name: currencyData?.name ?? '',
 			unit: currencyData?.unit ?? '',
 			app_currency_explanation: currencyData?.app_currency_explanation ?? '',
@@ -241,10 +242,6 @@ const contentCurrency = () => {
 			</Box>
 		</form>
 	)
-}
-const DetailCurrency = props => {
-	const { t } = useTranslation(TRANSLATE_ADMIN.course)
-	return contentCurrency()
 }
 
 export default React.memo(DetailCurrency)

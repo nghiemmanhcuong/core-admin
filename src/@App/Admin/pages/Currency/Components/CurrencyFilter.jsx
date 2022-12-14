@@ -13,12 +13,14 @@ import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CardMedia from '@mui/material/CardMedia'
 import CoreInput from '@Core/components/Input/CoreInput'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
+import moment from 'moment'
 
 const CurrencyFilter = props => {
 	const { currencyTableHandler } = useAdminPageContext()
 	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
+
 	const handleFilter = () => {
-		const params = getValues()
+		const data = getValues()
 		const valueCheckbox = getValues('display')
 		const arraySelected = []
 
@@ -29,23 +31,23 @@ const CurrencyFilter = props => {
 			}
 		}
 
-		currencyTableHandler.handleFetchData({
-			...params,
+		const params = {
+			...data,
 			display: arraySelected,
-			available_date: params?.available_date
-				? moment(params?.available_date).add(7, 'hours').format('YYYY-MM-DD')
-				: undefined,
-			id: +params?.id
-		})
+			available_date: data?.available_date ? moment(data?.available_date).format('YYYY-MM-DD') : undefined
+		}
+
+		currencyTableHandler.handleFetchData(params)
 	}
-	const { control, getValues } = useForm({
+
+	const { control, getValues, watch } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
 			id: null,
 			// name: null,
 			// unit: null,
-			// available_date: null,
-			display: []
+			available_date: null,
+			display: {}
 		}
 	})
 

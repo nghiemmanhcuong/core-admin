@@ -18,6 +18,9 @@
 import { DEFAULT_RESPONSE } from '@Core/api/BaseService'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { pickBy } from 'lodash'
+import Qs from 'qs'
 // import { useConfirm } from '../../Confirm/CoreConfirm'
 
 let params = {
@@ -34,6 +37,12 @@ const useCoreTable = requestFetchData => {
 			...params,
 			...query
 		}
+		params = pickBy(params, val => {
+			return val !== null && val !== '' && val !== 'undefined'
+		})
+
+		// Qs.stringify(params)
+
 		return runAsync(params)
 	}, [])
 

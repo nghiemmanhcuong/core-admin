@@ -39,9 +39,8 @@ import { useNavigate } from 'react-router-dom'
 
 const EditItemForm = props => {
 	const navigate = useNavigate()
-	const { isEdit, itemData, itemId, t, currencies } = useAdminPageContext()
-
-	console.log('============= itemData', itemData)
+	const { isEdit, t, currencies } = useAdminPageContext()
+	const { itemData, itemId } = props
 
 	const {
 		control,
@@ -50,24 +49,25 @@ const EditItemForm = props => {
 	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			name: itemData?.name ?? 'チケット名テスト',
-			app_currency_id: itemData?.app_currency_id ?? 1,
-			currency_of_consumption: itemData?.currency_of_consumption ?? 400,
-			stock: itemData?.stock ?? 30,
+			id: itemData?.id ?? null,
+			name: itemData?.name ?? '',
+			app_currency_id: itemData?.app_currency_id ?? null,
+			currency_of_consumption: itemData?.currency_of_consumption ?? null,
+			stock: itemData?.stock ?? 0,
 			image: null,
-			summary: itemData?.summary ?? 'テスト詳細',
+			summary: itemData?.summary ?? '',
 			available_start: '',
 			available_end: '',
-			exchange_method: itemData?.exchange_method ?? 'web',
-			exchange_area: itemData?.exchange_area ?? 1,
-			exchange_place: itemData?.exchange_place ?? 'テスト引換場所',
-			exchange_address: itemData?.exchange_address ?? 'テスト場所住所',
-			exchange_place_google_map_url: itemData?.exchange_place_google_map_url ?? 'example.com',
-			exchange_place_location_info_latitude: itemData?.exchange_place_location_info_latitude ?? '31.71464',
-			exchange_place_location_info_longitude: itemData?.exchange_place_location_info_longitude ?? '130.27123',
-			caution: itemData?.caution ?? 'delayed',
+			exchange_method: itemData?.exchange_method ?? '',
+			exchange_area: itemData?.exchange_area ?? null,
+			exchange_place: itemData?.exchange_place ?? '',
+			exchange_address: itemData?.exchange_address ?? '',
+			exchange_place_google_map_url: itemData?.exchange_place_google_map_url ?? '',
+			exchange_place_location_info_latitude: itemData?.exchange_place_location_info_latitude ?? '',
+			exchange_place_location_info_longitude: itemData?.exchange_place_location_info_longitude ?? '',
+			caution: itemData?.caution ?? '',
 			author: itemData?.author ?? '作成者',
-			display: itemData?.display ?? 1
+			display: itemData?.display ?? null
 		},
 		resolver: yupResolver(
 			Yup.object({
@@ -104,8 +104,14 @@ const EditItemForm = props => {
 				formData.append('currency_of_consumption', data?.currency_of_consumption)
 				formData.append('caution', data?.caution)
 				formData.append('image', data?.image)
-				formData.append('available_start', moment(data?.available_start).format('YYYY-MM-DD'))
-				formData.append('available_end', moment(data?.available_end).format('YYYY-MM-DD'))
+				formData.append(
+					'available_start',
+					data?.available_start ? moment(data?.available_start).format('YYYY-MM-DD') : ''
+				)
+				formData.append(
+					'available_end',
+					data?.available_end ? moment(data?.available_end).format('YYYY-MM-DD') : ''
+				)
 				formData.append('display', data?.display)
 				formData.append('author', data?.author)
 				formData.append('_method', 'PUT')
@@ -127,8 +133,14 @@ const EditItemForm = props => {
 				formData.append('currency_of_consumption', data?.currency_of_consumption)
 				formData.append('caution', data?.caution)
 				formData.append('image', data?.image)
-				formData.append('available_start', moment(data?.available_start).format('YYYY-MM-DD'))
-				formData.append('available_end', moment(data?.available_end).format('YYYY-MM-DD'))
+				formData.append(
+					'available_start',
+					data?.available_start ? moment(data?.available_start).format('YYYY-MM-DD') : ''
+				)
+				formData.append(
+					'available_end',
+					data?.available_start ? moment(data?.available_end).format('YYYY-MM-DD') : ''
+				)
 				formData.append('display', data?.display)
 				formData.append('author', data?.author)
 
@@ -450,7 +462,7 @@ const EditItemForm = props => {
 							readOnly
 						/>
 						<Button
-							onClick={() => navigate(ROUTER_ADMIN.currency.list)}
+							onClick={() => navigate(ROUTER_ADMIN.item.list)}
 							variant="contained"
 							color="error"
 							className="mr-10 h-32"

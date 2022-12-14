@@ -60,13 +60,17 @@ const ListTagTable = props => {
 				},
 				header: t('title.popular_tag')
 			}),
+			columnHelper.accessor('display', {
+				header: t('title.status'),
+				cell: ({ row }) => {
+					return row?.original?.display === 1 ? '表示' : row?.original?.display === 0 ? '非表示' : null
+				}
+			}),
 			columnHelper.accessor('action', {
 				header: t('title.action'),
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
-
-					console.log('============= data', data)
 
 					return (
 						<div className="flex">

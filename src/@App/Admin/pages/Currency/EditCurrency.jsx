@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Tue Nov 29 2022
- * Modified By: Hai Tran
+ * Last Modified: Thu Dec 15 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -28,14 +28,9 @@ const EditCurrency = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
 	const navigate = useNavigate()
 	const { isEdit, currency, loadingCurrency, id } = useCurrencyDetail()
-	console.log('============= currency', currency)
 
-	return loadingCurrency ? (
-		<div className="mt-40 text-center">
-			<CircularProgress />
-		</div>
-	) : (
-		<ListCurrencyProvider t={t} isEdit={isEdit} currencyId={id} currencyData={currency}>
+	return (
+		<ListCurrencyProvider t={t} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle={t('title.currency_detail')}
 				headerAction={
@@ -43,7 +38,15 @@ const EditCurrency = props => {
 						{t('common:btn.back')}
 					</Button>
 				}
-				content={<DetailCurrency />}
+				content={
+					loadingCurrency ? (
+						<div className="mt-40 text-center">
+							<CircularProgress />
+						</div>
+					) : (
+						<DetailCurrency currencyId={id} currencyData={currency} />
+					)
+				}
 			/>
 		</ListCurrencyProvider>
 	)
