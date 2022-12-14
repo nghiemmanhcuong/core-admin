@@ -32,7 +32,9 @@ const CoreDatePicker = ({
 	required = false,
 	helperText,
 	placeholder = '',
-	size = ''
+	size = '',
+	showTimeSelect = false,
+	timeFormat = ''
 }) => {
 	const {
 		field: { onChange, onBlur, value, ref },
@@ -111,6 +113,8 @@ const CoreDatePicker = ({
 				withPortal
 				ref={ref}
 				onCalendarClose={onBlur}
+				showTimeSelect={showTimeSelect}
+				timeFormat={timeFormat}
 			/>
 			{helperText && <FormHelperText>{helperText}</FormHelperText>}
 			{error && error.message && <FormHelperText error>{error.message}</FormHelperText>}
