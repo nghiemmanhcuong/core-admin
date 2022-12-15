@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Fri Nov 18 2022
+ * Last Modified: Thu Dec 15 2022
  * Modified By: haitran
  * -----a
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -67,12 +67,10 @@ const EditAccountForm = props => {
 				mail: Yup.string().required(),
 				role: Yup.mixed().nullable().required(),
 				roll: Yup.mixed().nullable().required(),
-				password: Yup.string().password().required()
+				password: Yup.string().trim().required().min(8)
 			})
 		)
 	})
-
-	console.log('============= watch', watch)
 
 	const onSubmit = handleSubmit(async data => {
 		data.confirm_password = data?.password
