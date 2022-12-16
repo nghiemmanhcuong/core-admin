@@ -26,7 +26,9 @@ const ChartSale = props => {
 	const labels = ['1', '2', '3', '4', '5', '6', '7']
 	const colors = ['#ff5436', '#f77900', '#f9fa93', '#00ea00', '#199111', '#00b9c1', '#0000f9', '#910887']
 	const colors1 = colors[Math.round(Math.random() * colors.length)]
-	const colors2 = colors[Math.round(Math.random() * colors.filter(item => item !== colors1).length)]
+	const colors2 = colors.filter(item => item !== colors1)[
+		Math.round(Math.random() * colors.filter(item => item !== colors1).length)
+	]
 
 	const data = {
 		labels,
