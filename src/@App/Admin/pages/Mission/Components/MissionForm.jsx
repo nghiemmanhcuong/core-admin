@@ -170,7 +170,7 @@ const MissionForm = props => {
 							name="clear_type"
 							options={[
 								{
-									value: 1,
+									value: '1',
 									label: (
 										<Box className="flex items-center w-full">
 											<Typography className="w-80">完走</Typography>
@@ -186,7 +186,7 @@ const MissionForm = props => {
 									)
 								},
 								{
-									value: 2,
+									value: '2',
 									label: (
 										<Box className="flex items-center w-full">
 											<Typography className="w-80">ポイント獲得</Typography>
