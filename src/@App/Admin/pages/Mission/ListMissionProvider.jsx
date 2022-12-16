@@ -14,6 +14,7 @@
  */
 
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
+import { currencyService } from '@App/Admin/services/currencyService'
 import { missionService } from '@App/Admin/services/missionService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
 import { errorMsg, successMsg } from '@Core/helper/Message'
@@ -24,6 +25,12 @@ import React, { useEffect } from 'react'
 const ListMissionProvider = props => {
 	const requestMissions = useRequest(missionService.list, {
 		manual: true
+	})
+	const { data: currencies, run: fetchCurrencies } = useRequest(currencyService.list, {
+		manual: true,
+		onError: res => {
+			errorMsg(t('common:message.fetch_list_failed'))
+		}
 	})
 
 	const { runAsync: handleDeleteMission } = useRequest(missionService.delete, {
@@ -45,12 +52,14 @@ const ListMissionProvider = props => {
 	useEffect(() => {
 		// missionTableHandler.handleFetchData()
 		getMissions()
+		fetchCurrencies({ per_page: 99999 })
 	}, [])
 
 	const data = {
 		...props,
 		missionTableHandler,
-		handleDeleteMission
+		handleDeleteMission,
+		currencies
 	}
 
 	return <AdminPageProvider {...data}>{props.children}</AdminPageProvider>

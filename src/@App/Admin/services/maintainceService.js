@@ -13,12 +13,13 @@
  * ----------	---	----------------------------------------------------------
  */
 
-const { default: BaseService } = require('@Core/api/BaseService')
+import { env } from '@App/env'
+import BaseService from '@Core/api/BaseService'
 
 class Maintaince extends BaseService {
-	BASE_URL = '/'
+	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/v1/admin/maintaince'
+	BASE_ENDPOINT = '/resource/csvDownload'
 
 	constructor(params) {
 		super(params)

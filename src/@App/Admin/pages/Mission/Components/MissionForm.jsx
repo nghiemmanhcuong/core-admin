@@ -3,8 +3,8 @@
  * Author: TheAnh58_DELL
  * Email: you@you.you
  * -----
- * Last Modified: Tue Nov 29 2022
- * Modified By: Hai Tran
+ * Last Modified: Sat Dec 17 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -28,13 +28,14 @@ import Yup from '@Core/helper/Yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, Typography } from '@mui/material'
-import React from 'react'
+import { useUpdateEffect } from 'ahooks'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 // import PropTypes from 'prop-types'
 
 const MissionForm = props => {
-	const { t, missionData, isEdit, missionId } = useAdminPageContext()
+	const { t, missionData, isEdit, missionId, currencies } = useAdminPageContext()
 	const navigate = useNavigate()
 
 	console.log('============= missionData', missionData)
@@ -43,6 +44,7 @@ const MissionForm = props => {
 		control,
 		watch,
 		handleSubmit,
+		setValue,
 		formState: { isSubmitting, isDirty }
 	} = useForm({
 		mode: 'onTouched',
@@ -50,7 +52,7 @@ const MissionForm = props => {
 			id: missionData?.id ?? null,
 			mission_name: missionData?.mission_name ?? 'mission1',
 			mission_detail: missionData?.mission_detail ?? 'ミッション一1詳細',
-			clear_type: missionData?.clear_type ?? 1,
+			clear_type: missionData?.clear_type ?? '1',
 			clear_value: missionData?.clear_value ?? 2,
 			mission_display: missionData?.mission_display ?? 1,
 			card_name: missionData?.card_name ?? 'card1',
@@ -73,6 +75,10 @@ const MissionForm = props => {
 			})
 		)
 	})
+
+	// useUpdateEffect(() => {
+	// 	setValue('clear_value', '')
+	// }, [watch('clear_type')])
 
 	const onSubmit = handleSubmit(async data => {
 		try {
@@ -153,7 +159,7 @@ const MissionForm = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>
 							{t('edit.form.label.clear_condition')}
 						</Typography>
 					</Box>
@@ -170,9 +176,10 @@ const MissionForm = props => {
 											<Typography className="w-80">完走</Typography>
 											<CoreInput
 												control={control}
-												name="clear_value"
+												name={watch('clear_type') === '1' ? 'clear_value' : ''}
 												size="small"
 												className="w-100 mx-20"
+												disabled={watch('clear_type') !== '1'}
 											/>
 											<Typography className="w-80">コース</Typography>
 										</Box>
@@ -185,9 +192,10 @@ const MissionForm = props => {
 											<Typography className="w-80">ポイント獲得</Typography>
 											<CoreInput
 												control={control}
-												name="clear_value"
+												name={watch('clear_type') === '2' ? 'clear_value' : ''}
 												size="small"
 												className="w-100 mx-20"
+												disabled={watch('clear_type') !== '2'}
 											/>
 											<Typography className="w-80">ポイント以上</Typography>
 										</Box>
@@ -265,15 +273,29 @@ const MissionForm = props => {
 						/>
 					</Box>
 				</Box>
-				<AdminInput
-					label={t('edit.form.label.app_currency_id')}
-					control={control}
-					name="app_currency_id"
-					required
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-				/>
+
+				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+						<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>
+							{t('edit.form.label.app_currency_id')}
+						</Typography>
+					</Box>
+					<Box className="w-full sm:w-2/3 sm:flex">
+						<CoreAutocomplete
+							control={control}
+							name="app_currency_id"
+							size="small"
+							placeholder="Choose..."
+							options={currencies?.app_currency}
+							valuePath="id"
+							labelPath="name"
+							returnValueType="enum"
+							className="mb-16 w-full sm:mb-20"
+						/>
+					</Box>
+				</Box>
+
 				<AdminInput
 					label={t('edit.form.label.currency')}
 					control={control}

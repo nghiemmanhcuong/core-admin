@@ -17,6 +17,8 @@ import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 import { eventService } from '@App/Admin/services/eventService'
 import { LoadingButton } from '@mui/lab'
 import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
+import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
+import moment from 'moment'
 
 const Tab1 = props => {
 	const { t, eventData, isEdit, tags } = useAdminPageContext()
@@ -34,21 +36,6 @@ const Tab1 = props => {
 		{ key: '4', value: 4, label: t('edit.form.check_box.label.all_participants') }
 	]
 
-	const tagDatas = [
-		{ key: '1', value: 1, label: '温泉あり' },
-		{ key: '2', value: 2, label: '景色最高' },
-		{ key: '3', value: 3, label: '秋におすすめ' },
-		{ key: '4', value: 4, label: '初心者におすすめ' },
-		{ key: '5', value: 5, label: '温泉あり' },
-		{ key: '6', value: 6, label: '景色最高' },
-		{ key: '7', value: 7, label: '秋におすすめ' },
-		{ key: '8', value: 8, label: '初心者におすすめ' },
-		{ key: '9', value: 9, label: '温泉あり' },
-		{ key: '10', value: 10, label: '景色最高' },
-		{ key: '11', value: 11, label: '秋におすすめ' },
-		{ key: '12', value: 12, label: '初心者におすすめ' }
-	]
-
 	const tagOptions = tags?.tags?.reduce((result, currentValue) => {
 		const formatResult = {
 			key: `${currentValue?.id}`,
@@ -61,20 +48,15 @@ const Tab1 = props => {
 		return result
 	}, [])
 
-	console.log('============= tagOptions', tagOptions)
-
-	const paymentMethodOptions = [
-		{ value: '1', label: 'クレカ' },
-		{ value: '2', label: 'QR' }
-	]
+	// const paymentMethodOptions = [
+	// 	{ value: '1', label: 'クレカ' },
+	// 	{ value: '2', label: 'QR' }
+	// ]
 
 	const typeOptions = [
-		{ value: 1, label: 'クイズチャレンジ' },
-		{ value: 2, label: 'エントリーオプション' },
-		{ value: 2, label: 'クレカ' },
-		{ value: 2, label: 'QR' },
-		{ value: 2, label: 'QR2' },
-		{ value: 2, label: 'QR3' }
+		{ value: 1, label: 'アラウンドチャレンジ' },
+		{ value: 2, label: 'コースチャレンジ' },
+		{ value: 3, label: 'クイズチャレンジ' }
 	]
 
 	const venueOptions = [
@@ -114,14 +96,14 @@ const Tab1 = props => {
 			id: eventData?.id ?? '',
 			title: eventData?.title ?? '',
 			type: eventData?.type ?? null,
-			category: [],
+			category: {},
 			event_start: eventData?.event_start ?? null,
 			event_end: eventData?.event_end ?? null,
 			reception_start: eventData?.reception_start ?? null,
 			reception_end: eventData?.reception_end ?? null,
 			venue: eventData?.venue ?? null,
 			entry_fee: eventData?.entry_fee ?? null,
-			tag: [],
+			tag: {},
 			publish: eventData?.publish ?? 1,
 			special_feature_id: eventData?.special_feature_id ?? 0,
 			author: eventData?.author ?? '',
@@ -150,6 +132,8 @@ const Tab1 = props => {
 		formState: { isSubmitting, isDirty }
 	} = methodForm
 
+	console.log('============= watch()', watch())
+
 	const onSubmit = methodForm.handleSubmit(async data => {
 		try {
 			const newCategory = []
@@ -162,16 +146,21 @@ const Tab1 = props => {
 			}
 
 			for (const tagKey in data?.tag) {
-				if (data?.category[tagKey]) {
-					newCategory.push(+tagKey)
+				if (data?.tag[tagKey]) {
+					newTag.push(+tagKey)
 				}
 			}
 
 			const newData = {
 				...data,
 				tag: newTag,
-				category: newCategory
+				category: newCategory,
+				event_start: moment(data?.event_start).format('YYYY-MM-DD HH:mm:ss'),
+				event_end: moment(data?.event_end).format('YYYY-MM-DD HH:mm:ss'),
+				reception_start: moment(data?.reception_start).format('YYYY-MM-DD HH:mm:ss'),
+				reception_end: moment(data?.reception_end).format('YYYY-MM-DD HH:mm:ss')
 			}
+
 			await eventService.save(newData)
 			navigate(ROUTER_ADMIN.event.list)
 			successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))
@@ -219,7 +208,7 @@ const Tab1 = props => {
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>
 							{t('edit.form.label.display')}
 						</Typography>
 					</Box>
@@ -288,7 +277,7 @@ const Tab1 = props => {
 						</Typography>
 					</Box>
 					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
-						<CoreAutocomplete
+						<CoreDatePicker
 							control={control}
 							name="event_start"
 							size="small"
@@ -305,7 +294,7 @@ const Tab1 = props => {
 							</Typography>
 						</Box>
 
-						<CoreAutocomplete
+						<CoreDatePicker
 							control={control}
 							name="event_end"
 							size="small"
@@ -326,15 +315,15 @@ const Tab1 = props => {
 						</Typography>
 					</Box>
 					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
-						<CoreAutocomplete
+						<CoreDatePicker
 							control={control}
 							name="reception_start"
 							size="small"
 							className="w-full sm:w-1/3"
 							variant="outlined"
-							placeholder="Choose..."
-							options={eventStartOptions}
-							returnValueType="enum"
+							// placeholder="Choose..."
+							// options={eventStartOptions}
+							// returnValueType="enum"
 						/>
 
 						<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
@@ -343,7 +332,7 @@ const Tab1 = props => {
 							</Typography>
 						</Box>
 
-						<CoreAutocomplete
+						<CoreDatePicker
 							control={control}
 							name="reception_end"
 							size="small"
