@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Sun Oct 23 2022
- * Modified By: use
+ * Last Modified: Fri Dec 16 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -13,99 +13,38 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import React from 'react'
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  } from "chart.js";
-  import { Bar} from "react-chartjs-2";
-  import { Box } from "@mui/material";
-  // import PropTypes from 'prop-types'
-  
-  ChartJS.register(
-      CategoryScale,
-      LinearScale,
-      BarElement,
-      Title,
-      Tooltip,
-      Legend
-    );
+import React, { useRef } from 'react'
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js'
+import { Chart } from 'react-chartjs-2'
 // import PropTypes from 'prop-types'
 
-const ChartOverview = (props) => {
-  
-    const options = {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "top",
-            labels: {
-              boxWidth: 25,
-              borderRadius: 12
-            },
-          },
-          
-          title: {
-            display: false,
-            text: 'Chart.js Bar Chart - Stacked'
-          }
-        },
-        scales: {
-          x: {
-              grid: {
-                display: false
-              },
-              stacked: true,
-          },
-          y: {
-            stacked: true,
-            beginAtZero: true,
-            min: 0,
-            max: 400,
-            ticks: {
-                stepSize: 100
-            }
-          }
-      }
-      };
-    const labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6']
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Shose',
-          data: [30, 30, 60, 120, 70, 70],
-          backgroundColor: "rgb(254,185,105)",
-          borderWidth: 1,
-          barThickness: 40,
-          borderRadius: 10
-        },
-        {
-          label: 'Suits',
-          data: [90, 180, 50, 70, 70, 30],
-          backgroundColor: "rgb(251,99,64)",
-          borderWidth: 1,
-          barThickness: 40,
-          borderRadius: 10
-        },
-       
-        {
-          label: 'Jeans',
-          data: [60, 190, 80, 170, 70, 80],
-          backgroundColor: "rgb(119,100,228)",
-          borderWidth: 1,
-          barThickness: 40,
-          borderRadius: 10
-        },
-      ]
-    };
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend)
 
- return <Bar options={options} data={data} />
+const ChartOverview = props => {
+	const chartRef = useRef(null)
+	const labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6']
+	const data = {
+		labels: labels,
+		datasets: [
+			{
+				label: 'Shose',
+				data: [30, 30, 60, 120, 70, 70],
+				borderColor: 'rgb(254,185,105)'
+			},
+			{
+				label: 'Suits',
+				data: [90, 180, 50, 70, 70, 30],
+				borderColor: 'rgb(251,99,64)'
+			},
+			{
+				label: 'Jeans',
+				data: [60, 190, 80, 170, 70, 80],
+				borderColor: 'rgb(119,100,228)'
+			}
+		]
+	}
+
+	return <Chart ref={chartRef} type="line" data={data} />
 }
 
 // ChartOverview.defaultProps = {}

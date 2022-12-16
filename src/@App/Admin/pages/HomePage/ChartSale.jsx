@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Sun Oct 23 2022
- * Modified By: use
+ * Last Modified: Fri Dec 16 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -13,80 +13,40 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import React from 'react'
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  } from "chart.js";
-  import { Bar} from "react-chartjs-2";
-  import { Box } from "@mui/material";
-  // import PropTypes from 'prop-types'
-  
-  ChartJS.register(
-      CategoryScale,
-      LinearScale,
-      BarElement,
-      Title,
-      Tooltip,
-      Legend
-    );
+import React, { useRef } from 'react'
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js'
+import { Chart } from 'react-chartjs-2'
 // import PropTypes from 'prop-types'
 
-const ChartSale = (props) => {
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend)
 
-    const options = {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: false,
-            position: "top",
-            labels: {
-                boxWidth: 25
-            }
-          },
-          title: {
-            display: false,
-            text: "Chart.js Bar Chart"
-          }
-        },
-        scales: {
-          x: {
-              grid: {
-                display: false
-              }
-          },
-          y: {
-            beginAtZero: true,
-            min: 0,
-            max: 120000,
-            ticks: {
-                stepSize: 10000
-            }
-          }
-      }
-      };
-    const labels = ["1", "2", "3", "4", "5", "6", "7"];
-    const data = {
-        labels,
-        datasets: [
-          {
-            label: "Dataset 1",
-            data: [50000, 30000,50000,65000,100000,60000,115000],
-            backgroundColor: "rgb(119,100,228)",
-            borderWidth: 1,
-            barThickness: 24,
-            borderRadius: 6
-          }
-        ]
-      };
- return (
-    <Bar options={options} data={data} />
- )
+const ChartSale = props => {
+	const chartRef = useRef(null)
+
+	const labels = ['1', '2', '3', '4', '5', '6', '7']
+	const colors = ['#ff5436', '#f77900', '#f9fa93', '#00ea00', '#199111', '#00b9c1', '#0000f9', '#910887']
+	const colors1 = colors[Math.round(Math.random() * colors.length)]
+	const colors2 = colors.filter(item => item !== colors1)[
+		Math.round(Math.random() * colors.filter(item => item !== colors1).length)
+	]
+
+	const data = {
+		labels,
+		datasets: [
+			{
+				label: 'Dataset 1',
+				data: [50000, 30000, 50000, 65000, 100000, 60000, 115000],
+				borderColor: colors1
+			},
+			{
+				label: 'Dataset 2',
+				data: [10000, 50000, 20000, 75000, 190000, 5000, 115000],
+				borderColor: colors2
+			}
+		]
+	}
+
+	return <Chart ref={chartRef} type="line" data={data} />
 }
 
 // ChartSale.defaultProps = {}
