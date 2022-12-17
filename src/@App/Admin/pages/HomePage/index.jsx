@@ -39,7 +39,7 @@ const HomePage = props => {
 							</CardContent>
 						</Card>
 					</Box>
-					{/* <Box className="w-full sm:w-1/2  px-12 mb-40">
+					<Box className="w-full sm:w-1/2  px-12 mb-40">
 						<Card>
 							<CardContent>
 								<Typography variant="subtitle2" className="mb-12">
@@ -51,8 +51,8 @@ const HomePage = props => {
 								<ChartOverview />
 							</CardContent>
 						</Card>
-					</Box> */}
-					{/* <Box className="w-full sm:w-1/2 px-12 mb-40">
+					</Box>
+					<Box className="w-full sm:w-1/2 px-12 mb-40">
 						<Card>
 							<CardContent>
 								<Typography variant="subtitle2" className="mb-12">
@@ -64,7 +64,7 @@ const HomePage = props => {
 								<ChartPartners />
 							</CardContent>
 						</Card>
-					</Box> */}
+					</Box>
 				</Box>
 			}
 		/>

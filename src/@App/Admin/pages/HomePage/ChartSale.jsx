@@ -17,7 +17,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js'
 import { Chart } from 'react-chartjs-2'
 // import PropTypes from 'prop-types'
-
+import 'chart.js/auto'
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend)
 
 const labels = ['1', '2', '3', '4', '5', '6', '7']

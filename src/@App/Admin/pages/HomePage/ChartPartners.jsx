@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Fri Dec 16 2022
- * Modified By: haitran
+ * Last Modified: Sat Dec 17 2022
+ * Modified By: Peter
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -17,6 +17,7 @@ import React, { useRef } from 'react'
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js'
 import { Chart } from 'react-chartjs-2'
 // import PropTypes from 'prop-types'
+import 'chart.js/auto'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend)
 
