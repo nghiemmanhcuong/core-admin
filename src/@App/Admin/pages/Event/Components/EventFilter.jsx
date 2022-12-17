@@ -25,21 +25,7 @@ const EventFilter = props => {
 
 	const { control, getValues, watch } = useForm({
 		mode: 'onTouched',
-		defaultValues: {
-			title: '',
-			category: [],
-			summary: '',
-			venue: '',
-			event_start: null,
-			event_end: null,
-			reception_start: null,
-			reception_end: null,
-			tag: [],
-			author: '',
-			min_fee: null,
-			max_fee: null,
-			publish: ''
-		}
+		defaultValues: {}
 	})
 
 	const handleFilter = async () => {
@@ -56,7 +42,7 @@ const EventFilter = props => {
 					? moment(data?.reception_end).add(7, 'hours').format('YYYY-MM-DD')
 					: null,
 				category: data?.category?.join(','),
-				publish: +data?.publish,
+				// publish: data?.publish,
 				tag: data?.tag?.join(',')
 			}
 			await eventTableHandler.handleFetchData(params)

@@ -57,7 +57,7 @@ const ListItemProvider = props => {
 	useEffect(() => {
 		// itemTableHandler.handleFetchData()
 		getItems()
-		fetchCurrencies()
+		fetchCurrencies({ per_page: 99999 })
 	}, [])
 
 	const data = {

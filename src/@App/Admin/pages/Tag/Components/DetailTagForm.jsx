@@ -118,7 +118,6 @@ const DetailTagForm = props => {
 		data.frequently_used = data?.frequently_used ? 1 : 0
 
 		try {
-			console.log('============= data', data)
 			data = pickBy(data, val => {
 				return val !== null && val !== '' && val !== 'undefined'
 			})
@@ -207,8 +206,8 @@ const DetailTagForm = props => {
 						</Typography>
 					</Box>
 					<Box className="w-full flex sm:w-2/3 border-grey-400 border-1 rounded-4">
-						<CoreCheckbox control={control} name="hide" row label={t('title.hide')} className="ml-20" />
 						<CoreCheckbox control={control} name="show" row label={t('title.show')} className="ml-20" />
+						<CoreCheckbox control={control} name="hide" row label={t('title.hide')} className="ml-20" />
 					</Box>
 				</Box>
 				<AdminInput

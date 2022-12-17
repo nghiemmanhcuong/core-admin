@@ -29,8 +29,8 @@
 		"tag_type": "タグ種別",
 		"test": "チェック",
 		"hide/show": "表示·非表示",
-		"hide": "表示",
-		"show": "非表示"
+		"show": "表示",
+		"hide": "非表示"
 	},
 	"value": {
 		"express": "表示",

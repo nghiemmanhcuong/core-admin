@@ -28,7 +28,6 @@ import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPagePro
 import { errorMsg, successMsg } from '@Core/helper/Message'
 import { courseService } from '@App/Admin/services/courseService'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
-import moment from 'moment'
 import ChooseRouteFile from './Components/ChooseRouteFile'
 import { useCourseForm } from './hooks/useCourseForm'
 
@@ -125,8 +124,6 @@ const DetailCourseForm = props => {
 	const { methodForm, onSubmit } = useCourseForm(props)
 
 	const { control, watch } = methodForm
-	console.log('============= watch()', watch())
-	console.log('============= spots', spots)
 
 	return (
 		<>
@@ -221,7 +218,7 @@ const DetailCourseForm = props => {
 						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 								<Typography variant="h3" color="primary" className="flex items-center mb-4">
-									<Typography className="text-black py-4 px-16 rounded-4 mx-8">
+									<Typography className="text-black py-4 px-16 rounded-4 w-60  mx-8">
 										{/* 必須 */}
 									</Typography>
 									完走目安
@@ -281,7 +278,7 @@ const DetailCourseForm = props => {
 						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 								<Typography variant="h3" color="primary" className="flex items-center mb-4">
-									<Typography className="text-black py-4 px-16 rounded-4 mx-8">
+									<Typography className="text-black py-4 px-16 rounded-4 w-60  mx-8">
 										{/* 必須 */}
 									</Typography>
 									コースタグID

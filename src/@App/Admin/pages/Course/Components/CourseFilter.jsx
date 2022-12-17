@@ -40,7 +40,7 @@ const CourseFilter = props => {
 			course_name: '',
 			district: '',
 			tag: '',
-			display: []
+			display: {}
 		}
 	})
 
@@ -63,14 +63,14 @@ const CourseFilter = props => {
 					<CoreInput name="course_name" control={control} size="small" className="w-full sm:w-2/3" />
 				</Box>
 				<Box className="flex w-full sm:w-1/2 items-start mx-8">
-					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">区域</Box>
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">エリア</Box>
 					<CoreInput name="district" control={control} size="small" className="w-full sm:w-2/3" />
 				</Box>
 			</Box>
 
 			<Box className="flex p-8 w-full">
 				<Box className="flex w-full sm:w-1/2 items-start">
-					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">区域</Box>
+					<Box className="w-full sm:w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">タグ</Box>
 					<CoreInput name="tag" control={control} size="small" className="w-full sm:w-2/3" />
 				</Box>
 				<Box className="flex w-full sm:w-1/2 items-start mx-8">
