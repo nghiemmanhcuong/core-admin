@@ -99,7 +99,7 @@ const AdminInputUpload = ({
 					<Box className="border-1 mb-12 sm:mb-0 border-grey-400 w-full rounded-4">
 						<Box className="h-256 bg-grey-200">
 							<Image
-								src={previewFile ?? ''}
+								src={previewFile ?? value ?? ''}
 								wrapperClassName="h-256"
 								errorIcon={<img src="/img/event/no_image.png" />}
 								showLoading

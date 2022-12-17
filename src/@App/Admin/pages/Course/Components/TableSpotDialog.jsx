@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Wed Nov 09 2022
- * Modified By: TheAnh58
+ * Last Modified: Sat Dec 17 2022
+ * Modified By: Hai Tran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -24,28 +24,24 @@ import { useNavigate } from 'react-router-dom'
 import SpotTableFilter from '../../Spot/Components/SpotTableFilter'
 // import PropTypes from 'prop-types'
 
-const TableSpotDialog = (props) => {
-    const {handleClose} = props
-    const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
-    const {control, watch} = useForm({
-        defaultValues: {
-            checkbox: []
-        }
-    })
+const TableSpotDialog = props => {
+	const { handleClose } = props
+	const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
+	const { control, watch, getValues } = useForm({
+		defaultValues: {
+			checkbox: {}
+		}
+	})
+
+	console.log('============= watchCheckbox', watch('checkbox'))
 
 	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
-				cell: info => {
-                    return (
-                        <CoreCheckbox 
-                            control={control}
-                            name={`checkbox[${info?.row?.index}]`}
-                            label=''
-                        />
-                    )
-                },
+				cell: ({ row }) => {
+					return <CoreCheckbox control={control} name={`checkbox.${row?.original?.id}`} label="" />
+				},
 				header: t('label.no'),
 				className: 'w-[5%]'
 			}),
@@ -66,7 +62,7 @@ const TableSpotDialog = (props) => {
 				cell: info => {
 					return renderTextTruncate(info.getValue())
 				}
-			}),
+			})
 			// columnHelper.accessor('action', {
 			// 	header: t('label.action'),
 			// 	// size: 200,
@@ -95,9 +91,11 @@ const TableSpotDialog = (props) => {
 					{t('btn.upload')}
 				</Button>
 			</Box> */}
-            <Box className='text-right my-20'>
-                <Button className='bg-blue px-12' onClick={() => handleClose()} variant='contained'>選択</Button>
-            </Box>
+			<Box className="text-right my-20">
+				<Button className="bg-blue px-12" onClick={() => handleClose()} variant="contained">
+					選択
+				</Button>
+			</Box>
 		</Box>
 	)
 }

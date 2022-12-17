@@ -44,7 +44,7 @@ export const useCourseForm = props => {
 			// strength: 3,
 			goal_approximate_time: null,
 			route_url: courseData?.route_url ?? '',
-			course_map_image: '',
+			course_map_image: courseData?.course_map_image ?? '',
 			route_file: courseData?.route_file ?? '',
 			elevation_chart_url: courseData?.elevation_chart_url ?? '',
 			course_tag: [1],
@@ -109,7 +109,7 @@ export const useCourseForm = props => {
 			navigate(ROUTER_ADMIN.course)
 			successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))
 		} catch (error) {
-			errorMsg(error)
+			errorMsg(error?.response?.data?.error_message)
 		}
 	})
 	// console.log('============= isEdit', isEdit)
