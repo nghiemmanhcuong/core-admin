@@ -18,8 +18,8 @@ import { renderTextTruncate } from '@App/Admin/hooks/useHelpRender'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box, Button } from '@mui/material'
-import React, { useMemo } from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useMemo, useState } from 'react'
+import { useForm, useFormContext } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import SpotTableFilter from '../../Spot/Components/SpotTableFilter'
 // import PropTypes from 'prop-types'
@@ -27,23 +27,16 @@ import SpotTableFilter from '../../Spot/Components/SpotTableFilter'
 const TableSpotDialog = props => {
 	const { handleClose } = props
 	const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
-	const { control, watch, getValues } = useForm({
-		defaultValues: {
-			checkbox: {}
-		}
-	})
-
-	console.log('============= watchCheckbox', watch('checkbox'))
+	const { setTableSelected } = useFormContext()
+	const [data, setData] = useState()
 
 	const navigate = useNavigate()
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
-				cell: ({ row }) => {
-					return <CoreCheckbox control={control} name={`checkbox.${row?.original?.id}`} label="" />
-				},
 				header: t('label.no'),
-				className: 'w-[5%]'
+				className: 'w-[5%]',
+				cell: info => info.getValue()
 			}),
 			columnHelper.accessor('name', {
 				header: t('label.name')
@@ -84,7 +77,14 @@ const TableSpotDialog = props => {
 	return (
 		<Box>
 			<SpotTableFilter />
-			<CoreTable isShowPagination columns={columns} {...spotTableHandler} data={spotTableHandler?.spots} />
+			<CoreTable
+				isShowPagination
+				hasRowSelection
+				columns={columns}
+				onRowSelectionChange={rows => setData(rows)}
+				{...spotTableHandler}
+				data={spotTableHandler?.spots}
+			/>
 			{/* <Box className="flex justify-end">
 				<TextField type="file"/>
 				<Button variant="contained" color="primary" className="ml-[2px]" >
@@ -92,7 +92,14 @@ const TableSpotDialog = props => {
 				</Button>
 			</Box> */}
 			<Box className="text-right my-20">
-				<Button className="bg-blue px-12" onClick={() => handleClose()} variant="contained">
+				<Button
+					className="bg-blue px-12"
+					onClick={() => {
+						setTableSelected(data)
+						handleClose()
+					}}
+					variant="contained"
+				>
 					選択
 				</Button>
 			</Box>
