@@ -16,48 +16,86 @@
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { maintainceService } from '@App/Admin/services/maintainceService'
+import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
+import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
+import { errorMsg } from '@Core/helper/Message'
 import { Button, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+import moment from 'moment/moment'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { useMaintainceOptions } from '../hooks/useMaintainceOptions'
 // import PropTypes from 'prop-types'
 
 const MaintainceForm = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.maintaince)
-	const periodOptions = [
-		{
-			value: 1,
-			label: t('edit.form.check_box.label.whole_period')
-		},
-		{
-			value: 2,
-			label: t('edit.form.check_box.label.specified_period')
+	const { events } = useAdminPageContext()
+	console.log('============= events', events)
+	const {
+		periodOptions,
+		reportDisplayOptions,
+		exportAppOption,
+		eventPageDataOptions,
+		entryPaymentDataOptions,
+		playDataOptions,
+		currencyUsageDataOption
+	} = useMaintainceOptions()
+
+	const { control, getValues, watch } = useForm({
+		mode: 'onTouched',
+		defaultValues: {
+			collect_duration: 'all',
+			report_display: 'daily',
+			export_event: {},
+			export_app: {}
 		}
-	]
-	const reportDisplayOptions = [
-		{
-			value: 1,
-			label: t('edit.form.check_box.label.daily')
-		},
-		{
-			value: 2,
-			label: t('edit.form.check_box.label.weekly')
-		},
-		{
-			value: 3,
-			label: t('edit.form.check_box.label.monthly')
-		},
-		{
-			value: 4,
-			label: t('edit.form.check_box.label.total')
-		}
-	]
-	const { control } = useForm({
-		mode: 'onTouched'
 	})
+
+	const handleDownload = async () => {
+		try {
+			const data = getValues()
+			const exportEvent = getValues('export_event')
+			const exportEventSelected = []
+			const exportApp = getValues('export_app')
+			const exportAppSelected = []
+
+			//eslint-disable-next-line
+			for (const value in exportEvent) {
+				if (exportEvent[value]) {
+					exportEventSelected.push(value)
+				}
+			}
+			//eslint-disable-next-line
+			for (const value in exportApp) {
+				if (exportApp[value]) {
+					exportAppSelected.push(value)
+				}
+			}
+
+			const params = {
+				...data,
+				export_event: exportEventSelected,
+				export_app: exportAppSelected,
+				export_format: 'CSV',
+				collect_duration_from: moment(data?.collect_duration_from).format('YYYY-MM'),
+				collect_duration_until: moment(data?.collect_duration_until).format('YYYY-MM')
+			}
+
+			// console.log('============= data', data)
+			console.log('============= dataParams', params)
+
+			await maintainceService.handleDownload(params)
+		} catch (error) {
+			console.log('============= error', error)
+			errorMsg(error?.response?.data?.error_message)
+		}
+	}
+
+	// console.log('============= watch()', watch())
 
 	return (
 		<Box className="max-w-lg mx-auto">
@@ -71,32 +109,34 @@ const MaintainceForm = props => {
 					<Box className="rounded-md w-full flex sm:w-3/4 py-8 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
 						<CoreRadioGroup
 							control={control}
-							name="period"
+							name="collect_duration"
 							className="w-full sm:w-1/3"
 							options={periodOptions}
 							row
 						/>
 						<Box className="flex w-full my-auto sm:w-2/3">
-							<FormAutocomplete
+							<CoreDatePicker
 								control={control}
 								size="small"
 								fullWidth
 								variant="outlined"
 								placeholder="Choose..."
-								name="from_date"
+								name="collect_duration_from"
 								className="w-full"
+								showMonthYearPicker
 							/>
 							<Typography variant="h3" color="primary" className="mx-8 self-center">
 								{t('edit.form.label.to')}
 							</Typography>
-							<FormAutocomplete
+							<CoreDatePicker
 								control={control}
 								size="small"
 								fullWidth
 								variant="outlined"
 								placeholder="Choose..."
-								name="to_date"
+								name="collect_duration_until"
 								className="w-full mr-8"
+								showMonthYearPicker
 							/>
 						</Box>
 					</Box>
@@ -124,14 +164,18 @@ const MaintainceForm = props => {
 						<Typography variant="h4" className="w-full sm:w-1/5 pl-12 my-auto">
 							{t('edit.form.label.event_selection')}
 						</Typography>
-						<FormAutocomplete
+						<CoreAutocomplete
 							control={control}
 							size="small"
 							fullWidth
 							variant="outlined"
 							placeholder="Choose..."
-							name="exchangeable_currency"
+							name="event_id"
 							className="w-full sm:w-4/5 bg-white"
+							options={events?.events}
+							valuePath="id"
+							labelPath="title"
+							returnValueType="enum"
 						/>
 					</Box>
 
@@ -143,30 +187,14 @@ const MaintainceForm = props => {
 								</Typography>
 							</Box>
 							<Box className="pt-6 mt-5 min-h-[180px] border-grey-300 border-1 rounded-l-4 bg-white min-h-min">
-								<CoreCheckbox
-									control={control}
-									name="number_of_event_page_views"
-									label={t('edit.form.check_box.value.number_of_event_page_views')}
-									className="ml-12"
-								/>
-								<CoreCheckbox
-									control={control}
-									name="number_of_favorites_added"
-									label={t('edit.form.check_box.value.number_of_favorites_added')}
-									className="ml-12"
-								/>
-								<CoreCheckbox
-									control={control}
-									name="number_of_entry_page_transitions"
-									label={t('edit.form.check_box.value.number_of_entry_page_transitions')}
-									className="ml-12"
-								/>
-								<CoreCheckbox
-									control={control}
-									name="user_registration_information"
-									label={t('edit.form.check_box.value.user_registration_information')}
-									className="ml-12"
-								/>
+								{eventPageDataOptions?.map(item => (
+									<CoreCheckbox
+										control={control}
+										className="col-span-1 -my-3 ml-20"
+										name={`export_event.${item?.value}`}
+										label={item?.label}
+									/>
+								))}
 							</Box>
 						</Box>
 
@@ -177,24 +205,14 @@ const MaintainceForm = props => {
 								</Typography>
 							</Box>
 							<Box className="pt-6 mt-5 ml-16 min-h-[180px] border-grey-300 border-1 rounded-l-4 bg-white min-h-min">
-								<CoreCheckbox
-									control={control}
-									name="number_of_applications_settlements"
-									label={t('edit.form.check_box.value.number_of_applications_settlements')}
-									className="ml-12"
-								/>
-								<CoreCheckbox
-									control={control}
-									name="application_payer_attributes"
-									label={t('edit.form.check_box.value.application_payer_attributes')}
-									className="ml-12"
-								/>
-								<CoreCheckbox
-									control={control}
-									name="list_of_application_information"
-									label={t('edit.form.check_box.value.list_of_application_information')}
-									className="ml-12"
-								/>
+								{entryPaymentDataOptions?.map(item => (
+									<CoreCheckbox
+										control={control}
+										className="col-span-1 -my-3 ml-20"
+										name={`export_event.${item?.value}`}
+										label={item?.label}
+									/>
+								))}
 							</Box>
 						</Box>
 
@@ -205,24 +223,14 @@ const MaintainceForm = props => {
 								</Typography>
 							</Box>
 							<Box className="pt-6 mt-5 min-h-[140px] border-grey-300 border-1 rounded-l-4 bg-white min-h-min">
-								<CoreCheckbox
-									control={control}
-									name="number_of_starts_checkins_clears"
-									label={t('edit.form.check_box.value.number_of_starts_checkins_clears')}
-									className="ml-12"
-								/>
-								<CoreCheckbox
-									control={control}
-									name="player_attribute"
-									label={t('edit.form.check_box.value.player_attribute')}
-									className="ml-12"
-								/>
-								<CoreCheckbox
-									control={control}
-									name="usage_data_by_spot"
-									label={t('edit.form.check_box.value.usage_data_by_spot')}
-									className="ml-12"
-								/>
+								{playDataOptions?.map(item => (
+									<CoreCheckbox
+										control={control}
+										className="col-span-1 -my-3 ml-20"
+										name={`export_event.${item?.value}`}
+										label={item?.label}
+									/>
+								))}
 							</Box>
 						</Box>
 
@@ -233,20 +241,14 @@ const MaintainceForm = props => {
 								</Typography>
 							</Box>
 							<Box className="pt-6 mt-5 ml-16 min-h-[140px] border-grey-300 border-1 rounded-l-4 bg-white min-h-min">
-								<CoreCheckbox
-									control={control}
-									name="number_of_product_exchanges_per_store_exchange_user_information"
-									label={t(
-										'edit.form.check_box.value.number_of_product_exchanges_per_store_exchange_user_information'
-									)}
-									className="ml-12"
-								/>
-								<CoreCheckbox
-									control={control}
-									name="inventory_and_limit_setting_by_product"
-									label={t('edit.form.check_box.value.inventory_and_limit_setting_by_product')}
-									className="ml-12"
-								/>
+								{currencyUsageDataOption?.map(item => (
+									<CoreCheckbox
+										control={control}
+										className="col-span-1 -my-3 ml-20"
+										name={`export_event.${item?.value}`}
+										label={item?.label}
+									/>
+								))}
 							</Box>
 						</Box>
 					</Box>
@@ -261,59 +263,24 @@ const MaintainceForm = props => {
 
 					<Box className="w-full mt-5 overflow-hidden px-16">
 						<Box className="flex flex-wrap w-full my-12  border-grey-300 border-1 rounded-l-4 bg-white min-h-min">
-							<CoreCheckbox
-								control={control}
-								name="total_number_of_installs"
-								label={t('edit.form.check_box.value.total_number_of_installs')}
-								className="w-full sm:w-1/2 pl-12"
-							/>
-							<CoreCheckbox
-								control={control}
-								name="dau"
-								label={t('edit.form.check_box.value.dau')}
-								className="w-full sm:w-1/2 pl-28"
-							/>
-							<CoreCheckbox
-								control={control}
-								name="user_attributes_of_all_installers"
-								label={t('edit.form.check_box.value.user_attributes_of_all_installers')}
-								className="w-full sm:w-1/2 pl-12"
-							/>
-							<CoreCheckbox
-								control={control}
-								name="wau"
-								label={t('edit.form.check_box.value.wau')}
-								className="w-full sm:w-1/2 pl-28"
-							/>
-							<CoreCheckbox
-								control={control}
-								name="overall_app_revenue"
-								label={t('edit.form.check_box.value.overall_app_revenue')}
-								className="w-full sm:w-1/2 pl-12"
-							/>
-							<CoreCheckbox
-								control={control}
-								name="mau"
-								label={t('edit.form.check_box.value.mau')}
-								className="w-full sm:w-1/2 pl-28"
-							/>
-							<CoreCheckbox
-								control={control}
-								name="revenue_composition_event_breakdown"
-								label={t('edit.form.check_box.value.revenue_composition_event_breakdown')}
-								className="w-full sm:w-1/2 pl-12"
-							/>
-							<CoreCheckbox
-								control={control}
-								name="breakdown_of_play_events_for_active_users"
-								label={t('edit.form.check_box.value.breakdown_of_play_events_for_active_users')}
-								className="w-full sm:w-1/2 pl-28"
-							/>
+							{exportAppOption?.map(item => (
+								<CoreCheckbox
+									control={control}
+									className="col-span-1 -my-3 ml-20"
+									name={`export_app.${item?.value}`}
+									label={item?.label}
+								/>
+							))}
 						</Box>
 					</Box>
 				</Box>
 
-				<Button variant="contained" color="primary" className="ml-auto bg-blue text-white">
+				<Button
+					variant="contained"
+					color="primary"
+					onClick={() => handleDownload()}
+					className="ml-auto bg-blue text-white"
+				>
 					{t('btn.csv_output')}
 				</Button>
 			</Box>

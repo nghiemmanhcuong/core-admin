@@ -4,7 +4,7 @@
  * Email: you@you.you
  * -----
  * Last Modified: Sat Dec 17 2022
- * Modified By: haitran
+ * Modified By: Hai Tran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -38,8 +38,6 @@ const MissionForm = props => {
 	const { t, missionData, isEdit, missionId, currencies } = useAdminPageContext()
 	const navigate = useNavigate()
 
-	console.log('============= missionData', missionData)
-
 	const {
 		control,
 		watch,
@@ -50,17 +48,17 @@ const MissionForm = props => {
 		mode: 'onTouched',
 		defaultValues: {
 			id: missionData?.id ?? null,
-			mission_name: missionData?.mission_name ?? 'mission1',
-			mission_detail: missionData?.mission_detail ?? 'ミッション一1詳細',
+			mission_name: missionData?.mission_name ?? '',
+			mission_detail: missionData?.mission_detail ?? '',
 			clear_type: missionData?.clear_type ?? '1',
-			clear_value: missionData?.clear_value ?? 2,
+			clear_value: missionData?.clear_value ?? null,
 			mission_display: missionData?.mission_display ?? 1,
-			card_name: missionData?.card_name ?? 'card1',
-			card_detail: missionData?.card_detail ?? 'card1詳細',
+			card_name: missionData?.card_name ?? '',
+			card_detail: missionData?.card_detail ?? '',
 			app_currency_id: missionData?.app_currency ?? 1,
-			currency: missionData?.currency ?? '1000',
+			currency: missionData?.currency ?? '',
 			card_display: missionData?.card_display ?? 1,
-			author: missionData?.author ?? 'James',
+			author: missionData?.author ?? '',
 			card_image: missionData?.card_image ?? ''
 		},
 		resolver: yupResolver(
