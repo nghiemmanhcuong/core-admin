@@ -13,11 +13,14 @@
  * ----------	---	----------------------------------------------------------
  */
 // import TableHeader from '@crema/core/AppTable/TableHeader'
-import { Box, CircularProgress, Pagination, Table, TableContainer, TablePagination } from '@mui/material'
+import { Box, Checkbox, CircularProgress, Pagination, Table, TableContainer, TablePagination } from '@mui/material'
 import { createColumnHelper, getCoreRowModel, useReactTable } from '@tanstack/react-table'
-import { useUpdateEffect } from 'ahooks'
+import { useUpdate, useUpdateEffect } from 'ahooks'
 
 import React, { useContext } from 'react'
+import { useEffect } from 'react'
+import { useMemo } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import CoreTableBody from './components/CoreTableBody'
 import CoreTableHead from './components/CoreTableHead'
@@ -28,6 +31,18 @@ const CoreTableContext = React.createContext()
 export const useCoreTableContext = () => useContext(CoreTableContext)
 
 export const columnHelper = createColumnHelper()
+
+const IndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, ref) => {
+	const defaultRef = React.useRef()
+	const resolvedRef = ref || defaultRef
+
+	React.useEffect(() => {
+		resolvedRef.current.indeterminate = indeterminate
+	}, [resolvedRef, indeterminate])
+
+	return <Checkbox ref={resolvedRef} {...rest} />
+})
+
 const CoreTable = ({
 	data = [],
 	columns = [],
@@ -37,12 +52,14 @@ const CoreTable = ({
 	pageIndex = 1,
 	handleFetchData = () => {},
 	loading = false,
+	onRowSelectionChange = () => {},
+	hasRowSelection = false,
 	...restProps
 }) => {
 	const { t } = useTranslation('common')
 	const rerender = React.useReducer(() => ({}), {})[1]
 	const defaultData = React.useMemo(() => [], [])
-
+	const [rowSelection, setRowSelection] = useState([])
 	const pagination = React.useMemo(
 		() => ({
 			pageIndex,
@@ -51,14 +68,55 @@ const CoreTable = ({
 		[pageIndex, pageSize]
 	)
 
+	useUpdateEffect(() => {
+		const originalRow = table.getSelectedRowModel().flatRows.map(row => row.original)
+		onRowSelectionChange(originalRow)
+	}, [rowSelection])
+
+	const columnSelection = useMemo(() => {
+		if (!hasRowSelection) return null
+		return {
+			id: 'select',
+			header: ({ table }) => {
+				return (
+					<IndeterminateCheckbox
+						{...{
+							checked: table.getIsAllRowsSelected(),
+							indeterminate: table.getIsSomeRowsSelected(),
+							onChange: table.getToggleAllRowsSelectedHandler()
+						}}
+					/>
+				)
+			},
+			cell: ({ row }) => (
+				<div className="px-1">
+					<IndeterminateCheckbox
+						{...{
+							checked: row.getIsSelected(),
+							indeterminate: row.getIsSomeSelected(),
+							onChange: row.getToggleSelectedHandler()
+						}}
+					/>
+				</div>
+			)
+		}
+	}, [JSON.stringify(rowSelection)])
+
+	const columnTable = useMemo(() => {
+		return [columnSelection, ...columns].filter(Boolean)
+	}, [columns, rowSelection, data])
+
 	const table = useReactTable({
 		data: data ?? defaultData,
-		columns,
+		columns: columnTable,
 		pageCount: total,
 		getCoreRowModel: getCoreRowModel(),
+		enableRowSelection: true,
 		state: {
-			pagination
+			pagination,
+			rowSelection
 		},
+		onRowSelectionChange: setRowSelection,
 		// onPaginationChange: setPagination,
 		manualPagination: true,
 		debugTable: true
@@ -76,8 +134,8 @@ const CoreTable = ({
 				}}
 			>
 				<Table sx={{ minWidth: 650 }} stickyHeader className="table">
-					<CoreTableHead table={table} columns={columns} />
-					<CoreTableBody table={table} />
+					<CoreTableHead table={table} columns={columns} rowSelection={rowSelection} />
+					<CoreTableBody table={table} columns={columns} rowSelection={rowSelection} />
 				</Table>
 				{loading && (
 					<>
