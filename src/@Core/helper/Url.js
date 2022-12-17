@@ -31,7 +31,7 @@ export const getQueryUrlObject = key => {
 }
 
 export function isLocalhost() {
-	return window.location.origin.indexOf('localhost') > -1
+	return window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('127.0.0.1') > -1
 }
 
 export const isValidUrl = str => {
