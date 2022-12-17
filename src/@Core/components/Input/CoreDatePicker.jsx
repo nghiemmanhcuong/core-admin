@@ -4,7 +4,7 @@
  * Email: phantrung696@gmail.com
  * -----
  * Last Modified:
- * Modified By: haitran
+ * Modified By: Hai Tran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -34,7 +34,8 @@ const CoreDatePicker = ({
 	placeholder = '',
 	size = '',
 	showTimeSelect = false,
-	timeFormat = ''
+	timeFormat = '',
+	showMonthYearPicker = false
 }) => {
 	const {
 		field: { onChange, onBlur, value, ref },
@@ -50,7 +51,13 @@ const CoreDatePicker = ({
 		<TextField
 			fullWidth
 			variant="outlined"
-			value={value ? moment(value).format('YYYY/MM/DD') : null}
+			value={
+				value && showMonthYearPicker
+					? moment(value).format('YYYY/MM')
+					: value
+					? moment(value).format('YYYY/MM/DD')
+					: null
+			}
 			// onClick={onClick}
 			InputProps={{
 				endAdornment: (
@@ -115,6 +122,7 @@ const CoreDatePicker = ({
 				onCalendarClose={onBlur}
 				showTimeSelect={showTimeSelect}
 				timeFormat={timeFormat}
+				showMonthYearPicker={showMonthYearPicker}
 			/>
 			{helperText && <FormHelperText>{helperText}</FormHelperText>}
 			{error && error.message && <FormHelperText error>{error.message}</FormHelperText>}

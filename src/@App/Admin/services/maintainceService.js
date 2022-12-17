@@ -19,11 +19,15 @@ import BaseService from '@Core/api/BaseService'
 class Maintaince extends BaseService {
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/resource/csvDownload'
+	BASE_ENDPOINT = '/api/resource/csvDownload'
 
 	constructor(params) {
 		super(params)
 		this.setRequest()
+	}
+
+	handleDownload = params => {
+		return this.request.get(this.BASE_ENDPOINT, { params })
 	}
 }
 

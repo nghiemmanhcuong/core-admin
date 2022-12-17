@@ -60,10 +60,10 @@ export const menuAdminConfig = [
 		title: 'アカウント管理',
 		url: ROUTER_ADMIN.account.list
 	},
-	{
-		title: 'メンテナンス管理',
-		url: ROUTER_ADMIN.maintaince.list
-	},
+	// {
+	// 	title: 'メンテナンス管理',
+	// 	url: ROUTER_ADMIN.maintaince.list
+	// },
 	{
 		title: 'タグ管理',
 		url: ROUTER_ADMIN.tag.list
