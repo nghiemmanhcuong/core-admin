@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Wed Nov 09 2022
- * Modified By: TheAnh58
+ * Last Modified: Sat Dec 17 2022
+ * Modified By: Hai Tran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -22,32 +22,35 @@ import ListSpotProvider from '../../Spot/ListSpotProvider'
 import TableSpotDialog from '../Components/TableSpotDialog'
 // import PropTypes from 'prop-types'
 
-export const useListSpotDialog = (props) => {
-    const { t } = useTranslation(TRANSLATE_ADMIN.spot)
+export const useListSpotDialog = props => {
+	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
 
-    const [open, {setTrue, setFalse}] = useBoolean()
-    const [data, setData] = useState(null)
+	const [open, { setTrue, setFalse }] = useBoolean()
 
-    const handleOpen = () => {
-        setTrue()
-    }
+	const handleOpen = () => {
+		setTrue()
+	}
 
-    const handleClose = () => {
-        setFalse()
-    }
+	const handleClose = () => {
+		setFalse()
+	}
 
-    const renderListSpotDialog = useCallback(() => {
-        return open && (<CoreDialog 
-            open={open}
-            dialogTitle='スポット選択'
-            handleClose={handleClose}
-            maxWidth='lg'
-            dialogContent={<ListSpotProvider t={t}>
-                <TableSpotDialog  handleClose={handleClose} />
-            </ListSpotProvider>}            
-
-        />)
-    }, [open])
- return {handleClose, handleOpen, renderListSpotDialog}
+	const renderListSpotDialog = useCallback(() => {
+		return (
+			open && (
+				<CoreDialog
+					open={open}
+					dialogTitle="スポット選択"
+					handleClose={handleClose}
+					maxWidth="lg"
+					dialogContent={
+						<ListSpotProvider t={t}>
+							<TableSpotDialog handleClose={handleClose} />
+						</ListSpotProvider>
+					}
+				/>
+			)
+		)
+	}, [open])
+	return { handleClose, handleOpen, renderListSpotDialog }
 }
-

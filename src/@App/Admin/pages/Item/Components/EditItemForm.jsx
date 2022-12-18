@@ -45,6 +45,7 @@ const EditItemForm = props => {
 	const {
 		control,
 		handleSubmit,
+		watch,
 		formState: { isSubmitting, isDirty }
 	} = useForm({
 		mode: 'onTouched',
@@ -54,10 +55,10 @@ const EditItemForm = props => {
 			app_currency_id: itemData?.app_currency_id ?? null,
 			currency_of_consumption: itemData?.currency_of_consumption ?? null,
 			stock: itemData?.stock ?? 0,
-			image: null,
+			image: itemData?.image ?? '',
 			summary: itemData?.summary ?? '',
-			available_start: '',
-			available_end: '',
+			available_start: itemData?.available_start ? new Date(itemData?.available_start) : '',
+			available_end: itemData?.available_end ? new Date(itemData?.available_end) : '',
 			exchange_method: itemData?.exchange_method ?? '',
 			exchange_area: itemData?.exchange_area ?? null,
 			exchange_place: itemData?.exchange_place ?? '',
@@ -79,6 +80,9 @@ const EditItemForm = props => {
 			})
 		)
 	})
+
+	console.log('============= itemData', itemData)
+	console.log('============= watch()', watch())
 
 	const onSubmit = handleSubmit(async data => {
 		try {
