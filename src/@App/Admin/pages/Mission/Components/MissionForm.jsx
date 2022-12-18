@@ -29,7 +29,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, Typography } from '@mui/material'
 import { useUpdateEffect } from 'ahooks'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 // import PropTypes from 'prop-types'
@@ -37,6 +37,15 @@ import { useNavigate } from 'react-router-dom'
 const MissionForm = props => {
 	const { t, missionData, isEdit, missionId, currencies } = useAdminPageContext()
 	const navigate = useNavigate()
+
+	const appCurrencyConvertData = useCallback(() => {
+		if (missionData?.app_currency && isEdit) {
+			const appCurrency = currencies?.app_currency?.find(item => item?.name == missionData?.app_currency)
+			return appCurrency?.id
+		}
+
+		return 1
+	}, [missionData, currencies])
 
 	const {
 		control,
@@ -55,7 +64,7 @@ const MissionForm = props => {
 			mission_display: missionData?.mission_display ?? 1,
 			card_name: missionData?.card_name ?? '',
 			card_detail: missionData?.card_detail ?? '',
-			app_currency_id: missionData?.app_currency ?? 1,
+			app_currency_id: 1,
 			currency: missionData?.currency ?? '',
 			card_display: missionData?.card_display ?? 1,
 			author: missionData?.author ?? '',
@@ -74,9 +83,11 @@ const MissionForm = props => {
 		)
 	})
 
-	// useUpdateEffect(() => {
-	// 	setValue('clear_value', '')
-	// }, [watch('clear_type')])
+	useEffect(() => {
+		if (isEdit) {
+			setValue('app_currency_id', appCurrencyConvertData())
+		}
+	}, [missionData, currencies])
 
 	const onSubmit = handleSubmit(async data => {
 		try {
