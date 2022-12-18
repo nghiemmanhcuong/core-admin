@@ -23,10 +23,19 @@ import React, { useEffect } from 'react'
 
 const ListNotificationProvider = props => {
 	const requestNotifications = useRequest(notificationService.list, {
-		manual: true
+		manual: true,
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
+		}
 	})
 
-	const { run: getNotifications } = requestNotifications
+	const { run: getNotifications, mutate } = requestNotifications
 
 	const notificationTableHandler = useCoreTable(requestNotifications)
 

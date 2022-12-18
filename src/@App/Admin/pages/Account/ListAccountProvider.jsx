@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Nov 10 2022
+ * Last Modified: Sun Dec 18 2022
  * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -27,12 +27,18 @@ const ListAccountProvider = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.account)
 	const requestAccounts = useRequest(accountSerivce.list, {
 		manual: true,
-		onError: res => {
-			errorMsg(t('common:message.fetch_list_failed'))
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
 		}
 	})
 
-	const { run: getAccounts } = requestAccounts
+	const { run: getAccounts, mutate } = requestAccounts
 
 	const { runAsync: handleDeleteAccount } = useRequest(accountSerivce.delete, {
 		manual: true,

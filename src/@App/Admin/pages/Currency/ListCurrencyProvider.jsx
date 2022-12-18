@@ -12,8 +12,14 @@ const ListCurrencyProvider = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
 	const requestCurrency = useRequest(currencyService.list, {
 		manual: true,
-		onError: res => {
-			errorMsg(t('common:message.fetch_list_failed'))
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
 		}
 	})
 
@@ -28,7 +34,7 @@ const ListCurrencyProvider = props => {
 		}
 	})
 
-	const { run: getCurrency } = requestCurrency
+	const { run: getCurrency, mutate } = requestCurrency
 
 	const currencyTableHandler = useCoreTable(requestCurrency)
 
