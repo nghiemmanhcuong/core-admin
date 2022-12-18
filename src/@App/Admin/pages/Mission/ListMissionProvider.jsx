@@ -24,7 +24,16 @@ import React, { useEffect } from 'react'
 
 const ListMissionProvider = props => {
 	const requestMissions = useRequest(missionService.list, {
-		manual: true
+		manual: true,
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
+		}
 	})
 	const { data: currencies, run: fetchCurrencies } = useRequest(currencyService.list, {
 		manual: true,
@@ -45,7 +54,7 @@ const ListMissionProvider = props => {
 		}
 	})
 
-	const { run: getMissions } = requestMissions
+	const { run: getMissions, mutate } = requestMissions
 
 	const missionTableHandler = useCoreTable(requestMissions)
 

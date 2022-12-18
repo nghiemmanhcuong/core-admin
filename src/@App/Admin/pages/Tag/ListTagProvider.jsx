@@ -16,13 +16,23 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { tagSerivce } from '@App/Admin/services/tagService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
 // import PropTypes from 'prop-types'
 
 const ListTagProvider = props => {
 	const requestTags = useRequest(tagSerivce.list, {
-		manual: true
+		manual: true,
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
+		}
 	})
 
 	const { runAsync: handleDeleteTag } = useRequest(tagSerivce.delete, {
@@ -37,7 +47,7 @@ const ListTagProvider = props => {
 		}
 	})
 
-	const { run: getTags } = requestTags
+	const { run: getTags, mutate } = requestTags
 
 	const tagTableHandler = useCoreTable(requestTags)
 

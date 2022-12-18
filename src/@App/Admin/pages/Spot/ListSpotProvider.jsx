@@ -26,10 +26,19 @@ const ListSpotProvider = props => {
 		manual: true,
 		onSuccess: res => {
 			requestSpots.mutate({ ...res, data: res?.spot ?? [] })
+		},
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
 		}
 	})
 
-	const { run: getSpots } = requestSpots
+	const { run: getSpots, mutate } = requestSpots
 
 	const { runAsync: handleDeleteSpot } = useRequest(spotSerivce.delete, {
 		manual: true,

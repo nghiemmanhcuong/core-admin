@@ -1,5 +1,6 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { eventEntryService } from '@App/Admin/services/eventEntryService'
 import { eventService } from '@App/Admin/services/eventService'
 import { tagSerivce } from '@App/Admin/services/tagService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
@@ -13,8 +14,14 @@ const ListEventProvider = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.event)
 	const requestEvents = useRequest(eventService.list, {
 		manual: true,
-		onError: res => {
-			errorMsg(res?.response?.data?.error_message)
+		onError: (res, params) => {
+			if (params) {
+				requestEvents.mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
 		}
 	})
 
@@ -25,7 +32,7 @@ const ListEventProvider = props => {
 			successMsg(t('common:message.delete_success'))
 		},
 		onError: res => {
-			errorMsg(t('common:message.delete_failed'))
+			errorMsg(res?.response?.data?.error_message)
 		}
 	})
 
@@ -39,16 +46,46 @@ const ListEventProvider = props => {
 	const { run: getEvents } = requestEvents
 	const eventTableHandler = useCoreTable(requestEvents)
 
+	const requestEventEntry = useRequest(eventEntryService.list, {
+		manual: true,
+		onError: (res, params) => {
+			if (params) {
+				requestEventEntry.mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
+		}
+	})
+
+	const { runAsync: handleDeleteEventEntry } = useRequest(eventEntryService.delete, {
+		manual: true,
+		onSuccess: res => {
+			eventEntryTableHandler.handleFetchData()
+			successMsg(t('common:message.delete_success'))
+		},
+		onError: res => {
+			errorMsg(res?.response?.data?.error_message)
+		}
+	})
+
+	const { run: getEventEntry } = requestEventEntry
+	const eventEntryTableHandler = useCoreTable(requestEventEntry)
+
 	useEffect(() => {
 		// eventTableHandler.handleFetchData()
 		getEvents()
 		getTags()
+		getEventEntry()
 	}, [])
 
 	const data = {
 		eventTableHandler,
 		handleDeleteEvent,
 		tags,
+		eventEntryTableHandler,
+		handleDeleteEventEntry,
 		...props
 	}
 

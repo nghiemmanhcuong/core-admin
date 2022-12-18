@@ -14,8 +14,14 @@ const ListCourseProvider = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
 	const requestCourses = useRequest(courseService.list, {
 		manual: true,
-		onError: res => {
-			errorMsg(t('common:message.fetch_list_failed'))
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
 		}
 	})
 
@@ -44,14 +50,14 @@ const ListCourseProvider = props => {
 		}
 	})
 
-	const { run: getCourses } = requestCourses
+	const { run: getCourses, mutate } = requestCourses
 	const courseTableHandler = useCoreTable(requestCourses)
 
 	useEffect(() => {
 		// courseTableHandler.handleFetchData()
 		getCourses()
-		getTags()
-		getSpots()
+		getTags({ per_page: 99999 })
+		getSpots({ per_page: 99999 })
 	}, [])
 
 	const data = {

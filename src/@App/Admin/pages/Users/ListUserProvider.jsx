@@ -16,16 +16,26 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { spotSerivce } from '@App/Admin/services/spotService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
+import { errorMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
 // import PropTypes from 'prop-types'
 
 const ListUserProvider = props => {
 	const requestSpots = useRequest(spotSerivce.list, {
-		manual: true
+		manual: true,
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
+		}
 	})
 
-	const { run: getSpots } = requestSpots
+	const { run: getSpots, mutate } = requestSpots
 
 	const spotTableHandler = useCoreTable(requestSpots)
 
