@@ -48,11 +48,6 @@ const Tab1 = props => {
 		return result
 	}, [])
 
-	// const paymentMethodOptions = [
-	// 	{ value: '1', label: 'クレカ' },
-	// 	{ value: '2', label: 'QR' }
-	// ]
-
 	const typeOptions = [
 		{ value: 1, label: 'アラウンドチャレンジ' },
 		{ value: 2, label: 'コースチャレンジ' },
@@ -70,24 +65,6 @@ const Tab1 = props => {
 		{ value: '兵庫県', label: '兵庫県' },
 		{ value: '福岡県', label: '福岡県' },
 		{ value: '静岡県', label: '静岡県' }
-	]
-
-	const eventStartOptions = [
-		{ value: '2022-09-01 00:00:00', label: '2022-09-01 00:00:00' },
-		{ value: '2022-09-01 12:00:00', label: '2022-09-01 12:00:00' },
-		{ value: '2022-09-01 21:00:00', label: '2022-09-01 21:00:00' },
-		{ value: '2022-12-01 21:00:00', label: '2022-12-01 21:00:00' },
-		{ value: '2022-08-01 21:00:00', label: '2022-08-01 21:00:00' },
-		{ value: '2022-10-01 21:00:00', label: '2022-10-01 21:00:00' }
-	]
-
-	const eventEndOptions = [
-		{ value: '2023-03-31 21:00:00', label: '2023-03-31 21:00:00' },
-		{ value: '2023-04-01 21:00:00', label: '2023-04-01 21:00:00' },
-		{ value: '2022-09-05 00:00:00', label: '2022-09-05 00:00:00' },
-		{ value: '2022-09-30 21:00:00', label: '2022-09-30 21:00:00' },
-		{ value: '2022-08-31 21:00:00', label: '2022-08-31 21:00:00' },
-		{ value: '2022-09-05 00:00:00', label: '2022-09-05 00:00:00' }
 	]
 
 	const methodForm = useForm({
@@ -284,8 +261,6 @@ const Tab1 = props => {
 							className="w-full sm:w-1/3"
 							variant="outlined"
 							placeholder="Choose..."
-							options={eventStartOptions}
-							returnValueType="enum"
 						/>
 
 						<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
@@ -301,8 +276,6 @@ const Tab1 = props => {
 							className="w-full sm:w-1/3"
 							variant="outlined"
 							placeholder="Choose..."
-							options={eventEndOptions}
-							returnValueType="enum"
 						/>
 					</Box>
 				</Box>
@@ -321,9 +294,7 @@ const Tab1 = props => {
 							size="small"
 							className="w-full sm:w-1/3"
 							variant="outlined"
-							// placeholder="Choose..."
-							// options={eventStartOptions}
-							// returnValueType="enum"
+							placeholder="Choose..."
 						/>
 
 						<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
@@ -339,8 +310,6 @@ const Tab1 = props => {
 							className="w-full sm:w-1/3"
 							variant="outlined"
 							placeholder="Choose..."
-							options={eventEndOptions}
-							returnValueType="enum"
 						/>
 					</Box>
 				</Box>
