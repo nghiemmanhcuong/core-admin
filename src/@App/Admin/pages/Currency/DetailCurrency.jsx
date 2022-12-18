@@ -44,10 +44,8 @@ const DetailCurrency = props => {
 			unit: currencyData?.unit ?? '',
 			app_currency_explanation: currencyData?.app_currency_explanation ?? '',
 			image: currencyData?.image ?? '',
-			// available_start: new Date(currencyData?.available_start) ?? '',
-			// available_end: new Date(currencyData?.available_end) ?? '',
-			available_start: '',
-			available_end: '',
+			available_start: currencyData?.available_start ? new Date(currencyData?.available_start) : '',
+			available_end: currencyData?.available_end ? new Date(currencyData?.available_end) : '',
 			display: currencyData?.display ?? 0,
 			author: currencyData?.author ?? '作成者名'
 		},
