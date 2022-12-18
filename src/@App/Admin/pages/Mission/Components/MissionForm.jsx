@@ -3,8 +3,8 @@
  * Author: TheAnh58_DELL
  * Email: you@you.you
  * -----
- * Last Modified: Sat Dec 17 2022
- * Modified By: Hai Tran
+ * Last Modified: Sun Dec 18 2022
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -50,7 +50,7 @@ const MissionForm = props => {
 			id: missionData?.id ?? null,
 			mission_name: missionData?.mission_name ?? '',
 			mission_detail: missionData?.mission_detail ?? '',
-			clear_type: missionData?.clear_type ?? '1',
+			clear_type: `${missionData?.clear_type}` ?? '1',
 			clear_value: missionData?.clear_value ?? null,
 			mission_display: missionData?.mission_display ?? 1,
 			card_name: missionData?.card_name ?? '',
