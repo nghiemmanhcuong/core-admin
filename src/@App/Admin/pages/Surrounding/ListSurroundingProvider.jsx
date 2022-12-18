@@ -24,12 +24,18 @@ import React, { useEffect } from 'react'
 const ListSurroundingProvider = props => {
 	const requestSurroundings = useRequest(surroundingService.list, {
 		manual: true,
-		onError: () => {
-			errorMsg('データの取得に失敗')
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
 		}
 	})
 
-	const { run: getSurrounding } = requestSurroundings
+	const { run: getSurrounding, mutate } = requestSurroundings
 
 	const { runAsync: handleDeleteSurrounding } = useRequest(surroundingService.delete, {
 		manual: true,

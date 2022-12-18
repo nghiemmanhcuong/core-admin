@@ -29,8 +29,14 @@ const CardProvider = props => {
 
 	const requestCards = useRequest(cardService.list, {
 		manual: true,
-		onError: res => {
-			errorMsg(t('common:message.fetch_list_failed'))
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
 		}
 	})
 
@@ -45,7 +51,7 @@ const CardProvider = props => {
 		}
 	})
 
-	const { run: getCards } = requestCards
+	const { run: getCards, mutate } = requestCards
 
 	const cardTableHandler = useCoreTable(requestCards)
 
