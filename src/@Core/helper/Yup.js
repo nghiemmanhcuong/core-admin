@@ -18,11 +18,12 @@ import { t } from '@system/i18n'
 export { yupResolver } from '@hookform/resolvers/yup'
 
 const REGEX = {
-	PASSWORD: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/
+	PASSWORD: /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/,
+	PASSWORD_V2: /^(?=.*[a-z])(?=.*[A-Z]{1,})(?=(.*[\d]){1,}).{8,}$/
 }
 
-Yup.addMethod(Yup.string, 'password', function (errorMessage = t('common:validation.password')) {
-	return this.matches(REGEX.PASSWORD, {
+Yup.addMethod(Yup.string, 'password', function (errorMessage = t('common:validation.password_v2')) {
+	return this.matches(REGEX.PASSWORD_V2, {
 		message: errorMessage,
 		excludeEmptyString: true
 	})
