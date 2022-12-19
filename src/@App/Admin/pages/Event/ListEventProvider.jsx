@@ -1,5 +1,6 @@
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import { courseService } from '@App/Admin/services/courseService'
 import { eventEntryService } from '@App/Admin/services/eventEntryService'
 import { eventService } from '@App/Admin/services/eventService'
 import { tagSerivce } from '@App/Admin/services/tagService'
@@ -43,49 +44,42 @@ const ListEventProvider = props => {
 		}
 	})
 
-	const { run: getEvents } = requestEvents
-	const eventTableHandler = useCoreTable(requestEvents)
-
-	const requestEventEntry = useRequest(eventEntryService.list, {
+	const { data: courses, run: getCourses } = useRequest(courseService.list, {
 		manual: true,
-		onError: (res, params) => {
-			if (params) {
-				requestEventEntry.mutate({
-					data: []
-				})
-			} else {
-				errorMsg(res?.response?.data?.error_message)
-			}
-		}
-	})
-
-	const { runAsync: handleDeleteEventEntry } = useRequest(eventEntryService.delete, {
-		manual: true,
-		onSuccess: res => {
-			eventEntryTableHandler.handleFetchData()
-			successMsg(t('common:message.delete_success'))
-		},
 		onError: res => {
 			errorMsg(res?.response?.data?.error_message)
 		}
 	})
 
-	const { run: getEventEntry } = requestEventEntry
-	const eventEntryTableHandler = useCoreTable(requestEventEntry)
+	const {
+		data: courseDetail,
+		run: getCourseDetail,
+		loading: loadingCourseDetail
+	} = useRequest(courseService.find, {
+		manual: true,
+		onError: res => {
+			errorMsg(res?.response?.data?.error_message)
+		}
+	})
+
+	const { run: getEvents } = requestEvents
+	const eventTableHandler = useCoreTable(requestEvents)
 
 	useEffect(() => {
 		// eventTableHandler.handleFetchData()
 		getEvents()
-		getTags()
-		getEventEntry()
+		getTags({ per_page: 99999 })
+		getCourses({ per_page: 99999 })
 	}, [])
 
 	const data = {
 		eventTableHandler,
 		handleDeleteEvent,
 		tags,
-		eventEntryTableHandler,
-		handleDeleteEventEntry,
+		courses,
+		courseDetail,
+		getCourseDetail,
+		loadingCourseDetail,
 		...props
 	}
 

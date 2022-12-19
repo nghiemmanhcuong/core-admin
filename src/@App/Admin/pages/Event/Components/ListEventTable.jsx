@@ -13,10 +13,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { renderTextTruncate } from '@App/Admin/hooks/useHelpRender'
-import { useEventReviewDialog } from '../hooks/useEventReviewDialog'
+import { useEventReviewDialog } from './hooks/useEventReviewDialog'
 import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined'
 import { IconButton } from '@mui/material'
-import { useEventDetailDialog } from '../hooks/useEventDetailDialog'
+import { useEventDetailDialog } from './hooks/useEventDetailDialog'
 
 const ListEventTable = props => {
 	const { t, eventTableHandler, handleDeleteEvent } = useAdminPageContext()

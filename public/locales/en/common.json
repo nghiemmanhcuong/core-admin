@@ -48,6 +48,7 @@
 		}
 	},
 	"validation": {
-		"password": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character."
+		"password": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.",
+		"password_v2": "最小 8 文字、少なくとも 1 つの大文字、1 つの小文字、および 1 つの数字"
 	}
 }
