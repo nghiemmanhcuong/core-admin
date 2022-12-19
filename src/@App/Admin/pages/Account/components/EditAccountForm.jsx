@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Dec 15 2022
+ * Last Modified: Mon Dec 19 2022
  * Modified By: haitran
  * -----a
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -67,7 +67,7 @@ const EditAccountForm = props => {
 				mail: Yup.string().required(),
 				role: Yup.mixed().nullable().required(),
 				roll: Yup.mixed().nullable().required(),
-				password: Yup.string().trim().required().min(8)
+				password: Yup.string().password().trim().required()
 			})
 		)
 	})
@@ -79,7 +79,7 @@ const EditAccountForm = props => {
 			successMsg('success')
 			navigate(ROUTER_ADMIN.account.list)
 		} catch (error) {
-			errorMsg(error)
+			errorMsg(error?.response?.data?.error_message)
 		}
 	})
 	return (

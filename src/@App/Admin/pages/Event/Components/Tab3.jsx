@@ -28,6 +28,7 @@ import Grid from '@mui/material/Grid'
 import { useNavigate } from 'react-router-dom'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import EventEntryTable from './EventEntryTable'
+import { useEventEntryDetail } from './hooks/useEventEntryDetail'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -39,6 +40,7 @@ const FontTitle = ({ variant = 'h1', title = '' }) => {
 
 const Tab3 = props => {
 	const { t, eventData, isEdit } = useAdminPageContext()
+	const { eventEntryTableHandler, handleDeleteEventEntry } = useEventEntryDetail()
 	const navigate = useNavigate()
 	const { control } = useForm({
 		mode: 'onTouched',
@@ -52,6 +54,8 @@ const Tab3 = props => {
 			})
 		)
 	})
+
+	console.log('============= eventData', eventData)
 
 	return (
 		<form>

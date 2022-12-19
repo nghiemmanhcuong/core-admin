@@ -109,8 +109,6 @@ const Tab1 = props => {
 		formState: { isSubmitting, isDirty }
 	} = methodForm
 
-	console.log('============= watch()', watch())
-
 	const onSubmit = methodForm.handleSubmit(async data => {
 		try {
 			const newCategory = []
