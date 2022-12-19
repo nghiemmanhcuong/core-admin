@@ -61,7 +61,7 @@ const ListMissionProvider = props => {
 	useEffect(() => {
 		// missionTableHandler.handleFetchData()
 		getMissions()
-		fetchCurrencies({ per_page: 99999 })
+		fetchCurrencies({ per_page: 1000 })
 	}, [])
 
 	const data = {

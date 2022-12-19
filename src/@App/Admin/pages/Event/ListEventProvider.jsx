@@ -68,8 +68,8 @@ const ListEventProvider = props => {
 	useEffect(() => {
 		// eventTableHandler.handleFetchData()
 		getEvents()
-		getTags({ per_page: 99999 })
-		getCourses({ per_page: 99999 })
+		getTags({ per_page: 1000 })
+		getCourses({ per_page: 1000 })
 	}, [])
 
 	const data = {

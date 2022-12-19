@@ -32,7 +32,7 @@ const MaintainceProvider = props => {
 	})
 
 	useEffect(() => {
-		fetchEvents({ per_page: 99999 })
+		fetchEvents({ per_page: 1000 })
 	}, [])
 
 	const data = {
