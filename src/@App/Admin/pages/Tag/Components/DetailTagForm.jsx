@@ -116,12 +116,10 @@ const DetailTagForm = props => {
 	const onSubmit = handleSubmit(async data => {
 		data.display = data?.show ? 1 : 0
 		data.frequently_used = data?.frequently_used ? 1 : 0
+		const { hide, show, ...dataSubmit } = data
 
 		try {
-			data = pickBy(data, val => {
-				return val !== null && val !== '' && val !== 'undefined'
-			})
-			await tagSerivce.save(data)
+			await tagSerivce.save(dataSubmit)
 			navigate(ROUTER_ADMIN.tag.list)
 			successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))
 		} catch (error) {
