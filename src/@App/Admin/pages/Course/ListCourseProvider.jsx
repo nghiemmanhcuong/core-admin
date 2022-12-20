@@ -56,7 +56,7 @@ const ListCourseProvider = props => {
 	useEffect(() => {
 		// courseTableHandler.handleFetchData()
 		getCourses()
-		getTags({ per_page: 1000 })
+		getTags({ per_page: 1000, display: [1], type: 'course' })
 		getSpots({ per_page: 1000 })
 	}, [])
 
