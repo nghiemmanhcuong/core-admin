@@ -14,6 +14,7 @@
  */
 
 import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
+import { tagSerivce } from '@App/Admin/services/tagService'
 import { spotSerivce } from '@App/Admin/services/spotService'
 import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
 import { errorMsg, successMsg } from '@Core/helper/Message'
@@ -53,14 +54,23 @@ const ListSpotProvider = props => {
 
 	const spotTableHandler = useCoreTable(requestSpots)
 
+	const { data: tags, run: getTags } = useRequest(tagSerivce.list, {
+		manual: true,
+		onError: res => {
+			errorMsg(res?.response?.data?.error_message)
+		}
+	})
+
 	useEffect(() => {
 		// spotTableHandler.handleFetchData()
+		getTags({ per_page: 1000, display: [1], type: 'spot' })
 		getSpots()
 	}, [])
 
 	const data = {
 		spotTableHandler,
 		handleDeleteSpot,
+		tags,
 		...props
 	}
 

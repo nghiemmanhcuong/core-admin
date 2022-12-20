@@ -28,7 +28,8 @@ const AdminInputUpload = ({
 	required = false,
 	label = '',
 	helperText = '',
-	hideButton
+	hideButton,
+	parentCallback
 }) => {
 	const { t } = useTranslation('common')
 	const inputRef = useRef()
@@ -53,6 +54,7 @@ const AdminInputUpload = ({
 				setFile(files[0])
 				onChange(files[0])
 				handlePreviewFile(files[0])
+				parentCallback(true)
 			}
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps

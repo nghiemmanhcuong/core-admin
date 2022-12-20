@@ -29,7 +29,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, Typography } from '@mui/material'
 import { useUpdateEffect } from 'ahooks'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 // import PropTypes from 'prop-types'
@@ -37,6 +37,11 @@ import { useNavigate } from 'react-router-dom'
 const MissionForm = props => {
 	const { t, missionData, isEdit, missionId, currencies } = useAdminPageContext()
 	const navigate = useNavigate()
+	const [changeImage, setChangeImage] = useState(false)
+
+	const callbackFunction = childData => {
+		setChangeImage(childData)
+	}
 
 	const appCurrencyConvertData = useCallback(() => {
 		if (missionData?.app_currency && isEdit) {
@@ -75,8 +80,8 @@ const MissionForm = props => {
 				mission_name: Yup.string().required(),
 				mission_detail: Yup.string().required(),
 				clear_type: Yup.mixed().nullable().required(),
-				card_name: Yup.string().required(),
-				card_detail: Yup.string().required()
+				card_name: Yup.string().required()
+				// card_detail: Yup.string().required()
 				// creator_card: Yup.string().required(),
 				// creator_mission: Yup.string().required(),
 			})
@@ -103,8 +108,10 @@ const MissionForm = props => {
 				formData.append('app_currency_id', data?.app_currency_id)
 				formData.append('currency', data?.currency)
 				formData.append('card_display', data?.card_display)
-				formData.append('card_image', data?.card_image)
-				formData.append('author', data?.author)
+				if (changeImage) {
+					formData.append('card_image', data?.card_image)
+				}
+				formData.append('author', data && data.author ? data.author : 'Mary')
 				formData.append('id', missionId)
 				formData.append('_method', 'PUT')
 
@@ -121,8 +128,10 @@ const MissionForm = props => {
 				formData.append('app_currency_id', data?.app_currency_id)
 				formData.append('currency', data?.currency)
 				formData.append('card_display', data?.card_display)
-				formData.append('card_image', data?.card_image)
-				formData.append('author', data?.author)
+				if (changeImage) {
+					formData.append('card_image', data?.card_image)
+				}
+				formData.append('author', data && data.author ? data.author : 'Mary')
 
 				await missionService.save(formData)
 			}
@@ -255,6 +264,7 @@ const MissionForm = props => {
 				/>
 				<AdminInputUpload
 					label={t('edit.form.label.image_card')}
+					parentCallback={callbackFunction}
 					control={control}
 					name="card_image"
 					size="small"
