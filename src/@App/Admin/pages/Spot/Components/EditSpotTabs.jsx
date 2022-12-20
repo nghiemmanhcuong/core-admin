@@ -35,7 +35,7 @@ import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { spotSerivce } from '@App/Admin/services/spotService'
 
 const EditSpotTabs = props => {
-	const { t, spotTableHandler } = useAdminPageContext()
+	const { t, spotTableHandler, tags } = useAdminPageContext()
 	const { id } = useParams()
 	const isEdit = id !== 'new'
 	const navigate = useNavigate()
@@ -69,20 +69,17 @@ const EditSpotTabs = props => {
 		{ value: '12', label: '12' }
 	]
 
-	const tagDatas = [
-		{ key: '1', value: 1, label: 'タグ1' },
-		{ key: '2', value: 2, label: 'タグ2' },
-		{ key: '3', value: 3, label: 'タグ3' },
-		{ key: '4', value: 4, label: 'タグ4' },
-		{ key: '5', value: 5, label: 'タグ5' },
-		{ key: '6', value: 6, label: 'タグ6' },
-		{ key: '7', value: 7, label: 'タグ7' },
-		{ key: '8', value: 8, label: 'タグ8' },
-		{ key: '9', value: 9, label: 'タグ9' },
-		{ key: '10', value: 10, label: 'タグ10' },
-		{ key: '11', value: 11, label: 'タグ11' },
-		{ key: '12', value: 12, label: 'タグ12' }
-	]
+	const tagOptions = tags?.tags?.reduce((result, currentValue) => {
+		const formatResult = {
+			key: `${currentValue?.id}`,
+			value: currentValue?.id,
+			label: currentValue?.name
+		}
+
+		result.push(formatResult)
+
+		return result
+	}, [])
 
 	const specialActionsData = [
 		{ key: '1', label: 'フォト' },
@@ -296,7 +293,7 @@ const EditSpotTabs = props => {
 				<CoreCheckboxGroup
 					control={control}
 					name="tag"
-					options={tagDatas}
+					options={tagOptions}
 					legendLabel={t('edit.form.label.tag')}
 					row
 					required
