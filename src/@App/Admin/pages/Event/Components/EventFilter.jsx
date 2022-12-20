@@ -33,13 +33,17 @@ const EventFilter = props => {
 			const data = getValues()
 			const params = {
 				...data,
-				event_start: data?.event_start ? moment(data?.event_start).add(7, 'hours').format('YYYY-MM-DD') : null,
-				event_end: data?.event_end ? moment(data?.event_end).add(7, 'hours').format('YYYY-MM-DD') : null,
-				reception_start: data?.reception_start
-					? moment(data?.reception_start).add(7, 'hours').format('YYYY-MM-DD')
+				event_date_from: data?.event_date_from
+					? moment(data?.event_date_from).add(7, 'hours').format('YYYY-MM-DD')
 					: null,
-				reception_end: data?.reception_end
-					? moment(data?.reception_end).add(7, 'hours').format('YYYY-MM-DD')
+				event_date_until: data?.event_date_until
+					? moment(data?.event_date_until).add(7, 'hours').format('YYYY-MM-DD')
+					: null,
+				reception_date_from: data?.reception_date_from
+					? moment(data?.reception_date_from).add(7, 'hours').format('YYYY-MM-DD')
+					: null,
+				reception_date_until: data?.reception_date_until
+					? moment(data?.reception_date_until).add(7, 'hours').format('YYYY-MM-DD')
 					: null,
 				category: data?.category?.join(','),
 				// publish: data?.publish,
@@ -98,13 +102,13 @@ const EventFilter = props => {
 			<Box className="flex p-8  w-full">
 				<Box className="flex w-1/2 items-center  ">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">開催年月日</Box>
-					<CoreDatePicker control={control} name="event_start" size="small" className="w-1/3" />
-					<CoreDatePicker control={control} name="event_end" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="event_date_from" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="event_date_until" size="small" className="w-1/3" />
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">受付年月日</Box>
-					<CoreDatePicker control={control} name="reception_start" size="small" className="w-1/3" />
-					<CoreDatePicker control={control} name="reception_end" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="reception_date_from" size="small" className="w-1/3" />
+					<CoreDatePicker control={control} name="reception_date_until" size="small" className="w-1/3" />
 				</Box>
 			</Box>
 			<Box className="flex p-8  w-full">
