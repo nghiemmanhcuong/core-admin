@@ -16,7 +16,7 @@
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import Yup from '@Core/helper/Yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -81,6 +81,21 @@ const EditSpotTabs = props => {
 		return result
 	}, [])
 
+	const convertTag = (arrTag = []) => {
+		if (!arrTag || arrTag.length <= 0) {
+			return {}
+		}
+
+		var tagObj = {}
+		arrTag.forEach(item => {
+			const tagFilter = location.state.tags.find(el => el.name === item)
+			if (tagFilter) {
+				tagObj = { ...tagObj, [tagFilter.id]: true }
+			}
+		})
+		return tagObj
+	}
+
 	const specialActionsData = [
 		{ key: '1', label: 'フォト' },
 		{ key: '2', label: '音楽再生' },
@@ -106,7 +121,7 @@ const EditSpotTabs = props => {
 			location_info_latitude: location?.state?.location_info_latitude ?? '',
 			location_info_longitude: location?.state?.location_info_longitude ?? '',
 			image: '',
-			tag: location?.state?.type ?? [],
+			tag: convertTag(location?.state?.tag),
 			facility: location?.state?.type ?? []
 		},
 		resolver: yupResolver(

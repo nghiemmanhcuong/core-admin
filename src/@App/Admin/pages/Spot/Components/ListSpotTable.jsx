@@ -17,7 +17,7 @@ import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPagePro
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState, useEffect } from 'react'
 import SpotTableFilter from './SpotTableFilter'
 import { TextField, Button, Tooltip, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -26,9 +26,17 @@ import { truncate } from 'lodash'
 import { renderTextTruncate } from '@App/Admin/hooks/useHelpRender'
 import { spotSerivce } from '@App/Admin/services/spotService'
 import { errorMsg } from '@Core/helper/Message'
+
 const ListSpotTable = props => {
-	const { t, spotTableHandler, handleDeleteSpot } = useAdminPageContext()
+	const { t, spotTableHandler, handleDeleteSpot, tags } = useAdminPageContext()
 	const navigate = useNavigate()
+
+	const [listTag, setListTag] = useState(null)
+	useEffect(() => {
+		if (tags) {
+			setListTag(tags.tags)
+		}
+	}, [tags])
 
 	const onUploadFile = useCallback(async e => {
 		const newFile = e.target.files[0]
@@ -76,14 +84,21 @@ const ListSpotTable = props => {
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.spot.edit)} /> */}
-							<CoreActionEdit onClick={() => navigate(ROUTER_ADMIN.spot.edit, { state: data })} />
+							{listTag && (
+								<CoreActionEdit
+									onClick={() =>
+										navigate(ROUTER_ADMIN.spot.edit, { state: { tags: listTag, ...data } })
+									}
+								/>
+							)}
+
 							<CoreActionDelete onConfirmDelete={() => handleDeleteSpot(data.id)} />
 						</div>
 					)
 				}
 			})
 		]
-	}, [t])
+	}, [t, listTag])
 
 	return (
 		<Box>

@@ -88,7 +88,19 @@ const MaintainceForm = props => {
 			// console.log('============= data', data)
 			console.log('============= dataParams', params)
 
-			await maintainceService.handleDownload(params)
+			const dataResult = await maintainceService.handleDownload(params)
+			let csv = `${dataResult}`
+			const filename = 'export.csv'
+			if (!csv) return
+			if (!csv.match(/^data:text\/csv/i)) {
+				csv = 'data:text/csv;charset=utf-8,' + csv
+			}
+			const dataLink = encodeURI(csv)
+
+			const link = document.createElement('a')
+			link.setAttribute('href', dataLink)
+			link.setAttribute('download', filename)
+			link.click()
 		} catch (error) {
 			console.log('============= error', error)
 			errorMsg(error?.response?.data?.error_message)
