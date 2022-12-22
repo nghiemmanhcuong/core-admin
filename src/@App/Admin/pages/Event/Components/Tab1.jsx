@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { Button, Paper, Typography, TextField, Box, Card } from '@mui/material'
@@ -6,23 +6,42 @@ import CoreInput from '@Core/components/Input/CoreInput'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Yup from '@Core/helper/Yup'
-import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
-import Grid from '@mui/material/Grid'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 import AdminInput from '@App/Admin/components/Input/AdminInput'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 import { eventService } from '@App/Admin/services/eventService'
 import { LoadingButton } from '@mui/lab'
 import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import moment from 'moment'
+import { pickBy } from 'lodash'
+import { missionService } from '@App/Admin/services/missionService'
+import { useRequest } from 'ahooks'
 
 const Tab1 = props => {
 	const { t, eventData, isEdit, tags } = useAdminPageContext()
 	const navigate = useNavigate()
+	const { id } = useParams()
+
+	const { data: missions, run: getMissions } = useRequest(missionService.list, {
+		manual: true,
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
+		}
+	})
+
+	useEffect(() => {
+		getMissions({ per_page: 1000 })
+	}, [])
 
 	const displayOptions = [
 		{ value: 1, label: t('edit.form.check_box.label.display') },
@@ -64,29 +83,32 @@ const Tab1 = props => {
 		{ value: '北海道', label: '北海道' },
 		{ value: '兵庫県', label: '兵庫県' },
 		{ value: '福岡県', label: '福岡県' },
-		{ value: '静岡県', label: '静岡県' }
+		{ value: '静岡県', label: '静岡県' },
+		{ value: 'コース開催地', label: 'コース開催地' }
 	]
 
 	const methodForm = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			id: eventData?.id ?? '',
-			title: eventData?.title ?? '',
-			type: eventData?.type ?? null,
+			id: '',
+			title: '',
+			type: null,
 			category: {},
-			event_start: eventData?.event_start ? new Date(eventData?.event_start) : '',
-			event_end: eventData?.event_end ? new Date(eventData?.event_end) : '',
-			reception_start: eventData?.reception_start ? new Date(eventData?.reception_start) : '',
-			reception_end: eventData?.reception_end ? new Date(eventData?.reception_end) : '',
-			venue: eventData?.venue ?? null,
-			entry_fee: eventData?.entry_fee ?? null,
+			event_start: '',
+			event_end: '',
+			reception_start: '',
+			reception_end: '',
+			venue: null,
+			entry_fee: null,
 			tag: {},
-			publish: eventData?.publish ?? 1,
-			special_feature_id: eventData?.special_feature_id ?? 0,
-			author: eventData?.author ?? '',
-			sos_info: eventData?.sos_info ?? '',
-			summary: eventData?.summary ?? '',
-			challenge_image: 'xxxxxx'
+			publish: 0,
+			special_feature_id: 0,
+			author: '',
+			caution_for_entry: '',
+			sos_info: '',
+			summary: '',
+			challenge_image: 'xxxxxx',
+			event_mission: []
 		},
 		resolver: yupResolver(
 			Yup.object({
@@ -98,14 +120,49 @@ const Tab1 = props => {
 				event_end: Yup.mixed().nullable().required(),
 				reception_start: Yup.mixed().nullable().required(),
 				reception_end: Yup.mixed().nullable().required(),
-				entry_fee: Yup.mixed().nullable().required()
+				entry_fee: Yup.mixed().nullable().required(),
+				event_mission: Yup.mixed().required()
 			})
 		)
 	})
 
+	const fetchData = async () => {
+		if (!id) return
+
+		const eventDetail = await eventService.detailEvent(id)
+		reset({
+			id: eventDetail?.event?.id,
+			title: eventDetail?.event?.title,
+			type: typeOptions.find(item => item.label === eventDetail?.event?.type).value,
+			category: [],
+			event_start: eventDetail?.event?.event_start ? new Date(eventDetail?.event?.event_start) : '',
+			event_end: eventDetail?.event?.event_end ? new Date(eventDetail?.event?.event_end) : '',
+			reception_start: eventDetail?.event?.reception_start ? new Date(eventDetail?.event?.reception_start) : '',
+			reception_end: eventDetail?.event?.reception_end ? new Date(eventDetail?.event?.reception_end) : '',
+			venue: eventDetail?.event?.venue ?? null,
+			entry_fee: eventDetail?.event?.entry_fee ?? null,
+			tag: eventDetail?.event?.tag ?? {},
+			publish: eventDetail?.event?.publish ?? 1,
+			special_feature_id: eventDetail?.event?.special_feature_id ?? 0,
+			author: eventDetail?.event?.author ?? '',
+			caution_for_entry: eventDetail?.event?.caution_for_entry ?? '',
+			sos_info: eventDetail?.event?.sos_info ?? '',
+			summary: eventDetail?.event?.summary ?? '',
+			challenge_image: 'xxxxxx',
+			event_mission: eventDetail?.event?.event_mission.map(item => item.mission_id) ?? []
+		})
+	}
+
+	useEffect(() => {
+		try {
+			fetchData().catch(error => {})
+		} catch (error) {}
+	}, [id])
+
 	const {
 		control,
 		watch,
+		reset,
 		formState: { isSubmitting, isDirty }
 	} = methodForm
 
@@ -113,6 +170,9 @@ const Tab1 = props => {
 		try {
 			const newCategory = []
 			const newTag = []
+			if (data.event_mission && data.event_mission.length > 0) {
+				data.event_mission = data.event_mission.map(item => item.id)
+			}
 
 			for (const categoryKey in data?.category) {
 				if (data?.category[categoryKey]) {
@@ -130,13 +190,17 @@ const Tab1 = props => {
 				...data,
 				tag: newTag,
 				category: newCategory,
-				event_start: moment(data?.event_start).format('YYYY-MM-DD HH:mm:ss'),
-				event_end: moment(data?.event_end).format('YYYY-MM-DD HH:mm:ss'),
-				reception_start: moment(data?.reception_start).format('YYYY-MM-DD HH:mm:ss'),
-				reception_end: moment(data?.reception_end).format('YYYY-MM-DD HH:mm:ss')
+				event_start: data.event_start ? moment(data?.event_start).format('YYYY-MM-DD') : '',
+				event_end: data.event_end ? moment(data?.event_end).format('YYYY-MM-DD') : '',
+				reception_start: data.reception_start ? moment(data?.reception_start).format('YYYY-MM-DD') : '',
+				reception_end: data.reception_end ? moment(data?.reception_end).format('YYYY-MM-DD') : ''
 			}
 
-			await eventService.save(newData)
+			const dataSubmit = pickBy(newData, val => {
+				return val !== null && val !== '' && val !== 'undefined'
+			})
+
+			await eventService.save(dataSubmit)
 			navigate(ROUTER_ADMIN.event.list)
 			successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))
 		} catch (error) {
@@ -168,9 +232,9 @@ const Tab1 = props => {
 					required
 				/>
 
-				{/* <AdminInput
+				<AdminInput
 					control={control}
-					name="description"
+					name="summary"
 					label={t('edit.form.label.description')}
 					placeholder="Default input"
 					className="mb-16 sm:mb-20"
@@ -178,7 +242,7 @@ const Tab1 = props => {
 					multiline
 					rows={5}
 					required
-				/> */}
+				/>
 
 				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
@@ -391,20 +455,32 @@ const Tab1 = props => {
 					</Box>
 				</Box> */}
 
-				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
+							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>
 							{t('edit.form.label.mission')}
-							
 						</Typography>
 					</Box>
 					<Box className="rounded-md flex w-full sm:w-2/3">
-						<CoreInput control={control} name="" size="small" className="w-full" />
-						<Button variant="contained" color="third">
+						{/* <CoreInput control={control} name="" size="small" className="w-full" /> */}
+						<CoreAutocomplete
+							control={control}
+							name="event_mission"
+							options={missions?.missions}
+							size="small"
+							className="w-full"
+							variant="outlined"
+							placeholder="Choose..."
+							labelPath="mission_name"
+							valuePath="id"
+							multiple
+						/>
+						<Button variant="contained" color="third" className="h-40">
 							選択
 						</Button>
 					</Box>
-				</Box> */}
+				</Box>
 
 				<CoreCheckboxGroup
 					control={control}
@@ -414,16 +490,16 @@ const Tab1 = props => {
 					row
 				/>
 
-				{/* <AdminInput
+				<AdminInput
 					control={control}
-					name="precaution_when_entering"
+					name="caution_for_entry"
 					label={t('edit.form.label.precaution_when_entering')}
 					placeholder="Default input"
 					className="mb-16 sm:mb-20"
 					size="small"
 					multiline
 					rows={5}
-				/> */}
+				/>
 
 				{/* <AdminInput
 					control={control}
@@ -434,14 +510,14 @@ const Tab1 = props => {
 					size="small"
 				/> */}
 
-				{/* <AdminInput
+				<AdminInput
 					control={control}
-					name="contact_address"
+					name="sos_info"
 					label={t('edit.form.label.contact_address')}
 					placeholder="Default input"
 					className="mb-16 sm:mb-20"
 					size="small"
-				/> */}
+				/>
 
 				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
