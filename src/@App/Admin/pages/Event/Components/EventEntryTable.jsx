@@ -25,8 +25,6 @@ const EventEntryTable = props => {
 	const { t, eventEntryTableHandler, handleDeleteEventEntry } = useAdminPageContext()
 	const navigate = useNavigate()
 
-	console.log('============= eventEntryTableHandler', eventEntryTableHandler)
-
 	const columns = useMemo(() => {
 		return [
 			columnHelper.accessor('id', {
@@ -74,7 +72,7 @@ const EventEntryTable = props => {
 				isShowPagination
 				columns={columns}
 				{...eventEntryTableHandler}
-				data={eventEntryTableHandler?.event_entries}
+				data={props?.data?.event_entries}
 			/>
 		</Box>
 	)
