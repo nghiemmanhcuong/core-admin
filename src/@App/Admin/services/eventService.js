@@ -15,15 +15,19 @@ class Event extends BaseService {
 		// this.setMockAdapter()
 	}
 
-	getEventReview = (params) => {
+	getEventReview = params => {
 		const endpoint = '/api/resource/event/review'
-		return this.request.get(endpoint, {params})
+		return this.request.get(endpoint, { params })
 	}
-	
-	deleteEventReview = (id) => {
+
+	deleteEventReview = id => {
 		const endpoint = `/api/resource/event/review/${id}`
 		return this.request.delete(endpoint)
+	}
 
+	detailEvent = id => {
+		const endpoint = `/api/resource/event/${id}`
+		return this.request.get(endpoint)
 	}
 }
 
