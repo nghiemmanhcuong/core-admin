@@ -309,6 +309,7 @@ const Tab2 = props => {
 						options={tagOptions}
 						legendLabel={t('edit.form.label.tag')}
 						row
+						disabledInp={true}
 					/>
 
 					<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
