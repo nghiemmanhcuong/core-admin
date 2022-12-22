@@ -20,8 +20,19 @@ import React from 'react'
 import clsx from 'clsx'
 
 const CoreCheckboxGroup = props => {
-	const { className, control, name, legendLabel, options, row, required, renderOption, disabled, ...restProps } =
-		props
+	const {
+		className,
+		control,
+		name,
+		legendLabel,
+		options,
+		row,
+		required,
+		renderOption,
+		disabled,
+		disabledInp = false,
+		...restProps
+	} = props
 
 	const renderLabel = () => {
 		return (
@@ -70,6 +81,7 @@ const CoreCheckboxGroup = props => {
 															checked={Boolean(value[field?.key])}
 															onChange={handleChange}
 															color="primary"
+															disabled={disabledInp}
 														/>
 													}
 												/>

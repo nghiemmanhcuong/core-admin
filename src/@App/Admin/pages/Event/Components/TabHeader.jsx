@@ -8,6 +8,7 @@ import 'styles/event.css'
 import Tab1 from './Tab1'
 import Tab2 from './Tab2'
 import Tab3 from './Tab3'
+import { useParams } from 'react-router-dom'
 
 const TabHeader = () => {
 	const [value, setValue] = React.useState('1')
@@ -15,14 +16,16 @@ const TabHeader = () => {
 	const handleChange = (event, newValue) => {
 		setValue(newValue)
 	}
+	const { id } = useParams()
+	const display = id === 'new' ? 'none' : ''
 	return (
 		<Box sx={{ width: '100%' }}>
 			<TabContext value={value}>
 				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 					<TabList onChange={handleChange}>
 						<Tab label="イベント概要" value="1" />
-						<Tab label="イベントコース" value="2" />
-						<Tab label="イベントエントリー" value="3" />
+						<Tab label="イベントコース" value="2" sx={{ display: display }} />
+						<Tab label="イベントエントリー" value="3" sx={{ display: display }} />
 					</TabList>
 				</Box>
 				<TabPanel value="1">
