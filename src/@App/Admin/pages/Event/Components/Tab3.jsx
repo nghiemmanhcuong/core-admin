@@ -55,8 +55,6 @@ const Tab3 = props => {
 		)
 	})
 
-	console.log('============= eventData', eventData)
-
 	return (
 		<form>
 			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
@@ -100,7 +98,7 @@ const Tab3 = props => {
 			</Box>
 			<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 				<Box className="col-span-3">
-					<EventEntryTable />
+					<EventEntryTable data={eventEntryTableHandler} />
 				</Box>
 			</Box>
 			<Grid className="text-end pt-20">
