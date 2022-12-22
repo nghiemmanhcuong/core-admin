@@ -29,7 +29,7 @@ const AdminInputUpload = ({
 	label = '',
 	helperText = '',
 	hideButton,
-	parentCallback
+	parentCallback = () => {}
 }) => {
 	const { t } = useTranslation('common')
 	const inputRef = useRef()
