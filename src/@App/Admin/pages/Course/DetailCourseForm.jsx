@@ -36,14 +36,33 @@ const tableForm = () => {
 	return null
 }
 const DetailCourseForm = props => {
+	const [changeCourseImage, setChangeCourseImage] = useState(false)
+	const [changeCourseMapImage, setChangeCourseMapImage] = useState(false)
+	const [changeFileUpload, setChangeFileUpload] = useState(false)
 	const [tableSelected, setTableSelected] = useState(null)
 	const { handleClose, handleOpen, renderListSpotDialog } = useListSpotDialog()
 	const { tags, spots } = useAdminPageContext()
-	const { methodForm, onSubmit } = useCourseForm(props)
+	const { methodForm, onSubmit } = useCourseForm({
+		changeCourseImage,
+		changeCourseMapImage,
+		changeFileUpload,
+		tableSelected,
+		...props
+	})
 
 	const { control, watch } = methodForm
 
 	console.log('============= tableSelected', tableSelected)
+
+	const callbackCourseImageFunction = childData => {
+		setChangeCourseImage(childData)
+	}
+	const callbackCourseMapFunction = childData => {
+		setChangeCourseMapImage(childData)
+	}
+	const callbackUploadfileFunction = childData => {
+		setChangeFileUpload(childData)
+	}
 
 	return (
 		<FormProvider setTableSelected={setTableSelected}>
@@ -92,6 +111,7 @@ const DetailCourseForm = props => {
 
 						<AdminInputUpload
 							label="コース画像"
+							parentCallback={callbackCourseImageFunction}
 							control={control}
 							name="course_image"
 							size="small"
@@ -169,15 +189,18 @@ const DetailCourseForm = props => {
 
 						<AdminInputUpload
 							label="ルート画像"
+							parentCallback={callbackCourseMapFunction}
 							control={control}
 							name="course_map_image"
 							size="small"
+							required
 							className="w-full sm:w-2/3 mb-16 sm:mb-20"
 							helperText
 						/>
 
 						<ChooseRouteFile
 							label="ルートファイル"
+							parentCallback={callbackUploadfileFunction}
 							control={control}
 							name="route_file"
 							size="small"

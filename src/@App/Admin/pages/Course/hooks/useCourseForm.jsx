@@ -22,13 +22,14 @@ import { useUpdateEffect } from 'ahooks'
 import moment from 'moment'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 export const useCourseForm = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
+	const navigate = useNavigate()
 
-	const { courseData, isEdit, courseId } = props
-
-	console.log('============= courseData', courseData)
+	const { changeCourseImage, changeCourseMapImage, changeFileUpload, tableSelected, courseData, isEdit, courseId } =
+		props
 
 	const methodForm = useForm({
 		mode: 'onTouched',
@@ -47,7 +48,7 @@ export const useCourseForm = props => {
 			course_map_image: courseData?.course_map_image ?? '',
 			route_file: courseData?.route_file ?? '',
 			elevation_chart_url: courseData?.elevation_chart_url ?? '',
-			course_tag: [1],
+			course_tag: courseData?.course_tag ?? [],
 			author: courseData?.author ?? '',
 			spot: courseData?.spot_list ?? []
 		},
@@ -65,44 +66,61 @@ export const useCourseForm = props => {
 
 	const onSubmit = methodForm.handleSubmit(async data => {
 		try {
-			if (isEdit) {
-				const formData = new FormData()
-				formData.append('course_name', data?.course_name)
-				formData.append('catchphrase', data?.catchphrase)
-				formData.append('course_summary', data?.course_summary)
+			const formData = new FormData()
+			formData.append('course_name', data?.course_name)
+			formData.append('catchphrase', data?.catchphrase)
+			formData.append('course_summary', data?.course_summary)
+			if (changeCourseImage) {
 				formData.append('course_image', data?.course_image)
+			}
+			if (data.course_distance) {
 				formData.append('course_distance', data?.course_distance)
+			}
+			if (data.average_gradient) {
 				formData.append('average_gradient', data?.average_gradient)
+			}
+			if (data.elevation) {
 				formData.append('elevation', data?.elevation)
-				formData.append('goal_approximate_time', moment(data?.goal_approximate_time).format('HH:mm:ss'))
+			}
+			if (data.goal_approximate_time) {
+				formData.append('goal_approximate_time', moment(data.goal_approximate_time).format('HH:mm:ss'))
+			}
+			if (data.route_url) {
 				formData.append('route_url', data?.route_url)
+			}
+			if (changeCourseMapImage) {
 				formData.append('course_map_image', data?.course_map_image)
+			}
+			if (changeFileUpload && data.route_file) {
 				formData.append('route_file', data?.route_file)
+			}
+			if (data.elevation_chart_url) {
 				formData.append('elevation_chart_url', data?.elevation_chart_url)
-				formData.append('course_tag', data?.course_tag)
-				formData.append('spot', data?.spot)
-				formData.append('author', data?.author)
+			}
+			if (data.course_tag && data.course_tag.length > 0) {
+				data.course_tag.forEach(item => formData.append('course_tag[]', item))
+			}
+			if (data.spot && data.spot.length > 0) {
+				data.spot.forEach(item =>
+					formData.append(
+						'spot[]',
+						JSON.stringify({
+							course_spot_id: isEdit ? item?.course_spot_id : item?.id,
+							route_number: isEdit ? item?.route_number : item?.id,
+							spot_id: isEdit ? item?.spot_id : item?.id,
+							distance_between_next_spot: item?.distance_between_next_spot ?? 0,
+							time_between_next_spot: item?.time_between_next_spot ?? 0
+						})
+					)
+				)
+			}
+			formData.append('author', data?.author)
+
+			if (isEdit) {
 				formData.append('_method', 'PUT')
 
 				await courseService.updateCourse(formData, courseId)
 			} else {
-				const formData = new FormData()
-				formData.append('course_name', data?.course_name)
-				formData.append('catchphrase', data?.catchphrase)
-				formData.append('course_summary', data?.course_summary)
-				formData.append('course_image', data?.course_image)
-				formData.append('course_distance', data?.course_distance)
-				formData.append('average_gradient', data?.average_gradient)
-				formData.append('elevation', data?.elevation)
-				formData.append('goal_approximate_time', moment(data?.goal_approximate_time).format('HH:mm:ss'))
-				formData.append('route_url', data?.route_url)
-				formData.append('course_map_image', data?.course_map_image)
-				formData.append('route_file', data?.route_file)
-				formData.append('elevation_chart_url', data?.elevation_chart_url)
-				formData.append('course_tag', data?.course_tag)
-				formData.append('spot', data?.spot)
-				formData.append('author', data?.author)
-
 				await courseService.save(formData)
 			}
 
