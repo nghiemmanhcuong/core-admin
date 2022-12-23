@@ -1,22 +1,11 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
 import ListCourseProvider from './ListCourseProvider'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import { Button, Paper, Typography, TextField, Box, Card } from '@mui/material'
+// import { Button, Paper, Typography, TextField, Box, Card } from '@mui/material'
 import CoreInput from '@Core/components/Input/CoreInput'
 import { FormProvider, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import Yup from '@Core/helper/Yup'
-import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
 import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
 import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
 import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
@@ -31,6 +20,22 @@ import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import ChooseRouteFile from './Components/ChooseRouteFile'
 import { useCourseForm } from './hooks/useCourseForm'
 import TableSpotForm from './Components/TableSpotForm'
+import { useFieldArray } from 'react-hook-form'
+
+import {
+	Button,
+	Typography,
+	Box,
+	Card,
+	Paper,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow,
+	TextField
+} from '@mui/material'
 
 const tableForm = () => {
 	return null
@@ -50,7 +55,13 @@ const DetailCourseForm = props => {
 		...props
 	})
 
-	const { control, watch } = methodForm
+	const {
+		control,
+		watch,
+		register,
+		formState: { errors },
+		reset
+	} = methodForm
 
 	console.log('============= tableSelected', tableSelected)
 
@@ -63,6 +74,27 @@ const DetailCourseForm = props => {
 	const callbackUploadfileFunction = childData => {
 		setChangeFileUpload(childData)
 	}
+
+	const {
+		fields: fieldsSpot,
+		append: appendSpot,
+		remove: removeSpot
+	} = useFieldArray({
+		control,
+		name: 'spot'
+	})
+
+	useEffect(() => {
+		const dataTableSelected =
+			tableSelected && tableSelected.length > 0
+				? tableSelected.map(item => {
+						return { course_spot_id: item.id, spot_id: item.id, route_number: item.id, ...item }
+				  })
+				: tableSelected
+		reset({
+			spot: dataTableSelected
+		})
+	}, [tableSelected])
 
 	return (
 		<FormProvider setTableSelected={setTableSelected}>
@@ -244,7 +276,7 @@ const DetailCourseForm = props => {
 							</Box>
 						</Box>
 
-						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 								<Typography variant="h3" color="primary" className="flex items-center mb-4">
 									<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">
@@ -267,7 +299,7 @@ const DetailCourseForm = props => {
 									multiple
 								/>
 							</Box>
-						</Box>
+						</Box> */}
 
 						<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 							<Box className="col-span-3 sm:col-span-1 pt-20 pl-72">
@@ -275,11 +307,137 @@ const DetailCourseForm = props => {
 									スポットリスト
 								</Typography>
 							</Box>
+							<Box>
+								{errors && errors.spot && <Typography color="error">{errors.spot.message}</Typography>}
+							</Box>
 						</Box>
 					</Box>
 				</Box>
 				<Box className="p-20">
-					<TableSpotForm tableSelected={tableSelected} />
+					{/* <TableSpotForm tableSelected={tableSelected} /> */}
+					<TableContainer component={Paper}>
+						<Table sx={{ minWidth: 650 }} aria-label="simple table">
+							<TableHead>
+								<TableRow>
+									<TableCell style={{ width: '10%' }}>
+										<Box sx={{ fontWeight: 'bold' }}>No</Box>
+									</TableCell>
+									<TableCell style={{ width: '20%' }}>
+										<Box sx={{ fontWeight: 'bold' }}>スポット名</Box>
+									</TableCell>
+									<TableCell style={{ width: '10%' }}>
+										<Box sx={{ fontWeight: 'bold' }}>スポット種別</Box>
+									</TableCell>
+									<TableCell style={{ width: '30%' }}>
+										<Box sx={{ fontWeight: 'bold' }}>住所</Box>
+									</TableCell>
+									<TableCell style={{ width: '15%' }}>
+										<Box sx={{ fontWeight: 'bold' }}>獲得ポイント</Box>
+									</TableCell>
+									<TableCell style={{ width: '15%' }}>
+										<Box sx={{ fontWeight: 'bold' }}>次スポットへの時間</Box>
+									</TableCell>
+									<TableCell>
+										<Box sx={{ fontWeight: 'bold' }}>アクション</Box>
+									</TableCell>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{fieldsSpot?.map((row, indRow) => (
+									<TableRow key={indRow}>
+										<TableCell>
+											<TextField id="outlined-search" size="small" value={indRow + 1} readOnly />
+										</TableCell>
+										<TableCell>
+											{row?.name}
+											<CoreInput
+												control={control}
+												name={`fieldsSpot.${indRow}.name`}
+												defaultValue={row?.name}
+												size="small"
+												className="mb-16 sm:mb-20 hidden"
+											/>
+											<CoreInput
+												control={control}
+												name={`fieldsSpot.${indRow}.course_spot_id`}
+												defaultValue={row?.course_spot_id}
+												size="small"
+												className="mb-16 sm:mb-20 hidden"
+											/>
+											<CoreInput
+												control={control}
+												name={`fieldsSpot.${indRow}.spot_id`}
+												defaultValue={row?.spot_id}
+												size="small"
+												className="mb-16 sm:mb-20 hidden"
+											/>
+											<CoreInput
+												control={control}
+												name={`fieldsSpot.${indRow}.route_number`}
+												defaultValue={row?.route_number}
+												size="small"
+												className="mb-16 sm:mb-20 hidden"
+											/>
+										</TableCell>
+										<TableCell>
+											{row?.type}
+											<CoreInput
+												control={control}
+												defaultValue={row?.type}
+												name={`fieldsSpot.${indRow}.type`}
+												className="w-1/3 text-[#6e6e6e] hidden"
+												size="small"
+											/>
+										</TableCell>
+										<TableCell>
+											{row?.address}
+											<CoreInput
+												control={control}
+												defaultValue={row?.address}
+												name={`fieldsSpot.${indRow}.address`}
+												className="w-1/3 text-[#6e6e6e] hidden"
+												size="small"
+											/>
+										</TableCell>
+										<TableCell>
+											<CoreInput
+												type="number"
+												control={control}
+												defaultValue={row?.distance_between_next_spot ?? 0}
+												name={`fieldsSpot.${indRow}.distance_between_next_spot`}
+												className="w-1/3 text-[#6e6e6e]"
+												size="small"
+											/>
+										</TableCell>
+										<TableCell>
+											<Box className="flex items-center">
+												<CoreInput
+													type="number"
+													control={control}
+													defaultValue={row?.time_between_next_spot ?? 0}
+													name={`fieldsSpot.${indRow}.time_between_next_spot`}
+													className="w-1/3 text-[#6e6e6e] mr-8"
+													size="small"
+												/>
+												分
+											</Box>
+										</TableCell>
+										<TableCell>
+											<Box className="flex">
+												<CoreActionDelete onClick={() => console.log('============= data')} />
+											</Box>
+										</TableCell>
+									</TableRow>
+								)) ?? (
+									<TableRow>
+										<TableCell colSpan={10}>
+											<Box className="w-full text-center">データなし</Box>
+										</TableCell>
+									</TableRow>
+								)}
+							</TableBody>
+						</Table>
+					</TableContainer>
 				</Box>
 				<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
 					<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">

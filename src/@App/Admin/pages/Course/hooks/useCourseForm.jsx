@@ -57,8 +57,8 @@ export const useCourseForm = props => {
 				course_name: Yup.string().required(),
 				catchphrase: Yup.string().required(),
 				course_distance: Yup.mixed().required(),
-				route_file: Yup.mixed().required(),
-				spot: Yup.array().min(1)
+				route_file: Yup.mixed().required()
+				// spot: Yup.array().min(1)
 				// strength: Yup.number().min(1).max(5)
 			})
 		)
@@ -100,14 +100,14 @@ export const useCourseForm = props => {
 			if (data.course_tag && data.course_tag.length > 0) {
 				data.course_tag.forEach(item => formData.append('course_tag[]', item))
 			}
-			if (data.spot && data.spot.length > 0) {
-				data.spot.forEach(item =>
+			if (data.fieldsSpot && data.fieldsSpot.length > 0) {
+				data.fieldsSpot.forEach(item =>
 					formData.append(
 						'spot[]',
 						JSON.stringify({
-							course_spot_id: isEdit ? item?.course_spot_id : item?.id,
-							route_number: isEdit ? item?.route_number : item?.id,
-							spot_id: isEdit ? item?.spot_id : item?.id,
+							course_spot_id: item?.course_spot_id,
+							route_number: item?.route_number,
+							spot_id: item?.spot_id,
 							distance_between_next_spot: item?.distance_between_next_spot ?? 0,
 							time_between_next_spot: item?.time_between_next_spot ?? 0
 						})
