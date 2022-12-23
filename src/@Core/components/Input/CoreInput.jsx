@@ -90,7 +90,7 @@ const CoreInput = props => {
 			{label != null ? renderLabel() : ''}
 			<TextField
 				fullWidth
-				type={type === 'number' ? 'text' : type}
+				type={type === 'number' ? 'number' : type}
 				// label={renderLabel()}
 				placeholder={placeholder}
 				onChange={e => onChange(transform.output(e))}
