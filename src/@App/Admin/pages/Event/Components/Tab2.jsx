@@ -1,34 +1,21 @@
-import React, { useEffect, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
-import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import React, { useEffect } from 'react'
 import { Button, Paper, Typography, TextField, Box, Card, CircularProgress } from '@mui/material'
-import CoreInput from '@Core/components/Input/CoreInput'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Yup from '@Core/helper/Yup'
-import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import { CoreActionDelete, CoreActionEdit, CoreActionView } from '@Core/components/Table/components/CoreTableAction'
-import FormAutocomplete from '@App/Admin/components/Form/FormAutocomplete'
-import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
-import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import Grid from '@mui/material/Grid'
 import AdminInput from '@App/Admin/components/Input/AdminInput'
 import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
 import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
-import { useCallback } from 'react'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import TableSpot from './TableSpot'
+import { LoadingButton } from '@mui/lab'
+import { eventService } from '@App/Admin/services/eventService'
+import { useRequest } from 'ahooks'
+import { errorMsg, successMsg } from '@Core/helper/Message'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -42,7 +29,14 @@ const Tab2 = props => {
 	const { t, eventData, isEdit, tags, courses, courseDetail, getCourseDetail, loadingCourseDetail } =
 		useAdminPageContext()
 	const navigate = useNavigate()
-	const { control, watch, setValue } = useForm({
+	const { id: eventId } = useParams()
+	const {
+		control,
+		watch,
+		handleSubmit,
+		setValue,
+		formState: { isSubmitting, isDirty }
+	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
 			event_id: eventData?.id ?? null,
@@ -67,6 +61,29 @@ const Tab2 = props => {
 			})
 		)
 	})
+
+	const {
+		data: eventCourseDetail,
+		run: getEventCourseDetail,
+		loading: loadingEventCourseDetail
+	} = useRequest(eventService.eventCourseDetail, {
+		manual: true,
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
+		}
+	})
+
+	useEffect(() => {
+		if (eventId) {
+			getEventCourseDetail(eventId)
+		}
+	}, [])
 
 	console.log('============= watch()', watch())
 	console.log('============= courseDetail', courseDetail)
@@ -96,8 +113,37 @@ const Tab2 = props => {
 		setValue('elevation_chart_url', courseDetail?.course?.elevation_chart_url)
 	}, [JSON.stringify(courseDetail)])
 
+	const onSubmit = handleSubmit(async data => {
+		try {
+			if (!eventId) {
+				return
+			}
+
+			const formData = new FormData()
+			if (eventCourseDetail && eventCourseDetail.event_course && eventCourseDetail.event_course.course_id) {
+				formData.append('course_id', eventCourseDetail.event_course.course_id)
+			}
+			if (
+				eventCourseDetail &&
+				eventCourseDetail.event_course &&
+				eventCourseDetail.event_course.spot_list &&
+				eventCourseDetail.event_course.spot_list.length > 0
+			) {
+				eventCourseDetail?.event_course?.spot_list.forEach(item => {
+					formData.append('spot_list', JSON.stringify(item))
+				})
+			}
+
+			eventService.updateEventCourse(eventId, formData)
+			successMsg('Update Event Course Details successfull!')
+		} catch (error) {
+			errorMsg('Submit faild')
+			console.log('============= e', error)
+		}
+	})
+
 	return (
-		<form>
+		<form onSubmit={onSubmit}>
 			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
 					<AdminInput
@@ -106,7 +152,7 @@ const Tab2 = props => {
 						name="event_id"
 						placeholder="Default input"
 						size="small"
-						readOnly
+						readOnlydisabled={!isDirty}
 						classNameField="bg-grey-300"
 						className="mb-16 sm:mb-20"
 						required
@@ -325,9 +371,16 @@ const Tab2 = props => {
 				</Box>
 			</Box>
 			<Grid className="text-end pt-20">
-				<Button variant="contained" className="bg-blue text-white" size="small">
+				<LoadingButton
+					loading={isSubmitting}
+					// disabled={!isDirty}
+					variant="contained"
+					className="bg-blue text-white h-32"
+					size="small"
+					type="submit"
+				>
 					登録
-				</Button>
+				</LoadingButton>
 			</Grid>
 		</form>
 	)

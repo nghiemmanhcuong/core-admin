@@ -29,6 +29,16 @@ class Event extends BaseService {
 		const endpoint = `/api/resource/event/${id}`
 		return this.request.get(endpoint)
 	}
+
+	eventCourseDetail = id => {
+		const endpoint = `/api/resource/eventCourse/${id}`
+		return this.request.get(endpoint)
+	}
+
+	updateEventCourse = (id, data) => {
+		const endpoint = `/api/resource/eventCourse/${id}`
+		return this.request.put(endpoint, data)
+	}
 }
 
 export const eventService = new Event()
