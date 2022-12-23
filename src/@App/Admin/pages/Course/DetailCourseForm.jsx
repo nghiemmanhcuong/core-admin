@@ -85,12 +85,14 @@ const DetailCourseForm = props => {
 	})
 
 	useEffect(() => {
+		console.log('tableSelected list===' + JSON.stringify(tableSelected))
 		const dataTableSelected =
 			tableSelected && tableSelected.length > 0
 				? tableSelected.map(item => {
 						return { course_spot_id: item.id, spot_id: item.id, route_number: item.id, ...item }
 				  })
-				: tableSelected
+				: []
+		console.log('dataTableSelected===' + JSON.stringify(dataTableSelected))
 		reset({
 			id: watch('id'),
 			course_name: watch('course_name'),
@@ -106,9 +108,13 @@ const DetailCourseForm = props => {
 			route_file: watch('route_file'),
 			elevation_chart_url: watch('elevation_chart_url'),
 			course_tag: watch('course_tag'),
-			author: watch('author'),
-			spot: dataTableSelected
+			author: watch('author')
 		})
+		if (tableSelected && tableSelected.length > 0) {
+			reset({
+				spot: dataTableSelected
+			})
+		}
 	}, [tableSelected])
 
 	return (
@@ -358,7 +364,10 @@ const DetailCourseForm = props => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{fieldsSpot && fieldsSpot.length > 0 ? (
+								{console.log('fieldsSpot list===' + JSON.stringify(fieldsSpot))}
+								{console.log('fieldsSpot length===' + JSON.stringify(fieldsSpot.length))}
+								{console.log('fieldsSpot array===' + JSON.stringify(Array.isArray(fieldsSpot)))}
+								{fieldsSpot && Array.isArray(fieldsSpot) && fieldsSpot.length > 0 ? (
 									fieldsSpot?.map((row, indRow) => (
 										<TableRow key={indRow}>
 											<TableCell>
