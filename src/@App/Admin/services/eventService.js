@@ -6,7 +6,7 @@ class Event extends BaseService {
 	// BASE_URL = '/'
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/event'
+	BASE_ENDPOINT = '../api/resource/event'
 
 	constructor(params) {
 		super(params)
@@ -16,17 +16,17 @@ class Event extends BaseService {
 	}
 
 	getEventReview = params => {
-		const endpoint = '/api/resource/event/review'
+		const endpoint = '../api/resource/event/review'
 		return this.request.get(endpoint, { params })
 	}
 
 	deleteEventReview = id => {
-		const endpoint = `/api/resource/event/review/${id}`
+		const endpoint = `../api/resource/event/review/${id}`
 		return this.request.delete(endpoint)
 	}
 
 	detailEvent = id => {
-		const endpoint = `/api/resource/event/${id}`
+		const endpoint = `../api/resource/event/${id}`
 		return this.request.get(endpoint)
 	}
 }

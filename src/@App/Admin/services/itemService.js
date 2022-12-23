@@ -21,7 +21,7 @@ class Item extends BaseService {
 	// BASE_URL = '/'
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/exchangeTicket'
+	BASE_ENDPOINT = '../api/resource/exchangeTicket'
 
 	constructor(params) {
 		super(params)

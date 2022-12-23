@@ -20,7 +20,7 @@ import { notificationFactory } from './factory/notificationFactory'
 class Notification extends BaseService {
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/information'
+	BASE_ENDPOINT = '../api/resource/information'
 
 	constructor(params) {
 		super(params)

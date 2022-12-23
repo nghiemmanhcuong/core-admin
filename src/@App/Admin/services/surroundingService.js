@@ -21,7 +21,7 @@ class Surrounding extends BaseService {
 	// BASE_URL = '/'
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/surroundingInfo'
+	BASE_ENDPOINT = '../api/resource/surroundingInfo'
 
 	constructor(params) {
 		super(params)

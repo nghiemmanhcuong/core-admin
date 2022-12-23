@@ -21,7 +21,7 @@ class Spot extends BaseService {
 	// BASE_URL = '/'
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/spot'
+	BASE_ENDPOINT = '../api/resource/spot'
 
 	constructor(params) {
 		super(params)

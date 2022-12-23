@@ -19,7 +19,7 @@ import BaseService from '@Core/api/BaseService'
 class Account extends BaseService {
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/account'
+	BASE_ENDPOINT = '../api/resource/account'
 
 	constructor(params) {
 		super(params)

@@ -21,7 +21,7 @@ class Tag extends BaseService {
 	// BASE_URL = '/'
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/tag'
+	BASE_ENDPOINT = '../api/resource/tag'
 
 	constructor(params) {
 		super(params)
