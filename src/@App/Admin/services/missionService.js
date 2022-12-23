@@ -21,7 +21,7 @@ class Mission extends BaseService {
 	// BASE_URL = '/'
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/mission'
+	BASE_ENDPOINT = '../api/resource/mission'
 
 	constructor(params) {
 		super(params)

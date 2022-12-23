@@ -29,7 +29,7 @@ export const TRANSLATE_ADMIN = {
 	event: basePathTran + 'event',
 	account: basePathTran + 'account',
 	currency: basePathTran + 'currency',
-	card: basePath + '/card'
+	card: basePathTran + '/card'
 }
 
 export const ROUTER_ADMIN = {

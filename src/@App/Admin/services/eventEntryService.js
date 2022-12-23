@@ -20,7 +20,7 @@ class EventEntry extends BaseService {
 	// BASE_URL = '/'
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/eventEntry'
+	BASE_ENDPOINT = '../api/resource/eventEntry'
 
 	constructor(params) {
 		super(params)

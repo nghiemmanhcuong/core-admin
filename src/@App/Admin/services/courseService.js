@@ -5,7 +5,7 @@ import { courseFactory } from './factory/courseFactory'
 class Course extends BaseService {
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/course'
+	BASE_ENDPOINT = '../api/resource/course'
 
 	constructor(params) {
 		super(params)

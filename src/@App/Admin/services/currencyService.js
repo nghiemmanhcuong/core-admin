@@ -6,7 +6,7 @@ class Currency extends BaseService {
 	// BASE_URL = '/'
 	BASE_URL = env.CMS_BASE_URL
 
-	BASE_ENDPOINT = '/api/resource/appCurrency'
+	BASE_ENDPOINT = '../api/resource/appCurrency'
 
 	constructor(params) {
 		super(params)
