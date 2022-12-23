@@ -87,13 +87,14 @@ const DetailCourseForm = props => {
 	console.log('============== fieldsSpot', fieldsSpot)
 
 	useEffect(() => {
+		console.log(watch('course_map_image'))
 		const dataTableSelected =
 			tableSelected && tableSelected.length > 0
 				? tableSelected.map(item => {
 						return { course_spot_id: item.id, spot_id: item.id, route_number: item.id, ...item }
 				  })
 				: []
-		reset({
+		const dataReset = {
 			id: watch('id'),
 			course_name: watch('course_name'),
 			catchphrase: watch('catchphrase'),
@@ -109,11 +110,11 @@ const DetailCourseForm = props => {
 			elevation_chart_url: watch('elevation_chart_url'),
 			course_tag: watch('course_tag'),
 			author: watch('author')
-		})
+		}
+		reset(dataReset)
 		if (dataTableSelected && Array.isArray(dataTableSelected) && dataTableSelected.length > 0) {
-			reset({
-				spot: dataTableSelected
-			})
+			console.log('reset data form=====')
+			reset({ spot: dataTableSelected, ...dataReset })
 		}
 	}, [tableSelected])
 
