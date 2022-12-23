@@ -366,7 +366,8 @@ const DetailCourseForm = props => {
 							<TableBody>
 								{console.log('fieldsSpot list===' + JSON.stringify(fieldsSpot))}
 								{console.log('fieldsSpot length===' + JSON.stringify(fieldsSpot.length))}
-								{fieldsSpot && fieldsSpot.length > 0 ? (
+								{console.log('fieldsSpot array===' + JSON.stringify(Array.isArray(fieldsSpot)))}
+								{fieldsSpot && Array.isArray(fieldsSpot) && fieldsSpot.length > 0 ? (
 									fieldsSpot?.map((row, indRow) => (
 										<TableRow key={indRow}>
 											<TableCell>
