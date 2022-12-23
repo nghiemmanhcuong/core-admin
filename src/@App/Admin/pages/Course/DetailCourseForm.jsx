@@ -87,7 +87,6 @@ const DetailCourseForm = props => {
 	console.log('============== fieldsSpot', fieldsSpot)
 
 	useEffect(() => {
-		console.log(watch('course_map_image'))
 		const dataTableSelected =
 			tableSelected && tableSelected.length > 0
 				? tableSelected.map(item => {
@@ -111,10 +110,11 @@ const DetailCourseForm = props => {
 			course_tag: watch('course_tag'),
 			author: watch('author')
 		}
-		reset(dataReset)
+
 		if (dataTableSelected && Array.isArray(dataTableSelected) && dataTableSelected.length > 0) {
-			console.log('reset data form=====')
 			reset({ spot: dataTableSelected, ...dataReset })
+		} else {
+			reset({ spot: watch('spot'), ...dataReset })
 		}
 	}, [tableSelected])
 
