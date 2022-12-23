@@ -92,6 +92,21 @@ const DetailCourseForm = props => {
 				  })
 				: tableSelected
 		reset({
+			id: watch('id'),
+			course_name: watch('course_name'),
+			catchphrase: watch('catchphrase'),
+			course_summary: watch('course_summary'),
+			course_image: watch('course_image'),
+			course_distance: watch('course_distance'),
+			average_gradient: watch('average_gradient'),
+			elevation: watch('average_gradient'),
+			goal_approximate_time: watch('goal_approximate_time'),
+			route_url: watch('route_url'),
+			course_map_image: watch('course_map_image'),
+			route_file: watch('route_file'),
+			elevation_chart_url: watch('elevation_chart_url'),
+			course_tag: watch('course_tag'),
+			author: watch('author'),
 			spot: dataTableSelected
 		})
 	}, [tableSelected])
@@ -343,92 +358,101 @@ const DetailCourseForm = props => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{fieldsSpot?.map((row, indRow) => (
-									<TableRow key={indRow}>
-										<TableCell>
-											<TextField id="outlined-search" size="small" value={indRow + 1} readOnly />
-										</TableCell>
-										<TableCell>
-											{row?.name}
-											<CoreInput
-												control={control}
-												name={`fieldsSpot.${indRow}.name`}
-												defaultValue={row?.name}
-												size="small"
-												className="mb-16 sm:mb-20 hidden"
-											/>
-											<CoreInput
-												control={control}
-												name={`fieldsSpot.${indRow}.course_spot_id`}
-												defaultValue={row?.course_spot_id}
-												size="small"
-												className="mb-16 sm:mb-20 hidden"
-											/>
-											<CoreInput
-												control={control}
-												name={`fieldsSpot.${indRow}.spot_id`}
-												defaultValue={row?.spot_id}
-												size="small"
-												className="mb-16 sm:mb-20 hidden"
-											/>
-											<CoreInput
-												control={control}
-												name={`fieldsSpot.${indRow}.route_number`}
-												defaultValue={row?.route_number}
-												size="small"
-												className="mb-16 sm:mb-20 hidden"
-											/>
-										</TableCell>
-										<TableCell>
-											{row?.type}
-											<CoreInput
-												control={control}
-												defaultValue={row?.type}
-												name={`fieldsSpot.${indRow}.type`}
-												className="w-1/3 text-[#6e6e6e] hidden"
-												size="small"
-											/>
-										</TableCell>
-										<TableCell>
-											{row?.address}
-											<CoreInput
-												control={control}
-												defaultValue={row?.address}
-												name={`fieldsSpot.${indRow}.address`}
-												className="w-1/3 text-[#6e6e6e] hidden"
-												size="small"
-											/>
-										</TableCell>
-										<TableCell>
-											<CoreInput
-												type="number"
-												control={control}
-												defaultValue={row?.distance_between_next_spot ?? 0}
-												name={`fieldsSpot.${indRow}.distance_between_next_spot`}
-												className="w-1/3 text-[#6e6e6e]"
-												size="small"
-											/>
-										</TableCell>
-										<TableCell>
-											<Box className="flex items-center">
+								{fieldsSpot && fieldsSpot.length > 0 ? (
+									fieldsSpot?.map((row, indRow) => (
+										<TableRow key={indRow}>
+											<TableCell>
+												<TextField
+													id="outlined-search"
+													size="small"
+													value={indRow + 1}
+													readOnly
+												/>
+											</TableCell>
+											<TableCell>
+												{row?.name}
+												<CoreInput
+													control={control}
+													name={`fieldsSpot.${indRow}.name`}
+													defaultValue={row?.name}
+													size="small"
+													className="mb-16 sm:mb-20 hidden"
+												/>
+												<CoreInput
+													control={control}
+													name={`fieldsSpot.${indRow}.course_spot_id`}
+													defaultValue={row?.course_spot_id}
+													size="small"
+													className="mb-16 sm:mb-20 hidden"
+												/>
+												<CoreInput
+													control={control}
+													name={`fieldsSpot.${indRow}.spot_id`}
+													defaultValue={row?.spot_id}
+													size="small"
+													className="mb-16 sm:mb-20 hidden"
+												/>
+												<CoreInput
+													control={control}
+													name={`fieldsSpot.${indRow}.route_number`}
+													defaultValue={row?.route_number}
+													size="small"
+													className="mb-16 sm:mb-20 hidden"
+												/>
+											</TableCell>
+											<TableCell>
+												{row?.type}
+												<CoreInput
+													control={control}
+													defaultValue={row?.type}
+													name={`fieldsSpot.${indRow}.type`}
+													className="w-1/3 text-[#6e6e6e] hidden"
+													size="small"
+												/>
+											</TableCell>
+											<TableCell>
+												{row?.address}
+												<CoreInput
+													control={control}
+													defaultValue={row?.address}
+													name={`fieldsSpot.${indRow}.address`}
+													className="w-1/3 text-[#6e6e6e] hidden"
+													size="small"
+												/>
+											</TableCell>
+											<TableCell>
 												<CoreInput
 													type="number"
 													control={control}
-													defaultValue={row?.time_between_next_spot ?? 0}
-													name={`fieldsSpot.${indRow}.time_between_next_spot`}
-													className="w-1/3 text-[#6e6e6e] mr-8"
+													defaultValue={row?.distance_between_next_spot ?? 0}
+													name={`fieldsSpot.${indRow}.distance_between_next_spot`}
+													className="w-1/3 text-[#6e6e6e]"
 													size="small"
 												/>
-												分
-											</Box>
-										</TableCell>
-										<TableCell>
-											<Box className="flex">
-												<CoreActionDelete onClick={() => console.log('============= data')} />
-											</Box>
-										</TableCell>
-									</TableRow>
-								)) ?? (
+											</TableCell>
+											<TableCell>
+												<Box className="flex items-center">
+													<CoreInput
+														type="number"
+														control={control}
+														defaultValue={row?.time_between_next_spot ?? 0}
+														name={`fieldsSpot.${indRow}.time_between_next_spot`}
+														className="w-1/3 text-[#6e6e6e] mr-8"
+														size="small"
+													/>
+													分
+												</Box>
+											</TableCell>
+											<TableCell>
+												<Box className="flex">
+													<CoreActionDelete
+														onClick={() => console.log('============= data')}
+													/>
+												</Box>
+											</TableCell>
+										</TableRow>
+									))
+								) : (
 									<TableRow>
 										<TableCell colSpan={10}>
 											<Box className="w-full text-center">データなし</Box>
