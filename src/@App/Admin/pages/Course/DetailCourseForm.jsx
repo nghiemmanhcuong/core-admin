@@ -34,7 +34,8 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
-	TextField
+	TextField,
+	FormHelperText
 } from '@mui/material'
 
 const tableForm = () => {
@@ -323,13 +324,16 @@ const DetailCourseForm = props => {
 							</Box>
 						</Box> */}
 
-						<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
-							<Box className="col-span-3 sm:col-span-1 pt-20 pl-72">
-								<Typography variant="h1" color="primary">
+						<Box className="flex flex-wrap items-center sm:flex-nowrap mb-16 sm:mb-20">
+							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+								<Typography variant="h3" color="primary" className="flex items-center mb-4">
+									<Typography className="text-black py-4 px-16 rounded-4 w-60 bg-[#FFC107] mx-8">
+										必須
+									</Typography>
 									スポットリスト
 								</Typography>
 							</Box>
-							<Box>
+							<Box className="w-full sm:w-2/3">
 								{errors && errors.spot && <Typography color="error">{errors.spot.message}</Typography>}
 							</Box>
 						</Box>

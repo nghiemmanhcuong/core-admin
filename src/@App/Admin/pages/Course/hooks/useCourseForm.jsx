@@ -57,8 +57,10 @@ export const useCourseForm = props => {
 				course_name: Yup.string().required(),
 				catchphrase: Yup.string().required(),
 				course_distance: Yup.mixed().required(),
-				route_file: Yup.mixed().required()
-				// spot: Yup.array().min(1)
+				route_file: Yup.mixed()
+					.transform(v => (!v ? undefined : v))
+					.required('Route file is required'),
+				spot: Yup.array().min(1)
 				// strength: Yup.number().min(1).max(5)
 			})
 		)
