@@ -197,10 +197,7 @@ const Tab1 = props => {
 				reception_start: data.reception_start ? moment(data?.reception_start).format('YYYY-MM-DD') : '',
 				reception_end: data.reception_end ? moment(data?.reception_end).format('YYYY-MM-DD') : '',
 				event_mission: isEdit
-					? data?.event_mission?.map(item => {
-							console.log('============= item', item)
-							return { event_card_id: item, mission_id: item }
-					  })
+					? data?.event_mission?.map(item => ({ event_card_id: item, mission_id: item }))
 					: data?.event_mission
 			}
 
