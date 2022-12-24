@@ -92,7 +92,7 @@ const CoreConfirmProvider = props => {
 							variant="contained"
 							onClick={handleOk}
 						>
-							{config.okText ?? t('btn.submit')}
+							{config.okText ?? t('btn.delete')}
 						</LoadingButton>
 					</>
 				}
