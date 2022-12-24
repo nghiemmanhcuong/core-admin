@@ -166,13 +166,15 @@ const Tab1 = props => {
 		formState: { isSubmitting, isDirty }
 	} = methodForm
 
+	console.log('============= watch()', watch())
+
 	const onSubmit = methodForm.handleSubmit(async data => {
 		try {
 			const newCategory = []
 			const newTag = []
-			if (data.event_mission && data.event_mission.length > 0) {
-				data.event_mission = data.event_mission.map(item => item.id)
-			}
+			// if (data.event_mission && data.event_mission.length > 0) {
+			// 	data.event_mission = data.event_mission.map(item => item.id)
+			// }
 
 			for (const categoryKey in data?.category) {
 				if (data?.category[categoryKey]) {
@@ -193,7 +195,13 @@ const Tab1 = props => {
 				event_start: data.event_start ? moment(data?.event_start).format('YYYY-MM-DD') : '',
 				event_end: data.event_end ? moment(data?.event_end).format('YYYY-MM-DD') : '',
 				reception_start: data.reception_start ? moment(data?.reception_start).format('YYYY-MM-DD') : '',
-				reception_end: data.reception_end ? moment(data?.reception_end).format('YYYY-MM-DD') : ''
+				reception_end: data.reception_end ? moment(data?.reception_end).format('YYYY-MM-DD') : '',
+				event_mission: isEdit
+					? data?.event_mission?.map(item => {
+							console.log('============= item', item)
+							return { event_card_id: item, mission_id: item }
+					  })
+					: data?.event_mission
 			}
 
 			const dataSubmit = pickBy(newData, val => {
@@ -474,6 +482,7 @@ const Tab1 = props => {
 							placeholder="Choose..."
 							labelPath="mission_name"
 							valuePath="id"
+							returnValueType="enum"
 							multiple
 						/>
 						<Button variant="contained" color="third" className="h-40">
