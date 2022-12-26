@@ -22,7 +22,7 @@ import CoreCheckbox from '@Core/components/Input/CoreCheckbox'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import { errorMsg } from '@Core/helper/Message'
-import { Button, Typography } from '@mui/material'
+import { Button, Typography, FormHelperText } from '@mui/material'
 import { Box } from '@mui/system'
 import moment from 'moment/moment'
 import React from 'react'
@@ -34,7 +34,6 @@ import { useMaintainceOptions } from '../hooks/useMaintainceOptions'
 const MaintainceForm = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.maintaince)
 	const { events } = useAdminPageContext()
-	console.log('============= events', events)
 	const {
 		periodOptions,
 		reportDisplayOptions,
@@ -45,7 +44,13 @@ const MaintainceForm = props => {
 		currencyUsageDataOption
 	} = useMaintainceOptions()
 
-	const { control, getValues, watch } = useForm({
+	const {
+		control,
+		getValues,
+		watch,
+		setError,
+		formState: { errors }
+	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
 			collect_duration: 'all',
@@ -76,6 +81,11 @@ const MaintainceForm = props => {
 				}
 			}
 
+			if (!exportAppSelected || (exportAppSelected && exportAppSelected.length <= 0)) {
+				setError('export_app', { type: 'manual', message: 'Export app is required' })
+				return
+			}
+
 			const params = {
 				...data,
 				export_event: exportEventSelected,
@@ -85,29 +95,42 @@ const MaintainceForm = props => {
 				collect_duration_until: moment(data?.collect_duration_until).format('YYYY-MM')
 			}
 
-			// console.log('============= data', data)
-			console.log('============= dataParams', params)
-
-			const dataResult = await maintainceService.handleDownload(params)
-			let csv = `${dataResult}`
-			const filename = 'export.csv'
-			if (!csv) return
-			if (!csv.match(/^data:text\/csv/i)) {
-				csv = 'data:text/csv;charset=utf-8,' + csv
+			if (!params.event_id) {
+				delete params['event_id']
 			}
-			const dataLink = encodeURI(csv)
+			if (params.export_app && params.export_app.length <= 0) {
+				delete params['export_app']
+			}
+			if (params.export_event && params.export_event.length <= 0) {
+				delete params['export_event']
+			}
 
-			const link = document.createElement('a')
-			link.setAttribute('href', dataLink)
-			link.setAttribute('download', filename)
-			link.click()
+			const qs =
+				'?' +
+				Object.keys(params)
+					.map(key => {
+						if (key === 'export_app' || key === 'export_event') {
+							if (params[key] && params[key].length > 0) {
+								return params[key]
+									.map(subVal => {
+										return `${key}%5B%5D=${encodeURIComponent(subVal)}`
+									})
+									.join('&')
+							}
+						}
+						return `${key}=${encodeURIComponent(params[key])}`
+					})
+					.join('&')
+
+			await maintainceService.handleDownload(params)
+
+			var a = document.createElement('a')
+			a.href = window.origin + '/api/resource/csvDownload' + qs
+			a.click()
 		} catch (error) {
-			console.log('============= error', error)
 			errorMsg(error?.response?.data?.error_message)
 		}
 	}
-
-	// console.log('============= watch()', watch())
 
 	return (
 		<Box className="max-w-lg mx-auto">
@@ -284,6 +307,7 @@ const MaintainceForm = props => {
 								/>
 							))}
 						</Box>
+						{errors.export_app && <FormHelperText error>{errors.export_app.message}</FormHelperText>}
 					</Box>
 				</Box>
 
