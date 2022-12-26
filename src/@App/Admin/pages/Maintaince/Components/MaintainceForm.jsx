@@ -25,15 +25,17 @@ import { errorMsg } from '@Core/helper/Message'
 import { Button, Typography, FormHelperText } from '@mui/material'
 import { Box } from '@mui/system'
 import moment from 'moment/moment'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useMaintainceOptions } from '../hooks/useMaintainceOptions'
+import { LoadingButton } from '@mui/lab'
 // import PropTypes from 'prop-types'
 
 const MaintainceForm = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.maintaince)
 	const { events } = useAdminPageContext()
+	const [progressDownload, setProgressDownload] = useState(false)
 	const {
 		periodOptions,
 		reportDisplayOptions,
@@ -49,6 +51,7 @@ const MaintainceForm = props => {
 		getValues,
 		watch,
 		setError,
+		clearErrors,
 		formState: { errors }
 	} = useForm({
 		mode: 'onTouched',
@@ -62,6 +65,7 @@ const MaintainceForm = props => {
 
 	const handleDownload = async () => {
 		try {
+			await setProgressDownload(true)
 			const data = getValues()
 			const exportEvent = getValues('export_event')
 			const exportEventSelected = []
@@ -83,6 +87,7 @@ const MaintainceForm = props => {
 
 			if (!exportAppSelected || (exportAppSelected && exportAppSelected.length <= 0)) {
 				setError('export_app', { type: 'manual', message: 'Export app is required' })
+				await setProgressDownload(false)
 				return
 			}
 
@@ -121,13 +126,15 @@ const MaintainceForm = props => {
 						return `${key}=${encodeURIComponent(params[key])}`
 					})
 					.join('&')
-
 			await maintainceService.handleDownload(params)
 
 			var a = document.createElement('a')
 			a.href = window.origin + '/api/resource/csvDownload' + qs
 			a.click()
+			clearErrors('export_app')
+			await setProgressDownload(false)
 		} catch (error) {
+			await setProgressDownload(false)
 			errorMsg(error?.response?.data?.error_message)
 		}
 	}
@@ -228,6 +235,7 @@ const MaintainceForm = props => {
 										className="col-span-1 -my-3 ml-20"
 										name={`export_event.${item?.value}`}
 										label={item?.label}
+										disabled
 									/>
 								))}
 							</Box>
@@ -246,6 +254,7 @@ const MaintainceForm = props => {
 										className="col-span-1 -my-3 ml-20"
 										name={`export_event.${item?.value}`}
 										label={item?.label}
+										disabled
 									/>
 								))}
 							</Box>
@@ -264,6 +273,7 @@ const MaintainceForm = props => {
 										className="col-span-1 -my-3 ml-20"
 										name={`export_event.${item?.value}`}
 										label={item?.label}
+										disabled
 									/>
 								))}
 							</Box>
@@ -282,6 +292,7 @@ const MaintainceForm = props => {
 										className="col-span-1 -my-3 ml-20"
 										name={`export_event.${item?.value}`}
 										label={item?.label}
+										disabled
 									/>
 								))}
 							</Box>
@@ -304,6 +315,9 @@ const MaintainceForm = props => {
 									className="col-span-1 -my-3 ml-20"
 									name={`export_app.${item?.value}`}
 									label={item?.label}
+									disabled={['revenue', 'breakdown_of_revenue', 'breakdown_of_user_played'].includes(
+										item.value
+									)}
 								/>
 							))}
 						</Box>
@@ -311,14 +325,15 @@ const MaintainceForm = props => {
 					</Box>
 				</Box>
 
-				<Button
+				<LoadingButton
 					variant="contained"
 					color="primary"
+					loading={progressDownload}
 					onClick={() => handleDownload()}
 					className="ml-auto bg-blue text-white"
 				>
 					{t('btn.csv_output')}
-				</Button>
+				</LoadingButton>
 			</Box>
 		</Box>
 	)

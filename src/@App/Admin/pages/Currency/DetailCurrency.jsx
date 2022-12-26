@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
 import ListCurrencyProvider from './ListCurrencyProvider'
@@ -31,6 +31,11 @@ const DetailCurrency = props => {
 	const navigate = useNavigate()
 	const { isEdit } = useAdminPageContext()
 	const { currencyId, currencyData } = props
+	const [changeImage, setChangeImage] = useState(false)
+
+	const callbackChangeImage = childData => {
+		setChangeImage(childData)
+	}
 
 	const {
 		control,
@@ -65,7 +70,9 @@ const DetailCurrency = props => {
 				formData.append('name', data?.name)
 				formData.append('unit', data?.unit)
 				formData.append('app_currency_explanation', data?.app_currency_explanation)
-				formData.append('image', data?.image)
+				if (changeImage) {
+					formData.append('image', data?.image)
+				}
 				formData.append('available_start', moment(data?.available_start).format('YYYY-MM-DD'))
 				formData.append('available_end', moment(data?.available_end).format('YYYY-MM-DD'))
 				formData.append('display', data?.display)
@@ -79,7 +86,9 @@ const DetailCurrency = props => {
 				formData.append('name', data?.name)
 				formData.append('unit', data?.unit)
 				formData.append('app_currency_explanation', data?.app_currency_explanation)
-				formData.append('image', data?.image)
+				if (changeImage) {
+					formData.append('image', data?.image)
+				}
 				formData.append('available_start', moment(data?.available_start).format('YYYY-MM-DD'))
 				formData.append('available_end', moment(data?.available_end).format('YYYY-MM-DD'))
 				formData.append('display', data?.display)
@@ -139,6 +148,7 @@ const DetailCurrency = props => {
 
 					<AdminInputUpload
 						label={t('edit.form.label.image')}
+						parentCallback={callbackChangeImage}
 						control={control}
 						name="image"
 						size="small"
@@ -226,7 +236,7 @@ const DetailCurrency = props => {
 							</Button>
 							<LoadingButton
 								loading={isSubmitting}
-								disabled={!isDirty}
+								disabled={isEdit ? false : !isDirty}
 								variant="contained"
 								className="bg-blue text-white h-32"
 								size="small"
