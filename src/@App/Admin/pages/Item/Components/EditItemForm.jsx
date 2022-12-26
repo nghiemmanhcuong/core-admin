@@ -32,7 +32,7 @@ import { LoadingButton } from '@mui/lab'
 import { Box, Button, Typography } from '@mui/material'
 import clsx from 'clsx'
 import moment from 'moment'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 // import PropTypes from 'prop-types'
@@ -41,6 +41,13 @@ const EditItemForm = props => {
 	const navigate = useNavigate()
 	const { isEdit, t, currencies } = useAdminPageContext()
 	const { itemData, itemId } = props
+	const [changeImage, setChangeImage] = useState(false)
+
+	const callbackChangeImage = childData => {
+		setChangeImage(childData)
+	}
+
+	console.log(changeImage)
 
 	const {
 		control,
@@ -86,70 +93,43 @@ const EditItemForm = props => {
 
 	const onSubmit = handleSubmit(async data => {
 		try {
+			const formData = new FormData()
+			Object.keys(data).forEach(key => {
+				if (key === 'image' && !changeImage) {
+					return
+				}
+				if (key === 'exchange_area' && typeof data.exchange_area !== 'number') {
+					return
+				}
+				if (data[key]) {
+					if (key === 'available_start') {
+						return formData.append('available_start', moment(data?.available_start).format('YYYY-MM-DD'))
+					}
+					if (key === 'available_end') {
+						return formData.append('available_start', moment(data?.available_end).format('YYYY-MM-DD'))
+					}
+					if (key === 'exchange_place_location_info_latitude') {
+						return formData.append(
+							'exchange_place_location_info_latitude',
+							`${data?.exchange_place_location_info_latitude}`
+						)
+					}
+					if (key === 'exchange_place_location_info_longitude') {
+						return formData.append(
+							'exchange_place_location_info_longitude',
+							`${data?.exchange_place_location_info_longitude}`
+						)
+					}
+					return formData.append(`${key}`, data[key])
+				}
+			})
 			if (isEdit) {
-				const formData = new FormData()
-				formData.append('name', data?.name)
-				formData.append('app_currency_id', data?.app_currency_id)
-				formData.append('stock', data?.stock)
-				formData.append('summary', data?.summary)
-				formData.append('exchange_method', data?.exchange_method)
-				formData.append('exchange_area', data?.exchange_area)
-				formData.append('exchange_place', data?.exchange_place)
-				formData.append('exchange_address', data?.exchange_address)
-				formData.append('exchange_place_google_map_url', data?.exchange_place_google_map_url)
-				formData.append(
-					'exchange_place_location_info_latitude',
-					`${data?.exchange_place_location_info_latitude}`
-				)
-				formData.append(
-					'exchange_place_location_info_longitude',
-					`${data?.exchange_place_location_info_longitude}`
-				)
-				formData.append('currency_of_consumption', data?.currency_of_consumption)
-				formData.append('caution', data?.caution)
-				formData.append('image', data?.image)
-				formData.append(
-					'available_start',
-					data?.available_start ? moment(data?.available_start).format('YYYY-MM-DD') : ''
-				)
-				formData.append(
-					'available_end',
-					data?.available_end ? moment(data?.available_end).format('YYYY-MM-DD') : ''
-				)
-				formData.append('display', data?.display)
-				formData.append('author', data?.author)
 				formData.append('_method', 'PUT')
-
 				await itemService.updateItem(formData, itemId)
 			} else {
-				const formData = new FormData()
-				formData.append('name', data?.name)
-				formData.append('app_currency_id', data?.app_currency_id)
-				formData.append('stock', data?.stock)
-				formData.append('summary', data?.summary)
-				formData.append('exchange_method', data?.exchange_method)
-				formData.append('exchange_area', data?.exchange_area)
-				formData.append('exchange_place', data?.exchange_place)
-				formData.append('exchange_address', data?.exchange_address)
-				formData.append('exchange_place_google_map_url', data?.exchange_place_google_map_url)
-				formData.append('exchange_place_location_info_latitude', data?.exchange_place_location_info_latitude)
-				formData.append('exchange_place_location_info_longitude', data?.exchange_place_location_info_longitude)
-				formData.append('currency_of_consumption', data?.currency_of_consumption)
-				formData.append('caution', data?.caution)
-				formData.append('image', data?.image)
-				formData.append(
-					'available_start',
-					data?.available_start ? moment(data?.available_start).format('YYYY-MM-DD') : ''
-				)
-				formData.append(
-					'available_end',
-					data?.available_start ? moment(data?.available_end).format('YYYY-MM-DD') : ''
-				)
-				formData.append('display', data?.display)
-				formData.append('author', data?.author)
-
 				await itemService.save(formData)
 			}
+
 			navigate(ROUTER_ADMIN.item.list)
 			// successMsg(isEdit ? t('common:message.edit_success') : t('common:message.create_success'))
 			successMsg(t('common:message.create_success'))
@@ -182,6 +162,7 @@ const EditItemForm = props => {
 				/>
 				<AdminInputUpload
 					label={t('edit.form.label.image')}
+					parentCallback={callbackChangeImage}
 					control={control}
 					name="image"
 					size="small"
@@ -313,6 +294,8 @@ const EditItemForm = props => {
 							variant="outlined"
 							placeholder="Choose..."
 							name="exchange_area"
+							valuePath="value"
+							labelPath="label"
 							className="w-full sm:w-1/3"
 							options={[
 								{ value: 1, label: '北海道' },
