@@ -35,6 +35,7 @@ const Tab2 = props => {
 		watch,
 		handleSubmit,
 		setValue,
+		getValues,
 		formState: { isSubmitting, isDirty }
 	} = useForm({
 		mode: 'onTouched',
@@ -53,7 +54,8 @@ const Tab2 = props => {
 			route_url: '',
 			course_map_image: '',
 			route_file: '',
-			elevation_chart_url: ''
+			elevation_chart_url: '',
+			spot_list: []
 		},
 		resolver: yupResolver(
 			Yup.object({
@@ -84,9 +86,6 @@ const Tab2 = props => {
 			getEventCourseDetail(eventId)
 		}
 	}, [])
-
-	console.log('============= watch()', watch())
-	console.log('============= courseDetail', courseDetail)
 
 	const tagOptions = tags?.tags?.reduce((result, currentValue) => {
 		const formatResult = {
@@ -367,10 +366,17 @@ const Tab2 = props => {
 			</Box>
 			<Box className="grid grid-flow-row-dense grid-cols-3 py-5">
 				<Box className="col-span-3">
-					<TableSpot spotList={courseDetail?.course?.spot_list} />
+					{!loadingEventCourseDetail && (
+						<TableSpot
+							name="spot_list"
+							eventId={eventId}
+							courseId={eventCourseDetail?.event_course?.course_id}
+							spotList={eventCourseDetail?.event_course?.spot_list}
+						/>
+					)}
 				</Box>
 			</Box>
-			<Grid className="text-end pt-20">
+			{/* <Grid className="text-end pt-20">
 				<LoadingButton
 					loading={isSubmitting}
 					// disabled={!isDirty}
@@ -381,7 +387,7 @@ const Tab2 = props => {
 				>
 					登録
 				</LoadingButton>
-			</Grid>
+			</Grid> */}
 		</form>
 	)
 }

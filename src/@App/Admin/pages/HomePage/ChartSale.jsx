@@ -18,6 +18,11 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import { Chart } from 'react-chartjs-2'
 // import PropTypes from 'prop-types'
 import 'chart.js/auto'
+import { useRequest } from 'ahooks'
+import { errorMsg, successMsg } from '@Core/helper/Message'
+import { maintainceService } from '@App/Admin/services/maintainceService'
+import moment from 'moment/moment'
+import { CircularProgress } from '@mui/material'
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend)
 
 const labels = ['1', '2', '3', '4', '5', '6', '7']
@@ -30,25 +35,96 @@ const ChartSale = props => {
 	const chartRef = useRef(null)
 	const [data, setData] = useState({ labels, datasets: [] })
 
-	useEffect(() => {
+	const {
+		data: dataSale,
+		run: getDataSale,
+		loading: loadingDataSale
+	} = useRequest(maintainceService.handleDownload, {
+		manual: true,
+		onSuccess: (result, params) => {
+			handleMapDataToChart(result)
+		},
+		onError: (res, params) => {
+			if (params) {
+				mutate({
+					data: []
+				})
+			} else {
+				errorMsg(res?.response?.data?.error_message)
+			}
+		}
+	})
+
+	const handeleGetDataSale = async () => {
+		const params = {
+			export_format: 'JSON',
+			collect_duration: 'all',
+			// collect_duration_from: '2022-08',
+			report_display: 'monthly',
+			export_app: ['install', 'mau', 'dau']
+		}
+
+		await getDataSale(params)
+	}
+
+	const handleMapDataToChart = async dataReponse => {
+		const dataInstall = dataReponse?.export_app?.install
+		const dataMau = dataReponse?.export_app?.mau
+		const dataDau = dataReponse?.export_app?.dau
+		if (!dataInstall) {
+			setData({
+				labels: [],
+				datasets: []
+			})
+			return
+		}
+
+		const labelChart = []
+		const dataChartInstall = []
+		const dataChartDau = []
+		dataInstall.forEach(item => {
+			labelChart.push(moment(item.date_from).format('yyyy-MM'))
+			dataChartInstall.push(item?.number)
+			const arrDauByDate = dataDau.filter(itemDau => {
+				const a = moment(itemDau.date).startOf('month')
+				const b = moment(item.date_from).startOf('month')
+				return a.diff(b, 'months') === 0
+			})
+			const total = arrDauByDate.reduce((t, { number }) => t + number, 0)
+			dataChartDau.push(total)
+		})
+		const dataChartMau = []
+		dataMau.forEach(item => {
+			dataChartMau.push(item?.number)
+		})
+
 		setData({
-			labels,
+			labels: labelChart,
 			datasets: [
 				{
-					label: 'Dataset 1',
-					data: [50000, 30000, 50000, 65000, 100000, 60000, 115000],
-					borderColor: colors1
+					label: 'Install',
+					data: dataChartInstall,
+					borderColor: '#ff5436'
 				},
 				{
-					label: 'Dataset 2',
-					data: [10000, 50000, 20000, 75000, 190000, 5000, 115000],
-					borderColor: colors2
+					label: 'MAU',
+					data: dataChartMau,
+					borderColor: '#910887'
+				},
+				{
+					label: 'DAU',
+					data: dataChartDau,
+					borderColor: '#199111'
 				}
 			]
 		})
+	}
+
+	useEffect(() => {
+		handeleGetDataSale()
 	}, [])
 
-	return <Chart ref={chartRef} type="line" data={data} />
+	return loadingDataSale ? <CircularProgress /> : <Chart ref={chartRef} type="line" data={data} />
 }
 
 // ChartSale.defaultProps = {}
