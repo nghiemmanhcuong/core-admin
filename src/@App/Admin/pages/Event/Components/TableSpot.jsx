@@ -18,47 +18,55 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import { Box } from '@mui/system'
 import React from 'react'
 import { useCallback } from 'react'
+import FilterDataTableSpot from './FilterDataTableSpot'
+import { LoadingButton } from '@mui/lab'
+import Grid from '@mui/material/Grid'
+import { errorMsg, successMsg } from '@Core/helper/Message'
+import { eventService } from '@App/Admin/services/eventService'
 // import PropTypes from 'prop-types'
 
 const TableSpot = props => {
-	const { spotList } = props
+	const { eventId, courseId, spotList } = props
 	console.log('============= spotList', spotList)
+
+	const handleChangePoint = newData => {
+		console.log(newData)
+		const itemIsChange = spotList.filter(item => item.spot_id === newData.spot_id)
+		if (itemIsChange[0]) {
+			itemIsChange[0].point = parseInt(newData.point)
+		}
+		console.log(spotList)
+	}
+
+	const updateEventCourse = async () => {
+		try {
+			if (!eventId) {
+				return
+			}
+
+			const formData = new FormData()
+			formData.append('event_id', eventId)
+			if (courseId) {
+				formData.append('course_id', courseId)
+			}
+			if (spotList && spotList.length > 0) {
+				spotList.forEach(item => {
+					formData.append('spot_list', JSON.stringify(item))
+				})
+			}
+
+			await eventService.updateEventCourse(eventId, formData)
+			successMsg('Update Event Course Details successfull!')
+		} catch (error) {
+			errorMsg('Submit faild')
+			console.log('============= e', error)
+		}
+	}
 
 	const renderTable = useCallback(() => {
 		return (
-			spotList?.map(row => (
-				<TableRow key={row?.id}>
-					<TableCell>
-						<TextField type="number" id="outlined-search" size="small" defaultValue={row?.course_spot_id} />
-					</TableCell>
-					<TableCell>{row?.name}</TableCell>
-					<TableCell>{row?.type}</TableCell>
-					<TableCell>{row?.address}</TableCell>
-					<TableCell>
-						<TextField
-							className="w-1/3"
-							type="number"
-							id="outlined-search"
-							size="small"
-							defaultValue={row?.distance_between_next_spot}
-						/>
-					</TableCell>
-					<TableCell className="flex items-center">
-						<TextField
-							className="w-1/3 mr-12"
-							type="number"
-							id="outlined-search"
-							size="small"
-							defaultValue={row?.time_between_next_spot}
-						/>
-						分
-					</TableCell>
-					<TableCell>
-						<Box className="flex">
-							<CoreActionDelete onClick={() => console.log('============= data')} />
-						</Box>
-					</TableCell>
-				</TableRow>
+			spotList?.map((row, index) => (
+				<FilterDataTableSpot key={index} ind={index} {...row} handleCallback={handleChangePoint} />
 			)) ?? (
 				<TableRow>
 					<TableCell colSpan={10}>
@@ -70,36 +78,48 @@ const TableSpot = props => {
 	}, [spotList])
 
 	return (
-		<TableContainer component={Paper}>
-			<Table sx={{ minWidth: 650 }} aria-label="simple table">
-				<TableHead>
-					<TableRow>
-						<TableCell style={{ width: '10%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>No</Box>
-						</TableCell>
-						<TableCell style={{ width: '20%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>スポット名</Box>
-						</TableCell>
-						<TableCell style={{ width: '10%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>スポット種別</Box>
-						</TableCell>
-						<TableCell style={{ width: '30%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>住所</Box>
-						</TableCell>
-						<TableCell style={{ width: '15%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>獲得ポイント</Box>
-						</TableCell>
-						<TableCell style={{ width: '15%' }}>
-							<Box sx={{ fontWeight: 'bold' }}>次スポットへの時間</Box>
-						</TableCell>
-						<TableCell>
-							<Box sx={{ fontWeight: 'bold' }}>アクション</Box>
-						</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>{renderTable()}</TableBody>
-			</Table>
-		</TableContainer>
+		<>
+			<TableContainer component={Paper}>
+				<Table sx={{ minWidth: 650 }} aria-label="simple table">
+					<TableHead>
+						<TableRow>
+							<TableCell style={{ width: '10%' }}>
+								<Box sx={{ fontWeight: 'bold' }}>No</Box>
+							</TableCell>
+							<TableCell style={{ width: '20%' }}>
+								<Box sx={{ fontWeight: 'bold' }}>スポット名</Box>
+							</TableCell>
+							<TableCell style={{ width: '10%' }}>
+								<Box sx={{ fontWeight: 'bold' }}>スポット種別</Box>
+							</TableCell>
+							<TableCell style={{ width: '30%' }}>
+								<Box sx={{ fontWeight: 'bold' }}>住所</Box>
+							</TableCell>
+							<TableCell style={{ width: '15%' }}>
+								<Box sx={{ fontWeight: 'bold' }}>獲得ポイント</Box>
+							</TableCell>
+							<TableCell style={{ width: '15%' }}>
+								<Box sx={{ fontWeight: 'bold' }}>次スポットへの時間</Box>
+							</TableCell>
+							<TableCell>
+								<Box sx={{ fontWeight: 'bold' }}>アクション</Box>
+							</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>{renderTable()}</TableBody>
+				</Table>
+			</TableContainer>
+			<Grid className="text-end pt-20">
+				<LoadingButton
+					variant="contained"
+					className="bg-blue text-white h-32"
+					size="small"
+					onClick={updateEventCourse}
+				>
+					登録
+				</LoadingButton>
+			</Grid>
+		</>
 	)
 }
 

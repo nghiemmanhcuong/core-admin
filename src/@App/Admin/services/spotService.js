@@ -37,6 +37,12 @@ class Spot extends BaseService {
 
 		return await this.request.post(api, formData, { timeout: 0 })
 	}
+
+	getSpotById = async params => {
+		const api = `${this.BASE_ENDPOINT}`
+
+		return await this.request.get(api, { params })
+	}
 }
 
 export const spotSerivce = new Spot()
