@@ -10,7 +10,7 @@
 		"customize_column": "Tùy biến cột",
 		"search_column": "Tìm kiếm cột",
 		"column_selected": "Cột được chọn ({{count}})",
-		"no_data": "データの取得に失敗",
+		"no_data": "取り込み中",
 		"hide_column": "Ẩn cột",
 		"move_column": "Di chuyển cột",
 		"save_column": "Lưu thay đổi",
