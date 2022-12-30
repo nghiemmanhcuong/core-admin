@@ -13,15 +13,20 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
-import { notificationService } from '@App/Admin/services/notificationService'
-import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
-import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useRequest } from 'ahooks'
 import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { errorMsg, successMsg } from '@Core/helper/Message'
+import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
+import useCoreTable from '@Core/components/Table/hooks/useCoreTable'
+import { notificationService } from '@App/Admin/services/notificationService'
+import AdminPageProvider from '@App/Admin/components/Provider/AdminPageProvider'
+
 // import PropTypes from 'prop-types'
 
 const ListNotificationProvider = props => {
+	const { t } = useTranslation(TRANSLATE_ADMIN.notification)
 	const requestNotifications = useRequest(notificationService.list, {
 		manual: true,
 		onError: (res, params) => {
@@ -42,8 +47,8 @@ const ListNotificationProvider = props => {
 	const { runAsync: handleDeleteNotification } = useRequest(notificationService.delete, {
 		manual: true,
 		onSuccess: res => {
-			successMsg(t('common:message.delete_success'))
 			notificationTableHandler.handleFetchData()
+			successMsg(t('common:message.delete_success'))
 		},
 		onError: err => {
 			errorMsg(t('common:message.delete_failed'))

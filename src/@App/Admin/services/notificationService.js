@@ -28,6 +28,11 @@ class Notification extends BaseService {
 		// this.createFactory(notificationFactory)
 		// this.setMockAdapter()
 	}
+
+	detail = id => {
+		const api = `${this.BASE_ENDPOINT}/${id}`
+		return this.request.get(api)
+	}
 }
 
 export const notificationService = new Notification()

@@ -52,7 +52,6 @@ const ListNotificationTable = props => {
 				className: 'w-[15%]',
 				cell: ({ row }) => {
 					const data = row.original
-					console.log('============= data', data)
 					return (
 						<div className="flex">
 							{/* <CoreActionView onClick={() => navigate(ROUTER_ADMIN.notification.list + '/' + row.original.id, {state: {data: data}})} /> */}
