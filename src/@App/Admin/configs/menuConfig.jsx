@@ -40,10 +40,10 @@ export const menuAdminConfig = [
 		title: 'ミッション管理',
 		url: ROUTER_ADMIN.mission.list
 	},
-	{
-		title: 'カード管理',
-		url: ROUTER_ADMIN.card.list
-	},
+	// {
+	// 	title: 'カード管理',
+	// 	url: ROUTER_ADMIN.card.list
+	// },
 	{
 		title: 'アプリ内通貨管理',
 		url: ROUTER_ADMIN.currency.list

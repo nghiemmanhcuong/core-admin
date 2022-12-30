@@ -35,7 +35,7 @@ const NotificationTableFilter = props => {
 		defaultValues: {
 			title: '',
 			category: '',
-			detail: '',
+			summary: '',
 			checkbox1: false,
 			checkbox2: false
 		}
