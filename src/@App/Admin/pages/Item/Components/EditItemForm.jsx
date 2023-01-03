@@ -233,6 +233,7 @@ const EditItemForm = props => {
 							size="small"
 							fullWidth
 							variant="outlined"
+							placeholder="Choose..."
 							name="available_start"
 							className="w-full"
 						/>
