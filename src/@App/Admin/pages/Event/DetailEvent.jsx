@@ -5,11 +5,10 @@ import ListEventProvider from './ListEventProvider'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { Button, Paper, Typography, TextField, Box, Card } from '@mui/material'
 import TabHeader from './Components/TabHeader'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 
 const DetailEvent = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.event)
-	const navigate = useNavigate()
 	const location = useLocation()
 	const { id } = useParams()
 	const isEdit = id !== 'new'
@@ -18,11 +17,6 @@ const DetailEvent = props => {
 		<ListEventProvider t={t} eventData={location?.state} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle="イベント情報詳細"
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.event.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
 				tabHeader={<TabHeader />}
 			/>
 		</ListEventProvider>

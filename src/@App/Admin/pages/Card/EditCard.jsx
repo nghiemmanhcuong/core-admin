@@ -25,7 +25,6 @@ import EditCardForm from './Components/EditCardForm'
 
 const EditCard = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.card)
-	const navigate = useNavigate()
 	const location = useLocation()
 	const { id } = useParams()
 	const isEdit = id !== 'new'
@@ -34,11 +33,6 @@ const EditCard = props => {
 		<CardProvider t={t} cardData={location?.state} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle={t('title.item_detail')}
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.card.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
 				content={<EditCardForm />}
 			/>
 		</CardProvider>
