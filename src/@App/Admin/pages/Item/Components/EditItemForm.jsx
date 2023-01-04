@@ -140,333 +140,335 @@ const EditItemForm = props => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<Box sx={{ padding: 2 }} className="max-w-lg mx-auto">
-				<AdminInput
-					label={t('edit.form.label.id')}
-					control={control}
-					name="id"
-					placeholder="Default input"
-					size="small"
-					readOnly
-					classNameField="bg-grey-300"
-					className="mb-16 sm:mb-20"
-				/>
-				<AdminInput
-					label={t('edit.form.label.name')}
-					control={control}
-					name="name"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
-				<AdminInputUpload
-					label={t('edit.form.label.image')}
-					parentCallback={callbackChangeImage}
-					control={control}
-					name="image"
-					size="small"
-					className="w-full sm:w-2/3 mb-16 sm:mb-20"
-					helperText
-				/>
+			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
+				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
+					<AdminInput
+						label={t('edit.form.label.id')}
+						control={control}
+						name="id"
+						placeholder="Default input"
+						size="small"
+						readOnly
+						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
+					/>
+					<AdminInput
+						label={t('edit.form.label.name')}
+						control={control}
+						name="name"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						required
+					/>
+					<AdminInputUpload
+						label={t('edit.form.label.image')}
+						parentCallback={callbackChangeImage}
+						control={control}
+						name="image"
+						size="small"
+						className="w-full sm:w-2/3 mb-16 sm:mb-20"
+						helperText
+					/>
 
-				<AdminInput
-					label="消費通貨量"
-					control={control}
-					name="currency_of_consumption"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							アプリ通貨
-						</Typography>
+					<AdminInput
+						label="消費通貨量"
+						control={control}
+						name="currency_of_consumption"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						required
+					/>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								アプリ通貨
+							</Typography>
+						</Box>
+						<Box className="w-full sm:w-2/3 sm:flex">
+							<CoreAutocomplete
+								control={control}
+								name="app_currency_id"
+								size="small"
+								placeholder="Choose..."
+								options={currencies?.app_currency}
+								valuePath="id"
+								labelPath="name"
+								returnValueType="enum"
+								className="mb-16 w-full sm:mb-20"
+							/>
+						</Box>
 					</Box>
-					<Box className="w-full sm:w-2/3 sm:flex">
-						<CoreAutocomplete
-							control={control}
-							name="app_currency_id"
-							size="small"
-							placeholder="Choose..."
-							options={currencies?.app_currency}
-							valuePath="id"
-							labelPath="name"
-							returnValueType="enum"
-							className="mb-16 w-full sm:mb-20"
-						/>
-					</Box>
-				</Box>
 
-				<AdminInput
-					label="在庫数"
-					control={control}
-					name="stock"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-				/>
-				<AdminInput
-					label="詳細"
-					control={control}
-					name="summary"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-				/>
+					<AdminInput
+						label="在庫数"
+						control={control}
+						name="stock"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+					/>
+					<AdminInput
+						label="詳細"
+						control={control}
+						name="summary"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+					/>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', 'bg-white')}>
-								{''}
-							</Typography>{' '}
-							{t('edit.form.label.time')}
-						</Typography>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', 'bg-white')}>
+									{''}
+								</Typography>{' '}
+								{t('edit.form.label.time')}
+							</Typography>
+						</Box>
+						<Box className="w-full sm:w-2/3 flex">
+							<CoreDatePicker
+								control={control}
+								size="small"
+								fullWidth
+								variant="outlined"
+								name="available_start"
+								className="w-full"
+							/>
+							<Typography variant="h3" color="primary" className="mx-8 self-center">
+								{t('edit.form.label.to')}
+							</Typography>
+							<CoreDatePicker
+								control={control}
+								size="small"
+								fullWidth
+								variant="outlined"
+								placeholder="Choose..."
+								name="available_end"
+								className="w-full"
+							/>
+						</Box>
 					</Box>
-					<Box className="w-full sm:w-2/3 flex">
-						<CoreDatePicker
-							control={control}
-							size="small"
-							fullWidth
-							variant="outlined"
-							name="available_start"
-							className="w-full"
-						/>
-						<Typography variant="h3" color="primary" className="mx-8 self-center">
-							{t('edit.form.label.to')}
-						</Typography>
-						<CoreDatePicker
-							control={control}
-							size="small"
-							fullWidth
-							variant="outlined"
-							placeholder="Choose..."
-							name="available_end"
-							className="w-full"
-						/>
-					</Box>
-				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							引換方法
-						</Typography>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								引換方法
+							</Typography>
+						</Box>
+						<Box className="w-full sm:w-2/3 sm:flex">
+							<CoreAutocomplete
+								control={control}
+								size="small"
+								fullWidth
+								variant="outlined"
+								placeholder="Choose..."
+								name="exchange_method"
+								className="w-full sm:w-1/3"
+								valuePath="id"
+								labelPath="label"
+								returnValueType="enum"
+								options={[
+									{ id: 'web', label: 'WEB引換' },
+									{ id: 'store', label: '店頭引換' }
+								]}
+							/>
+						</Box>
 					</Box>
-					<Box className="w-full sm:w-2/3 sm:flex">
-						<CoreAutocomplete
-							control={control}
-							size="small"
-							fullWidth
-							variant="outlined"
-							placeholder="Choose..."
-							name="exchange_method"
-							className="w-full sm:w-1/3"
-							valuePath="id"
-							labelPath="label"
-							returnValueType="enum"
-							options={[
-								{ id: 'web', label: 'WEB引換' },
-								{ id: 'store', label: '店頭引換' }
-							]}
-						/>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', 'bg-white')}>
+									{''}
+								</Typography>{' '}
+								{t('edit.form.label.area')}
+							</Typography>
+						</Box>
+						<Box className="w-full sm:w-2/3 sm:flex">
+							<CoreAutocomplete
+								control={control}
+								size="small"
+								fullWidth
+								variant="outlined"
+								placeholder="Choose..."
+								name="exchange_area"
+								valuePath="value"
+								labelPath="label"
+								className="w-full sm:w-1/3"
+								options={[
+									{ value: 1, label: '北海道' },
+									{ value: 2, label: '青森県' },
+									{ value: 3, label: '岩手県' },
+									{ value: 4, label: '宮城県' },
+									{ value: 5, label: '秋田県' },
+									{ value: 6, label: '山形県' },
+									{ value: 7, label: '福島県' },
+									{ value: 8, label: '茨城県' },
+									{ value: 9, label: '栃木県' },
+									{ value: 10, label: '群馬県' },
+									{ value: 11, label: '埼玉県' },
+									{ value: 12, label: '千葉県' },
+									{ value: 13, label: '東京都' },
+									{ value: 14, label: '神奈川県' },
+									{ value: 15, label: '新潟県' },
+									{ value: 16, label: '富山県' },
+									{ value: 17, label: '石川県' },
+									{ value: 18, label: '福井県' },
+									{ value: 19, label: '山梨県' },
+									{ value: 20, label: '長野県' },
+									{ value: 21, label: '岐阜県' },
+									{ value: 22, label: '静岡県' },
+									{ value: 23, label: '愛知県' },
+									{ value: 24, label: '三重県' },
+									{ value: 25, label: '滋賀県' },
+									{ value: 26, label: '京都府' },
+									{ value: 27, label: '大阪府' },
+									{ value: 28, label: '兵庫県' },
+									{ value: 29, label: '奈良県' },
+									{ value: 30, label: '和歌山県' },
+									{ value: 31, label: '鳥取県' },
+									{ value: 32, label: '島根県' },
+									{ value: 33, label: '岡山県' },
+									{ value: 34, label: '広島県' },
+									{ value: 35, label: '山口県' },
+									{ value: 36, label: '徳島県' },
+									{ value: 37, label: '香川県' },
+									{ value: 38, label: '愛媛県' },
+									{ value: 39, label: '高知県' },
+									{ value: 40, label: '福岡県' },
+									{ value: 41, label: '佐賀県' },
+									{ value: 42, label: '長崎県' },
+									{ value: 43, label: '熊本県' },
+									{ value: 44, label: '大分県' },
+									{ value: 45, label: '宮崎県' },
+									{ value: 46, label: '鹿児島県' },
+									{ value: 47, label: '沖縄県' }
+								]}
+								returnValueType="enum"
+							/>
+						</Box>
 					</Box>
-				</Box>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', 'bg-white')}>
-								{''}
-							</Typography>{' '}
-							{t('edit.form.label.area')}
-						</Typography>
-					</Box>
-					<Box className="w-full sm:w-2/3 sm:flex">
-						<CoreAutocomplete
-							control={control}
-							size="small"
-							fullWidth
-							variant="outlined"
-							placeholder="Choose..."
-							name="exchange_area"
-							valuePath="value"
-							labelPath="label"
-							className="w-full sm:w-1/3"
-							options={[
-								{ value: 1, label: '北海道' },
-								{ value: 2, label: '青森県' },
-								{ value: 3, label: '岩手県' },
-								{ value: 4, label: '宮城県' },
-								{ value: 5, label: '秋田県' },
-								{ value: 6, label: '山形県' },
-								{ value: 7, label: '福島県' },
-								{ value: 8, label: '茨城県' },
-								{ value: 9, label: '栃木県' },
-								{ value: 10, label: '群馬県' },
-								{ value: 11, label: '埼玉県' },
-								{ value: 12, label: '千葉県' },
-								{ value: 13, label: '東京都' },
-								{ value: 14, label: '神奈川県' },
-								{ value: 15, label: '新潟県' },
-								{ value: 16, label: '富山県' },
-								{ value: 17, label: '石川県' },
-								{ value: 18, label: '福井県' },
-								{ value: 19, label: '山梨県' },
-								{ value: 20, label: '長野県' },
-								{ value: 21, label: '岐阜県' },
-								{ value: 22, label: '静岡県' },
-								{ value: 23, label: '愛知県' },
-								{ value: 24, label: '三重県' },
-								{ value: 25, label: '滋賀県' },
-								{ value: 26, label: '京都府' },
-								{ value: 27, label: '大阪府' },
-								{ value: 28, label: '兵庫県' },
-								{ value: 29, label: '奈良県' },
-								{ value: 30, label: '和歌山県' },
-								{ value: 31, label: '鳥取県' },
-								{ value: 32, label: '島根県' },
-								{ value: 33, label: '岡山県' },
-								{ value: 34, label: '広島県' },
-								{ value: 35, label: '山口県' },
-								{ value: 36, label: '徳島県' },
-								{ value: 37, label: '香川県' },
-								{ value: 38, label: '愛媛県' },
-								{ value: 39, label: '高知県' },
-								{ value: 40, label: '福岡県' },
-								{ value: 41, label: '佐賀県' },
-								{ value: 42, label: '長崎県' },
-								{ value: 43, label: '熊本県' },
-								{ value: 44, label: '大分県' },
-								{ value: 45, label: '宮崎県' },
-								{ value: 46, label: '鹿児島県' },
-								{ value: 47, label: '沖縄県' }
-							]}
-							returnValueType="enum"
-						/>
-					</Box>
-				</Box>
 
-				<AdminInput
-					label="引換場所"
-					control={control}
-					name="exchange_place"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
+					<AdminInput
+						label="引換場所"
+						control={control}
+						name="exchange_place"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						required
+					/>
 
-				<AdminInput
-					label={t('edit.form.label.address_location')}
-					control={control}
-					name="exchange_address"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-				/>
+					<AdminInput
+						label={t('edit.form.label.address_location')}
+						control={control}
+						name="exchange_address"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+					/>
 
-				<AdminInput
-					label="引換場所GoogleMapURL"
-					control={control}
-					name="exchange_place_google_map_url"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
+					<AdminInput
+						label="引換場所GoogleMapURL"
+						control={control}
+						name="exchange_place_google_map_url"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
 					// required
-				/>
-				<AdminInput
-					label="引換場所位置情報（緯度）"
-					control={control}
-					name="exchange_place_location_info_latitude"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
+					/>
+					<AdminInput
+						label="引換場所位置情報（緯度）"
+						control={control}
+						name="exchange_place_location_info_latitude"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
 					// required
-				/>
-				<AdminInput
-					label="引換場所位置情報（経度)"
-					control={control}
-					name="exchange_place_location_info_longitude"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
+					/>
+					<AdminInput
+						label="引換場所位置情報（経度)"
+						control={control}
+						name="exchange_place_location_info_longitude"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
 					// required
-				/>
-				<AdminInput
-					label="利用注意事項"
-					control={control}
-					name="caution"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
+					/>
+					<AdminInput
+						label="利用注意事項"
+						control={control}
+						name="caution"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
 					// required
-				/>
+					/>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', 'bg-white')}>
-								{''}
-							</Typography>{' '}
-							{t('edit.form.label.situation')}
-						</Typography>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', 'bg-white')}>
+									{''}
+								</Typography>{' '}
+								{t('edit.form.label.situation')}
+							</Typography>
+						</Box>
+						<Box className="flex w-full sm:w-2/3 pl-[15px] border-grey-400 border-1 rounded-4">
+							<CoreRadioGroup
+								control={control}
+								name="display"
+								options={[
+									{ key: '0', value: 0, label: t('edit.form.check_box.label.representation') },
+									{ key: '1', value: 1, label: t('edit.form.check_box.label.express') }
+								]}
+								row
+								className="flex-row"
+							/>
+						</Box>
 					</Box>
-					<Box className="flex w-full sm:w-2/3 pl-[15px] border-grey-400 border-1 rounded-4">
-						<CoreRadioGroup
-							control={control}
-							name="display"
-							options={[
-								{ key: '0', value: 0, label: t('edit.form.check_box.label.representation') },
-								{ key: '1', value: 1, label: t('edit.form.check_box.label.express') }
-							]}
-							row
-							className="flex-row"
-						/>
-					</Box>
-				</Box>
 
-				<Box className="flex w-full mb-20 items-center">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', 'bg-white')}>
-								{''}
-							</Typography>{' '}
-							{t('edit.form.label.creator')}
-						</Typography>
-					</Box>
-					<Box className="w-full sm:w-2/3 flex flex-nowrap">
-						<AdminInput
-							control={control}
-							name="author"
-							size="small"
-							className="w-full mr-12"
-							classNameField="bg-grey-300"
-							readOnly
-						/>
-						<Button
-							onClick={() => navigate(ROUTER_ADMIN.item.list)}
-							variant="contained"
-							color="error"
-							className="mr-10 h-32"
-							size="small"
-						>
-							削除
-						</Button>
-						<LoadingButton
-							loading={isSubmitting}
-							// disabled={!isDirty}
-							variant="contained"
-							className="bg-blue text-white h-32"
-							size="small"
-							type="submit"
-						>
-							登録
-						</LoadingButton>
+					<Box className="flex w-full mb-20 items-center">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className={clsx('text-black py-4 px-16 rounded-4 w-60  mx-8', 'bg-white')}>
+									{''}
+								</Typography>{' '}
+								{t('edit.form.label.creator')}
+							</Typography>
+						</Box>
+						<Box className="w-full sm:w-2/3 flex flex-nowrap">
+							<AdminInput
+								control={control}
+								name="author"
+								size="small"
+								className="w-full mr-12"
+								classNameField="bg-grey-300"
+								readOnly
+							/>
+							<Button
+								onClick={() => navigate(ROUTER_ADMIN.item.list)}
+								variant="contained"
+								color="error"
+								className="mr-10 h-32"
+								size="small"
+							>
+								削除
+							</Button>
+							<LoadingButton
+								loading={isSubmitting}
+								// disabled={!isDirty}
+								variant="contained"
+								className="bg-blue text-white h-32"
+								size="small"
+								type="submit"
+							>
+								登録
+							</LoadingButton>
+						</Box>
 					</Box>
 				</Box>
 			</Box>
