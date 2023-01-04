@@ -77,7 +77,7 @@ const DetailTagForm = props => {
 	const {
 		control,
 		handleSubmit,
-		formState: { isSubmitting },
+		formState: { isSubmitting, isDirty },
 		watch,
 		setValue
 	} = useForm({
@@ -233,9 +233,10 @@ const DetailTagForm = props => {
 						<LoadingButton
 							type="submit"
 							loading={isSubmitting}
+							disabled={!isDirty}
 							variant="contained"
 							color="success"
-							className="bg-blue"
+							className="ml-[10px] bg-blue h-32 text-white"
 							size="small"
 						>
 							登録

@@ -236,7 +236,7 @@ const DetailCurrency = props => {
 							</Button>
 							<LoadingButton
 								loading={isSubmitting}
-								disabled={isEdit ? false : !isDirty}
+								disabled={!isDirty}
 								variant="contained"
 								className="bg-blue text-white h-32"
 								size="small"

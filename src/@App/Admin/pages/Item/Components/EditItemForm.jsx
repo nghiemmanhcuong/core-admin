@@ -459,7 +459,7 @@ const EditItemForm = props => {
 						</Button>
 						<LoadingButton
 							loading={isSubmitting}
-							// disabled={!isDirty}
+							disabled={!isDirty}
 							variant="contained"
 							className="bg-blue text-white h-32"
 							size="small"

@@ -60,7 +60,7 @@ const DetailCourseForm = props => {
 		control,
 		watch,
 		register,
-		formState: { errors },
+		formState: { errors, isDirty },
 		reset
 	} = methodForm
 
@@ -517,6 +517,7 @@ const DetailCourseForm = props => {
 										variant="contained"
 										className="bg-blue text-white h-32"
 										size="small"
+										disabled={!isDirty}
 									>
 										登録
 									</Button>

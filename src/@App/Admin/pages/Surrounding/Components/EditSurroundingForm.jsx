@@ -199,10 +199,11 @@ const EditSurroundingForm = props => {
 					</Button>
 					<LoadingButton
 						variant="contained"
-						className="bg-blue "
+						className="ml-[10px] bg-blue text-white"
 						size="small"
 						type="submit"
 						loading={isSubmitting}
+						disabled={!isDirty}
 					>
 						{t('edit.form.btn.register')}
 					</LoadingButton>
