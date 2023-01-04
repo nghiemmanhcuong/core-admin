@@ -96,6 +96,19 @@ const ChooseRouteFile = ({
 							inputProps={{
 								readOnly: true
 							}}
+							sx={{
+								'& *': {
+									display: 'block !important',
+									height: '100% !important',
+									boxSizing: 'border-box !important'
+								},
+								'& fieldset': {
+									border: 'none'
+								},
+								'& input': {
+									padding: '8.5px 14px'
+								}
+							}}
 						/>
 					</Box>
 					{error && error.message && <FormHelperText error>{error.message}</FormHelperText>}
