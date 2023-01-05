@@ -358,7 +358,7 @@ const EditSpotTabs = props => {
 				</Box> */}
 
 					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-						<Button variant="contained" color="error" className="ml-auto">
+						<Button variant="contained" color="error" className="ml-auto h-32">
 							{t('edit.form.btn.delete')}
 						</Button>
 						<LoadingButton
@@ -367,7 +367,7 @@ const EditSpotTabs = props => {
 							color="primary"
 							loading={isSubmitting}
 							disabled={!isDirty}
-							className="ml-[10px] bg-blue text-white"
+							className="ml-[10px] bg-blue text-white h-32"
 						>
 							{t('edit.form.btn.register')}
 						</LoadingButton>

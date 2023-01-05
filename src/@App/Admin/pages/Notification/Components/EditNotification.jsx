@@ -259,7 +259,7 @@ const EditNotification = props => {
 								readOnly
 							/>
 
-							<Button variant="contained" color="error" className="ml-auto h-32">
+							<Button variant="contained" color="error" className="ml-auto text-13 h-32">
 								{t('edit.form.btn.delete')}
 							</Button>
 							<LoadingButton
@@ -268,7 +268,7 @@ const EditNotification = props => {
 								variant="contained"
 								disabled={!isDirty}
 								color="primary"
-								className="ml-[10px] bg-blue h-32 text-white"
+								className="ml-[10px] bg-blue h-32 text-13 text-white"
 							>
 								{t('edit.form.btn.register')}
 							</LoadingButton>

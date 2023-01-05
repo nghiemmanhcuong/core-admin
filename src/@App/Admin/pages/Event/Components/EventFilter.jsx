@@ -192,7 +192,7 @@ const EventFilter = props => {
 							/>
 						</Box>
 					</Card> */}
-					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
 						検索
 					</Button>
 				</Box>

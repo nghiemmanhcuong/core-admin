@@ -484,7 +484,7 @@ const Tab1 = props => {
 								returnValueType="enum"
 								multiple
 							/>
-							<Button variant="contained" color="third" className="h-40">
+							<Button variant="contained" color="third" className="h-32 mt-[3px]">
 								選択
 							</Button>
 						</Box>
@@ -555,7 +555,7 @@ const Tab1 = props => {
 							<Box className="flex w-full sm:w-full">
 								<Box className="flex w-2/3">
 									<AdminInput control={control} name="author" size="small" className="w-full" />
-									<Button variant="contained" color="third" className="h-32">
+									<Button variant="contained" color="third" className="h-32 text-13 mt-[1px]">
 										選択
 									</Button>
 								</Box>
@@ -564,7 +564,7 @@ const Tab1 = props => {
 										onClick={() => navigate(ROUTER_ADMIN.event.list)}
 										variant="contained"
 										color="error"
-										className="mr-10 h-32"
+										className="mr-10 h-32 text-13"
 										size="small"
 									>
 										削除
@@ -573,7 +573,7 @@ const Tab1 = props => {
 										loading={isSubmitting}
 										disabled={!isDirty}
 										variant="contained"
-										className="bg-blue text-white h-32"
+										className="bg-blue text-white h-32 text-13"
 										size="small"
 										type="submit"
 									>

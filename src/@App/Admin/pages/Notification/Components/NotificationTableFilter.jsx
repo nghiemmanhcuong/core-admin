@@ -127,7 +127,7 @@ const NotificationTableFilter = props => {
 					<CoreInput control={control} name="detail" size="small" className="w-2/3" />
 				</Box>
 				<Box className="flex w-1/2 mx-8 items-center">
-					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>
 				</Box>

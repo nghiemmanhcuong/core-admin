@@ -192,7 +192,7 @@ const Tab2 = props => {
 									<Button
 										variant="contained"
 										color="primary"
-										className="px-8 py-6 text-14 mr-3"
+										className="px-8 py-6 text-13 mr-3 h-32"
 										size="small"
 										onClick={() => getCourseDetail(watch('course_id'))}
 									>
@@ -200,7 +200,7 @@ const Tab2 = props => {
 									</Button>
 									<Button
 										variant="contained"
-										className="px-8 py-6 text-14 mr-3 bg-[#E97B86]"
+										className="px-8 py-6 text-13 h-32 mr-3 bg-[#E97B86]"
 										size="small"
 									>
 										削除
@@ -208,7 +208,7 @@ const Tab2 = props => {
 									<Button
 										variant="contained"
 										color="success"
-										className="px-8 py-6 text-14 bg-blue mr-3"
+										className="px-8 py-6 text-13 bg-blue mr-3 h-32"
 										size="small"
 									>
 										追加

@@ -102,7 +102,7 @@ const Tab3 = props => {
 				</Box>
 			</Box>
 			<Grid className="text-end pt-20">
-				<Button variant="contained" className="bg-blue" color="success" size="small">
+				<Button variant="contained" className="bg-blue h-32 text-13" color="success" size="small">
 					登録
 				</Button>
 			</Grid>

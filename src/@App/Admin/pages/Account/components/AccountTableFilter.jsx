@@ -158,7 +158,7 @@ const AccountTableFilter = props => {
 				</Box>
 
 				<Box className="flex w-full sm:w-1/2 mx-8 items-center">
-					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>
 				</Box>
