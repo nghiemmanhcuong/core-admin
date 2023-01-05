@@ -78,7 +78,7 @@ const EditNotification = props => {
 		handleSubmit,
 		watch,
 		reset,
-		formState: { isSubmitting }
+		formState: { isSubmitting, isDirty }
 	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
@@ -266,6 +266,7 @@ const EditNotification = props => {
 								type="submit"
 								loading={isSubmitting}
 								variant="contained"
+								disabled={!isDirty}
 								color="primary"
 								className="ml-[10px] bg-blue h-32 text-white"
 							>
