@@ -155,8 +155,8 @@ const Tab1 = props => {
 
 	useEffect(() => {
 		try {
-			fetchData().catch(error => {})
-		} catch (error) {}
+			fetchData().catch(error => { })
+		} catch (error) { }
 	}, [id])
 
 	const {
@@ -215,189 +215,191 @@ const Tab1 = props => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<Box className="max-w-lg mx-8 sm:mx-auto">
-				<AdminInput
-					control={control}
-					label={t('edit.form.label.id')}
-					name="id"
-					placeholder="Default input"
-					size="small"
-					readOnly
-					classNameField="bg-grey-300"
-					className="mb-16 sm:mb-20"
-				/>
+			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
+				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
 
-				<AdminInput
-					control={control}
-					label={t('edit.form.label.title')}
-					name="title"
-					placeholder="Default input"
-					size="small"
-					className="mb-16 sm:mb-20"
-					required
-				/>
+					<AdminInput
+						control={control}
+						label={t('edit.form.label.id')}
+						name="id"
+						placeholder="Default input"
+						size="small"
+						readOnly
+						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
+					/>
 
-				<AdminInput
-					control={control}
-					name="summary"
-					label={t('edit.form.label.description')}
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					multiline
-					rows={5}
-					required
-				/>
+					<AdminInput
+						control={control}
+						label={t('edit.form.label.title')}
+						name="title"
+						placeholder="Default input"
+						size="small"
+						className="mb-16 sm:mb-20"
+						required
+					/>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>
-							{t('edit.form.label.display')}
-						</Typography>
-					</Box>
-					<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
-						<CoreRadioGroup
-							className="flex-row"
-							control={control}
-							name="publish"
-							options={displayOptions}
-							row
-						/>
-					</Box>
-				</Box>
+					<AdminInput
+						control={control}
+						name="summary"
+						label={t('edit.form.label.description')}
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						multiline
+						rows={5}
+						required
+					/>
 
-				<CoreCheckboxGroup
-					control={control}
-					name="category"
-					options={categoryData}
-					legendLabel={t('edit.form.label.category')}
-					row
-				/>
-
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.venue')}
-						</Typography>
-					</Box>
-					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
-						<CoreAutocomplete
-							control={control}
-							name="venue"
-							size="small"
-							className="w-full sm:w-1/3"
-							variant="outlined"
-							placeholder="Choose..."
-							options={venueOptions}
-							returnValueType="enum"
-						/>
-
-						<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
-							<Typography variant="h3" color="primary" className="mb-4 ml-10">
-								{t('edit.form.label.type')}
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>
+								{t('edit.form.label.display')}
 							</Typography>
 						</Box>
-
-						<CoreAutocomplete
-							control={control}
-							name="type"
-							size="small"
-							className="w-full sm:w-1/3"
-							variant="outlined"
-							placeholder="Choose..."
-							options={typeOptions}
-							returnValueType="enum"
-						/>
+						<Box className="rounded-md w-full sm:w-2/3 pl-[15px]" sx={{ border: '1px solid #cccc' }}>
+							<CoreRadioGroup
+								className="flex-row"
+								control={control}
+								name="publish"
+								options={displayOptions}
+								row
+							/>
+						</Box>
 					</Box>
-				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.period')}
-						</Typography>
-					</Box>
-					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
-						<CoreDatePicker
-							control={control}
-							name="event_start"
-							size="small"
-							className="w-full sm:w-1/3"
-							variant="outlined"
-							placeholder="Choose..."
-						/>
+					<CoreCheckboxGroup
+						control={control}
+						name="category"
+						options={categoryData}
+						legendLabel={t('edit.form.label.category')}
+						row
+					/>
 
-						<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
-							<Typography variant="h3" color="primary">
-								{t('edit.form.label.to')}
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.venue')}
 							</Typography>
 						</Box>
+						<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
+							<CoreAutocomplete
+								control={control}
+								name="venue"
+								size="small"
+								className="w-full sm:w-1/3"
+								variant="outlined"
+								placeholder="Choose..."
+								options={venueOptions}
+								returnValueType="enum"
+							/>
 
-						<CoreDatePicker
-							control={control}
-							name="event_end"
-							size="small"
-							className="w-full sm:w-1/3"
-							variant="outlined"
-							placeholder="Choose..."
-						/>
+							<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
+								<Typography variant="h3" color="primary" className="mb-4 ml-10">
+									{t('edit.form.label.type')}
+								</Typography>
+							</Box>
+
+							<CoreAutocomplete
+								control={control}
+								name="type"
+								size="small"
+								className="w-full sm:w-1/3"
+								variant="outlined"
+								placeholder="Choose..."
+								options={typeOptions}
+								returnValueType="enum"
+							/>
+						</Box>
 					</Box>
-				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.entry_period')}
-						</Typography>
-					</Box>
-					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
-						<CoreDatePicker
-							control={control}
-							name="reception_start"
-							size="small"
-							className="w-full sm:w-1/3"
-							variant="outlined"
-							placeholder="Choose..."
-						/>
-
-						<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
-							<Typography variant="h3" color="primary">
-								{t('edit.form.label.to')}
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.period')}
 							</Typography>
 						</Box>
+						<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
+							<CoreDatePicker
+								control={control}
+								name="event_start"
+								size="small"
+								className="w-full sm:w-1/3"
+								variant="outlined"
+								placeholder="Choose..."
+							/>
 
-						<CoreDatePicker
-							control={control}
-							name="reception_end"
-							size="small"
-							className="w-full sm:w-1/3"
-							variant="outlined"
-							placeholder="Choose..."
-						/>
+							<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
+								<Typography variant="h3" color="primary">
+									{t('edit.form.label.to')}
+								</Typography>
+							</Box>
+
+							<CoreDatePicker
+								control={control}
+								name="event_end"
+								size="small"
+								className="w-full sm:w-1/3"
+								variant="outlined"
+								placeholder="Choose..."
+							/>
+						</Box>
 					</Box>
-				</Box>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.entry_fee')}
-						</Typography>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.entry_period')}
+							</Typography>
+						</Box>
+						<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
+							<CoreDatePicker
+								control={control}
+								name="reception_start"
+								size="small"
+								className="w-full sm:w-1/3"
+								variant="outlined"
+								placeholder="Choose..."
+							/>
+
+							<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
+								<Typography variant="h3" color="primary">
+									{t('edit.form.label.to')}
+								</Typography>
+							</Box>
+
+							<CoreDatePicker
+								control={control}
+								name="reception_end"
+								size="small"
+								className="w-full sm:w-1/3"
+								variant="outlined"
+								placeholder="Choose..."
+							/>
+						</Box>
 					</Box>
-					<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
-						<AdminInput
-							control={control}
-							name="entry_fee"
-							placeholder="Default input"
-							size="small"
-							classNameField="w-full"
-						/>
 
-						{/* <Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.entry_fee')}
+							</Typography>
+						</Box>
+						<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
+							<AdminInput
+								control={control}
+								name="entry_fee"
+								placeholder="Default input"
+								size="small"
+								classNameField="w-full"
+							/>
+
+							{/* <Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
 							<Typography variant="h3" color="primary">
 								{t('edit.form.label.payment_method')}
 							</Typography>
@@ -412,10 +414,10 @@ const Tab1 = props => {
 								row
 							/>
 						</Box> */}
+						</Box>
 					</Box>
-				</Box>
 
-				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+					{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
 							{t('edit.form.label.entry_option')}
@@ -460,54 +462,54 @@ const Tab1 = props => {
 					</Box>
 				</Box> */}
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>
-							{t('edit.form.label.mission')}
-						</Typography>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>
+								{t('edit.form.label.mission')}
+							</Typography>
+						</Box>
+						<Box className="rounded-md flex w-full sm:w-2/3">
+							{/* <CoreInput control={control} name="" size="small" className="w-full" /> */}
+							<CoreAutocomplete
+								control={control}
+								name="event_mission"
+								options={missions?.missions}
+								size="small"
+								className="w-full"
+								variant="outlined"
+								placeholder="Choose..."
+								labelPath="mission_name"
+								valuePath="id"
+								returnValueType="enum"
+								multiple
+							/>
+							<Button variant="contained" color="third" className="h-40">
+								選択
+							</Button>
+						</Box>
 					</Box>
-					<Box className="rounded-md flex w-full sm:w-2/3">
-						{/* <CoreInput control={control} name="" size="small" className="w-full" /> */}
-						<CoreAutocomplete
-							control={control}
-							name="event_mission"
-							options={missions?.missions}
-							size="small"
-							className="w-full"
-							variant="outlined"
-							placeholder="Choose..."
-							labelPath="mission_name"
-							valuePath="id"
-							returnValueType="enum"
-							multiple
-						/>
-						<Button variant="contained" color="third" className="h-40">
-							選択
-						</Button>
-					</Box>
-				</Box>
 
-				<CoreCheckboxGroup
-					control={control}
-					name="tag"
-					options={tagOptions}
-					legendLabel={t('edit.form.label.tag')}
-					row
-				/>
+					<CoreCheckboxGroup
+						control={control}
+						name="tag"
+						options={tagOptions}
+						legendLabel={t('edit.form.label.tag')}
+						row
+					/>
 
-				<AdminInput
-					control={control}
-					name="caution_for_entry"
-					label={t('edit.form.label.precaution_when_entering')}
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					multiline
-					rows={5}
-				/>
+					<AdminInput
+						control={control}
+						name="caution_for_entry"
+						label={t('edit.form.label.precaution_when_entering')}
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						multiline
+						rows={5}
+					/>
 
-				{/* <AdminInput
+					{/* <AdminInput
 					control={control}
 					name="trouble_contact_name"
 					label={t('edit.form.label.trouble_contact_name')}
@@ -516,16 +518,16 @@ const Tab1 = props => {
 					size="small"
 				/> */}
 
-				<AdminInput
-					control={control}
-					name="sos_info"
-					label={t('edit.form.label.contact_address')}
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-				/>
+					<AdminInput
+						control={control}
+						name="sos_info"
+						label={t('edit.form.label.contact_address')}
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+					/>
 
-				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+					{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center mb-4">
 							{t('edit.form.label.related_event')}
@@ -542,43 +544,43 @@ const Tab1 = props => {
 						/>
 					</Box>
 				</Box> */}
-			</Box>
-
-			<Box className="flex max-w-lg mx-8 sm:mx-auto">
-				<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-					<Typography variant="h3" color="primary" className="flex items-center mb-4">
-						<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-						{t('edit.form.label.creator')}
-					</Typography>
-				</Box>
-				<Box className="rounded-md flex w-full ml-auto items-center sm:w-2/3">
-					<Box className="flex w-full sm:w-full">
-						<Box className="flex w-2/3">
-							<AdminInput control={control} name="author" size="small" className="w-full" />
-							<Button variant="contained" color="third" className="h-32">
-								選択
-							</Button>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-4 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.creator')}
+							</Typography>
 						</Box>
-						<Box className="flex w-1/3 justify-end">
-							<Button
-								onClick={() => navigate(ROUTER_ADMIN.event.list)}
-								variant="contained"
-								color="error"
-								className="mr-10 h-32"
-								size="small"
-							>
-								削除
-							</Button>
-							<LoadingButton
-								loading={isSubmitting}
-								disabled={!isDirty}
-								variant="contained"
-								className="bg-blue text-white h-32"
-								size="small"
-								type="submit"
-							>
-								登録
-							</LoadingButton>
+						<Box className="rounded-md flex flex-wrap w-full sm:w-2/3">
+							<Box className="flex w-full sm:w-full">
+								<Box className="flex w-2/3">
+									<AdminInput control={control} name="author" size="small" className="w-full" />
+									<Button variant="contained" color="third" className="h-32">
+										選択
+									</Button>
+								</Box>
+								<Box className="flex w-1/3 justify-end">
+									<Button
+										onClick={() => navigate(ROUTER_ADMIN.event.list)}
+										variant="contained"
+										color="error"
+										className="mr-10 h-32"
+										size="small"
+									>
+										削除
+									</Button>
+									<LoadingButton
+										loading={isSubmitting}
+										disabled={!isDirty}
+										variant="contained"
+										className="bg-blue text-white h-32"
+										size="small"
+										type="submit"
+									>
+										登録
+									</LoadingButton>
+								</Box>
+							</Box>
 						</Box>
 					</Box>
 				</Box>

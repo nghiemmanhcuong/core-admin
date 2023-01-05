@@ -84,142 +84,144 @@ const EditAccountForm = props => {
 	})
 	return (
 		<form onSubmit={onSubmit}>
-			<Box className="max-w-lg mx-auto">
-				<AdminInput
-					label={t('edit.form.label.id')}
-					control={control}
-					name="id"
-					placeholder="Default input"
-					size="small"
-					readOnly
-					classNameField="bg-grey-300"
-					className="mb-16 sm:mb-20"
-				/>
-
-				<AdminInput
-					label={t('edit.form.label.name')}
-					control={control}
-					name="name"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
-
-				<AdminInput
-					label={t('edit.form.label.mail')}
-					control={control}
-					name="mail"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
-				<AdminInput
-					label={t('edit.form.label.password')}
-					control={control}
-					name="password"
-					type="password"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.role')}
-						</Typography>
-					</Box>
-					<CoreAutocomplete
+			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
+				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
+					<AdminInput
+						label={t('edit.form.label.id')}
 						control={control}
+						name="id"
+						placeholder="Default input"
 						size="small"
-						placeholder="Choose..."
-						name="role"
-						className="w-full sm:w-1/3"
-						options={role}
-						returnValueType="enum"
+						readOnly
+						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
 					/>
-				</Box>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.roll')}
-						</Typography>
-					</Box>
-					<CoreAutocomplete
+
+					<AdminInput
+						label={t('edit.form.label.name')}
 						control={control}
+						name="name"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
 						size="small"
-						placeholder="Choose..."
-						name="roll"
-						returnValueType="enum"
-						options={[
-							{
-								value: 'ロール',
-								label: 'ロール'
-							},
-							{
-								value: 'ロール1',
-								label: 'ロール1'
-							}
-						]}
-						className="w-full sm:w-1/3"
+						required
 					/>
-				</Box>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.active')}
-						</Typography>
-					</Box>
-					<Box className="border-gray-300 flex">
-						<CoreCheckbox
+
+					<AdminInput
+						label={t('edit.form.label.mail')}
+						control={control}
+						name="mail"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						required
+					/>
+					<AdminInput
+						label={t('edit.form.label.password')}
+						control={control}
+						name="password"
+						type="password"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						required
+					/>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.role')}
+							</Typography>
+						</Box>
+						<CoreAutocomplete
 							control={control}
-							name="express"
-							label={t('value.express')}
-							className="ml-[5px]"
-						/>
-						<CoreCheckbox
-							control={control}
-							name="non_representation"
-							label={t('value.non_representation')}
-							className="ml-[5px]"
+							size="small"
+							placeholder="Choose..."
+							name="role"
+							className="w-full sm:w-1/3"
+							options={role}
+							returnValueType="enum"
 						/>
 					</Box>
-				</Box>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.roll')}
+							</Typography>
+						</Box>
+						<CoreAutocomplete
+							control={control}
+							size="small"
+							placeholder="Choose..."
+							name="roll"
+							returnValueType="enum"
+							options={[
+								{
+									value: 'ロール',
+									label: 'ロール'
+								},
+								{
+									value: 'ロール1',
+									label: 'ロール1'
+								}
+							]}
+							className="w-full sm:w-1/3"
+						/>
+					</Box>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.active')}
+							</Typography>
+						</Box>
+						<Box className="border-gray-300 flex">
+							<CoreCheckbox
+								control={control}
+								name="express"
+								label={t('value.express')}
+								className="ml-[5px]"
+							/>
+							<CoreCheckbox
+								control={control}
+								name="non_representation"
+								label={t('value.non_representation')}
+								className="ml-[5px]"
+							/>
+						</Box>
+					</Box>
 
-				<AdminInput
-					label={t('edit.form.label.account_creator')}
-					control={control}
-					name="account_creator"
-					placeholder="Default input"
-					size="small"
-					readOnly
-					classNameField="bg-grey-300"
-					className="mb-16 sm:mb-20"
-					required
-				/>
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Button
-						onClick={() => navigate(ROUTER_ADMIN.account.list)}
-						variant="contained"
-						color="error"
-						className="ml-auto"
-					>
-						{t('edit.form.btn.delete')}
-					</Button>
-					<LoadingButton
-						variant="contained"
-						loading={isSubmitting}
-						disabled={!isDirty}
-						type="submit"
-						className="ml-[10px] bg-blue text-white"
-					>
-						{t('edit.form.btn.register')}
-					</LoadingButton>
+					<AdminInput
+						label={t('edit.form.label.account_creator')}
+						control={control}
+						name="account_creator"
+						placeholder="Default input"
+						size="small"
+						readOnly
+						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
+						required
+					/>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Button
+							onClick={() => navigate(ROUTER_ADMIN.account.list)}
+							variant="contained"
+							color="error"
+							className="ml-auto"
+						>
+							{t('edit.form.btn.delete')}
+						</Button>
+						<LoadingButton
+							variant="contained"
+							loading={isSubmitting}
+							disabled={!isDirty}
+							type="submit"
+							className="ml-[10px] bg-blue text-white"
+						>
+							{t('edit.form.btn.register')}
+						</LoadingButton>
+					</Box>
 				</Box>
 			</Box>
 		</form>
