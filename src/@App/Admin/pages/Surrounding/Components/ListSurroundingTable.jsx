@@ -96,7 +96,7 @@ const ListSurroundingTable = props => {
 			<Box className="flex justify-end">
 				<Typography
 					variant="subtitle2"
-					className="pl-16 pt-6 pr-16 bg-grey-300 rounded flex h-[34.75px] w-auto text-13"
+					className="pl-16 pt-6 pr-16 bg-grey-300 rounded flex h-32 w-auto text-13"
 					sx={{ border: '1px solid #cccc' }}
 				>
 					{t('edit.form.label.csv')}
@@ -121,7 +121,7 @@ const ListSurroundingTable = props => {
 				<Button
 					variant="contained"
 					color="primary"
-					className="mr-2 h-[34.75px] w-auto text-13"
+					className="mr-2 h-32 w-auto text-13"
 				>
 					{t('btn.upload')}
 				</Button>
