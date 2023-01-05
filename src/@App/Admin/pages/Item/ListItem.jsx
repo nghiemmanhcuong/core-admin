@@ -33,11 +33,11 @@ const ListItem = props => {
 				pageTitle={t('title.item')}
 				content={<>
 					<ListItemTable />
-					<Box className='my-40 mr-40 text-right'>
+					<Box className='my-40 mr-20 text-right'>
 						<Button
 							variant="contained"
 							color="primary"
-							className='bg-blue w-160 text-18'
+							className='bg-blue'
 							onClick={() => navigate(ROUTER_ADMIN.item.list + '/new')}
 						>
 							{t('common:btn.add')}

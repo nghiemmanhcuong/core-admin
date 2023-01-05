@@ -489,7 +489,7 @@ const DetailCourseForm = props => {
 						<Box className="grid grid-flow-row-dense grid-cols-3 pt-40">
 							<Box className="col-span-3 sm:col-span-1 pt-10">
 								<Typography variant="h3" color="primary" className="flex items-center">
-									<Typography className="text-black py-4 px-16 rounded-4 mx-8">必須</Typography>
+									<Typography className="text-black py-4 px-16 rounded-4 bg-[#FFC107] mx-8">必須</Typography>
 									コース作成者
 								</Typography>
 							</Box>

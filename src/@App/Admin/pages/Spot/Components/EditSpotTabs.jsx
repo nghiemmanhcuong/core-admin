@@ -173,29 +173,30 @@ const EditSpotTabs = props => {
 
 	return (
 		<form onSubmit={onSubmit} sx={{ padding: 2 }}>
-			<Box className="max-w-lg  mx-auto">
-				<AdminInput
-					label={t('edit.form.label.id')}
-					control={control}
-					name="id"
-					placeholder="Default input"
-					size="small"
-					classNameField="bg-grey-300"
-					className="mb-16 sm:mb-20"
-					readOnly
-				/>
+			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
+				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
+					<AdminInput
+						label={t('edit.form.label.id')}
+						control={control}
+						name="id"
+						placeholder="Default input"
+						size="small"
+						classNameField="bg-grey-300"
+						className="mb-16 sm:mb-20"
+						readOnly
+					/>
 
-				<AdminInput
-					label={t('edit.form.label.name')}
-					control={control}
-					name="name"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
+					<AdminInput
+						label={t('edit.form.label.name')}
+						control={control}
+						name="name"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						required
+					/>
 
-				{/* <AdminInput
+					{/* <AdminInput
 					label={t('edit.form.label.catchphrase')}
 					control={control}
 					name="catchphrase"
@@ -205,40 +206,40 @@ const EditSpotTabs = props => {
 					required
 				/> */}
 
-				<AdminInput
-					label={t('edit.form.label.description')}
-					control={control}
-					name="detail"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					minRows={5}
-					multiline
-					required
-				/>
+					<AdminInput
+						label={t('edit.form.label.description')}
+						control={control}
+						name="detail"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						minRows={5}
+						multiline
+						required
+					/>
 
-				<AdminInputUpload
-					label="スッポト画像"
-					control={control}
-					name="image"
-					size="small"
-					className="w-full sm:w-2/3 mb-16 sm:mb-20"
-					helperText
-				/>
+					<AdminInputUpload
+						label="スッポト画像"
+						control={control}
+						name="image"
+						size="small"
+						className="w-full sm:w-2/3 mb-16 sm:mb-20"
+						helperText
+					/>
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
-					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-						<Typography variant="h3" color="primary" className="flex items-center mb-4">
-							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
-							{t('edit.form.label.type')}
-						</Typography>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+							<Typography variant="h3" color="primary" className="flex items-center mb-4">
+								<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
+								{t('edit.form.label.type')}
+							</Typography>
+						</Box>
+						<Box className="border-grey-400 border-1 rounded-4 w-full sm:w-2/3 pl-[15px]">
+							<CoreRadioGroup className="flex-row" control={control} name="type" options={typeOptions} row />
+						</Box>
 					</Box>
-					<Box className="border-grey-400 border-1 rounded-4 w-full sm:w-2/3 pl-[15px]">
-						<CoreRadioGroup className="flex-row" control={control} name="type" options={typeOptions} row />
-					</Box>
-				</Box>
 
-				{/* <AdminInput
+					{/* <AdminInput
 					label={t('edit.form.label.post_code')}
 					control={control}
 					name="post_code"
@@ -248,82 +249,82 @@ const EditSpotTabs = props => {
 					required
 				/> */}
 
-				<AdminInput
-					label={t('edit.form.label.address')}
-					control={control}
-					name="address"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
+					<AdminInput
+						label={t('edit.form.label.address')}
+						control={control}
+						name="address"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						required
+					/>
 
-				<AdminInput
-					label={t('edit.form.label.phone_number')}
-					control={control}
-					name="tel"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-				/>
+					<AdminInput
+						label={t('edit.form.label.phone_number')}
+						control={control}
+						name="tel"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+					/>
 
-				<AdminInput
-					label={t('edit.form.label.web_url')}
-					control={control}
-					name="url"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-				/>
+					<AdminInput
+						label={t('edit.form.label.web_url')}
+						control={control}
+						name="url"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+					/>
 
-				<AdminInput
-					control={control}
-					label={t('edit.form.label.location_info_latitude')}
-					name="location_info_latitude"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-					required
-				/>
+					<AdminInput
+						control={control}
+						label={t('edit.form.label.location_info_latitude')}
+						name="location_info_latitude"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+						required
+					/>
 
-				<AdminInput
-					control={control}
-					label={t('edit.form.label.location_info_longitude')}
-					name="location_info_longitude"
-					className="mb-16 sm:mb-20"
-					placeholder="Default input"
-					size="small"
-					required
-				/>
+					<AdminInput
+						control={control}
+						label={t('edit.form.label.location_info_longitude')}
+						name="location_info_longitude"
+						className="mb-16 sm:mb-20"
+						placeholder="Default input"
+						size="small"
+						required
+					/>
 
-				<AdminInput
-					label={t('edit.form.label.google_map_url')}
-					control={control}
-					name="google_map_url"
-					placeholder="Default input"
-					className="mb-16 sm:mb-20"
-					size="small"
-				/>
+					<AdminInput
+						label={t('edit.form.label.google_map_url')}
+						control={control}
+						name="google_map_url"
+						placeholder="Default input"
+						className="mb-16 sm:mb-20"
+						size="small"
+					/>
 
-				<CoreCheckboxGroup
-					control={control}
-					name="tag"
-					options={tagOptions}
-					legendLabel={t('edit.form.label.tag')}
-					row
-					required
-				/>
+					<CoreCheckboxGroup
+						control={control}
+						name="tag"
+						options={tagOptions}
+						legendLabel={t('edit.form.label.tag')}
+						row
+						required
+					/>
 
-				<CoreCheckboxGroup
-					control={control}
-					name="facility"
-					options={specialActionsData}
-					legendLabel={t('edit.form.label.special_action')}
-					row
-					required
-				/>
+					<CoreCheckboxGroup
+						control={control}
+						name="facility"
+						options={specialActionsData}
+						legendLabel={t('edit.form.label.special_action')}
+						row
+						required
+					/>
 
-				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+					{/* <Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center">
 							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
@@ -341,7 +342,7 @@ const EditSpotTabs = props => {
 					</Box>
 				</Box> */}
 
-				{/* <Box className="flex flex-wrap sm:flex-nowrap mb-20">
+					{/* <Box className="flex flex-wrap sm:flex-nowrap mb-20">
 					<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
 						<Typography variant="h3" color="primary" className="flex items-center">
 							<Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '}
@@ -356,20 +357,21 @@ const EditSpotTabs = props => {
 					</Box>
 				</Box> */}
 
-				<Box className="flex flex-wrap sm:flex-nowrap mb-20">
-					<Button variant="contained" color="error" className="ml-auto">
-						{t('edit.form.btn.delete')}
-					</Button>
-					<LoadingButton
-						type="submit"
-						variant="contained"
-						color="primary"
-						loading={isSubmitting}
-						disabled={!isDirty}
-						className="ml-[10px] bg-blue text-white"
-					>
-						{t('edit.form.btn.register')}
-					</LoadingButton>
+					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
+						<Button variant="contained" color="error" className="ml-auto">
+							{t('edit.form.btn.delete')}
+						</Button>
+						<LoadingButton
+							type="submit"
+							variant="contained"
+							color="primary"
+							loading={isSubmitting}
+							disabled={!isDirty}
+							className="ml-[10px] bg-blue text-white"
+						>
+							{t('edit.form.btn.register')}
+						</LoadingButton>
+					</Box>
 				</Box>
 			</Box>
 		</form>

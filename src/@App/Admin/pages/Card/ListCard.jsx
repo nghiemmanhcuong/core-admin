@@ -35,12 +35,12 @@ const ListCard = props => {
 				content={
 					<>
 						<ListCardTable />
-						<Box className="text-right my-40 mr-40">
+						<Box className='my-40 mr-20 text-right'>
 							<Button
 								variant="contained"
 								color="primary"
 								onClick={() => navigate(ROUTER_ADMIN.card.list + '/new')}
-								className="bg-blue w-160 font bold text-18"
+								className="bg-blue"
 							>
 								{t('common:btn.add')}
 							</Button>

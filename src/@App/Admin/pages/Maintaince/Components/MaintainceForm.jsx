@@ -330,7 +330,7 @@ const MaintainceForm = props => {
 					color="primary"
 					loading={progressDownload}
 					onClick={() => handleDownload()}
-					className="ml-auto bg-blue text-white"
+					className="ml-auto bg-blue text-white mr-10"
 				>
 					{t('btn.csv_output')}
 				</LoadingButton>

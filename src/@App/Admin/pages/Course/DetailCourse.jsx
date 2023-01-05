@@ -18,7 +18,6 @@ import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { Button, CircularProgress } from '@mui/material'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate, useParams } from 'react-router-dom'
 import DetailCourseForm from './DetailCourseForm'
 import { useCourseDetail } from './hooks/useCourseDetail'
 import ListCourseProvider from './ListCourseProvider'
@@ -26,18 +25,12 @@ import ListCourseProvider from './ListCourseProvider'
 
 const DetailCourse = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.course)
-	const navigate = useNavigate()
 	const { isEdit, course, loadingCourse, id } = useCourseDetail()
 
 	return (
 		<ListCourseProvider t={t} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle="コース詳細"
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.course)}>
-						{t('common:btn.back')}
-					</Button>
-				}
 				content={
 					loadingCourse ? (
 						<div className="mt-40 text-center">

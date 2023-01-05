@@ -26,18 +26,12 @@ import ListCurrencyProvider from './ListCurrencyProvider'
 
 const EditCurrency = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
-	const navigate = useNavigate()
 	const { isEdit, currency, loadingCurrency, id } = useCurrencyDetail()
 
 	return (
 		<ListCurrencyProvider t={t} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle={t('title.currency_detail')}
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.currency.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
 				content={
 					loadingCurrency ? (
 						<div className="mt-40 text-center">

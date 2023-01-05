@@ -26,7 +26,6 @@ import ListMissionProvider from './ListMissionProvider'
 
 const DetailMission = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.mission)
-	const navigate = useNavigate()
 	const { isEdit, mission, loadingMission, id } = useMissionDetail()
 
 	return loadingMission ? (
@@ -37,11 +36,6 @@ const DetailMission = props => {
 		<ListMissionProvider t={t} missionData={mission} missionId={id} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle={t('title.mission_detail')}
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.mission.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
 				content={<MissionForm />}
 			/>
 		</ListMissionProvider>

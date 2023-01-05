@@ -27,7 +27,6 @@ import ListNotificationProvider from './ListNotificationProvider'
 
 const DetailNotification = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.notification)
-	const navigate = useNavigate()
 	// const {id} = useParams()
 	// const isEdit = id !== 'new'
 	// const requestNotification = useRequest(notificationService.find, {
@@ -50,11 +49,6 @@ const DetailNotification = props => {
 		<ListNotificationProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.detail_notification')}
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.notification.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
 				content={<EditNotification />}
 			/>
 		</ListNotificationProvider>
