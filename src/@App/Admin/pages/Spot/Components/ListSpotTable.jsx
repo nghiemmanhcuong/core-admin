@@ -107,14 +107,13 @@ const ListSpotTable = props => {
 			<Box className="flex justify-end">
 				<Typography
 					variant="subtitle2"
-					className="p-10 bg-grey-300 rounded flex"
-					sx={{ border: '1px solid #cccc' }}
+					className="pl-16 pt-6 pr-16 bg-grey-300 rounded flex h-[34.75px] w-auto text-13"
 				>
-					<span className="m-auto">{t('edit.form.label.csv')}</span>
+					{t('edit.form.label.csv')}
 				</Typography>
 				<div className="flex border-grey-300 border-1 rounded-4 relative" htmlFor="formId">
 					<Typography
-						className="ml-10 mr-5 my-auto text-white rounded-4 p-6"
+						className="mr-5 my-auto text-white rounded-4 p-6"
 						sx={{ backgroundColor: '#19A2B8' }}
 					>
 						ファイルを選択
@@ -128,8 +127,11 @@ const ListSpotTable = props => {
 						className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
 					/>
 				</div>
-
-				<Button variant="contained" color="primary" className="ml-[2px]">
+				<Button
+					variant="contained"
+					color="primary"
+					className="mr-2 h-[34.75px] w-auto text-13"
+				>
 					{t('btn.upload')}
 				</Button>
 			</Box>
