@@ -135,7 +135,7 @@ const DetailTagForm = props => {
 						label={t('title.id')}
 						control={control}
 						name="id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						classNameField="bg-grey-300"
 						className="mb-16 sm:mb-20"
@@ -145,7 +145,7 @@ const DetailTagForm = props => {
 						label={t('title.name')}
 						control={control}
 						name="name"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						className="mb-16 sm:mb-20"
 						required
@@ -174,7 +174,7 @@ const DetailTagForm = props => {
 						label={t('title.number_tag')}
 						control={control}
 						name="order"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -213,7 +213,7 @@ const DetailTagForm = props => {
 						label={t('title.tag_creator')}
 						control={control}
 						name="author"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						classNameField="bg-grey-300"
 						className="mb-16 sm:mb-20"

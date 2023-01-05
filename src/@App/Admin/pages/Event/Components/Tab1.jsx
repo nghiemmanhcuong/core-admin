@@ -222,7 +222,7 @@ const Tab1 = props => {
 						control={control}
 						label={t('edit.form.label.id')}
 						name="id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -233,7 +233,7 @@ const Tab1 = props => {
 						control={control}
 						label={t('edit.form.label.title')}
 						name="title"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						className="mb-16 sm:mb-20"
 						required
@@ -243,7 +243,7 @@ const Tab1 = props => {
 						control={control}
 						name="summary"
 						label={t('edit.form.label.description')}
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						multiline
@@ -291,7 +291,7 @@ const Tab1 = props => {
 								size="small"
 								className="w-full sm:w-1/3"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								options={venueOptions}
 								returnValueType="enum"
 							/>
@@ -308,7 +308,7 @@ const Tab1 = props => {
 								size="small"
 								className="w-full sm:w-1/3"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								options={typeOptions}
 								returnValueType="enum"
 							/>
@@ -329,7 +329,7 @@ const Tab1 = props => {
 								size="small"
 								className="w-full sm:w-1/3"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 							/>
 
 							<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
@@ -344,7 +344,7 @@ const Tab1 = props => {
 								size="small"
 								className="w-full sm:w-1/3"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 							/>
 						</Box>
 					</Box>
@@ -363,7 +363,7 @@ const Tab1 = props => {
 								size="small"
 								className="w-full sm:w-1/3"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 							/>
 
 							<Box className="text-center w-full sm:w-1/3 mx-auto pt-10">
@@ -378,7 +378,7 @@ const Tab1 = props => {
 								size="small"
 								className="w-full sm:w-1/3"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 							/>
 						</Box>
 					</Box>
@@ -394,7 +394,7 @@ const Tab1 = props => {
 							<AdminInput
 								control={control}
 								name="entry_fee"
-								placeholder="Default input"
+								placeholder="デフォルト入力"
 								size="small"
 								classNameField="w-full"
 							/>
@@ -478,7 +478,7 @@ const Tab1 = props => {
 								size="small"
 								className="w-full"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								labelPath="mission_name"
 								valuePath="id"
 								returnValueType="enum"
@@ -502,7 +502,7 @@ const Tab1 = props => {
 						control={control}
 						name="caution_for_entry"
 						label={t('edit.form.label.precaution_when_entering')}
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						multiline
@@ -513,7 +513,7 @@ const Tab1 = props => {
 					control={control}
 					name="trouble_contact_name"
 					label={t('edit.form.label.trouble_contact_name')}
-					placeholder="Default input"
+					placeholder="デフォルト入力"
 					className="mb-16 sm:mb-20"
 					size="small"
 				/> */}
@@ -522,7 +522,7 @@ const Tab1 = props => {
 						control={control}
 						name="sos_info"
 						label={t('edit.form.label.contact_address')}
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>
@@ -540,7 +540,7 @@ const Tab1 = props => {
 							size="small"
 							className="w-full"
 							variant="outlined"
-							placeholder="Choose..."
+							placeholder="選択する"
 						/>
 					</Box>
 				</Box> */}

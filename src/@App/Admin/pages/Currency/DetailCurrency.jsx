@@ -111,7 +111,7 @@ const DetailCurrency = props => {
 						label={t('edit.form.label.id')}
 						control={control}
 						name="id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						classNameField="bg-grey-300"
 						className="mb-16 sm:mb-20"
@@ -121,7 +121,7 @@ const DetailCurrency = props => {
 						label={t('edit.form.label.name')}
 						control={control}
 						name="name"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						className="mb-16 sm:mb-20"
 						required
@@ -130,7 +130,7 @@ const DetailCurrency = props => {
 						label="通貨単位名"
 						control={control}
 						name="unit"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						className="mb-16 sm:mb-20"
 						required
@@ -139,7 +139,7 @@ const DetailCurrency = props => {
 						label={t('edit.form.label.description')}
 						control={control}
 						name="app_currency_explanation"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						className="mb-16 sm:mb-20"
 						minRows={5}
@@ -169,7 +169,7 @@ const DetailCurrency = props => {
 								size="small"
 								fullWidth
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								name="available_start"
 								className="w-full"
 							/>
@@ -181,7 +181,7 @@ const DetailCurrency = props => {
 								size="small"
 								fullWidth
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								name="available_end"
 								className="w-full"
 							/>

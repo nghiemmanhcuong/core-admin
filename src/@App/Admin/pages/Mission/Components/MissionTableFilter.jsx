@@ -72,7 +72,7 @@ const MissionTableFilter = props => {
 						name="clear_type"
 						size="small"
 						className="w-full sm:w-2/3"
-						placeholder="Choose..."
+						placeholder="選択する"
 						options={statusOptions}
 						returnValueType="enum"
 					/>
@@ -93,7 +93,7 @@ const MissionTableFilter = props => {
 						control={control}
 						name="app_currency_id"
 						size="small"
-						placeholder="Choose..."
+						placeholder="選択する"
 						options={[
 							{ value: 1, label: 'Travelo共通ポイント' },
 							{ value: 2, label: '通貨名qqllqqllqqll' },

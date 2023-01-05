@@ -69,7 +69,7 @@ const NotificationTableFilter = props => {
 						fullWidth
 						variant="outlined"
 						returnValueType="enum"
-						placeholder="Choose..."
+						placeholder="選択する"
 						className="w-2/3"
 						options={[
 							{
@@ -92,7 +92,7 @@ const NotificationTableFilter = props => {
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">{t('title.period')}</Box>
 					<CoreAutocomplete
 						control={control}
-						placeholder="Default select"
+						placeholder="デフォルト選択"
 						name="123"
 						size="small"
 						className="w-2/3"

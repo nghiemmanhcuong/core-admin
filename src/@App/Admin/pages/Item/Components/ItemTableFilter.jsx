@@ -90,7 +90,7 @@ const ItemTableFilter = props => {
 						size="small"
 						fullWidth
 						variant="outlined"
-						placeholder="Choose..."
+						placeholder="選択する"
 						name="exchange_area"
 						className="w-2/3"
 						options={[
@@ -154,7 +154,7 @@ const ItemTableFilter = props => {
 						control={control}
 						name="app_currency_id"
 						size="small"
-						placeholder="Choose..."
+						placeholder="選択する"
 						options={currencies?.app_currency}
 						valuePath="id"
 						labelPath="name"

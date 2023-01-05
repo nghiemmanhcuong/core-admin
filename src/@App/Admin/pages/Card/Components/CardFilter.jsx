@@ -65,7 +65,7 @@ const CardFilter = props => {
 						size="small"
 						className="w-2/3"
 						returnValueType="enum"
-						placeholder="Choose..."
+						placeholder="選択する"
 						options={[
 							{
 								value: 1,

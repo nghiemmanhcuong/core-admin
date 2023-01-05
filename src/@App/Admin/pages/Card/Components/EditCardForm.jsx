@@ -80,7 +80,7 @@ const EditCardForm = props => {
 					control={control}
 					name="id"
 					label={'カードID'}
-					placeholder="Default input"
+					placeholder="デフォルト入力"
 					size="small"
 					readOnly
 					classNameField="bg-grey-300"
@@ -91,7 +91,7 @@ const EditCardForm = props => {
 					control={control}
 					label={'カード名前'}
 					name="name"
-					placeholder="Default input"
+					placeholder="デフォルト入力"
 					className="mb-16 sm:mb-20"
 					size="small"
 					required
@@ -116,7 +116,7 @@ const EditCardForm = props => {
 							fullWidth
 							variant="outlined"
 							returnValueType="enum"
-							placeholder="Choose..."
+							placeholder="選択する"
 							className="w-full"
 							options={[
 								{

@@ -151,7 +151,7 @@ const MissionForm = props => {
 					label={t('edit.form.label.id')}
 					control={control}
 					name="id"
-					placeholder="Default input"
+					placeholder="デフォルト入力"
 					size="small"
 					classNameField="bg-grey-300"
 					className="mb-16 sm:mb-20"
@@ -162,7 +162,7 @@ const MissionForm = props => {
 						control={control}
 						name="mission_name"
 						required
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>
@@ -250,7 +250,7 @@ const MissionForm = props => {
 						control={control}
 						name="card_name"
 						required
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>
@@ -306,7 +306,7 @@ const MissionForm = props => {
 								control={control}
 								name="app_currency_id"
 								size="small"
-								placeholder="Choose..."
+								placeholder="選択する"
 								options={currencies?.app_currency}
 								valuePath="id"
 								labelPath="name"
@@ -321,7 +321,7 @@ const MissionForm = props => {
 						control={control}
 						name="currency"
 						required
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>

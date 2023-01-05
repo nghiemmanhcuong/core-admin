@@ -90,7 +90,7 @@ const EditAccountForm = props => {
 						label={t('edit.form.label.id')}
 						control={control}
 						name="id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -101,7 +101,7 @@ const EditAccountForm = props => {
 						label={t('edit.form.label.name')}
 						control={control}
 						name="name"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -111,7 +111,7 @@ const EditAccountForm = props => {
 						label={t('edit.form.label.mail')}
 						control={control}
 						name="mail"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -121,7 +121,7 @@ const EditAccountForm = props => {
 						control={control}
 						name="password"
 						type="password"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -136,7 +136,7 @@ const EditAccountForm = props => {
 						<CoreAutocomplete
 							control={control}
 							size="small"
-							placeholder="Choose..."
+							placeholder="選択する"
 							name="role"
 							className="w-full sm:w-1/3"
 							options={role}
@@ -153,7 +153,7 @@ const EditAccountForm = props => {
 						<CoreAutocomplete
 							control={control}
 							size="small"
-							placeholder="Choose..."
+							placeholder="選択する"
 							name="roll"
 							returnValueType="enum"
 							options={[
@@ -196,7 +196,7 @@ const EditAccountForm = props => {
 						label={t('edit.form.label.account_creator')}
 						control={control}
 						name="account_creator"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"

@@ -149,7 +149,7 @@ const Tab2 = props => {
 						control={control}
 						label="イベントID"
 						name="event_id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnlydisabled={!isDirty}
 						classNameField="bg-grey-300"
@@ -160,7 +160,7 @@ const Tab2 = props => {
 						control={control}
 						label="イベントタイトル"
 						name="title"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						readOnly
@@ -181,7 +181,7 @@ const Tab2 = props => {
 										size="small"
 										fullWidth
 										variant="outlined"
-										placeholder="Default Select"
+										placeholder="デフォルト選択"
 										options={courses?.courses}
 										valuePath="id"
 										labelPath="course_name"
@@ -221,7 +221,7 @@ const Tab2 = props => {
 						control={control}
 						label="コースタイトル"
 						name="course_name"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -231,7 +231,7 @@ const Tab2 = props => {
 						control={control}
 						label="キャッチフレーズ"
 						name="catchphrase"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -254,7 +254,7 @@ const Tab2 = props => {
 						control={control}
 						label="コース距離"
 						name="course_distance"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -265,7 +265,7 @@ const Tab2 = props => {
 						control={control}
 						label="平均勾配"
 						name="average_gradient"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -276,7 +276,7 @@ const Tab2 = props => {
 						control={control}
 						label="獲得標高"
 						name="elevation"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -297,7 +297,7 @@ const Tab2 = props => {
 								// label="完走目安"
 								control={control}
 								name="goal_approximate_time"
-								placeholder="Default input"
+								placeholder="デフォルト入力"
 								size="small"
 								className="mb-16 sm:mb-20"
 								showTimeSelect={true}
@@ -310,7 +310,7 @@ const Tab2 = props => {
 						control={control}
 						label="ルートURL"
 						name="route_url"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -330,7 +330,7 @@ const Tab2 = props => {
 						control={control}
 						label="ルートファイル（kml形式）"
 						name="route_file"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -341,7 +341,7 @@ const Tab2 = props => {
 						control={control}
 						label="高低図URL"
 						name="elevation_chart_url"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"

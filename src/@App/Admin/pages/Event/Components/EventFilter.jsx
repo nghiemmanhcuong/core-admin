@@ -74,7 +74,7 @@ const EventFilter = props => {
 						size="small"
 						className="w-2/3"
 						returnValueType="enum"
-						placeholder="Choose..."
+						placeholder="選択する"
 						multiple
 						options={[
 							{
@@ -118,8 +118,8 @@ const EventFilter = props => {
 				</Box>
 				<Box className="flex w-1/2 items-center mx-8 ">
 					<Box className="w-1/3 p-8 bg-grey-300 border-grey-300 border-1 rounded-4">費用</Box>
-					<CoreInput control={control} name="min_fee" placeholder="最低料金" className="w-1/3" size="small" />
-					<CoreInput control={control} name="max_fee" placeholder="最大料金" className="w-1/3" size="small" />
+					<CoreInput control={control} name="min_fee" className="w-1/3" size="small" />
+					<CoreInput control={control} name="max_fee" className="w-1/3" size="small" />
 				</Box>
 			</Box>
 			<Box className="flex p-8  w-full">
@@ -131,7 +131,7 @@ const EventFilter = props => {
 						size="small"
 						className="w-2/3"
 						returnValueType="enum"
-						placeholder="Choose..."
+						placeholder="選択する"
 						multiple
 						options={tags?.tags}
 						valuePath="id"
