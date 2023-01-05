@@ -198,7 +198,7 @@ const EditSurroundingForm = props => {
 						</Button>
 						<LoadingButton
 							variant="contained"
-							className="bg-blue "
+							className="bg-blue text-white h-32"
 							size="small"
 							type="submit"
 							loading={isSubmitting}
