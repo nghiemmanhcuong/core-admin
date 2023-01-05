@@ -26,18 +26,12 @@ import ListItemProvider from './ListItemProvider'
 
 const EditItem = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.item)
-	const navigate = useNavigate()
 	const { isEdit, item, loadingItem, id } = useItemDetail()
 
 	return (
 		<ListItemProvider t={t} isEdit={isEdit}>
 			<AdminContentPage
 				pageTitle={t('title.item_detail')}
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.item.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
 				content={
 					loadingItem ? (
 						<Box className="text-center mt-40">
