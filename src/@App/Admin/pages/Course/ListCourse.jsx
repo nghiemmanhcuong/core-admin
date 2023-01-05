@@ -21,13 +21,12 @@ const ListCourse = props => {
 				content={
 					<>
 						<ListCourseTable />
-			
-						<Box className='my-40 mr-40 text-right'>
+						<Box className='my-40 mr-20 text-right'>
 							<Button
 								variant="contained"
 								color="primary"
 								onClick={() => navigate(ROUTER_ADMIN.course + '/new')}
-								className='bg-blue text-18 w-160 '
+								className='bg-blue'
 							>
 								{t('common:btn.add')}
 							</Button>

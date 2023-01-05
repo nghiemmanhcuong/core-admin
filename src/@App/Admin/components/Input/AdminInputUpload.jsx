@@ -110,7 +110,7 @@ const AdminInputUpload = ({
 						{helperText && (
 							<>
 								<Divider />
-								<Box className="p-12">推奨サイズ : 100 x 100</Box>
+								<Box className="p-12">推奨サイズ : 100px x 100px</Box>
 							</>
 						)}
 					</Box>

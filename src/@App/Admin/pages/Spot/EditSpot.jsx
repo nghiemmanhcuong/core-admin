@@ -22,21 +22,13 @@ import { Box } from '@mui/system'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import ListSpotProvider from './ListSpotProvider'
 import EditSpotTabs from './Components/EditSpotTabs'
-import { Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
 
 const EditSpot = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
-	const navigate = useNavigate()
 	return (
 		<ListSpotProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.spot')}
-				headerAction={
-					<Button variant="contained" color="error" onClick={() => navigate(ROUTER_ADMIN.spot.list)}>
-						{t('common:btn.back')}
-					</Button>
-				}
 				content={<EditSpotTabs />}
 			/>
 		</ListSpotProvider>

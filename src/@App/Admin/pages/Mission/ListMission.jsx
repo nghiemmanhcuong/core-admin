@@ -31,20 +31,21 @@ const ListMission = props => {
 		<ListMissionProvider t={t}>
 			<AdminContentPage
 				pageTitle={t('title.mission')}
-				content={<>
-					<ListMissionTable />
-					<Box className='text-right my-40 mr-40'>
-						<Button
-						variant="contained"
-						color="primary"
-						className='bg-blue text-18 w-160'
-						onClick={() => navigate(ROUTER_ADMIN.mission.list + '/new')}
-						>
-							{t('btn.new')}
-						</Button>
-					</Box>
-				</>
-			}
+				content={
+					<>
+						<ListMissionTable />
+						<Box className='my-40 mr-20 text-right'>
+							<Button
+								variant="contained"
+								color="primary"
+								className='bg-blue'
+								onClick={() => navigate(ROUTER_ADMIN.mission.list + '/new')}
+							>
+								{t('btn.new')}
+							</Button>
+						</Box>
+					</>
+				}
 			/>
 		</ListMissionProvider>
 	)

@@ -105,8 +105,8 @@ const DetailCurrency = props => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<Box>
-				<Box sx={{ padding: 2 }} className="max-w-lg mx-auto">
+			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
+				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
 					<AdminInput
 						label={t('edit.form.label.id')}
 						control={control}
