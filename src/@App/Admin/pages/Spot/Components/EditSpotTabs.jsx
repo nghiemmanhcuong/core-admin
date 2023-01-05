@@ -179,7 +179,7 @@ const EditSpotTabs = props => {
 						label={t('edit.form.label.id')}
 						control={control}
 						name="id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						classNameField="bg-grey-300"
 						className="mb-16 sm:mb-20"
@@ -190,7 +190,7 @@ const EditSpotTabs = props => {
 						label={t('edit.form.label.name')}
 						control={control}
 						name="name"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -200,7 +200,7 @@ const EditSpotTabs = props => {
 					label={t('edit.form.label.catchphrase')}
 					control={control}
 					name="catchphrase"
-					placeholder="Default input"
+					placeholder="デフォルト入力"
 					size="small"
 					className="mb-16 sm:mb-20"
 					required
@@ -210,7 +210,7 @@ const EditSpotTabs = props => {
 						label={t('edit.form.label.description')}
 						control={control}
 						name="detail"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						minRows={5}
@@ -243,7 +243,7 @@ const EditSpotTabs = props => {
 					label={t('edit.form.label.post_code')}
 					control={control}
 					name="post_code"
-					placeholder="Default input"
+					placeholder="デフォルト入力"
 					className="mb-16 sm:mb-20"
 					size="small"
 					required
@@ -253,7 +253,7 @@ const EditSpotTabs = props => {
 						label={t('edit.form.label.address')}
 						control={control}
 						name="address"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -263,7 +263,7 @@ const EditSpotTabs = props => {
 						label={t('edit.form.label.phone_number')}
 						control={control}
 						name="tel"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>
@@ -272,7 +272,7 @@ const EditSpotTabs = props => {
 						label={t('edit.form.label.web_url')}
 						control={control}
 						name="url"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>
@@ -281,7 +281,7 @@ const EditSpotTabs = props => {
 						control={control}
 						label={t('edit.form.label.location_info_latitude')}
 						name="location_info_latitude"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -292,7 +292,7 @@ const EditSpotTabs = props => {
 						label={t('edit.form.label.location_info_longitude')}
 						name="location_info_longitude"
 						className="mb-16 sm:mb-20"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						required
 					/>
@@ -301,7 +301,7 @@ const EditSpotTabs = props => {
 						label={t('edit.form.label.google_map_url')}
 						control={control}
 						name="google_map_url"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>

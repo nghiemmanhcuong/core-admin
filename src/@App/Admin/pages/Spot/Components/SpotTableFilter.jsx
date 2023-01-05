@@ -84,7 +84,7 @@ const SpotTableFilter = props => {
 						name="address"
 						size="small"
 						className="w-full sm:w-2/3"
-						placeholder="Choose..."
+						placeholder="選択する"
 						options={addressOptions}
 						returnValueType="enum"
 					/>
@@ -107,7 +107,7 @@ const SpotTableFilter = props => {
 						name="type"
 						size="small"
 						className="w-full sm:w-2/3"
-						placeholder="Choose..."
+						placeholder="選択する"
 						options={typeOptions}
 						returnValueType="enum"
 					/>

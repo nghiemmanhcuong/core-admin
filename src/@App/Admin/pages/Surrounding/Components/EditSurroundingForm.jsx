@@ -95,7 +95,7 @@ const EditSurroundingForm = props => {
 						control={control}
 						label={t('edit.form.label.id')}
 						name="id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -106,7 +106,7 @@ const EditSurroundingForm = props => {
 						control={control}
 						label={t('edit.form.label.name')}
 						name="name"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -129,7 +129,7 @@ const EditSurroundingForm = props => {
 					size="small"
 					multiline
 					minRows={5}
-					// placeholder="Default input"
+					// placeholder="デフォルト入力"
 					className="mb-16 sm:mb-20"
 					// required
 				/> */}
@@ -137,7 +137,7 @@ const EditSurroundingForm = props => {
 						control={control}
 						label={t('edit.form.label.address')}
 						name="address"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -146,7 +146,7 @@ const EditSurroundingForm = props => {
 						control={control}
 						label={t('edit.form.label.location_info_latitude')}
 						name="location_info_latitude"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -156,7 +156,7 @@ const EditSurroundingForm = props => {
 						label={t('edit.form.label.location_info_longitude')}
 						name="location_info_longitude"
 						className="mb-16 sm:mb-20"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						required
 					/>
@@ -164,7 +164,7 @@ const EditSurroundingForm = props => {
 						control={control}
 						label={t('edit.form.label.url')}
 						name="url"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -173,7 +173,7 @@ const EditSurroundingForm = props => {
 						control={control}
 						label={t('edit.form.label.tel')}
 						name="tel"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required

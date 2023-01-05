@@ -86,7 +86,7 @@ const AccountTableFilter = props => {
 					</Box>
 					<CoreAutocomplete
 						control={control}
-						placeholder="Default select"
+						placeholder="デフォルト選択"
 						name="role"
 						size="small"
 						className="w-2/3"
@@ -105,7 +105,7 @@ const AccountTableFilter = props => {
 						name="roll"
 						size="small"
 						className="w-full sm:w-2/3"
-						placeholder="Default Select"
+						placeholder="デフォルト選択"
 						options={[
 							{
 								value: 1,
@@ -151,7 +151,7 @@ const AccountTableFilter = props => {
 						name="mail"
 						size="small"
 						className="w-full sm:w-2/3"
-						placeholder="Default Select"
+						placeholder="デフォルト選択"
 						options={emailOptions}
 						returnValueType="enum"
 					/>

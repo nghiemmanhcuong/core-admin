@@ -146,7 +146,7 @@ const EditItemForm = props => {
 						label={t('edit.form.label.id')}
 						control={control}
 						name="id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -156,7 +156,7 @@ const EditItemForm = props => {
 						label={t('edit.form.label.name')}
 						control={control}
 						name="name"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -175,7 +175,7 @@ const EditItemForm = props => {
 						label="消費通貨量"
 						control={control}
 						name="currency_of_consumption"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -192,7 +192,7 @@ const EditItemForm = props => {
 								control={control}
 								name="app_currency_id"
 								size="small"
-								placeholder="Choose..."
+								placeholder="選択する"
 								options={currencies?.app_currency}
 								valuePath="id"
 								labelPath="name"
@@ -206,7 +206,7 @@ const EditItemForm = props => {
 						label="在庫数"
 						control={control}
 						name="stock"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>
@@ -214,7 +214,7 @@ const EditItemForm = props => {
 						label="詳細"
 						control={control}
 						name="summary"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>
@@ -234,7 +234,7 @@ const EditItemForm = props => {
 								size="small"
 								fullWidth
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								name="available_start"
 								className="w-full"
 							/>
@@ -246,7 +246,7 @@ const EditItemForm = props => {
 								size="small"
 								fullWidth
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								name="available_end"
 								className="w-full"
 							/>
@@ -266,7 +266,7 @@ const EditItemForm = props => {
 								size="small"
 								fullWidth
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								name="exchange_method"
 								className="w-full sm:w-1/3"
 								valuePath="id"
@@ -294,7 +294,7 @@ const EditItemForm = props => {
 								size="small"
 								fullWidth
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								name="exchange_area"
 								valuePath="value"
 								labelPath="label"
@@ -357,7 +357,7 @@ const EditItemForm = props => {
 						label="引換場所"
 						control={control}
 						name="exchange_place"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -367,7 +367,7 @@ const EditItemForm = props => {
 						label={t('edit.form.label.address_location')}
 						control={control}
 						name="exchange_address"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					/>
@@ -376,7 +376,7 @@ const EditItemForm = props => {
 						label="引換場所GoogleMapURL"
 						control={control}
 						name="exchange_place_google_map_url"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					// required
@@ -385,7 +385,7 @@ const EditItemForm = props => {
 						label="引換場所位置情報（緯度）"
 						control={control}
 						name="exchange_place_location_info_latitude"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					// required
@@ -394,7 +394,7 @@ const EditItemForm = props => {
 						label="引換場所位置情報（経度)"
 						control={control}
 						name="exchange_place_location_info_longitude"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					// required
@@ -403,7 +403,7 @@ const EditItemForm = props => {
 						label="利用注意事項"
 						control={control}
 						name="caution"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 					// required

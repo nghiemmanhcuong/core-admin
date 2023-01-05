@@ -123,7 +123,7 @@ const EditNotification = props => {
 						label={t('edit.form.label.id')}
 						control={control}
 						name="id"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						size="small"
 						readOnly
 						classNameField="bg-grey-300"
@@ -134,7 +134,7 @@ const EditNotification = props => {
 						label={t('edit.form.label.title')}
 						control={control}
 						name="title"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -158,7 +158,7 @@ const EditNotification = props => {
 								fullWidth
 								variant="outlined"
 								returnValueType="enum"
-								placeholder="Choose..."
+								placeholder="選択する"
 								className="w-full sm:w-1/3"
 								options={[
 									{
@@ -187,7 +187,7 @@ const EditNotification = props => {
 								size="small"
 								className="w-full sm:w-1/3"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								showTimeSelect
 								dateFormat="Y-m-d H:i:s"
 							/>
@@ -200,7 +200,7 @@ const EditNotification = props => {
 								size="small"
 								className="w-full sm:w-1/3"
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								showTimeSelect
 								dateFormat="Y-m-d H:i:s"
 							/>
@@ -210,7 +210,7 @@ const EditNotification = props => {
 						label={t('edit.form.label.notification')}
 						control={control}
 						name="summary"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						multiline

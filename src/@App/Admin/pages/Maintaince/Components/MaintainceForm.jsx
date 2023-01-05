@@ -162,7 +162,7 @@ const MaintainceForm = props => {
 								size="small"
 								fullWidth
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								name="collect_duration_from"
 								className="w-full"
 								showMonthYearPicker
@@ -175,7 +175,7 @@ const MaintainceForm = props => {
 								size="small"
 								fullWidth
 								variant="outlined"
-								placeholder="Choose..."
+								placeholder="選択する"
 								name="collect_duration_until"
 								className="w-full mr-8"
 								showMonthYearPicker
@@ -211,7 +211,7 @@ const MaintainceForm = props => {
 							size="small"
 							fullWidth
 							variant="outlined"
-							placeholder="Choose..."
+							placeholder="選択する"
 							name="event_id"
 							className="w-full sm:w-4/5 bg-white"
 							options={events?.events}

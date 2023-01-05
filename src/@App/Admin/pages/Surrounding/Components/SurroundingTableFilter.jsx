@@ -77,7 +77,7 @@ const SurroundingTableFilter = props => {
 						size="small"
 						options={addressOptions}
 						className="w-full sm:w-2/3"
-						placeholder="Choose..."
+						placeholder="選択する"
 						returnValueType="enum"
 					/>
 				</Box>
@@ -90,7 +90,7 @@ const SurroundingTableFilter = props => {
 						name="type"
 						size="small"
 						className="w-full sm:w-2/3"
-						placeholder="Choose..."
+						placeholder="選択する"
 						options={typeOptions}
 						returnValueType="enum"
 					/>

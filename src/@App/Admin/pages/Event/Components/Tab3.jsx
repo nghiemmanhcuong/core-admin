@@ -67,7 +67,7 @@ const Tab3 = props => {
 							<CoreInput
 								control={control}
 								name="event_id"
-								placeholder="Default input"
+								placeholder="デフォルト入力"
 								size="small"
 								readOnly
 								className="bg-grey-300"
@@ -82,7 +82,7 @@ const Tab3 = props => {
 							<CoreInput
 								control={control}
 								name="title"
-								placeholder="Default input"
+								placeholder="デフォルト入力"
 								size="small"
 								readOnly
 								className="bg-grey-300"

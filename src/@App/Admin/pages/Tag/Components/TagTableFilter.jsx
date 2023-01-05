@@ -112,7 +112,7 @@ const TagTableFilter = props => {
 						]}
 						size="small"
 						className="w-full sm:w-2/3"
-						placeholder="Choose..."
+						placeholder="選択する"
 						valuePath="value"
 						labelPath="label"
 						returnValueType="enum"

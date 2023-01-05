@@ -128,7 +128,7 @@ const DetailCourseForm = props => {
 							label="コースID"
 							control={control}
 							name="id"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 							classNameField="bg-grey-300"
@@ -139,7 +139,7 @@ const DetailCourseForm = props => {
 							label="コースタイトル"
 							control={control}
 							name="course_name"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 							required
@@ -149,7 +149,7 @@ const DetailCourseForm = props => {
 							label="キャッチフレーズ"
 							control={control}
 							name="catchphrase"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 							required
@@ -159,7 +159,7 @@ const DetailCourseForm = props => {
 							label="コース説明"
 							control={control}
 							name="course_summary"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 						/>
@@ -178,7 +178,7 @@ const DetailCourseForm = props => {
 							label="コース距離（km）"
 							control={control}
 							name="course_distance"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 						/>
@@ -187,7 +187,7 @@ const DetailCourseForm = props => {
 							label="平均勾配（%）"
 							control={control}
 							name="average_gradient"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 						/>
@@ -196,7 +196,7 @@ const DetailCourseForm = props => {
 							label="獲得標高（m）"
 							control={control}
 							name="elevation"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 						/>
@@ -205,7 +205,7 @@ const DetailCourseForm = props => {
 							label="体力度"
 							control={control}
 							name="strength"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 						/> */}
@@ -224,7 +224,7 @@ const DetailCourseForm = props => {
 									// label="完走目安"
 									control={control}
 									name="goal_approximate_time"
-									placeholder="Default input"
+									placeholder="デフォルト入力"
 									size="small"
 									className="mb-16 sm:mb-20"
 									showTimeSelect={true}
@@ -237,7 +237,7 @@ const DetailCourseForm = props => {
 							label="ルートURL"
 							control={control}
 							name="route_url"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 						/>
@@ -268,7 +268,7 @@ const DetailCourseForm = props => {
 							label="高低図URL"
 							control={control}
 							name="elevation_chart_url"
-							placeholder="Default input"
+							placeholder="デフォルト入力"
 							size="small"
 							className="mb-16 sm:mb-20"
 						/>
@@ -291,7 +291,7 @@ const DetailCourseForm = props => {
 									multiple
 									className="w-full"
 									variant="outlined"
-									placeholder="Choose..."
+									placeholder="選択する"
 									valuePath="id"
 									labelPath="name"
 									returnValueType="enum"
@@ -316,7 +316,7 @@ const DetailCourseForm = props => {
 									size="small"
 									className="w-full"
 									variant="outlined"
-									placeholder="Choose..."
+									placeholder="選択する"
 									labelPath="name"
 									valuePath="id"
 									multiple

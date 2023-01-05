@@ -74,7 +74,7 @@ const EventFilter = props => {
 						size="small"
 						className="w-2/3"
 						returnValueType="enum"
-						placeholder="Choose..."
+						placeholder="選択する"
 						multiple
 						options={[
 							{
@@ -131,7 +131,7 @@ const EventFilter = props => {
 						size="small"
 						className="w-2/3"
 						returnValueType="enum"
-						placeholder="Choose..."
+						placeholder="選択する"
 						multiple
 						options={tags?.tags}
 						valuePath="id"

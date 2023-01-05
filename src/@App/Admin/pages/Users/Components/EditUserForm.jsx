@@ -66,7 +66,7 @@ const EditUserForm = props => {
 						label={t('title.email')}
 						control={control}
 						name="email"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -76,7 +76,7 @@ const EditUserForm = props => {
 						label="First Name"
 						control={control}
 						name="firstname"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -86,7 +86,7 @@ const EditUserForm = props => {
 						label="Last Name"
 						control={control}
 						name="firstname"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						required
@@ -103,7 +103,7 @@ const EditUserForm = props => {
 							size="small"
 							fullWidth
 							variant="outlined"
-							placeholder="Choose..."
+							placeholder="選択する"
 							name="gender"
 							className="w-full sm:w-2/3"
 						/>
@@ -113,7 +113,7 @@ const EditUserForm = props => {
 						label="Address"
 						control={control}
 						name="address"
-						placeholder="Default input"
+						placeholder="デフォルト入力"
 						className="mb-16 sm:mb-20"
 						size="small"
 						// required
