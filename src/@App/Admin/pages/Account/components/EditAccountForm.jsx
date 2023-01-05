@@ -208,7 +208,7 @@ const EditAccountForm = props => {
 							onClick={() => navigate(ROUTER_ADMIN.account.list)}
 							variant="contained"
 							color="error"
-							className="ml-auto"
+							className="ml-auto h-32 text-13"
 						>
 							{t('edit.form.btn.delete')}
 						</Button>
@@ -217,7 +217,7 @@ const EditAccountForm = props => {
 							loading={isSubmitting}
 							disabled={!isDirty}
 							type="submit"
-							className="ml-[10px] bg-blue text-white"
+							className="ml-[10px] bg-blue h-32 text-white text-13"
 						>
 							{t('edit.form.btn.register')}
 						</LoadingButton>

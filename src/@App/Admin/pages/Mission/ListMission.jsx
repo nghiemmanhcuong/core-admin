@@ -38,7 +38,7 @@ const ListMission = props => {
 							<Button
 								variant="contained"
 								color="primary"
-								className='bg-blue'
+								className='bg-blue h-32'
 								onClick={() => navigate(ROUTER_ADMIN.mission.list + '/new')}
 							>
 								{t('btn.new')}

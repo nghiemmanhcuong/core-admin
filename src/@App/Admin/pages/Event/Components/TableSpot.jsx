@@ -112,7 +112,7 @@ const TableSpot = props => {
 			<Grid className="text-end pt-20">
 				<LoadingButton
 					variant="contained"
-					className="bg-blue text-white h-32"
+					className="bg-blue text-white h-32 text-13"
 					size="small"
 					onClick={updateEventCourse}
 				>

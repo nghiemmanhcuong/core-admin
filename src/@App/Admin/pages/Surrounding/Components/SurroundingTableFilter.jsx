@@ -113,7 +113,7 @@ const SurroundingTableFilter = props => {
 							</Box>
 						</Box>
 					</Box>
-					<Button variant="contained" color="primary" className="ml-auto" onClick={handleFilter}>
+					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
 						{t('btn.search')}
 					</Button>
 				</Box>

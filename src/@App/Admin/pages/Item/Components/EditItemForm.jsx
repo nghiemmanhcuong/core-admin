@@ -454,7 +454,7 @@ const EditItemForm = props => {
 								onClick={() => navigate(ROUTER_ADMIN.item.list)}
 								variant="contained"
 								color="error"
-								className="mr-10 h-32"
+								className="mr-10 h-32 text-13"
 								size="small"
 							>
 								削除
@@ -463,7 +463,7 @@ const EditItemForm = props => {
 								loading={isSubmitting}
 								disabled={!isDirty}
 								variant="contained"
-								className="bg-blue text-white h-32"
+								className="bg-blue text-white h-32 text-13"
 								size="small"
 								type="submit"
 							>

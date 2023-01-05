@@ -158,7 +158,7 @@ const DetailCurrency = props => {
 
 					<Box className="flex flex-wrap sm:flex-nowrap mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-							<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography variant="h3" color="primary" className="flex items-center ml-[18%]">
 								{/* <Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography> */}
 								{t('edit.form.label.time')}
 							</Typography>
@@ -190,7 +190,7 @@ const DetailCurrency = props => {
 
 					<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-							<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography variant="h3" color="primary" className="flex items-center ml-[18%]">
 								{/* <Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '} */}
 								{t('edit.form.label.hide/show')}
 							</Typography>
@@ -211,7 +211,7 @@ const DetailCurrency = props => {
 
 					<Box className="flex flex-wrap sm:flex-nowrap items-center mb-20">
 						<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
-							<Typography variant="h3" color="primary" className="flex items-center">
+							<Typography variant="h3" color="primary" className="flex items-center ml-[18%]">
 								{/* <Typography className="text-black py-4 px-16 rounded-4 bg-yellow mx-8">必須</Typography>{' '} */}
 								{t('edit.form.label.creator')}
 							</Typography>
@@ -229,7 +229,7 @@ const DetailCurrency = props => {
 								onClick={() => navigate(ROUTER_ADMIN.currency.list)}
 								variant="contained"
 								color="error"
-								className="mr-10 h-32"
+								className="mr-10 h-32 text-13"
 								size="small"
 							>
 								削除
@@ -238,7 +238,7 @@ const DetailCurrency = props => {
 								loading={isSubmitting}
 								disabled={!isDirty}
 								variant="contained"
-								className="bg-blue text-white h-32"
+								className="bg-blue text-white h-32 text-13"
 								size="small"
 								type="submit"
 							>

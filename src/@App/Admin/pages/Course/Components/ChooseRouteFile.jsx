@@ -115,13 +115,13 @@ const ChooseRouteFile = ({
 				</Box>
 				{!hideButton && (
 					<Box className="w-full sm:w-1/3 self-center">
-						<Button variant="contained" color="error" size="small" onClick={handleDeleteFile}>
+						<Button variant="contained" className="text-13 h-32" color="error" size="small" onClick={handleDeleteFile}>
 							{t('btn.delete')}
 						</Button>
 						<Button
 							variant="contained"
 							color="primary"
-							className="bg-[#58AAFF] mx-8"
+							className="bg-[#58AAFF] mx-8 text-13 h-32"
 							size="small"
 							onClick={handleAddFile}
 						>

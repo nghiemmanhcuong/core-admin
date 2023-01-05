@@ -479,7 +479,7 @@ const DetailCourseForm = props => {
 						<Box className="text-end pt-40">
 							<Button
 								variant="contained"
-								className="bg-blue w-160 text-16"
+								className="bg-blue w-160 text-13 h-32"
 								onClick={() => handleOpen()}
 								size="small"
 							>
@@ -502,20 +502,20 @@ const DetailCourseForm = props => {
 										size="small"
 										className="w-full h-32"
 									/>
-									<Button variant="contained" color="third">
+									<Button variant="contained" color="third" className="h-32">
 										選択
 									</Button>
 								</Box>
 							</Box>
 							<Box className="col-span-3 sm:col-span-1">
 								<Box className="text-end">
-									<Button variant="contained" color="error" className="mr-10 h-32" size="small">
+									<Button variant="contained" color="error" className="mr-10 text-13 h-32" size="small">
 										削除
 									</Button>
 									<Button
 										type="submit"
 										variant="contained"
-										className="bg-blue text-white h-32"
+										className="bg-blue mr-10 text-white text-13 h-32"
 										size="small"
 										disabled={!isDirty}
 									>

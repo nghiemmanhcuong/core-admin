@@ -225,7 +225,7 @@ const DetailTagForm = props => {
 							<Button
 								onClick={() => navigate(ROUTER_ADMIN.tag.list)}
 								variant="contained"
-								className="mr-10"
+								className="mr-10 h-32 text-13"
 								color="error"
 								size="small"
 							>
@@ -237,7 +237,7 @@ const DetailTagForm = props => {
 								disabled={!isDirty}
 								variant="contained"
 								color="success"
-								className="ml-[10px] bg-blue h-32 text-white"
+								className="ml-[10px] bg-blue h-32 text-13 text-white"
 								size="small"
 							>
 								登録

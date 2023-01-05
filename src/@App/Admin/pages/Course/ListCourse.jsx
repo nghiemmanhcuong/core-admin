@@ -26,7 +26,7 @@ const ListCourse = props => {
 								variant="contained"
 								color="primary"
 								onClick={() => navigate(ROUTER_ADMIN.course + '/new')}
-								className='bg-blue'
+								className='bg-blue h-32'
 							>
 								{t('common:btn.add')}
 							</Button>
