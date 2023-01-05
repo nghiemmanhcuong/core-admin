@@ -34,12 +34,12 @@ const ListNotification = props => {
 				content={
 					<Box>
 						<ListNotificationTable />
-						<Box className='mt-40 text-right pr-20'>
+						<Box className='my-40 mr-20 text-right'>
 							<Button
 								variant="contained"
 								color="primary"
 								onClick={() => navigate(ROUTER_ADMIN.notification.list + '/new')}
-								className='text-18 w-160 bg-blue'
+								className='bg-blue'
 							>
 								{t('common:btn.add')}
 							</Button>
