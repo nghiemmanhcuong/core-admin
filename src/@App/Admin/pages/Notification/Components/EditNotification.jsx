@@ -31,6 +31,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import moment from 'moment/moment'
 import { useRequest } from 'ahooks'
+import clsx from 'clsx'
 // import PropTypes from 'prop-types'
 
 const EditNotification = props => {
@@ -268,7 +269,10 @@ const EditNotification = props => {
 								variant="contained"
 								disabled={!isDirty}
 								color="primary"
-								className="ml-[10px] bg-blue h-32 text-13 text-white"
+								className={clsx(
+									"ml-[10px] h-32 text-13 text-white",
+									!isDirty ? 'bg-gray-500' : 'bg-blue'
+								)}
 							>
 								{t('edit.form.btn.register')}
 							</LoadingButton>

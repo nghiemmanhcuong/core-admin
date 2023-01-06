@@ -25,6 +25,7 @@ import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPagePro
 import { LoadingButton } from '@mui/lab'
 import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import moment from 'moment'
+import clsx from 'clsx'
 
 const DetailCurrency = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.currency)
@@ -244,7 +245,10 @@ const DetailCurrency = props => {
 								loading={isSubmitting}
 								disabled={!isDirty}
 								variant="contained"
-								className="bg-blue text-white h-32 text-13"
+								className={clsx(
+									"h-32 text-13 text-white",
+									!isDirty ? 'bg-gray-500' : 'bg-blue'
+								)}
 								size="small"
 								type="submit"
 							>

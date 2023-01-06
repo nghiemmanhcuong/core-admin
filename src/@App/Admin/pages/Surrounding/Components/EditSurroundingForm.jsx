@@ -21,6 +21,7 @@ import CoreRadioGroup from '@Core/components/Input/CoreRadioGroup'
 import { LoadingButton } from '@mui/lab'
 import { Button, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+import clsx from 'clsx'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSurroundingForm } from '../hooks/useSurroundingForm'
@@ -198,7 +199,10 @@ const EditSurroundingForm = props => {
 						</Button>
 						<LoadingButton
 							variant="contained"
-							className="bg-blue text-white h-32 text-13"
+							className={clsx(
+								"h-32 text-13 text-white",
+								!isDirty ? 'bg-gray-500' : 'bg-blue'
+							)}
 							size="small"
 							type="submit"
 							loading={isSubmitting}

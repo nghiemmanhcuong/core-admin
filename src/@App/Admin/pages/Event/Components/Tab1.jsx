@@ -20,6 +20,7 @@ import moment from 'moment'
 import { pickBy } from 'lodash'
 import { missionService } from '@App/Admin/services/missionService'
 import { useRequest } from 'ahooks'
+import clsx from 'clsx'
 
 const Tab1 = props => {
 	const { t, eventData, isEdit, tags } = useAdminPageContext()
@@ -573,7 +574,10 @@ const Tab1 = props => {
 										loading={isSubmitting}
 										disabled={!isDirty}
 										variant="contained"
-										className="bg-blue text-white h-32 text-13"
+										className={clsx(
+											"h-32 text-13 text-white",
+											!isDirty ? 'bg-gray-500' : 'bg-blue'
+										)}
 										size="small"
 										type="submit"
 									>

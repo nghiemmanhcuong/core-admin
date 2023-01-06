@@ -33,6 +33,7 @@ import { errorMsg, successMsg } from '@Core/helper/Message'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { spotSerivce } from '@App/Admin/services/spotService'
+import clsx from 'clsx'
 
 const EditSpotTabs = props => {
 	const { t, spotTableHandler, tags } = useAdminPageContext()
@@ -367,7 +368,10 @@ const EditSpotTabs = props => {
 							color="primary"
 							loading={isSubmitting}
 							disabled={!isDirty}
-							className="ml-[10px] bg-blue text-white h-32"
+							className={clsx(
+								"ml-[10px] h-32 text-13 text-white",
+								!isDirty ? 'bg-gray-500' : 'bg-blue'
+							)}
 						>
 							{t('edit.form.btn.register')}
 						</LoadingButton>
