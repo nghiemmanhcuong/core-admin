@@ -300,7 +300,7 @@ const MaintainceForm = props => {
 					</Box>
 				</Box>
 
-				<Box className="m-10 border-1 rounded-4 border-grey-300 min-h-full bg-grey-100">
+				<Box className="w-full m-10 border-1 rounded-4 border-grey-300 min-h-full bg-grey-100">
 					<Box className="p-10 flex w-full bg-grey-300">
 						<Typography variant="h4" className="w-full sm:w-1/5 my-auto">
 							{t('edit.form.label.whole_app')}
@@ -308,7 +308,7 @@ const MaintainceForm = props => {
 					</Box>
 
 					<Box className="w-full mt-5 overflow-hidden px-16">
-						<Box className="flex flex-wrap w-full my-12  border-grey-300 border-1 rounded-l-4 bg-white min-h-min">
+						<Box className="grid grid-flow-col grid-rows-4 w-full my-12  border-grey-300 border-1 rounded-l-4 bg-white min-h-min">
 							{exportAppOption?.map(item => (
 								<CoreCheckbox
 									control={control}
