@@ -13,7 +13,7 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { Box, Checkbox, FormControlLabel, FormGroup, FormHelperText, FormLabel, Typography } from '@mui/material'
+import { Box, Checkbox, FormControlLabel, FormGroup, FormHelperText, FormLabel, Tooltip, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -72,19 +72,27 @@ const CoreCheckboxGroup = props => {
 											renderOption ? (
 												renderOption(`${name}.${field?.key}`, { ...field, disabled })
 											) : (
-												<FormControlLabel
-													key={index}
-													label={<Typography>{field?.label}</Typography>}
-													control={
-														<Checkbox
-															name={field?.key}
-															checked={Boolean(value[field?.key])}
-															onChange={handleChange}
-															color="primary"
-															disabled={disabledInp}
-														/>
-													}
-												/>
+												<Tooltip title={field?.label}>
+													<FormControlLabel
+														key={index}
+														label={<Typography>{field?.label}</Typography>}
+														className="w-[20%] ml-10"
+														sx={{
+															textOverflow: 'ellipsis',
+															whiteSpace: 'nowrap',
+															overflow: 'hidden',
+														}}
+														control={
+															<Checkbox
+																name={field?.key}
+																checked={Boolean(value[field?.key])}
+																onChange={handleChange}
+																color="primary"
+																disabled={disabledInp}
+															/>
+														}
+													/>
+												</Tooltip>
 											)
 										)}
 									</FormGroup>
