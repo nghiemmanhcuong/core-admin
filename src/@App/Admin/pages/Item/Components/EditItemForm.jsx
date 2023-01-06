@@ -463,7 +463,10 @@ const EditItemForm = props => {
 								loading={isSubmitting}
 								disabled={!isDirty}
 								variant="contained"
-								className="bg-blue text-white h-32 text-13"
+								className={clsx(
+									"h-32 text-13 text-white",
+									!isDirty ? 'bg-gray-500' : 'bg-blue'
+								)}
 								size="small"
 								type="submit"
 							>

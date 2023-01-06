@@ -47,6 +47,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
 import { useTagDetail } from '../hooks/useTagDetail'
 import { pickBy } from 'lodash'
+import clsx from 'clsx'
 
 const DetailTagForm = props => {
 	const { tag, isEdit } = props
@@ -237,7 +238,10 @@ const DetailTagForm = props => {
 								disabled={!isDirty}
 								variant="contained"
 								color="success"
-								className="ml-[10px] bg-blue h-32 text-13 text-white"
+								className={clsx(
+									"ml-[10px] h-32 text-13 text-white",
+									!isDirty ? 'bg-gray-500' : 'bg-blue'
+								)}
 								size="small"
 							>
 								登録

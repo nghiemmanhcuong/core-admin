@@ -29,6 +29,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, Typography } from '@mui/material'
 import { useUpdateEffect } from 'ahooks'
+import clsx from 'clsx'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -349,7 +350,10 @@ const MissionForm = props => {
 							loading={isSubmitting}
 							disabled={!isDirty}
 							variant="contained"
-							className="bg-blue text-white h-32 text-13"
+							className={clsx(
+								"h-32 text-13 text-white",
+								!isDirty ? 'bg-gray-500' : 'bg-blue'
+							)}
 							size="small"
 							type="submit"
 						>

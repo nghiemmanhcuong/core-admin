@@ -37,6 +37,7 @@ import {
 	TextField,
 	FormHelperText
 } from '@mui/material'
+import clsx from 'clsx'
 
 const tableForm = () => {
 	return null
@@ -515,9 +516,12 @@ const DetailCourseForm = props => {
 									<Button
 										type="submit"
 										variant="contained"
-										className="bg-blue mr-10 text-white text-13 h-32"
 										size="small"
 										disabled={!isDirty}
+										className={clsx(
+											"mr-10 h-32 text-13 text-white",
+											!isDirty ? 'bg-gray-500' : 'bg-blue'
+										)}
 									>
 										登録
 									</Button>

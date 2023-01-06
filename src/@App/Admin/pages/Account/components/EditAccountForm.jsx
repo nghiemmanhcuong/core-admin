@@ -26,6 +26,7 @@ import Yup from '@Core/helper/Yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, Typography } from '@mui/material'
+import clsx from 'clsx'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -217,7 +218,10 @@ const EditAccountForm = props => {
 							loading={isSubmitting}
 							disabled={!isDirty}
 							type="submit"
-							className="ml-[10px] bg-blue h-32 text-white text-13"
+							className={clsx(
+								"ml-[10px] h-32 text-13 text-white",
+								!isDirty ? 'bg-gray-500' : 'bg-blue'
+							)}
 						>
 							{t('edit.form.btn.register')}
 						</LoadingButton>
