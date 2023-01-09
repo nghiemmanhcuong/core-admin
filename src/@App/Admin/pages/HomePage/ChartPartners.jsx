@@ -31,7 +31,7 @@ const colors1 = colors[Math.round(Math.random() * colors.length)]
 const colors2 = colors.filter(item => item !== colors1)[
 	Math.round(Math.random() * colors.filter(item => item !== colors1).length)
 ]
-const ChartMAU = props => {
+const ChartPartners = props => {
 	const chartRef = useRef(null)
 	const [data, setData] = useState({ labels, datasets: [] })
 
@@ -107,4 +107,4 @@ const ChartMAU = props => {
 
 // ChartSale.propTypes = {}
 
-export default React.memo(ChartMAU)
+export default React.memo(ChartPartners)
