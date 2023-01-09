@@ -15,7 +15,7 @@
 
 import AdminContentPage from '@App/Admin/components/Layout/AdminContentPage'
 import { TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import MaintainceForm from './Components/MaintainceForm'
 import MaintainceProvider from './MaintainceProvider'
@@ -23,6 +23,9 @@ import MaintainceProvider from './MaintainceProvider'
 
 const Maintaince = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.maintaince)
+	useEffect(() => {
+		document.title = '実績'
+	}, [])
 	return (
 		<MaintainceProvider t={t}>
 			<AdminContentPage pageTitle={t('title.event')} content={<MaintainceForm />} />
