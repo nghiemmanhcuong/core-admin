@@ -15,7 +15,7 @@
 
 import AdminContentPage from '@App/Admin/components/Layout/AdminContentPage'
 import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ChartOverview from './ChartOverview'
 // import ChartPartners from './ChartPartners'
 import ChartInstall from './ChartInstall'
@@ -24,6 +24,9 @@ import ChartDAU from './ChartDAU'
 // import ChartSale from './ChartSale'
 
 const HomePage = props => {
+	useEffect(() => {
+		document.title = 'Dashboard'
+	}, [])
 	return (
 		<AdminContentPage
 			pageTitle="Dashboard"

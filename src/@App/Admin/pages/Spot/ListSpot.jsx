@@ -13,7 +13,7 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import AdminContentPage from '../../components/Layout/AdminContentPage'
@@ -28,6 +28,9 @@ import { useNavigate } from 'react-router-dom'
 const ListSpot = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
 	const navigate = useNavigate()
+	useEffect(() => {
+		document.title = 'Spot'
+	}, [])
 	return (
 		<ListSpotProvider t={t}>
 			<AdminContentPage

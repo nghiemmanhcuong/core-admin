@@ -16,7 +16,7 @@
 import AdminContentPage from '@App/Admin/components/Layout/AdminContentPage'
 import { ROUTER_ADMIN, TRANSLATE_ADMIN } from '@App/Admin/configs/constants'
 import { Box, Button } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import ListNotificationTable from './Components/ListNotificationTable'
@@ -26,7 +26,9 @@ import ListNotificationProvider from './ListNotificationProvider'
 const ListNotification = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.notification)
 	const navigate = useNavigate()
-
+	useEffect(() => {
+		document.title = 'Notifications'
+	}, [])
 	return (
 		<ListNotificationProvider t={t}>
 			<AdminContentPage
