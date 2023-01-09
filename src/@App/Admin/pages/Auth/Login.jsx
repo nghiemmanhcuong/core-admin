@@ -113,6 +113,11 @@ const Login = () => {
 			</form>
 		)
 	}
+
+	useEffect(() => {
+		document.title = 'ログイン'
+	}, [])
+
 	return (
 		<div>
 			<div className="text-center grid grid-flow-row-dense grid-cols-3 pt-40">
