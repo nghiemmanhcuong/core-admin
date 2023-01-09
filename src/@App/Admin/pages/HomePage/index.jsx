@@ -17,7 +17,7 @@ import AdminContentPage from '@App/Admin/components/Layout/AdminContentPage'
 import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import ChartOverview from './ChartOverview'
-// import ChartPartners from './ChartPartners'
+import ChartPartners from './ChartPartners'
 import ChartInstall from './ChartInstall'
 import ChartMAU from './ChartMAU'
 import ChartDAU from './ChartDAU'
@@ -97,7 +97,7 @@ const HomePage = props => {
 							</CardContent>
 						</Card>
 					</Box>
-					{/* <Box className="w-full sm:w-1/2 px-12 mb-40">
+					<Box className="w-full sm:w-1/2 px-12 mb-40">
 						<Card>
 							<CardContent>
 								<Typography variant="subtitle2" className="mb-12">
@@ -109,7 +109,7 @@ const HomePage = props => {
 								<ChartPartners />
 							</CardContent>
 						</Card>
-					</Box> */}
+					</Box>
 				</Box>
 			}
 		/>
