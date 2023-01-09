@@ -24,7 +24,7 @@ import MaintainceProvider from './MaintainceProvider'
 const Maintaince = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.maintaince)
 	useEffect(() => {
-		document.title = 'Achievements'
+		document.title = '実績'
 	}, [])
 	return (
 		<MaintainceProvider t={t}>

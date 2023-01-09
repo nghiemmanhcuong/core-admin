@@ -28,7 +28,7 @@ const ListMission = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.mission)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Mission'
+		document.title = 'ミッション'
 	}, [])
 	return (
 		<ListMissionProvider t={t}>

@@ -27,7 +27,7 @@ const ListNotification = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.notification)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Notifications'
+		document.title = 'お知らせ'
 	}, [])
 	return (
 		<ListNotificationProvider t={t}>

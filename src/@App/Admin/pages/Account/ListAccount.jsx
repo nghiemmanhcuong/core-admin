@@ -29,7 +29,7 @@ const ListAccount = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.account)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Account'
+		document.title = 'アカウント'
 	}, [])
 	return (
 		<ListAccountProvider t={t}>

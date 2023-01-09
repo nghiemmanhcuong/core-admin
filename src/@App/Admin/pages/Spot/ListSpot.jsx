@@ -29,7 +29,7 @@ const ListSpot = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.spot)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Spot'
+		document.title = 'スポット'
 	}, [])
 	return (
 		<ListSpotProvider t={t}>

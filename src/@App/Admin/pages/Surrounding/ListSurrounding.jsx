@@ -29,7 +29,7 @@ const ListSurrounding = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.surrounding)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Surrounding'
+		document.title = '周辺'
 	}, [])
 	return (
 		<ListSurroundingProvider t={t}>

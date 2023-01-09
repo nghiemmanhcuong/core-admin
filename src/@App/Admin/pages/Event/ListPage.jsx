@@ -14,7 +14,7 @@ const ListCourse = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.event)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Event'
+		document.title = 'エベント'
 	}, [])
 	return (
 		<ListEventProvider t={t}>

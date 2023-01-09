@@ -28,7 +28,7 @@ const ListTag = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.tag)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Tag'
+		document.title = 'タグ'
 	}, [])
 	return (
 		<ListTagProvider t={t}>

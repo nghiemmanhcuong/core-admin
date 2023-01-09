@@ -27,7 +27,7 @@ const ListItem = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.item)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Item'
+		document.title = 'アイテム'
 	}, [])
 	return (
 		<ListItemProvider t={t}>

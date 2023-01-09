@@ -14,7 +14,7 @@ const ListCourse = props => {
     const { t } = useTranslation(TRANSLATE_ADMIN.course)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Course'
+		document.title = 'コース'
 	}, [])
 	return (
 		<ListCourseProvider t={t}>

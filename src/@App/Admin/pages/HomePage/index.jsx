@@ -25,7 +25,7 @@ import ChartDAU from './ChartDAU'
 
 const HomePage = props => {
 	useEffect(() => {
-		document.title = 'Dashboard'
+		document.title = 'ダッシュボード'
 	}, [])
 	return (
 		<AdminContentPage

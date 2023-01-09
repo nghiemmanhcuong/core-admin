@@ -14,7 +14,7 @@ const ListCurrency = props => {
     const { t } = useTranslation(TRANSLATE_ADMIN.course)
 	const navigate = useNavigate()
 	useEffect(() => {
-		document.title = 'Currency'
+		document.title = '通貨'
 	}, [])
 	return (
 		<ListCurrencyProvider t={t}>
