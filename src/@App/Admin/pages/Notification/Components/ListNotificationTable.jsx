@@ -41,10 +41,10 @@ const ListNotificationTable = props => {
 			// columnHelper.accessor('detail', {
 			// 	header: t('column.detail')
 			// }),
-			columnHelper.accessor('updated_at', {
+			columnHelper.accessor('publish_start', {
 				header: t('column.from_date')
 			}),
-			columnHelper.accessor('deleted_at', {
+			columnHelper.accessor('publish_end', {
 				header: t('column.to_date')
 			}),
 			columnHelper.accessor('action', {
