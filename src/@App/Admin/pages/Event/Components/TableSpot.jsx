@@ -43,19 +43,12 @@ const TableSpot = props => {
 			if (!eventId) {
 				return
 			}
-
-			const formData = new FormData()
-			formData.append('event_id', eventId)
-			if (courseId) {
-				formData.append('course_id', courseId)
+			const dataRequest = {
+				event_id: eventId,
+				course_id: courseId,
+				spot_list: spotList
 			}
-			if (spotList && spotList.length > 0) {
-				spotList.forEach(item => {
-					formData.append('spot_list', JSON.stringify(item))
-				})
-			}
-
-			await eventService.updateEventCourse(eventId, formData)
+			await eventService.updateEventCourse(eventId, dataRequest)
 			successMsg('Update Event Course Details successfull!')
 		} catch (error) {
 			errorMsg('Submit faild')
