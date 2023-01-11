@@ -88,7 +88,7 @@ const ChartPartners = props => {
 			labels: labelChart,
 			datasets: [
 				{
-					label: 'Partners',
+					label: 'PV/UU',
 					data: dataChartPartners,
 					borderColor: 'rgb(17,205,239)'
 				}
