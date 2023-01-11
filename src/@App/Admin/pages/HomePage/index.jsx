@@ -49,10 +49,10 @@ const HomePage = props => {
 						<Card>
 							<CardContent>
 								<Typography variant="subtitle2" className="mb-12">
-									OVERVIEW
+									WAU
 								</Typography>
 								<Typography variant="h4" className="mb-40">
-									エントリー数
+									WAU
 								</Typography>
 								<ChartOverview />
 							</CardContent>
@@ -65,7 +65,7 @@ const HomePage = props => {
 									INSTALL
 								</Typography>
 								<Typography variant="h4" className="mb-40">
-									アプリ登録者数
+									全インストール数
 								</Typography>
 								<ChartInstall />
 							</CardContent>
@@ -78,7 +78,7 @@ const HomePage = props => {
 									DAU
 								</Typography>
 								<Typography variant="h4" className="mb-40">
-									アプリ登録者数
+									DAU
 								</Typography>
 								<ChartDAU />
 							</CardContent>
@@ -91,7 +91,7 @@ const HomePage = props => {
 									MAU
 								</Typography>
 								<Typography variant="h4" className="mb-40">
-									アプリ登録者数
+									MAU
 								</Typography>
 								<ChartMAU />
 							</CardContent>
@@ -101,10 +101,10 @@ const HomePage = props => {
 						<Card>
 							<CardContent>
 								<Typography variant="subtitle2" className="mb-12">
-									PARTNERS
+									PV/UU
 								</Typography>
 								<Typography variant="h4" className="mb-40">
-									XXXXXXXXX
+									イベントページ閲覧数
 								</Typography>
 								<ChartPartners />
 							</CardContent>
