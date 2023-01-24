@@ -27,11 +27,6 @@ import { useEffect } from 'react'
 
 const TableSpot = props => {
 	const { eventId, courseId, spotList, saveMode } = props
-	console.log(saveMode)
-
-	useEffect(() => {
-		console.log(courseId)
-	}, [])
 
 	const handleChangePoint = newData => {
 		const itemIsChange = spotList.filter(item => item.spot_id === newData.spot_id)

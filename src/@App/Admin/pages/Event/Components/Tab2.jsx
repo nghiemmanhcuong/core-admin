@@ -110,6 +110,10 @@ const Tab2 = props => {
 		setValue('elevation_chart_url', courseDetail?.course?.elevation_chart_url)
 	}, [JSON.stringify(courseDetail)])
 
+	const handleSelectCourse = (async () => {
+		await getCourseDetail(watch('course_id'))
+	})
+
 	const onSubmit = handleSubmit(async data => {
 		try {
 			if (!eventId) {
@@ -192,7 +196,7 @@ const Tab2 = props => {
 										color="primary"
 										className="px-8 py-6 text-13 mr-3 h-32"
 										size="small"
-										onClick={() => getCourseDetail(watch('course_id'))}
+										onClick={handleSelectCourse}
 									>
 										選択
 									</Button>
