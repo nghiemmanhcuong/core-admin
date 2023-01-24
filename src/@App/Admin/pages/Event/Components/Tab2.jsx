@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Paper, Typography, TextField, Box, Card, CircularProgress } from '@mui/material'
+import React, { useEffect } from 'react'
+import { Button, Typography, Box } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Yup from '@Core/helper/Yup'
@@ -8,11 +8,10 @@ import AdminInput from '@App/Admin/components/Input/AdminInput'
 import AdminInputUpload from '@App/Admin/components/Input/AdminInputUpload'
 import CoreCheckboxGroup from '@Core/components/Input/CoreCheckboxGroup'
 import { useAdminPageContext } from '@App/Admin/components/Provider/AdminPageProvider'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import TableSpot from './TableSpot'
-import { LoadingButton } from '@mui/lab'
 import { eventService } from '@App/Admin/services/eventService'
 import { useRequest } from 'ahooks'
 import { errorMsg, successMsg } from '@Core/helper/Message'
@@ -28,7 +27,6 @@ const FontTitle = ({ variant = 'h1', title = '' }) => {
 const Tab2 = props => {
 	const { t, eventData, isEdit, tags, courses, courseDetail, getCourseDetail, loadingCourseDetail } =
 		useAdminPageContext()
-	const navigate = useNavigate()
 	const { id: eventId } = useParams()
 	const { newCourseId, setNewCourseId } = useState()
 	const {
@@ -375,7 +373,6 @@ const Tab2 = props => {
 							courseId={eventCourseDetail?.event_course?.course_id}
 							spotList={eventCourseDetail?.event_course?.spot_list}
 							saveMode={eventCourseDetail?.event_course?.course_id ? 'update' : 'create'}
-							newCourseId={ setNewCourseId(eventCourseDetail?.event_course?.course_id) }
 						/>
 					)}
 				</Box>
