@@ -23,19 +23,49 @@ import { LoadingButton } from '@mui/lab'
 import Grid from '@mui/material/Grid'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 import { eventService } from '@App/Admin/services/eventService'
-// import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 
 const TableSpot = props => {
-	const { eventId, courseId, spotList } = props
-	console.log('============= spotList', spotList)
+	const { eventId, courseId, spotList, saveMode, newCourseId } = props
+	console.log(saveMode)
+
+	useEffect(() => {
+		console.log(courseId)
+		console.log('=====new course id', newCourseId)
+	}, [])
 
 	const handleChangePoint = newData => {
-		console.log(newData)
 		const itemIsChange = spotList.filter(item => item.spot_id === newData.spot_id)
 		if (itemIsChange[0]) {
 			itemIsChange[0].point = parseInt(newData.point)
 		}
-		console.log(spotList)
+	}
+
+	const createEventCourse = async () => {
+		try {
+			if (!eventId || !courseId) {
+				return
+			}
+
+			const sportData = spotList != null && spotList.length > 0 ? spotList.map((elm, idx) => {
+				if (elm.special_action_type == null) {
+					elm.special_action_type = [];
+				}
+
+			  	return elm
+			}) : spotList
+
+			const dataRequest = {
+				event_id: eventId,
+				course_id: courseId,
+				spot: spotList
+			}
+			await eventService.createEventCourse(dataRequest)
+			successMsg('イベントコースの更新が成功しました。')
+		} catch (error) {
+			errorMsg('イベントコースの更新に失敗しました。')
+			console.log('============= e', error)
+		}
 	}
 
 	const updateEventCourse = async () => {
@@ -43,16 +73,25 @@ const TableSpot = props => {
 			if (!eventId) {
 				return
 			}
+
+			const sportData = spotList != null && spotList.length > 0 ? spotList.map((elm, idx) => {
+				if (elm.special_action_type == null) {
+					elm.special_action_type = [];
+				}
+
+			  	return elm
+			}) : spotList
+
 			const dataRequest = {
 				event_id: eventId,
 				course_id: courseId,
 				spot_list: spotList
 			}
 			await eventService.updateEventCourse(eventId, dataRequest)
-			successMsg('Update Event Course Details successfull!')
+			successMsg('イベントコースの更新が成功しました。')
 		} catch (error) {
-			errorMsg('Submit faild')
-			console.log('============= e', error)
+			errorMsg('イベントコースの更新に失敗しました。')
+			console.debug('============= e', error)
 		}
 	}
 
@@ -107,7 +146,7 @@ const TableSpot = props => {
 					variant="contained"
 					className="bg-blue text-white h-32 text-13"
 					size="small"
-					onClick={updateEventCourse}
+					onClick={saveMode == 'update' ? updateEventCourse : createEventCourse}
 				>
 					登録
 				</LoadingButton>
@@ -115,9 +154,5 @@ const TableSpot = props => {
 		</>
 	)
 }
-
-// TableSpot.defaultProps = {}
-
-// TableSpot.propTypes = {}
 
 export default React.memo(TableSpot)

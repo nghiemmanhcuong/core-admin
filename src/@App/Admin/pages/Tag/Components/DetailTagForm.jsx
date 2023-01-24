@@ -58,8 +58,6 @@ const DetailTagForm = props => {
 		setTabIndex(newTabIndex)
 	}
 
-	console.log('============= tag', tag)
-
 	const tagType = [
 		{
 			value: 'event',
@@ -74,6 +72,11 @@ const DetailTagForm = props => {
 			label: 'スポット'
 		}
 	]
+	const tagOptions = isEdit ? tagType.map(tagOption => ({
+		value: tagOption.value,
+		label: tagOption.label,
+		disabled: true,
+	})) : tagType
 
 	const {
 		control,
@@ -96,11 +99,7 @@ const DetailTagForm = props => {
 			hide: tag?.display === 0 ? true : false
 		},
 		resolver: yupResolver(
-			Yup.object({
-				// name: Yup.string().required(),
-				// number_tag: Yup.string().required(),
-				// verification_code: Yup.string().required()
-			})
+			Yup.object({})
 		)
 	})
 
@@ -111,8 +110,6 @@ const DetailTagForm = props => {
 	useUpdateEffect(() => {
 		setValue('show', !watch('hide'))
 	}, [watch('hide')])
-
-	console.log('============= watch()', watch())
 
 	const onSubmit = handleSubmit(async data => {
 		data.display = data?.show ? 1 : 0
@@ -159,7 +156,7 @@ const DetailTagForm = props => {
 							</Typography>
 						</Box>
 						<Box className="w-full sm:w-2/3 border-grey-400 border-1 rounded-4">
-							<CoreRadioGroup control={control} name="type" row options={tagType} className="ml-20" />
+							<CoreRadioGroup control={control} name="type" row options={tagOptions} className="ml-20" />
 						</Box>
 					</Box>
 					<AdminInput
@@ -253,9 +250,5 @@ const DetailTagForm = props => {
 		</form>
 	)
 }
-
-//ListSpotTable.defaultProps = {}
-
-//ListSpotTable.propTypes = {}
 
 export default React.memo(DetailTagForm)

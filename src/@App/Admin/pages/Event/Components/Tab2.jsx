@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Paper, Typography, TextField, Box, Card, CircularProgress } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -30,6 +30,7 @@ const Tab2 = props => {
 		useAdminPageContext()
 	const navigate = useNavigate()
 	const { id: eventId } = useParams()
+	const { newCourseId, setNewCourseId } = useState()
 	const {
 		control,
 		watch,
@@ -100,6 +101,7 @@ const Tab2 = props => {
 	}, [])
 
 	useEffect(() => {
+		//setNewCourseId(courseDetail?.course?.id)
 		setValue('course_name', courseDetail?.course?.course_name)
 		setValue('catchphrase', courseDetail?.course?.catchphrase)
 		setValue('course_summary', courseDetail?.course?.course_summary)
@@ -372,22 +374,12 @@ const Tab2 = props => {
 							eventId={eventId}
 							courseId={eventCourseDetail?.event_course?.course_id}
 							spotList={eventCourseDetail?.event_course?.spot_list}
+							saveMode={eventCourseDetail?.event_course?.course_id ? 'update' : 'create'}
+							newCourseId={ setNewCourseId(eventCourseDetail?.event_course?.course_id) }
 						/>
 					)}
 				</Box>
 			</Box>
-			{/* <Grid className="text-end pt-20">
-				<LoadingButton
-					loading={isSubmitting}
-					// disabled={!isDirty}
-					variant="contained"
-					className="bg-blue text-white h-32"
-					size="small"
-					type="submit"
-				>
-					登録
-				</LoadingButton>
-			</Grid> */}
 		</form>
 	)
 }

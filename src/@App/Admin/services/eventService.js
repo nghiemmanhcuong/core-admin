@@ -31,12 +31,17 @@ class Event extends BaseService {
 	}
 
 	eventCourseDetail = id => {
-		const endpoint = `/api/resource/eventCourse/${id}`
+		const endpoint = `../api/resource/eventCourse/${id}`
 		return this.request.get(endpoint)
 	}
 
+	createEventCourse = (data) => {
+		const endpoint = `../api/resource/eventCourse`
+		return this.request.post(endpoint, data)
+	}
+
 	updateEventCourse = (id, data) => {
-		const endpoint = `/api/resource/eventCourse/${id}`
+		const endpoint = `../api/resource/eventCourse/${id}`
 		return this.request.put(endpoint, data)
 	}
 }
