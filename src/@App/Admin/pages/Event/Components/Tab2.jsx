@@ -28,7 +28,6 @@ const Tab2 = props => {
 	const { t, eventData, isEdit, tags, courses, courseDetail, getCourseDetail, loadingCourseDetail } =
 		useAdminPageContext()
 	const { id: eventId } = useParams()
-	const { newCourseId, setNewCourseId } = useState()
 	const {
 		control,
 		watch,
@@ -99,7 +98,6 @@ const Tab2 = props => {
 	}, [])
 
 	useEffect(() => {
-		//setNewCourseId(courseDetail?.course?.id)
 		setValue('course_name', courseDetail?.course?.course_name)
 		setValue('catchphrase', courseDetail?.course?.catchphrase)
 		setValue('course_summary', courseDetail?.course?.course_summary)

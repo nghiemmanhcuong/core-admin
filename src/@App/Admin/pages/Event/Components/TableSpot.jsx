@@ -26,12 +26,11 @@ import { eventService } from '@App/Admin/services/eventService'
 import { useEffect } from 'react'
 
 const TableSpot = props => {
-	const { eventId, courseId, spotList, saveMode, newCourseId } = props
+	const { eventId, courseId, spotList, saveMode } = props
 	console.log(saveMode)
 
 	useEffect(() => {
 		console.log(courseId)
-		console.log('=====new course id', newCourseId)
 	}, [])
 
 	const handleChangePoint = newData => {
