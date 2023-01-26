@@ -110,9 +110,9 @@ const Tab2 = props => {
 		setValue('elevation_chart_url', courseDetail?.course?.elevation_chart_url)
 	}, [JSON.stringify(courseDetail)])
 
-	const handleSelectCourse = (async () => {
+	const handleSelectCourse = async () => {
 		await getCourseDetail(watch('course_id'))
-	})
+	}
 
 	const onSubmit = handleSubmit(async data => {
 		try {
@@ -372,7 +372,7 @@ const Tab2 = props => {
 						<TableSpot
 							name="spot_list"
 							eventId={eventId}
-							courseId={eventCourseDetail?.event_course?.course_id}
+							courseId={watch('course_id')}
 							spotList={eventCourseDetail?.event_course?.spot_list}
 							saveMode={eventCourseDetail?.event_course?.course_id ? 'update' : 'create'}
 						/>
