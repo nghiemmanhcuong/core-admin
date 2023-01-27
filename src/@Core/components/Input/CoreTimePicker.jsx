@@ -32,7 +32,8 @@ const CoreTimePicker = ({
 	helperText,
 	placeholder = '',
 	size = '',
-	disabled = false
+	disabled = false,
+	readOnly
 }) => {
 	const {
 		field: { onChange, onBlur, value, ref },
@@ -113,9 +114,10 @@ const CoreTimePicker = ({
 				showTimeSelect
 				showTimeSelectOnly
 				timeCaption="Time"
-				timeFormat="HH:mm"
-				dateFormat="HH:mm aa"
+				timeFormat="HH:mm:ss"
+				dateFormat="HH:mm:ss"
 				timeIntervals={5}
+				disabled={disabled}
 			/>
 			{helperText && <FormHelperText>{helperText}</FormHelperText>}
 			{error && error.message && <FormHelperText error>{error.message}</FormHelperText>}
