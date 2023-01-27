@@ -64,7 +64,7 @@ const Tab2 = props => {
 		defaultValues: {
 			event_id: eventData?.id ?? null,
 			title: eventData?.title ?? '',
-			course_id: eventCourseDetail?.event_course?.course_id ?? null,
+			course_id: null,
 			tag: [],
 			course_name: '',
 			catchphrase: null,
@@ -88,7 +88,8 @@ const Tab2 = props => {
 
 	useUpdateEffect(() => {
 		getCourseDetail(eventCourseDetail?.event_course?.course_id)
-	}, [eventCourseDetail])
+		setValue('course_id', eventCourseDetail?.event_course?.course_id)
+	}, [JSON.stringify(eventCourseDetail)])
 
 	const tagOptions = tags?.tags?.reduce((result, currentValue) => {
 		const formatResult = {
@@ -113,8 +114,7 @@ const Tab2 = props => {
 		setValue('course_map_image', courseDetail?.course?.course_map_image)
 		setValue('route_file', courseDetail?.course?.route_file)
 		setValue('elevation_chart_url', courseDetail?.course?.elevation_chart_url)
-		setValue('course_id', eventCourseDetail?.event_course?.course_id)
-	}, [JSON.stringify(courseDetail), JSON.stringify(eventCourseDetail)])
+	}, [JSON.stringify(courseDetail)])
 
 	const handleSelectCourse = async () => {
 		await getCourseDetail(watch('course_id'))
