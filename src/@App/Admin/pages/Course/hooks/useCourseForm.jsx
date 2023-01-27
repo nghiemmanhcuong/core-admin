@@ -31,6 +31,12 @@ export const useCourseForm = props => {
 	const { changeCourseImage, changeCourseMapImage, changeFileUpload, tableSelected, courseData, isEdit, courseId } =
 		props
 
+	console.log('============= courseData', courseData)
+	console.log(
+		'============= courseDatagoal_approximate_time',
+		new Date(`${moment(new Date()).format('YYYY/MM/DD')} ${courseData?.goal_approximate_time}`)
+	)
+
 	const methodForm = useForm({
 		mode: 'onTouched',
 		defaultValues: {
@@ -43,7 +49,9 @@ export const useCourseForm = props => {
 			average_gradient: courseData?.average_gradient ?? null,
 			elevation: courseData?.elevation ?? null,
 			// strength: 3,
-			goal_approximate_time: null,
+			goal_approximate_time: courseData?.goal_approximate_time
+				? new Date(`${moment(new Date()).format('YYYY/MM/DD')} ${courseData?.goal_approximate_time}`)
+				: null,
 			route_url: courseData?.route_url ?? '',
 			course_map_image: courseData?.course_map_image ?? '',
 			route_file: courseData?.route_file ?? '',

@@ -15,6 +15,8 @@ import TableSpot from './TableSpot'
 import { eventService } from '@App/Admin/services/eventService'
 import { useRequest, useUpdateEffect } from 'ahooks'
 import { errorMsg, successMsg } from '@Core/helper/Message'
+import CoreTimePicker from '@Core/components/Input/CoreTimePicker'
+import moment from 'moment'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
 	return (
@@ -114,6 +116,12 @@ const Tab2 = props => {
 		setValue('course_map_image', courseDetail?.course?.course_map_image)
 		setValue('route_file', courseDetail?.course?.route_file)
 		setValue('elevation_chart_url', courseDetail?.course?.elevation_chart_url)
+		setValue(
+			'goal_approximate_time',
+			courseDetail?.course?.goal_approximate_time
+				? new Date(`${moment(new Date()).format('YYYY/MM/DD')} ${courseDetail?.course?.goal_approximate_time}`)
+				: null
+		)
 	}, [JSON.stringify(courseDetail)])
 
 	const handleSelectCourse = async () => {
@@ -301,15 +309,16 @@ const Tab2 = props => {
 							</Typography>
 						</Box>
 						<Box className="rounded-md w-full sm:w-2/3">
-							<CoreDatePicker
+							<CoreTimePicker
 								// label="完走目安"
 								control={control}
 								name="goal_approximate_time"
 								placeholder="デフォルト入力"
 								size="small"
-								className="mb-16 sm:mb-20"
+								className="mb-16 sm:mb-20 bg-grey-300"
 								showTimeSelect={true}
 								timeFormat="HH:mm:ss"
+								disabled
 							/>
 						</Box>
 					</Box>
