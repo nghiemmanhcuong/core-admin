@@ -92,7 +92,7 @@ const TableSpot = props => {
 				spot_list: spotList?.map(item => ({
 					spot_id: item?.spot_id,
 					special_action_type: item?.special_action_type,
-					point: item?.point
+					point: item?.point ?? 0
 				}))
 			}
 			await eventService.updateEventCourse(eventId, dataRequest)
