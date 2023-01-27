@@ -379,7 +379,7 @@ const Tab2 = props => {
 							name="spot_list"
 							eventId={eventId}
 							courseId={courseDetail?.course?.course_id}
-							spotList={courseDetail?.course?.spot_list}
+							spotList={courseDetail?.course?.spot_list ?? eventCourseDetail?.event_course?.spot_list}
 							saveMode={eventCourseDetail?.event_course?.course_id ? 'update' : 'create'}
 						/>
 					)}
