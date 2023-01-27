@@ -41,18 +41,25 @@ const TableSpot = props => {
 				return
 			}
 
-			const sportData = spotList != null && spotList.length > 0 ? spotList.map((elm, idx) => {
-				if (elm.special_action_type == null) {
-					elm.special_action_type = [];
-				}
+			const sportData =
+				spotList != null && spotList.length > 0
+					? spotList.map((elm, idx) => {
+							if (elm.special_action_type == null) {
+								elm.special_action_type = []
+							}
 
-			  	return elm
-			}) : spotList
+							return elm
+					  })
+					: spotList
 
 			const dataRequest = {
-				event_id: eventId,
+				event_id: +eventId,
 				course_id: courseId,
-				spot: spotList
+				spot: spotList?.map(item => ({
+					spot_id: item?.spot_id,
+					special_action_type: item?.special_action_type,
+					point: item?.point ?? 0
+				}))
 			}
 			await eventService.createEventCourse(dataRequest)
 			successMsg('イベントコースの更新が成功しました。')
@@ -68,18 +75,25 @@ const TableSpot = props => {
 				return
 			}
 
-			const sportData = spotList != null && spotList.length > 0 ? spotList.map((elm, idx) => {
-				if (elm.special_action_type == null) {
-					elm.special_action_type = [];
-				}
+			const sportData =
+				spotList != null && spotList.length > 0
+					? spotList.map((elm, idx) => {
+							if (elm.special_action_type == null) {
+								elm.special_action_type = []
+							}
 
-			  	return elm
-			}) : spotList
+							return elm
+					  })
+					: spotList
 
 			const dataRequest = {
-				event_id: eventId,
+				event_id: +eventId,
 				course_id: courseId,
-				spot_list: spotList
+				spot_list: spotList?.map(item => ({
+					spot_id: item?.spot_id,
+					special_action_type: item?.special_action_type,
+					point: item?.point
+				}))
 			}
 			await eventService.updateEventCourse(eventId, dataRequest)
 			successMsg('イベントコースの更新が成功しました。')

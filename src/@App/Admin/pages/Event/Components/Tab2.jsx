@@ -13,7 +13,7 @@ import CoreAutocomplete from '@Core/components/Input/CoreAutocomplete'
 import CoreDatePicker from '@Core/components/Input/CoreDatePicker'
 import TableSpot from './TableSpot'
 import { eventService } from '@App/Admin/services/eventService'
-import { useRequest } from 'ahooks'
+import { useRequest, useUpdateEffect } from 'ahooks'
 import { errorMsg, successMsg } from '@Core/helper/Message'
 
 const FontTitle = ({ variant = 'h1', title = '' }) => {
@@ -28,39 +28,6 @@ const Tab2 = props => {
 	const { t, eventData, isEdit, tags, courses, courseDetail, getCourseDetail, loadingCourseDetail } =
 		useAdminPageContext()
 	const { id: eventId } = useParams()
-	const {
-		control,
-		watch,
-		handleSubmit,
-		setValue,
-		getValues,
-		formState: { isSubmitting, isDirty }
-	} = useForm({
-		mode: 'onTouched',
-		defaultValues: {
-			event_id: eventData?.id ?? null,
-			title: eventData?.title ?? '',
-			course_id: null,
-			tag: [],
-			course_name: '',
-			catchphrase: null,
-			course_summary: '',
-			course_distance: null,
-			average_gradient: '',
-			elevation: null,
-			goal_approximate_time: null,
-			route_url: '',
-			course_map_image: '',
-			route_file: '',
-			elevation_chart_url: '',
-			spot_list: []
-		},
-		resolver: yupResolver(
-			Yup.object({
-				title: Yup.string().required()
-			})
-		)
-	})
 
 	const {
 		data: eventCourseDetail,
@@ -85,6 +52,44 @@ const Tab2 = props => {
 		}
 	}, [])
 
+	const {
+		control,
+		watch,
+		handleSubmit,
+		setValue,
+		getValues,
+		formState: { isSubmitting, isDirty }
+	} = useForm({
+		mode: 'onTouched',
+		defaultValues: {
+			event_id: eventData?.id ?? null,
+			title: eventData?.title ?? '',
+			course_id: eventCourseDetail?.event_course?.course_id ?? null,
+			tag: [],
+			course_name: '',
+			catchphrase: null,
+			course_summary: '',
+			course_distance: null,
+			average_gradient: '',
+			elevation: null,
+			goal_approximate_time: null,
+			route_url: '',
+			course_map_image: '',
+			route_file: '',
+			elevation_chart_url: '',
+			spot_list: []
+		},
+		resolver: yupResolver(
+			Yup.object({
+				title: Yup.string().required()
+			})
+		)
+	})
+
+	useUpdateEffect(() => {
+		getCourseDetail(eventCourseDetail?.event_course?.course_id)
+	}, [eventCourseDetail])
+
 	const tagOptions = tags?.tags?.reduce((result, currentValue) => {
 		const formatResult = {
 			key: `${currentValue?.id}`,
@@ -108,7 +113,8 @@ const Tab2 = props => {
 		setValue('course_map_image', courseDetail?.course?.course_map_image)
 		setValue('route_file', courseDetail?.course?.route_file)
 		setValue('elevation_chart_url', courseDetail?.course?.elevation_chart_url)
-	}, [JSON.stringify(courseDetail)])
+		setValue('course_id', eventCourseDetail?.event_course?.course_id)
+	}, [JSON.stringify(courseDetail), JSON.stringify(eventCourseDetail)])
 
 	const handleSelectCourse = async () => {
 		await getCourseDetail(watch('course_id'))
@@ -372,8 +378,8 @@ const Tab2 = props => {
 						<TableSpot
 							name="spot_list"
 							eventId={eventId}
-							courseId={watch('course_id')}
-							spotList={eventCourseDetail?.event_course?.spot_list}
+							courseId={courseDetail?.course?.course_id}
+							spotList={courseDetail?.course?.spot_list}
 							saveMode={eventCourseDetail?.event_course?.course_id ? 'update' : 'create'}
 						/>
 					)}
