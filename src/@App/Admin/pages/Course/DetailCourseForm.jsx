@@ -38,6 +38,7 @@ import {
 	FormHelperText
 } from '@mui/material'
 import clsx from 'clsx'
+import CoreTimePicker from '@Core/components/Input/CoreTimePicker'
 
 const tableForm = () => {
 	return null
@@ -221,15 +222,13 @@ const DetailCourseForm = props => {
 								</Typography>
 							</Box>
 							<Box className="rounded-md w-full sm:w-2/3">
-								<CoreDatePicker
+								<CoreTimePicker
 									// label="完走目安"
 									control={control}
 									name="goal_approximate_time"
 									placeholder="デフォルト入力"
 									size="small"
 									className="mb-16 sm:mb-20"
-									showTimeSelect={true}
-									timeFormat="HH:mm:ss"
 								/>
 							</Box>
 						</Box>
@@ -490,7 +489,9 @@ const DetailCourseForm = props => {
 						<Box className="grid grid-flow-row-dense grid-cols-3 pt-40">
 							<Box className="col-span-3 sm:col-span-1 pt-10">
 								<Typography variant="h3" color="primary" className="flex items-center">
-									<Typography className="text-black py-4 px-16 rounded-4 bg-[#FFC107] mx-8">必須</Typography>
+									<Typography className="text-black py-4 px-16 rounded-4 bg-[#FFC107] mx-8">
+										必須
+									</Typography>
 									コース作成者
 								</Typography>
 							</Box>
@@ -510,7 +511,12 @@ const DetailCourseForm = props => {
 							</Box>
 							<Box className="col-span-3 sm:col-span-1">
 								<Box className="text-end">
-									<Button variant="contained" color="error" className="mr-10 text-13 h-32" size="small">
+									<Button
+										variant="contained"
+										color="error"
+										className="mr-10 text-13 h-32"
+										size="small"
+									>
 										削除
 									</Button>
 									<Button
@@ -519,7 +525,7 @@ const DetailCourseForm = props => {
 										size="small"
 										disabled={!isDirty}
 										className={clsx(
-											"mr-10 h-32 text-13 text-white",
+											'mr-10 h-32 text-13 text-white',
 											!isDirty ? 'bg-gray-500' : 'bg-blue'
 										)}
 									>
