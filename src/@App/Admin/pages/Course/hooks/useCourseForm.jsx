@@ -31,12 +31,6 @@ export const useCourseForm = props => {
 	const { changeCourseImage, changeCourseMapImage, changeFileUpload, tableSelected, courseData, isEdit, courseId } =
 		props
 
-	console.log('============= courseData', courseData)
-	console.log(
-		'============= courseDatagoal_approximate_time',
-		new Date(`${moment(new Date()).format('YYYY/MM/DD')} ${courseData?.goal_approximate_time}`)
-	)
-
 	const methodForm = useForm({
 		mode: 'onTouched',
 		defaultValues: {
@@ -110,8 +104,8 @@ export const useCourseForm = props => {
 			if (data.course_tag && data.course_tag.length > 0) {
 				data.course_tag.forEach(item => formData.append('course_tag[]', item))
 			}
-			if (data.fieldsSpot && data.fieldsSpot.length > 0) {
-				data.fieldsSpot.forEach(item =>
+			if (data.spot && data.spot.length > 0) {
+				data.spot.forEach(item =>
 					formData.append(
 						'spot[]',
 						JSON.stringify({
