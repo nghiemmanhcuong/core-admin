@@ -67,9 +67,6 @@ const DetailCourseForm = props => {
 		reset
 	} = methodForm
 
-	console.log('============= tableSelected', tableSelected)
-	console.log('============= watch()', watch())
-
 	const callbackCourseImageFunction = childData => {
 		setChangeCourseImage(childData)
 	}
@@ -88,8 +85,6 @@ const DetailCourseForm = props => {
 		control,
 		name: 'spot'
 	})
-
-	console.log('============== fieldsSpot', fieldsSpot)
 
 	useEffect(() => {
 		const dataTableSelected =

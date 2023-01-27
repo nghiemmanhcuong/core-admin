@@ -29,8 +29,6 @@ const TableSpotList = props => {
 		setTableSelected(newFieldsSpot)
 	}
 
-	console.log('============= fieldsSpot', fieldsSpot)
-
 	return (
 		<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 650 }} aria-label="simple table">

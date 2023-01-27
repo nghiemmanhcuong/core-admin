@@ -134,7 +134,6 @@ export const useCourseForm = props => {
 			errorMsg(error?.response?.data?.error_message)
 		}
 	})
-	// console.log('============= isEdit', isEdit)
 
 	// useUpdateEffect(() => {
 	// 	if (isEdit) {
