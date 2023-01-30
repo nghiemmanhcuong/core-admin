@@ -18,7 +18,7 @@ const SurroundingTableFilter = props => {
 	const { t } = useTranslation(TRANSLATE_ADMIN.surrounding)
 	const handleFilter = () => {
 		const params = getValues()
-		surroundingTableHandler.handleFetchData(params)
+		surroundingTableHandler.handleFetchData({ ...params, page: 1 })
 	}
 
 	const { control, getValues } = useForm({
@@ -113,7 +113,12 @@ const SurroundingTableFilter = props => {
 							</Box>
 						</Box>
 					</Box>
-					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
+					<Button
+						variant="contained"
+						color="primary"
+						className="ml-auto h-32 mt-[2px]"
+						onClick={handleFilter}
+					>
 						{t('btn.search')}
 					</Button>
 				</Box>

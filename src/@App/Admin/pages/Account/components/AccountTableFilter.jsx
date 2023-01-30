@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Nov 10 2022
- * Modified By: haitran
+ * Last Modified: Mon Jan 30 2023
+ * Modified By: Hai Tran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -31,8 +31,10 @@ const AccountTableFilter = props => {
 	const handleFilter = async () => {
 		try {
 			const params = getValues()
-			console.log('============= params', params)
-			await accountTableHandler.handleFetchData(params)
+			await accountTableHandler.handleFetchData({
+				...params,
+				page: 1
+			})
 		} catch (error) {
 			console.log('============= error', error)
 		}
@@ -158,7 +160,12 @@ const AccountTableFilter = props => {
 				</Box>
 
 				<Box className="flex w-full sm:w-1/2 mx-8 items-center">
-					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
+					<Button
+						variant="contained"
+						color="primary"
+						className="ml-auto h-32 mt-[2px]"
+						onClick={handleFilter}
+					>
 						{t('btn.search')}
 					</Button>
 				</Box>

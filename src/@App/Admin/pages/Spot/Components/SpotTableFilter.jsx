@@ -19,7 +19,7 @@ const SpotTableFilter = props => {
 	const handleFilter = async () => {
 		try {
 			const params = getValues()
-			await spotTableHandler.handleFetchData(params)
+			await spotTableHandler.handleFetchData({ ...params, page: 1 })
 		} catch (error) {
 			errorMsg(error?.response?.data?.error_message)
 		}
@@ -151,7 +151,12 @@ const SpotTableFilter = props => {
 				</Box>
 
 				<Box className="flex w-full sm:w-1/2 mx-8 items-center">
-					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
+					<Button
+						variant="contained"
+						color="primary"
+						className="ml-auto h-32 mt-[2px]"
+						onClick={handleFilter}
+					>
 						{t('btn.search')}
 					</Button>
 				</Box>

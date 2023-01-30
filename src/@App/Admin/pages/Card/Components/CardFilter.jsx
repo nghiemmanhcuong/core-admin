@@ -40,7 +40,8 @@ const CardFilter = props => {
 		try {
 			const data = getValues()
 			const params = {
-				...data
+				...data,
+				page: 1
 			}
 			await cardTableHandler.handleFetchData(params)
 		} catch (error) {
