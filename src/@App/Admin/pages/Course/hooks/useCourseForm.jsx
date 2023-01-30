@@ -115,6 +115,13 @@ export const useCourseForm = props => {
 							distance_between_next_spot: item?.distance_between_next_spot ?? 0,
 							time_between_next_spot: item?.time_between_next_spot ?? 0
 						})
+					),
+				)
+			}
+			if (data.spot && data.spot.length > 0) {
+				data.spot.forEach(item =>
+					formData.append(
+						'delete_course_spot[]', item?.course_spot_id,
 					)
 				)
 			}
