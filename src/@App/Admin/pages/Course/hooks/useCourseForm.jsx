@@ -71,6 +71,10 @@ export const useCourseForm = props => {
 	const onSubmit = methodForm.handleSubmit(async data => {
 		try {
 			const formData = new FormData()
+			const dataId = data?.spot?.map(item => item?.course_spot_id)
+			const courseSpotId = courseData?.spot_list?.map(item => item?.course_spot_id)
+			const deleteIds = isEdit ? courseSpotId?.filter(item => !dataId.includes(item)) : []
+
 			formData.append('course_name', data?.course_name)
 			formData.append('catchphrase', data?.catchphrase)
 			formData.append('course_summary', data?.course_summary)
@@ -115,21 +119,16 @@ export const useCourseForm = props => {
 							distance_between_next_spot: item?.distance_between_next_spot ?? 0,
 							time_between_next_spot: item?.time_between_next_spot ?? 0
 						})
-					),
-				)
-			}
-			if (data.spot && data.spot.length > 0) {
-				data.spot.forEach(item =>
-					formData.append(
-						'delete_course_spot[]', item?.course_spot_id,
 					)
 				)
+			}
+			if (deleteIds && deleteIds.length > 0) {
+				deleteIds.forEach(item => formData.append('delete_course_spot[]', item?.course_spot_id))
 			}
 			formData.append('author', data?.author)
 
 			if (isEdit) {
 				formData.append('_method', 'PUT')
-
 				await courseService.updateCourse(formData, courseId)
 			} else {
 				await courseService.save(formData)

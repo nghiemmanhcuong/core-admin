@@ -41,9 +41,6 @@ import clsx from 'clsx'
 import CoreTimePicker from '@Core/components/Input/CoreTimePicker'
 import TableSpotList from './Components/TableSpotList'
 
-const tableForm = () => {
-	return null
-}
 const DetailCourseForm = props => {
 	const [changeCourseImage, setChangeCourseImage] = useState(false)
 	const [changeCourseMapImage, setChangeCourseMapImage] = useState(false)
