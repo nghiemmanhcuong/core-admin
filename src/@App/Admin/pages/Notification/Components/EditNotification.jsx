@@ -105,8 +105,8 @@ const EditNotification = props => {
 
 	const onSubmit = handleSubmit(async data => {
 		try {
-			data.publish_start = moment(data.publish_start).format('YYYY-MM-DD hh:mm:ss')
-			data.publish_end = moment(data.publish_end).format('YYYY-MM-DD hh:mm:ss')
+			data.publish_start = moment(data.publish_start).format('YYYY-MM-DD HH:mm:ss')
+			data.publish_end = moment(data.publish_end).format('YYYY-MM-DD HH:mm:ss')
 			data.author = data.author ? data.author : 'James'
 			await notificationService.save(data)
 			successMsg('submit success!...')
