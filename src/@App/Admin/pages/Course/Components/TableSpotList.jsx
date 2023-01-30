@@ -24,11 +24,6 @@ const TableSpotList = props => {
 	const { fieldsSpot } = props
 	const { control, removeSpot, setTableSelected } = useFormContext()
 
-	const handleDelete = id => {
-		const newFieldsSpot = fieldsSpot?.filter(item => item?.spot_id !== id)
-		setTableSelected(newFieldsSpot)
-	}
-
 	return (
 		<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 650 }} aria-label="simple table">
