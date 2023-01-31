@@ -59,7 +59,7 @@ const TableSpotList = props => {
 								<TableCell>
 									<TextField id="outlined-search" size="small" value={indRow + 1} readOnly />
 								</TableCell>
-								<TableCell>
+								<TableCell className='font-500'>
 									{row?.name}
 									<CoreInput
 										control={control}
@@ -90,7 +90,7 @@ const TableSpotList = props => {
 										className="mb-16 sm:mb-20 hidden"
 									/>
 								</TableCell>
-								<TableCell>
+								<TableCell  className='font-500'>
 									{row?.type}
 									<CoreInput
 										control={control}
@@ -100,7 +100,7 @@ const TableSpotList = props => {
 										size="small"
 									/>
 								</TableCell>
-								<TableCell>
+								<TableCell  className='font-500'>
 									{row?.address}
 									<CoreInput
 										control={control}
@@ -110,7 +110,7 @@ const TableSpotList = props => {
 										size="small"
 									/>
 								</TableCell>
-								<TableCell>
+								<TableCell  className='font-500'>
 									<CoreInput
 										type="number"
 										control={control}
@@ -120,7 +120,7 @@ const TableSpotList = props => {
 										size="small"
 									/>
 								</TableCell>
-								<TableCell>
+								<TableCell  className='font-500'>
 									<Box className="flex items-center">
 										<CoreInput
 											type="number"
