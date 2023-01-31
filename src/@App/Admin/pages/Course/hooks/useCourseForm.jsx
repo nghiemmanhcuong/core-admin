@@ -42,7 +42,7 @@ export const useCourseForm = props => {
 			course_distance: courseData?.course_distance ?? null,
 			average_gradient: courseData?.average_gradient ?? null,
 			elevation: courseData?.elevation ?? null,
-			// strength: 3,
+			strength: courseData?.strength ?? null,
 			goal_approximate_time: courseData?.goal_approximate_time
 				? new Date(`${moment(new Date()).format('YYYY/MM/DD')} ${courseData?.goal_approximate_time}`)
 				: null,
@@ -62,8 +62,8 @@ export const useCourseForm = props => {
 				route_file: Yup.mixed()
 					.transform(v => (!v ? undefined : v))
 					.required('Route file is required'),
-				spot: Yup.array().min(1)
-				// strength: Yup.number().min(1).max(5)
+				spot: Yup.array().min(1),
+				strength: Yup.mixed().nullable().required()
 			})
 		)
 	})
@@ -89,6 +89,9 @@ export const useCourseForm = props => {
 			}
 			if (data.elevation) {
 				formData.append('elevation', data?.elevation)
+			}
+			if (data.strength) {
+				formData.append('strength', data?.strength)
 			}
 			if (data.goal_approximate_time) {
 				formData.append('goal_approximate_time', moment(data.goal_approximate_time).format('HH:mm:ss'))

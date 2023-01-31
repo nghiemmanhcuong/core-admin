@@ -105,7 +105,8 @@ const DetailCourseForm = props => {
 			route_file: watch('route_file'),
 			elevation_chart_url: watch('elevation_chart_url'),
 			course_tag: watch('course_tag'),
-			author: watch('author')
+			author: watch('author'),
+			strength: watch('strength')
 		}
 
 		if (dataTableSelected && Array.isArray(dataTableSelected) && dataTableSelected.length > 0) {
@@ -197,14 +198,30 @@ const DetailCourseForm = props => {
 							className="mb-16 sm:mb-20"
 						/>
 
-						{/* <AdminInput
-							label="体力度"
-							control={control}
-							name="strength"
-							placeholder="デフォルト入力"
-							size="small"
-							className="mb-16 sm:mb-20"
-						/> */}
+						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
+							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
+								<Typography variant="h3" color="primary" className="flex items-center mb-4">
+									<Typography className="text-black py-4 px-16 rounded-4 w-60  mx-8">
+										{/* 必須 */}
+									</Typography>
+									体力度
+								</Typography>
+							</Box>
+							<Box className="rounded-md w-full sm:w-2/3">
+								<CoreAutocomplete
+									control={control}
+									name="strength"
+									options={[{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }, { value: 5 }]}
+									size="small"
+									className="w-full"
+									variant="outlined"
+									placeholder="選択する"
+									valuePath="value"
+									labelPath="value"
+									returnValueType="enum"
+								/>
+							</Box>
+						</Box>
 
 						<Box className="flex flex-wrap sm:flex-nowrap mb-16 sm:mb-20">
 							<Box className="w-full sm:w-1/3 mt-12 mb-8 sm:mb-0">
