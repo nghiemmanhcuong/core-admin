@@ -36,10 +36,13 @@ const TableSpotDialog = props => {
 			columnHelper.accessor('id', {
 				header: t('label.no'),
 				className: 'w-[5%]',
-				cell: info => info.getValue()
+				cell: info => <span className="font-500">{info.getValue()}</span>
 			}),
 			columnHelper.accessor('name', {
-				header: t('label.name')
+				header: t('label.name'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.name}</span>
+				}
 			}),
 			columnHelper.accessor('address', {
 				header: t('label.address'),
