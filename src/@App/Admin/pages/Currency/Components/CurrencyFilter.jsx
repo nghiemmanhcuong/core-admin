@@ -44,7 +44,6 @@ const CurrencyFilter = props => {
 	const { control, getValues, watch } = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			id: null,
 			// name: null,
 			// unit: null,
 			available_date: null,
