@@ -156,8 +156,8 @@ const Tab1 = props => {
 
 	useEffect(() => {
 		try {
-			fetchData().catch(error => { })
-		} catch (error) { }
+			fetchData().catch(error => {})
+		} catch (error) {}
 	}, [id])
 
 	const {
@@ -218,7 +218,6 @@ const Tab1 = props => {
 		<form onSubmit={onSubmit}>
 			<Box className="grid grid-flow-row-dense grid-cols-12 pb-20">
 				<Box className="col-span-12 sm:col-span-10 sm:col-start-2 pt-20">
-
 					<AdminInput
 						control={control}
 						label={t('edit.form.label.id')}
@@ -575,7 +574,7 @@ const Tab1 = props => {
 										disabled={!isDirty}
 										variant="contained"
 										className={clsx(
-											"h-32 text-13 text-white",
+											'h-32 text-13 text-white',
 											!isDirty ? 'bg-gray-500' : 'bg-blue'
 										)}
 										size="small"

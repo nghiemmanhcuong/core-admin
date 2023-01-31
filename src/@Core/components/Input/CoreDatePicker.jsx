@@ -36,7 +36,7 @@ const CoreDatePicker = ({
 	showTimeSelect = false,
 	timeFormat = '',
 	showMonthYearPicker = false,
-	dateFormat = ''
+	dateFormat
 }) => {
 	const {
 		field: { onChange, onBlur, value, ref },
@@ -48,47 +48,53 @@ const CoreDatePicker = ({
 		rules
 	})
 
-	const CustomInput = forwardRef(({ value, onClick }, ref) => (
-		<TextField
-			fullWidth
-			variant="outlined"
-			value={
-				value && showMonthYearPicker
-					? moment(value).format('YYYY/MM')
-					: value && showTimeSelect
-					? moment(value).format('YYYY/MM/DD HH:mm:ss')
-					: value
-					? moment(value).format('YYYY/MM/DD')
-					: null
-			}
-			// onClick={onClick}
-			InputProps={{
-				endAdornment: (
-					<>
-						{value ? (
-							<Icon
-								onClick={() => onChange(null)}
-								fontSize="small"
-								className="cursor-pointer rounded-full"
-							>
-								close
+	// console.log('============= valueDate', value)
+
+	const CustomInput = forwardRef(({ value, onClick }, ref) => {
+		console.log('============= valueDate', value)
+
+		return (
+			<TextField
+				fullWidth
+				variant="outlined"
+				value={
+					value && showMonthYearPicker
+						? moment(value).format('YYYY/MM')
+						: value && showTimeSelect
+						? moment(value).format('YYYY/MM/DD HH:mm:ss')
+						: value
+						? moment(value).format('YYYY/MM/DD')
+						: null
+				}
+				// onClick={onClick}
+				InputProps={{
+					endAdornment: (
+						<>
+							{value ? (
+								<Icon
+									onClick={() => onChange(null)}
+									fontSize="small"
+									className="cursor-pointer rounded-full"
+								>
+									close
+								</Icon>
+							) : null}
+							<Icon className="cursor-pointer" onClick={onClick}>
+								calendar_month
 							</Icon>
-						) : null}
-						<Icon className="cursor-pointer" onClick={onClick}>
-							calendar_month
-						</Icon>
-					</>
-				)
-			}}
-			ref={ref}
-			error={!!error}
-			inputProps={{
-				readOnly: true
-			}}
-			size={size}
-			placeholder={placeholder}
-		/>
-	))
+						</>
+					)
+				}}
+				ref={ref}
+				error={!!error}
+				inputProps={{
+					readOnly: true
+				}}
+				size={size}
+				placeholder={placeholder}
+			/>
+		)
+	})
 
 	const renderLabel = () => {
 		return (
