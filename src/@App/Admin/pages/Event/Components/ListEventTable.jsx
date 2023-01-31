@@ -43,10 +43,20 @@ const ListEventTable = props => {
 				}
 			}),
 			columnHelper.accessor('event_start', {
-				header: t('label.event_start')
+				header: t('label.event_start'),
+				cell: ({ row }) => {
+					return (
+						<span className="font-500">{`${row?.original?.event_start} ~ ${row?.original?.event_end}`}</span>
+					)
+				}
 			}),
 			columnHelper.accessor('reception_start', {
-				header: t('label.reception_start')
+				header: t('label.reception_start'),
+				cell: ({ row }) => {
+					return (
+						<span className="font-500">{`${row?.original?.reception_start} ~ ${row?.original?.reception_end}`}</span>
+					)
+				}
 			}),
 			columnHelper.accessor('tag', {
 				header: t('label.tag'),
