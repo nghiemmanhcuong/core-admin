@@ -103,8 +103,6 @@ const EditNotification = props => {
 		)
 	})
 
-
-
 	const onSubmit = handleSubmit(async data => {
 		try {
 			data.publish_start = moment(data.publish_start).format('YYYY-MM-DD HH:mm:ss')
@@ -192,7 +190,8 @@ const EditNotification = props => {
 								variant="outlined"
 								placeholder="選択する"
 								showTimeSelect
-								dateFormat="yyyy/MM/dd hh:mm:ss"
+								dateFormat="yyyy/MM/dd HH:mm:ss"
+								timeFormat="HH:mm:ss"
 							/>
 							<Typography variant="h3" color="primary" className="mx-8 self-center">
 								{t('edit.form.label.to')}
@@ -205,7 +204,8 @@ const EditNotification = props => {
 								variant="outlined"
 								placeholder="選択する"
 								showTimeSelect
-								dateFormat="yyyy/MM/dd hh:mm:ss"
+								dateFormat="yyyy/MM/dd HH:mm:ss"
+								timeFormat="HH:mm:ss"
 							/>
 						</Box>
 					</Box>
