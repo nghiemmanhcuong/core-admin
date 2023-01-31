@@ -152,6 +152,7 @@ const CoreTable = ({
 						count={Math.ceil(total / pageSize) ?? 1}
 						variant="outlined"
 						shape="rounded"
+						page={pageIndex}
 						onChange={(e, page) => {
 							handleFetchData({ page })
 						}}

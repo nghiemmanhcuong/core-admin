@@ -47,7 +47,8 @@ const EventFilter = props => {
 					: null,
 				category: data?.category?.join(','),
 				// publish: data?.publish,
-				tag: data?.tag?.join(',')
+				tag: data?.tag?.join(','),
+				page: 1
 			}
 			await eventTableHandler.handleFetchData(params)
 		} catch (error) {

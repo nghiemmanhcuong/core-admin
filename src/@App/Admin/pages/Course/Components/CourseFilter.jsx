@@ -29,7 +29,8 @@ const CourseFilter = props => {
 
 		const params = {
 			...data,
-			display: arraySelected
+			display: arraySelected,
+			page: 1
 		}
 		courseTableHandler.handleFetchData(params)
 	}
@@ -89,7 +90,12 @@ const CourseFilter = props => {
 							))}
 						</Box>
 					</Box>
-					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
+					<Button
+						variant="contained"
+						color="primary"
+						className="ml-auto h-32 mt-[2px]"
+						onClick={handleFilter}
+					>
 						{t('btn.search')}
 					</Button>
 				</Box>

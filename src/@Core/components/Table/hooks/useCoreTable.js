@@ -16,7 +16,7 @@
 // import { DEFAULT_PAGE_SIZE } from '@App/core/constants'
 
 import { DEFAULT_RESPONSE } from '@Core/api/BaseService'
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { pickBy } from 'lodash'
@@ -31,25 +31,30 @@ const useCoreTable = requestFetchData => {
 
 	const { data = DEFAULT_RESPONSE, loading, runAsync } = requestFetchData
 
+	const [params, setParams] = useState({
+		per_page: 10
+	})
+
 	// const [queryUrl, setQueryUrl] = useUrlState()
-	const handleFetchData = useCallback(query => {
-		params = {
-			...params,
-			...query
-		}
-		params = pickBy(params, val => {
-			return val !== null && val !== '' && val !== 'undefined'
-		})
+	const handleFetchData = useCallback(
+		query => {
+			const filter = {
+				...params,
+				...query
+			}
 
-		// Qs.stringify(params)
-
-		return runAsync(params)
-	}, [])
+			setParams(filter)
+			return runAsync(filter)
+		},
+		[params]
+	)
 
 	return {
 		...data,
-		pageIndex: data?.page - 1 ?? 0, //data?.current_page ? data?.current_page - 1 : 0,
-		pageSize: data?.per_page ?? 10,
+		...data?.pagination,
+		pageIndex: data?.pagination?.page ?? 1, //data?.current_page ? data?.current_page - 1 : 0,
+		pageSize: data?.pagination?.per_page ?? 10,
+		// total: data?.pagination?.total_item,
 		loading,
 		handleFetchData
 	}

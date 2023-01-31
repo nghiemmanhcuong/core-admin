@@ -34,7 +34,8 @@ const CurrencyFilter = props => {
 		const params = {
 			...data,
 			display: arraySelected,
-			available_date: data?.available_date ? moment(data?.available_date).format('YYYY-MM-DD') : undefined
+			available_date: data?.available_date ? moment(data?.available_date).format('YYYY-MM-DD') : undefined,
+			page: 1
 		}
 
 		currencyTableHandler.handleFetchData(params)
@@ -135,7 +136,12 @@ const CurrencyFilter = props => {
 							))}
 						</Box>
 					</Box>
-					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
+					<Button
+						variant="contained"
+						color="primary"
+						className="ml-auto h-32 mt-[2px]"
+						onClick={handleFilter}
+					>
 						{t('btn.search')}
 					</Button>
 				</Box>

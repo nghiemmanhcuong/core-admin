@@ -28,7 +28,7 @@ const MissionTableFilter = props => {
 			}
 		}
 
-		missionTableHandler.handleFetchData({ ...params, display: arraySelected })
+		missionTableHandler.handleFetchData({ ...params, display: arraySelected, page: 1 })
 	}
 
 	const { control, getValues } = useForm({
@@ -131,7 +131,12 @@ const MissionTableFilter = props => {
 							))}
 						</Box>
 					</Box>
-					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
+					<Button
+						variant="contained"
+						color="primary"
+						className="ml-auto h-32 mt-[2px]"
+						onClick={handleFilter}
+					>
 						{t('btn.search')}
 					</Button>
 				</Box>

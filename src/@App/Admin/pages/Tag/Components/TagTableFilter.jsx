@@ -32,7 +32,8 @@ const TagTableFilter = props => {
 
 		const params = {
 			...data,
-			display: arraySelected
+			display: arraySelected,
+			page: 1
 		}
 
 		tagTableHandler.handleFetchData(params)
@@ -139,7 +140,12 @@ const TagTableFilter = props => {
 							))}
 						</Box>
 					</Box>
-					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
+					<Button
+						variant="contained"
+						color="primary"
+						className="ml-auto h-32 mt-[2px]"
+						onClick={handleFilter}
+					>
 						{t('btn.search')}
 					</Button>
 				</Box>
