@@ -97,11 +97,13 @@ const EditNotification = props => {
 				title: Yup.string().required().trim().min(1).max(30),
 				category: Yup.mixed().nullable().required(),
 				summary: Yup.string().required(),
-				publish_start: Yup.string().required(),
-				publish_end: Yup.string().required()
+				publish_start: Yup.string().nullable().required(),
+				publish_end: Yup.string().nullable().required()
 			})
 		)
 	})
+
+
 
 	const onSubmit = handleSubmit(async data => {
 		try {
@@ -190,7 +192,7 @@ const EditNotification = props => {
 								variant="outlined"
 								placeholder="選択する"
 								showTimeSelect
-								dateFormat="Y-m-d H:i:s"
+								dateFormat="yyyy/MM/dd hh:mm:ss"
 							/>
 							<Typography variant="h3" color="primary" className="mx-8 self-center">
 								{t('edit.form.label.to')}
@@ -203,7 +205,7 @@ const EditNotification = props => {
 								variant="outlined"
 								placeholder="選択する"
 								showTimeSelect
-								dateFormat="Y-m-d H:i:s"
+								dateFormat="yyyy/MM/dd hh:mm:ss"
 							/>
 						</Box>
 					</Box>
@@ -270,7 +272,7 @@ const EditNotification = props => {
 								disabled={!isDirty}
 								color="primary"
 								className={clsx(
-									"ml-[10px] h-32 text-13 text-white",
+									'ml-[10px] h-32 text-13 text-white',
 									!isDirty ? 'bg-gray-500' : 'bg-blue'
 								)}
 							>

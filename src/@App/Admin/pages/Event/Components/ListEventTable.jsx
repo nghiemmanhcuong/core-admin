@@ -37,7 +37,10 @@ const ListEventTable = props => {
 				cell: info => renderTextTruncate(info.getValue())
 			}),
 			columnHelper.accessor('venue', {
-				header: t('label.venue')
+				header: t('label.venue'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.venue}</span>
+				}
 			}),
 			columnHelper.accessor('event_start', {
 				header: t('label.event_start')
@@ -51,7 +54,7 @@ const ListEventTable = props => {
 				cell: ({ row }) => {
 					return row?.original?.tag?.map((item, index) => {
 						return (
-							<span key={index} className="mb-4 bg-grey-300 p-4 rounded-4 m-4">
+							<span key={index} className="mb-4 bg-grey-300 p-4 font-500 rounded-4 m-4">
 								{item}
 							</span>
 						)
@@ -61,7 +64,11 @@ const ListEventTable = props => {
 			columnHelper.accessor('publish', {
 				header: t('label.status'),
 				cell: ({ row }) => {
-					return row?.original?.publish === 1 ? t('label.publish') : t('label.unpublish')
+					return (
+						<span className="font-500">
+							{row?.original?.publish === 1 ? t('label.publish') : t('label.unpublish')}
+						</span>
+					)
 				}
 			}),
 			columnHelper.accessor('action', {

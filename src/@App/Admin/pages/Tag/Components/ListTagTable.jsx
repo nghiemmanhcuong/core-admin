@@ -46,7 +46,10 @@ const ListTagTable = props => {
 				className: 'w-[10%]'
 			}),
 			columnHelper.accessor('name', {
-				header: t('title.name')
+				header: t('title.name'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.name}</span>
+				}
 			}),
 			columnHelper.accessor('type', {
 				header: t('title.tag_type')
@@ -55,15 +58,19 @@ const ListTagTable = props => {
 				header: t('title.number_tag')
 			}),
 			columnHelper.accessor('frequently_used', {
+				header: t('title.popular_tag'),
 				cell: ({ row }) => {
-					return row?.original?.frequently_used ? 'ある' : 'ない'
-				},
-				header: t('title.popular_tag')
+					return <span className="font-500">{row?.original?.frequently_used ? 'ある' : 'ない'}</span>
+				}
 			}),
 			columnHelper.accessor('display', {
 				header: t('title.status'),
 				cell: ({ row }) => {
-					return row?.original?.display === 1 ? '表示' : row?.original?.display === 0 ? '非表示' : null
+					return (
+						<span className="font-500">
+							{row?.original?.display === 1 ? '表示' : row?.original?.display === 0 ? '非表示' : null}
+						</span>
+					)
 				}
 			}),
 			columnHelper.accessor('action', {

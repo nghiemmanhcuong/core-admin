@@ -3,8 +3,8 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Mon Jan 30 2023
- * Modified By: Hai Tran
+ * Last Modified: Tue Jan 31 2023
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -73,7 +73,9 @@ const AccountTableFilter = props => {
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
 			<Box className="p-8 bg-grey-300">
-				<Typography variant="h4">{t('title.filter')}</Typography>
+				<Typography variant="h4" className="font-500">
+					{t('title.filter')}
+				</Typography>
 			</Box>
 			<Box className="flex p-8 w-full">
 				<Box className="flex w-full sm:w-1/2 items-center">

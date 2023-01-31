@@ -20,7 +20,10 @@ const ListCourseTable = props => {
 				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('course_name', {
-				header: t('label.name')
+				header: t('label.name'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.course_name}</span>
+				}
 			}),
 			// columnHelper.accessor('area', {
 			// 	header: t('label.area')
@@ -35,7 +38,10 @@ const ListCourseTable = props => {
 				header: t('label.physical')
 			}),
 			columnHelper.accessor('author', {
-				header: t('label.author')
+				header: t('label.author'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.author}</span>
+				}
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),

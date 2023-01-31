@@ -4,7 +4,7 @@
  * Email: phantrung696@gmail.com
  * -----
  * Last Modified:
- * Modified By: Hai Tran
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -35,7 +35,8 @@ const CoreDatePicker = ({
 	size = '',
 	showTimeSelect = false,
 	timeFormat = '',
-	showMonthYearPicker = false
+	showMonthYearPicker = false,
+	dateFormat = ''
 }) => {
 	const {
 		field: { onChange, onBlur, value, ref },
@@ -54,6 +55,8 @@ const CoreDatePicker = ({
 			value={
 				value && showMonthYearPicker
 					? moment(value).format('YYYY/MM')
+					: value && showTimeSelect
+					? moment(value).format('YYYY/MM/DD HH:mm:ss')
 					: value
 					? moment(value).format('YYYY/MM/DD')
 					: null
@@ -123,6 +126,7 @@ const CoreDatePicker = ({
 				showTimeSelect={showTimeSelect}
 				timeFormat={timeFormat}
 				showMonthYearPicker={showMonthYearPicker}
+				dateFormat={dateFormat}
 			/>
 			{helperText && <FormHelperText>{helperText}</FormHelperText>}
 			{error && error.message && <FormHelperText error>{error.message}</FormHelperText>}

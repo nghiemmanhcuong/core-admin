@@ -33,7 +33,10 @@ const ListItemTable = props => {
 				header: t('column.no')
 			}),
 			columnHelper.accessor('name', {
-				header: t('column.name')
+				header: t('column.name'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.name}</span>
+				}
 			}),
 			columnHelper.accessor('currency_of_consumption', {
 				header: t('column.unit')
@@ -48,12 +51,19 @@ const ListItemTable = props => {
 				header: t('column.inventory')
 			}),
 			columnHelper.accessor('exchange_area', {
-				header: t('column.area')
+				header: t('column.area'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.exchange_area}</span>
+				}
 			}),
 			columnHelper.accessor('display', {
 				header: t('column.status'),
 				cell: ({ row }) => {
-					return row?.original?.display === 1 ? '表示' : row?.original?.display === 0 ? '非表示' : null
+					return (
+						<span className="font-500">
+							{row?.original?.display === 1 ? '表示' : row?.original?.display === 0 ? '非表示' : null}
+						</span>
+					)
 				}
 			}),
 			columnHelper.accessor('action', {
