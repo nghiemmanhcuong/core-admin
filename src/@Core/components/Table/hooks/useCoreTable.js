@@ -51,9 +51,8 @@ const useCoreTable = requestFetchData => {
 
 	return {
 		...data,
-		...data?.pagination,
-		pageIndex: data?.pagination?.page ?? 1, //data?.current_page ? data?.current_page - 1 : 0,
-		pageSize: data?.pagination?.per_page ?? 10,
+		pageIndex: data?.page ?? 1, //data?.current_page ? data?.current_page - 1 : 0,
+		pageSize: data?.per_page ?? 10,
 		// total: data?.pagination?.total_item,
 		loading,
 		handleFetchData
