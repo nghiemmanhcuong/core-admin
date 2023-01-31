@@ -9,6 +9,7 @@ import CoreTable, { columnHelper } from '@Core/components/Table/CoreTable'
 import { Box } from '@mui/system'
 import React, { useMemo, useState } from 'react'
 import EventFilter from './EventFilter'
+import moment from 'moment'
 import { Link, useNavigate } from 'react-router-dom'
 import ConfirmDialog from '@Core/components/Dialog/ConfirmDialog'
 import { ROUTER_ADMIN } from '@App/Admin/configs/constants'
@@ -46,7 +47,12 @@ const ListEventTable = props => {
 				header: t('label.event_start'),
 				cell: ({ row }) => {
 					return (
-						<span className="font-500">{`${row?.original?.event_start} ~ ${row?.original?.event_end}`}</span>
+						row?.original?.event_start &&
+						row?.original?.event_end && (
+							<span className="font-500">{`${moment(row?.original?.event_start).format(
+								'YYYY/MM/DD'
+							)} ~ ${moment(row?.original?.event_end).format('YYYY/MM/DD')}`}</span>
+						)
 					)
 				}
 			}),
@@ -54,7 +60,12 @@ const ListEventTable = props => {
 				header: t('label.reception_start'),
 				cell: ({ row }) => {
 					return (
-						<span className="font-500">{`${row?.original?.reception_start} ~ ${row?.original?.reception_end}`}</span>
+						row?.original?.reception_start &&
+						row?.original?.reception_end && (
+							<span className="font-500">{`${moment(row?.original?.reception_start).format(
+								'YYYY/MM/DD'
+							)} ~ ${moment(row?.original?.reception_end).format('YYYY/MM/DD')}`}</span>
+						)
 					)
 				}
 			}),
