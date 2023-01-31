@@ -123,7 +123,7 @@ export const useCourseForm = props => {
 				)
 			}
 			if (deleteIds && deleteIds.length > 0) {
-				deleteIds.forEach(item => formData.append('delete_course_spot[]', item?.course_spot_id))
+				deleteIds.forEach(item => formData.append('delete_course_spot[]', item))
 			}
 			formData.append('author', data?.author)
 

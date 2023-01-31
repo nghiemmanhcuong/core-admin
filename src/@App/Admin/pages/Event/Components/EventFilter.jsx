@@ -60,7 +60,9 @@ const EventFilter = props => {
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
 			<Box className="p-8 bg-grey-300">
-				<Typography variant="h4">検索条件</Typography>
+				<Typography variant="h4" className="font-500">
+					検索条件
+				</Typography>
 			</Box>
 			<Box className="flex p-8 w-full">
 				<Box className="flex w-1/2 items-center">
@@ -193,7 +195,12 @@ const EventFilter = props => {
 							/>
 						</Box>
 					</Card> */}
-					<Button variant="contained" color="primary" className="ml-auto h-32 mt-[2px]" onClick={handleFilter}>
+					<Button
+						variant="contained"
+						color="primary"
+						className="ml-auto h-32 mt-[2px]"
+						onClick={handleFilter}
+					>
 						検索
 					</Button>
 				</Box>

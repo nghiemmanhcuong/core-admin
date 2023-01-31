@@ -19,10 +19,16 @@ const ListCurrencyTable = props => {
 				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('name', {
-				header: 'アプリ内通貨名'
+				header: 'アプリ内通貨名',
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.name}</span>
+				}
 			}),
 			columnHelper.accessor('unit', {
-				header: 'アプリ内通貨単位'
+				header: 'アプリ内通貨単位',
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.unit}</span>
+				}
 			}),
 			columnHelper.accessor('available_start', {
 				header: '使用可能開始日'

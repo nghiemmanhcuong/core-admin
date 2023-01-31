@@ -25,7 +25,7 @@ const AdminContentPage = props => {
 			{pageTitle && (
 				<CardHeader
 					title={
-						<Typography variant="h1" className="font-900">
+						<Typography variant="h1" className="font-500">
 							{pageTitle}
 						</Typography>
 					}

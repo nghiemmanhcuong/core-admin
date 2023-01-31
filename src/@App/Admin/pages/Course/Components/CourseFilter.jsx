@@ -53,7 +53,9 @@ const CourseFilter = props => {
 	return (
 		<Box className="m-10 border-1 rounded-4 border-grey-300">
 			<Box className="p-10 bg-grey-300">
-				<Typography variant="h4">{t('title.filter')}</Typography>
+				<Typography variant="h4" className="font-500">
+					{t('title.filter')}
+				</Typography>
 			</Box>
 
 			<Box className="flex p-8 w-full">

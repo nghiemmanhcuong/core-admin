@@ -36,16 +36,25 @@ const ListMissionTable = props => {
 				header: t('label.name')
 			}),
 			columnHelper.accessor('clear_type', {
-				header: t('label.condition')
+				header: t('label.condition'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.clear_type}</span>
+				}
 			}),
 			columnHelper.accessor('app_currency', {
-				header: t('label.app_currency')
+				header: t('label.app_currency'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.app_currency}</span>
+				}
 			}),
 			columnHelper.accessor('app_currency_amount', {
 				header: t('label.app_currency_amount')
 			}),
 			columnHelper.accessor('card_name', {
-				header: t('label.card_name')
+				header: t('label.card_name'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.card_name}</span>
+				}
 			}),
 			columnHelper.accessor('action', {
 				header: t('label.action'),

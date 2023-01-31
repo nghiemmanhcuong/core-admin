@@ -3,8 +3,8 @@
  * Author: TheAnh58_DELL
  * Email: you@you.you
  * -----
- * Last Modified: Sat Oct 29 2022
- * Modified By: Dell
+ * Last Modified: Tue Jan 31 2023
+ * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
  * -----
@@ -13,17 +13,16 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { Tooltip } from "@mui/material"
+import { Tooltip } from '@mui/material'
 import { truncate } from 'lodash'
 
-
-export const renderTextTruncate = (title) => {
-    if (title?.length > 30) {
-        return (
-            <Tooltip title={title}>
-                <div>{truncate(title)}</div>
-            </Tooltip>
-        )
-    }
-    return title
+export const renderTextTruncate = title => {
+	if (title?.length > 30) {
+		return (
+			<Tooltip title={title}>
+				<span className="font-500">{truncate(title)}</span>
+			</Tooltip>
+		)
+	}
+	return <span className="font-500">{title}</span>
 }

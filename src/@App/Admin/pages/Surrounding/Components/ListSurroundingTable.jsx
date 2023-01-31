@@ -53,7 +53,10 @@ const ListSurroundingTable = props => {
 				header: t('label.name')
 			}),
 			columnHelper.accessor('address', {
-				header: t('label.area')
+				header: t('label.area'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.address}</span>
+				}
 			}),
 			columnHelper.accessor('type', {
 				header: t('label.type')
@@ -102,10 +105,7 @@ const ListSurroundingTable = props => {
 					{t('edit.form.label.csv')}
 				</Typography>
 				<div className="flex border-grey-300 border-1 rounded-4 relative" htmlFor="formId">
-					<Typography
-						className="mr-5 my-auto text-white rounded-4 p-6"
-						sx={{ backgroundColor: '#19A2B8' }}
-					>
+					<Typography className="mr-5 my-auto text-white rounded-4 p-6" sx={{ backgroundColor: '#19A2B8' }}>
 						ファイルを選択
 					</Typography>
 					<Typography className="ml-5 mr-10 my-auto">選択されていません</Typography>
@@ -118,11 +118,7 @@ const ListSurroundingTable = props => {
 					/>
 				</div>
 
-				<Button
-					variant="contained"
-					color="primary"
-					className="mr-2 h-32 w-auto text-13"
-				>
+				<Button variant="contained" color="primary" className="mr-2 h-32 w-auto text-13">
 					{t('btn.upload')}
 				</Button>
 			</Box>

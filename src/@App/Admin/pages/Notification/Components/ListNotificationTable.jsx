@@ -33,10 +33,16 @@ const ListNotificationTable = props => {
 				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('title', {
-				header: t('column.title')
+				header: t('column.title'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.title}</span>
+				}
 			}),
 			columnHelper.accessor('category', {
-				header: t('column.type')
+				header: t('column.type'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.category}</span>
+				}
 			}),
 			// columnHelper.accessor('detail', {
 			// 	header: t('column.detail')

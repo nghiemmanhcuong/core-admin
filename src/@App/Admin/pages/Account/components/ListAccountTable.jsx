@@ -3,7 +3,7 @@
  * Author: TheAnh58
  * Email: you@you.you
  * -----
- * Last Modified: Thu Nov 10 2022
+ * Last Modified: Tue Jan 31 2023
  * Modified By: haitran
  * -----
  * Copyright (c) 2022 PROS+ Group , Inc
@@ -37,7 +37,10 @@ const ListAccountTable = props => {
 			}),
 			columnHelper.accessor('name', {
 				className: 'w-[20%] whitespace-normal',
-				header: t('label.name')
+				header: t('label.name'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.name}</span>
+				}
 			}),
 			columnHelper.accessor('mail', {
 				header: t('label.mail')

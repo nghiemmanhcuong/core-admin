@@ -58,7 +58,10 @@ const ListSpotTable = props => {
 				className: 'w-[5%]'
 			}),
 			columnHelper.accessor('name', {
-				header: t('label.name')
+				header: t('label.name'),
+				cell: ({ row }) => {
+					return <span className="font-500">{row?.original?.name}</span>
+				}
 			}),
 			columnHelper.accessor('address', {
 				header: t('label.address'),
@@ -112,10 +115,7 @@ const ListSpotTable = props => {
 					{t('edit.form.label.csv')}
 				</Typography>
 				<div className="flex border-grey-300 border-1 rounded-4 relative" htmlFor="formId">
-					<Typography
-						className="mr-5 my-auto text-white rounded-4 p-6"
-						sx={{ backgroundColor: '#19A2B8' }}
-					>
+					<Typography className="mr-5 my-auto text-white rounded-4 p-6" sx={{ backgroundColor: '#19A2B8' }}>
 						ファイルを選択
 					</Typography>
 					<Typography className="ml-5 mr-10 my-auto">選択されていません</Typography>
@@ -127,11 +127,7 @@ const ListSpotTable = props => {
 						className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
 					/>
 				</div>
-				<Button
-					variant="contained"
-					color="primary"
-					className="mr-2 h-32 w-auto text-13"
-				>
+				<Button variant="contained" color="primary" className="mr-2 h-32 w-auto text-13">
 					{t('btn.upload')}
 				</Button>
 			</Box>
